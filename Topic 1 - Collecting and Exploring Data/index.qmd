@@ -1,0 +1,260 @@
+---
+title: "Class 2 - Exploring Data"
+format: 
+  revealjs:
+    theme: theme_314.scss
+    chalkboard: true
+    html-math-method: mathjax
+editor: visual
+---
+
+```{r}
+library(countdown)
+```
+
+## Today's Agenda - Exploring Data
+
+ 
+
+📝 Collaborative activity: Designing a Statistical Study
+
+ 
+
+📖 Review key concepts related to exploring and summarizing numerical and categorical data.
+
+ 
+
+💻 R Programming demonstration
+
+## Design an Observational Study: Part 1 {.smaller}
+
+A very large college class has 600 students. The students are divided into 25 groups, each of 24 students, for lab sections administered by different teaching assistants. The instructor wants to conduct a survey about how satisfied the students are with the course, and she believes that the lab section a student is in might affect the student’s overall satisfaction with the course.
+
+Using one of the sampling schemes discussed in this week's assigned reading, in a few sentences, propose a strategy to sample 100 students from the class so that you have a representative sample of the entire population of interest.
+
+**Sampling Schemes:**
+
+::: non-incremental
+-   Simple random sampling
+-   Stratified random sampling
+-   Cluster random sampling
+-   Systematic random sampling
+:::
+
+```{r}
+countdown(minutes = 4)
+```
+
+## Design an Observational Study: Part 2
+
+-   Find one or two other students nearby to do this part with.
+
+-   Introduce yourself if you have not already done so.
+
+-   One group member should start by reading their study design aloud to the group.
+
+-   The other group members' task is to determine what sampling scheme was used.
+
+-   Make sure each group member has a chance to share their sampling designs.
+
+```{r}
+countdown(minutes = 4)
+```
+
+## Design an Experiment: Part 1 {.smaller}
+
+A pharmaceutical company is interested in assessing whether taking daily aspirin reduces the risk of heart attack. 1,500 individuals over the age of 55 have agreed to participate in the company’s study. Of the 1,500 participants, 550 report being at-risk for heart disease based on family medical history. The remaining 950 participants report no predisposition to heart disease.
+
+In a few sentences, briefly outline an experimental design that may allow the researchers to answer the question of interest: "Does taking daily aspirin reduce the risk of heart attack?"
+
+Your design should include the four elements of experimental design: controlling, randomization, replication, and blocking.
+
+```{r}
+countdown(minutes = 4)
+```
+
+## Design an Experiment: Part 2
+
+-   Return to your small group
+
+-   In your group, take turns sharing the experimental designs.
+
+-   After each member shares, identify how **controlling, randomization,** and **replication** were implemented in the study.
+
+    -   If one or more these components is missing from the suggested design, discuss how it could be implemented.
+
+```{r}
+countdown(minutes = 4)
+```
+
+# Key Concepts
+
+## Describing Distributions of Quantitative Data
+
+### Shape: [Overall pattern of the data]{.fragment}
+
+::: incremental
+-   Is the distribution symmetric, left-skewed, or right-skewed?
+
+-   How many peaks does the distribution have? Unimodal, bimodal, or multimodal?
+:::
+
+## Describing Distributions of Quantitative Data
+
+### Center: [Central tendency of the data]{.fragment}
+
+::: fragment
+$$ \text{Sample mean: } \overline{x} = \frac{\sum \limits_{i = 1}^n x_i}{n}$$
+:::
+
+::: incremental
+-   $n$: number of observations
+
+-   $x_i$: $i$th observation in the dataset
+:::
+
+## Describing Distributions of Quantitative Data
+
+### Center: Central tendency of the data
+
+[Sample Median, $M$: middle value of the ordered data]{.fragment}
+
+::: incremental
+-   If $n$ is odd, $M$, is the middle value in the ordered set of values.
+
+-   If $n$ is even, $M$ is the midpoint (average) of the $\frac{n}{2}$th and $\frac{n}{2}+1$th observation.
+:::
+
+## Describing Distributions of Quantitative Data
+
+### Spread: [how spread out is the distribution?]{.fragment}
+
+[Variance]{.fragment}
+
+::: fragment
+![](‎var‎001.png){.absolute top="50%" right="25%" width="60%"}
+:::
+
+::: fragment
+![](‎var002.png){.absolute top="50%" right="25%" width="60%"}
+:::
+
+::: fragment
+![](‎var003.png){.absolute top="50%" right="25%" width="60%"}
+:::
+
+::: fragment
+![](var004.png){.absolute top="50%" right="25%" width="60%"}
+:::
+
+::: fragment
+![](‎var005.png){.absolute top="50%" right="25%" width="60%"}
+:::
+
+## Describing Distributions of Quantitative Data
+
+### Spread: how spread out is the distribution?
+
+Standard deviation: [the typical deviation of observations from the mean]{.fragment}
+
+::: fragment
+::: columns
+::: column
+$$s = \sqrt{s^2} = \sqrt{\frac{\sum \limits_{i=1}^n(x_i-\overline{x})^2}{n-1}}$$
+:::
+
+::: column
+[*Standard deviation is often used instead of variance to describe the spread of a distribution since it is expressed in the same units as the variable of interest.*]{.fragment}
+:::
+:::
+:::
+
+## Describing Distributions of Quantitative Data
+
+### Spread: how spread out is the distribution?
+
+Interquartile Range (IQR): [describes the range of the middle 50% of the data]{.fragment}
+
+::: fragment
+$$IQR = Q_3 - Q_1$$
+
+$Q_1$ is the first quartile: 25th percentile, the value such that 25% of data fall below this value
+
+$Q_3$ is the third quartile: 75th percentile, the value such that 75% of data fall below this value
+:::
+
+## Describing Distributions of Quantitative Data
+
+### Outliers: [extreme values that fall outside the pattern of the data]{.fragment}
+
+[An observation are considered outliers if it is]{.fragment}
+
+::: fragment
+::: incremental
+-   less than $Q_1 - 1.5\times IQR$
+
+-   greater than $Q_3 + 1.5 \times IQR$
+:::
+:::
+
+## Histogram
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(openintro)
+```
+
+```{r}
+#| fig-width: 7
+ggplot(data = nycflights, aes(x = air_time)) + 
+  geom_histogram(binwidth = 50, color = "black", fill = "lightblue", closed = "left") + 
+  labs(x = "Air Time (min)", title = "Random Sample of Flights Departing JFK in 2013")
+```
+
+## Boxplot
+
+```{r}
+#| fig-width: 7
+ggplot(data = nycflights, aes(x = air_time)) + 
+  geom_boxplot() + 
+  labs(x = "Air Time (min)", title = "Random Sample of Flights Departing JFK in 2013") + 
+  theme(axis.text.y = element_blank(), 
+        axis.ticks.y = element_blank())
+```
+
+## Proportions & Percentages {.smaller}
+
+In a sample of 10,000 loans made through Lending Club, whether the individual that received the loan rented, had a mortgage, or owned their home was recorded.
+
+| Homeownership | Count | Proportion | Percentage |
+|---------------|-------|------------|------------|
+| rent          | 3858  |   [0.3858]{.fragment fragment-index=1}         |    [38.58\%]{.fragment fragment-index=3}         |
+| mortgage      | 4789  |   [0.4789]{.fragment fragment-index=2}       |    [47.89\%]{.fragment fragment-index=4}           |
+| own           | 1353  |   [0.1353]{.fragment fragment-index=2}          |  [13.53\%]{.fragment fragment-index=4}           |
+| **Total**     | 10000 |   [1.0000]{.fragment fragment-index=2}        |    [100.00\%]{.fragment fragment-index=4}         |
+
+## Barplots
+
+```{r}
+library(openintro)
+library(tidyverse)
+library(viridis)
+```
+
+```{r}
+ggplot(data = loans_full_schema, aes(x = homeownership)) + 
+  geom_bar(aes(fill = application_type)) + 
+  scale_fill_viridis(discrete=TRUE, 
+                     name = "Application Type") + 
+  theme_minimal() + 
+  labs(x = "Homeownership")
+```
+
+# R Programming Demo
+
+## Coming up
+
+-   Week 2 pre-lecture activity is due before the start of next class
+
+-   Problem set 1 is due at 11:59 pm next Wednesday

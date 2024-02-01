@@ -1,0 +1,47 @@
+/*-- scss:defaults --*/
+
+// fonts
+
+// $font-family-sans-serif: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif !default;
+
+// colors
+// $body-bg: #f0f1eb !default;
+$body-color: #000 !default;
+$link-color: #51483d !default;
+$selection-bg: #26351c;
+
+// headings
+//$presentation-heading-font: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif !default;
+$presentation-heading-color: #383d3d !default;
+
+
+
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.3em;
+}
+
+.blue {
+  color: #01364C;
+  font-weight: bold;
+}
+
+.header{
+  background: #F4BA02;
+}
+
+
+
+.vertical-divider {
+  border-left: 1px solid black; /* Adjust the color and width of the line as needed */
+  height: 50%; /* Set the height to cover half of the slide */
+  position: fixed;
+  top: 50%; /* Adjust the top position as needed */
+  left: 50%; /* Position the line in the middle of the slide */
+  transform: translateX(-50%); /* Center the line horizontally */
+  z-index: 999; /* Ensure the line is above other content */
+}
+
+
+
