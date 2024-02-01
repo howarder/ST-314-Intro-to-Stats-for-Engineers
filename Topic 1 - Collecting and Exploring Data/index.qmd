@@ -13,7 +13,7 @@ editor: visual
 library(countdown)
 ```
 
-## Today's Agenda - Exploring Data
+## Today's Agenda - Explore Data
 
  
 
