@@ -1,0 +1,305 @@
+---
+title: "ST 314 - Course Intro"
+format: 
+  revealjs:
+    theme: default
+    chalkboard: true
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+# Welcome to ST 314: Intro to Statistics for Engineers
+
+Erin Howard
+
+erin.howard\@oregonstate.edu
+
+## Today's Agenda 🕣
+
+-   Introductions
+
+-   Syllabus Overview
+
+    -   Course Info
+
+    -   Policies
+
+    -   Tips & Strategies for Success
+
+-   Review key concepts about collecting data
+
+## Erin Howard (she/her) 👩‍🏫
+
+::: {layout="[[1,1], [1,1,1]]"}
+![](VT.png){width="422"}
+
+![](OSU.png){width="410"}
+
+![](Llew.png){width="321"}
+
+![](Llew%202.png){width="322"}
+
+![](Chickens.png){width="263"}
+:::
+
+## Introduce Yourself to Your Classmates 👋
+
+-   Name & preferred pronouns
+-   Major
+-   Year in school
+-   Something you're looking forward to this year
+-   Your experience with learning or using statistics
+
+```{r}
+library(countdown)
+countdown(minutes = 2, seconds = 0)
+```
+
+## Syllabus Overview 📄
+
+ 
+
+**You are required to read the syllabus on Canvas in its entirety.**
+
+ 
+
+Syllabus quiz on Canvas due tomorrow at 11:59 pm.
+
+## Class Meeting Info 👥
+
+-   This class meets on Tuesdays and Thursdays, 8:30-9:50 am.
+
+. . .
+
+-   In-person attendance and participation in your registered section are mandatory.
+
+. . .
+
+-   Participation assignments will primarily be completed in Top Hat, unless otherwise specified.
+
+. . .
+
+-   Everyone is excused from three classes, for any reason. In-class activities will not be excused beyond three absences.
+
+## Communication 🗣️
+
+-   Canvas Discussion Boards - please use the discussion boards for material and assignment related questions.
+
+. . .
+
+-   Announcements - check Canvas regularly for announcements about assignments, course updates, etc. (I post announcements regularly!)
+
+. . .
+
+-   Office hours - attend office hours to get help with class materials, assignments, exam studying, etc.
+
+. . .
+
+-   Email - please only use email for personal matters (e.g. grades)
+
+## Required Course Materials 📚 {.smaller}
+
+-   Top Hat
+
+    -   Starting **Week 2**, you will need a smart phone, laptop, or tablet with you each class.
+
+    -   Top Hat licenses can be purchased from the Beaver Store (link in Syllabus on Canvas).
+
+. . .
+
+-   R **AND** RStudio Statistical Software
+
+    -   R is a free open-source programming language.
+
+    -   RStudio is the integrated development environment (IDE) we'll work in when using R.
+
+    -   Instructions for downloading both are posted in the Start Here module on Canvas.
+
+. . .
+
+-   Word Processor
+
+. . .
+
+-   FREE textbook: OpenIntro Statistics by David Diez, Mine Cetinkaya-Rundel, and Christopher Barr
+
+## Preparing for Class ✏️ {.smaller}
+
+. . .
+
+Before attending our in-person meetings each week, you need to do the following:
+
+-   **Required:** Read the assigned sections from OpenIntro Statistics (or other free resources linked on Canvas).
+
+-   **Required:** Complete the week's pre-lecture activity (due Mondays at 11:59 pm).
+
+-   **Recommended:** take notes as you read and work on the pre-lecture activity
+
+. . .
+
+If you prefer a pre-formatted version of the material we'll cover in class (e.g. slides, example problems), check the canvas module for those documents and download/print them before class.
+
+. . .
+
+**There is an expectation that you will have completed all required readings and pre-lecture assignments before class.**
+
+## Class Meetings 👥 {.smaller}
+
+. . .
+
+-   A portion of each class will be spent reviewing concepts from the readings and pre-lecture materials, as well as going over examples when applicable.
+
+. . .
+
+-   Each class, time will also be set aside to complete the in-class activity.
+
+. . .
+
+-   Your 3 lowest in-class activity grades will be dropped.
+
+. . .
+
+-   Occasionally, we will do an R programming demo in class. I will do my best to announce these demos ahead of time so that you can bring a laptop if you choose.
+
+. . .
+
+-   All lectures will be recorded and posted to Canvas. There is no option for remote attendance in this class.
+
+## Weekly Problem Sets 💻 {.smaller}
+
+. . .
+
+-   For additional practice with the concepts covered each week, you'll have a problem set to complete by Wednesday at 11:59 pm.
+
+. . .
+
+-   Problem sets are completed in Top Hat.
+
+. . .
+
+-   Questions are graded for correctness.
+
+. . .
+
+-   You will have three attempts per question.
+
+. . .
+
+-   Collaboration is allowed and encouraged on these assignments, but all work must be your own.
+
+## Data Analyses 📈 {.smaller}
+
+. . .
+
+-   Weekly written assignments will be used to apply the material covered in class to real-world problems.
+
+. . .
+
+-   Data Analyses are due every Thursday at 11:59 pm PT.
+
+. . .
+
+-   Data Analyses will require the use of RStudio.
+
+. . .
+
+-   Collaboration is allowed and encouraged on these assignments, but all work must be your own.
+
+. . .
+
+-   Data Analyses must be submitted in Gradescope.
+
+    -   When submitting assignments, you must select the page numbers that correspond to each question. A detailed video on how to correctly submit assignments is available in the Start Here module on Canvas. Assignments that are not submitted correctly will be subject to a point deduction.
+
+## Late Policy ⏰
+
+. . .
+
+-   Each student is granted two "no questions asked" 24-hour late submissions on outside of class assignments.
+
+. . .
+
+-   Longer extensions may be granted for extenuating circumstances. Longer extensions are not guaranteed.
+
+. . .
+
+-   **You must submit a late assignment request form for any extension.**
+
+. . .
+
+-   In class activities do not apply.
+
+## Exams 📝
+
+. . .
+
+-   There will be two cumulative exams in this course:
+
+    -   Midterm Exam - May 7 at 7 pm (Tuesday of Week 6)
+
+    -   Final Exam - June 11 at 8 pm (Tuesday of Finals Week)
+
+. . .
+
+-   Exams will be open note; however, no devices are allowed. Any notes you wish to use during the exam must be on paper.
+
+. . .
+
+-   More details will be discussed as we approach the exams.
+
+## Advice from Previous ST 314 Students {.smaller}
+
+. . .
+
+-   "Show up and be active in every lecture and you will do just fine."
+
+. . .
+
+-   "Finding others to review with can be very useful in understanding the material and catching mistakes, making it much easier to succeed in the class."
+
+. . .
+
+-   "Work on the problems sets and data analyses sooner rather than later. This will reduce stress as you go on with the course."
+
+. . .
+
+-   "I would say to go to class everyday, as this class isn't that hard if you do. Also go to office hours as soon as questions arise."
+
+. . .
+
+-   "Make sure you take good notes and attend as many office hours as you can."
+
+. . .
+
+-   "Every week I would do a quick overview to make sure I understand everything."
+
+## Why Statistics? 📊
+
+Spend the next two minutes discussing the following questions with one or two people around you.
+
+1.  What is the study of statistics?
+
+2.  Where have you seen statistics in your field?
+
+3.  Why is it important for engineers to understand and use statistics?
+
+```{r}
+countdown(minutes = 2, seconds = 0)
+```
