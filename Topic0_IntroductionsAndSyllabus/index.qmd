@@ -2,7 +2,7 @@
 title: "ST 314 - Course Intro"
 format: 
   revealjs:
-    theme: default
+    theme: OSU.scss
     chalkboard: true
     html-math-method: mathjax
     multiplex: true
@@ -30,10 +30,6 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 Erin Howard
 
 erin.howard\@oregonstate.edu
-
-
-
-
 
 ## Erin Howard (she/her) 👩‍🏫
 

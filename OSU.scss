@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+
+// fonts
+
+/* Define the font family for Stratum2 */
+@font-face {
+  font-family: 'Stratum2 Black';
+  src: url('Fonts/Stratum2/Stratum2 Black.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Stratum2 Bold';
+  src: url('Fonts/Stratum2/Stratum2 Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Stratum2 Medium';
+  src: url('Fonts/Stratum2/Stratum2 Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Stratum2 Regular';
+  src: url('Fonts/Stratum2/Stratum2 Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// headings
+$presentation-heading-font: 'Stratum2', $font-family-sans-serif !default;
+$presentation-heading-color: #D73F09 !default;
+$presentation-heading-text-transform: uppercase !default;

@@ -2,7 +2,7 @@
 title: "Topic 1 - Collecting & Exploring Data"
 format: 
   revealjs:
-    theme: theme_314.scss
+    theme: OSU.scss
     chalkboard: true
     html-math-method: mathjax
     multiplex: true
@@ -378,8 +378,4 @@ ggplot(data = loans_full_schema, aes(x = homeownership)) +
 
 # R Programming Demo
 
-## Coming up
 
--   Week 2 pre-lecture activity is due before the start of next class
-
--   Problem set 1 is due at 11:59 pm next Wednesday
