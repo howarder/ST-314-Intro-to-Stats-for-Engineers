@@ -10,7 +10,7 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
-  <title>Class 2 - Exploring Data</title>
+  <title>Topic 1 - Collecting &amp; Exploring Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -328,20 +328,135 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Class 2 - Exploring Data</h1>
+  <h1 class="title">Topic 1 - Collecting &amp; Exploring Data</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="todays-agenda---exploring-data" class="slide level2">
-<h2>Today’s Agenda - Exploring Data</h2>
+<section id="download-or-print-notes-to-pdf" class="slide level2 smaller">
+<h2>Download or print notes to PDF</h2>
+<p>If you’d like to export this presentation to a PDF, do the following</p>
+<div>
+<ol type="1">
+<li>Toggle into Print View using the E key.</li>
+<li>Open the in-browser print dialog (CTRL/CMD+P)</li>
+<li>Change the <strong>Destination</strong> to <strong>Save as PDF</strong>.</li>
+<li>Change the <strong>Layout</strong> to <strong>Landscape</strong>.</li>
+<li>Change the <strong>Margins</strong> to <strong>None</strong>.</li>
+<li>Enable the <strong>Background graphics</strong> option.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+</div>
+<p>This feature has been confirmed to work in Google Chrome and Firefox.</p>
+</section>
+<section>
+<section id="collecting-data" class="title-slide slide level1 center">
+<h1>Collecting Data</h1>
+
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<h3 id="population">Population</h3>
+<div class="fragment">
+<p>The complete collection of subjects we are interested in learning or making inference about.</p>
+</div>
+<div class="fragment">
+<p><strong>Example:</strong></p>
+</div>
 <p>&nbsp;</p>
-<p>📝 Collaborative activity: Designing a Statistical Study</p>
+<h3 id="parameter">Parameter</h3>
+<div class="fragment">
+<p>A characteristic about the population, typically unknown or unobservable.</p>
+</div>
+<div class="fragment">
+<p><strong>Example:</strong></p>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<h3 id="sample">Sample</h3>
+<div class="fragment">
+<p>An observed subset of the population</p>
+</div>
+<div class="fragment">
+<p><strong>Example:</strong></p>
+</div>
 <p>&nbsp;</p>
-<p>📖 Review key concepts related to exploring and summarizing numerical and categorical data.</p>
+<h3 id="statistic">Statistic</h3>
+<div class="fragment">
+<p>A characteristic about the observed sample</p>
+</div>
+<div class="fragment">
+<p><strong>Example:</strong></p>
+</div>
+</section>
+<section id="statistical-inference" class="slide level2">
+<h2>Statistical Inference</h2>
+<div>
+<ul>
+<li class="fragment"><p>The process of using known sampled information to form a conclusion about unknown population characteristics.</p></li>
+<li class="fragment"><p>Primarily concerned with understanding and quantifying the uncertainty of parameter estimates (Weeks 4-10).</p></li>
+</ul>
+</div>
+</section>
+<section id="observational-study" class="slide level2 smaller">
+<h2>Observational Study</h2>
+<div class="fragment">
+<p>A study that observes and collects information on units but does not attempt to change or influence the units.</p>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Confounding</strong> <span class="fragment">occurs in an observational study when it appears that the outcome of one variable is “causing” the outcome of another.</span></li>
+</ul>
 <p>&nbsp;</p>
-<p>💻 R Programming demonstration</p>
+</div>
+<div class="fragment">
+<p>OpenIntro: Guided Practice 1.12 (pg. 25)</p>
+<p><img data-src="Confounding1.png" class="absolute" style="top: 60%; right: 25%; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="Confounding2.png" class="absolute" style="top: 60%; right: 25%; "></p>
+</div>
+</section>
+<section id="bias" class="slide level2">
+<h2>Bias</h2>
+<div class="fragment">
+<p>The tendency to systematically favor certain parts of a population over others.</p>
+</div>
+<div class="fragment">
+<p><strong>How can we reduce biases when designing an observational study?</strong></p>
+</div>
+<div class="fragment">
+<p>Use a random mechanism when sampling from the population.</p>
+</div>
+<div class="fragment">
+<ul>
+<li>Simple random sampling</li>
+<li>Stratified random sampling</li>
+<li>Cluster random sampling</li>
+<li>Systematic random sampling</li>
+</ul>
+</div>
+</section>
+<section id="designed-experiments" class="slide level2">
+<h2>Designed Experiments</h2>
+<div class="fragment">
+<p>A study in which the observed units are <strong>randomly assigned</strong> to treatments.</p>
+</div>
+<div class="fragment">
+<p><strong>Example:</strong></p>
+</div>
+<div class="fragment">
+<p>&nbsp;</p>
+<p>Four principles of a well-designed randomized experient:</p>
+<ol type="1">
+<li>Controlling</li>
+<li>Randomization</li>
+<li>Replication</li>
+<li>Blocking</li>
+</ol>
+</div>
 </section>
 <section id="design-an-observational-study-part-1" class="slide level2 smaller">
 <h2>Design an Observational Study: Part 1</h2>
@@ -358,7 +473,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ece5cbd1" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_f13c6a8b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -376,7 +491,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6d9d744b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_97290058" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -390,7 +505,7 @@
 <p>Your design should include the four elements of experimental design: controlling, randomization, replication, and blocking.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_d5a6fd6c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_aad4d1c2" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -409,16 +524,16 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9f069c6d" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_00425ae8" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
-</section>
+</section></section>
 <section>
-<section id="key-concepts" class="title-slide slide level1 center">
-<h1>Key Concepts</h1>
+<section id="exploring-data" class="title-slide slide level1 center">
+<h1>Exploring Data</h1>
 
 </section>
 <section id="describing-distributions-of-quantitative-data" class="slide level2">
@@ -525,10 +640,10 @@
 <p>In a sample of 10,000 loans made through Lending Club, whether the individual that received the loan rented, had a mortgage, or owned their home was recorded.</p>
 <table>
 <colgroup>
-<col style="width: 30%">
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 23%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 31%">
+<col style="width: 31%">
 </colgroup>
 <thead>
 <tr class="header">

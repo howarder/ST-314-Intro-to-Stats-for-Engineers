@@ -1,5 +1,5 @@
 ---
-title: "Class 2 - Exploring Data"
+title: "Topic 1 - Collecting & Exploring Data"
 format: 
   revealjs:
     theme: theme_314.scss
@@ -13,25 +13,149 @@ editor: visual
 library(countdown)
 ```
 
-## Today's Agenda - Explore Data
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+# Collecting Data
+
+## 
+
+### Population
+
+::: fragment
+The complete collection of subjects we are interested in learning or making inference about.
+:::
+
+::: fragment
+**Example:**
+:::
 
  
 
-📝 Collaborative activity: Designing a Statistical Study
+### Parameter
+
+::: fragment
+A characteristic about the population, typically unknown or unobservable.
+:::
+
+::: fragment
+**Example:**
+:::
+
+## 
+
+### Sample
+
+::: fragment
+An observed subset of the population
+:::
+
+::: fragment
+**Example:**
+:::
 
  
 
-📖 Review key concepts related to exploring and summarizing numerical and categorical data.
+### Statistic
+
+::: fragment
+A characteristic about the observed sample
+:::
+
+::: fragment
+**Example:**
+:::
+
+## Statistical Inference
+
+::: incremental
+-   The process of using known sampled information to form a conclusion about unknown population characteristics.
+
+-   Primarily concerned with understanding and quantifying the uncertainty of parameter estimates (Weeks 4-10).
+:::
+
+## Observational Study {.smaller}
+
+. . .
+
+A study that observes and collects information on units but does not attempt to change or influence the units.
+
+. . .
+
+-   **Confounding** [occurs in an observational study when it appears that the outcome of one variable is "causing" the outcome of another.]{.fragment}
 
  
 
-💻 R Programming demonstration
+. . .
+
+OpenIntro: Guided Practice 1.12 (pg. 25)
+
+![](Confounding1.png){.absolute top="60%" right="25%"}
+
+. . .
+
+![](Confounding2.png){.absolute top="60%" right="25%"}
+
+## Bias
+
+. . .
+
+The tendency to systematically favor certain parts of a population over others.
+
+. . .
+
+**How can we reduce biases when designing an observational study?**
+
+. . .
+
+Use a random mechanism when sampling from the population.
+
+. . .
+
+-   Simple random sampling
+-   Stratified random sampling
+-   Cluster random sampling
+-   Systematic random sampling
+
+## Designed Experiments
+
+. . .
+
+A study in which the observed units are **randomly assigned** to treatments.
+
+. . .
+
+**Example:**
+
+. . .
+
+ 
+
+Four principles of a well-designed randomized experient:
+
+1.  Controlling
+2.  Randomization
+3.  Replication
+4.  Blocking
 
 ## Design an Observational Study: Part 1 {.smaller}
 
 A very large college class has 600 students. The students are divided into 25 groups, each of 24 students, for lab sections administered by different teaching assistants. The instructor wants to conduct a survey about how satisfied the students are with the course, and she believes that the lab section a student is in might affect the student’s overall satisfaction with the course.
 
-Using one of the sampling schemes discussed in this week's assigned reading, in a few sentences, propose a strategy to sample 100 students from the class so that you have a representative sample of the entire population of interest.
+Using one of the sampling schemes discussed in this week's assigned reading, in a few sentences, propose a strategy to sample 100 students from the class so that you have a representative sample of the entire population of interest. 
 
 **Sampling Schemes:**
 
@@ -88,7 +212,7 @@ countdown(minutes = 4)
 countdown(minutes = 4)
 ```
 
-# Key Concepts
+# Exploring Data
 
 ## Describing Distributions of Quantitative Data
 
@@ -229,7 +353,7 @@ ggplot(data = nycflights, aes(x = air_time)) +
 In a sample of 10,000 loans made through Lending Club, whether the individual that received the loan rented, had a mortgage, or owned their home was recorded.
 
 | Homeownership | Count | Proportion                             | Percentage                              |
-|---------------|-------|----------------------------------------|-----------------------------------------|
+|-------------|-------------|-----------------------|-----------------------|
 | rent          | 3858  | [0.3858]{.fragment fragment-index="1"} | [38.58%]{.fragment fragment-index="3"}  |
 | mortgage      | 4789  | [0.4789]{.fragment fragment-index="2"} | [47.89%]{.fragment fragment-index="4"}  |
 | own           | 1353  | [0.1353]{.fragment fragment-index="2"} | [13.53%]{.fragment fragment-index="4"}  |

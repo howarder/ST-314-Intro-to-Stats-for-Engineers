@@ -31,19 +31,9 @@ Erin Howard
 
 erin.howard\@oregonstate.edu
 
-## Today's Agenda 🕣
 
--   Introductions
 
--   Syllabus Overview
 
-    -   Course Info
-
-    -   Policies
-
-    -   Tips & Strategies for Success
-
--   Review key concepts about collecting data
 
 ## Erin Howard (she/her) 👩‍🏫
 
@@ -182,6 +172,10 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 -   All lectures will be recorded and posted to Canvas. There is no option for remote attendance in this class.
 
+. . .
+
+-   You are strongly encouraged to ask questions throughout class. No need to wait for a good stopping point or the end of class - the sooner you get your questions answered the better.
+
 ## Weekly Problem Sets 💻 {.smaller}
 
 . . .
@@ -268,7 +262,7 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   "Show up and be active in every lecture and you will do just fine."
+-   "Show up and be **active** in every lecture"
 
 . . .
 
