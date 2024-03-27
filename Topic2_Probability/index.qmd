@@ -1,0 +1,498 @@
+---
+title: "Topic 2 - Probability"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: true
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+# Defining Probability
+
+## Top Hat Question 🎩
+
+ 
+
+Suppose you roll two fair six-sided dice. How many possible outcomes are there for rolling the two dice?
+
+ 
+
+**Answer Question 1 in Top Hat under the "Classroom" tab.**
+
+## Example
+
+Suppose you roll two fair six-sided dice. How many possible outcomes are there for rolling the two dice?
+
+::: fragment
+![](dice.png)
+:::
+
+[**Sample space:** the set of all possible outcomes]{.fragment}
+
+## Probability
+
+[The proportion of times an outcome would occur if we observed the random process an infinite number of times.]{.fragment}
+
+::: fragment
+$$P(A) = \frac{\text{the number of ways A can occur}}{\text{the number of total possible outcomes}}$$
+:::
+
+## Top Hat Question 🎩
+
+Suppose you roll two fair six-sided dice. What is the probability that the sum of the two dice is 7?
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+**Answer Question 2 in Top Hat under the "Classroom" tab.**
+
+## Probability Distribution
+
+[All possible outcomes and their probabilities.]{.fragment}
+
+::: fragment
+|   $x$    |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  | 11  | 12  |
+|:--------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $P(X=x)$ |     |     |     |     |     |     |     |     |     |     |     |
+:::
+
+ 
+
+::: fragment
+Rules for Probability Distributions
+
+1.  Outcomes must be disjoint.
+
+2.  Probabilities must be between 0 and 1, inclusive.
+
+3.  The sum of all probabilities in the distribution must be 1.
+:::
+
+## Law of Large Numbers
+
+[As more observations are collected for a random process, the proportion of an outcome converges to the theoretical/true probability of that outcome.]{.fragment}
+
+ 
+
+ 
+
+[*Law of Large Numbers Simulation in Week 2 Slides & Additional Materials page*]{.fragment style="color:blue;"}
+
+## Complement
+
+[The complement of event *A* is the set of all outcomes in the sample space that don't contain *A*.]{.fragment}
+
+::: columns
+::: {.column width="70%"}
+::: fragment
+![](‎Comp.‎001.png){.absolute top="30%" right="30%" width="80%"}
+:::
+
+::: fragment
+![](‎Comp.‎002.png){.absolute top="30%" right="30%" width="80%"}
+:::
+:::
+
+::: {.column width="30%"}
+ 
+
+ 
+
+[$P(A') = 1-P(A)$]{.fragment}
+:::
+:::
+
+## Top Hat Question 🎩
+
+Suppose you roll two fair six-sided dice. Let A represent the event that neither die rolled shows an odd number. What is the complement of A?
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+**Answer Question 3 in Top Hat under the "Classroom" tab.**
+
+## Intersection - "A and B"
+
+::: fragment
+![](‎Comp.‎001.png){.absolute top="10%" right="15%" width="80%"}
+:::
+
+::: fragment
+![](‎Int.‎001.png){.absolute top="10%" right="15%" width="80%"}
+:::
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+[$P(A \text{ and } B) = P(A \cap B)$]{.fragment}
+
+## Disjoint Events
+
+[*Also referred to as mutually exclusive events.*]{.fragment}
+
+ 
+
+[Events that can't happen simultaneously.]{.fragment}
+
+ 
+
+[$P(A \text { and } B) = 0$]{.fragment}
+
+## Top Hat Question 🎩
+
+Consider rolling one fair six-sided die. Each option below describes two events that may occur when the die is rolled. Which pairs of events are disjoint?
+
+ 
+
+a\) Rolling an odd number and rolling a three.
+
+b\) Rolling an odd number and rolling an even number.
+
+c\) Rolling a prime number and rolling an even number.
+
+d\) Rolling a 4 and rolling a 5.
+
+ 
+
+**Answer Question 4 in Top Hat under the "Classroom" tab.**
+
+## Union - "A or B"
+
+::: fragment
+![](‎Comp.‎001.png){.absolute top="10%" right="15%" width="80%"}
+:::
+
+::: fragment
+![](‎Union.‎001.png){.absolute top="10%" right="15%" width="80%"}
+:::
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+[$P(A \text{ or } B) = P(A \cup B)$]{.fragment}
+
+## General Addition Rule
+
+ 
+
+[$P(A \text{ or }B) =$$P(A) + P(B)$$-P(A \text{ and } B)$]{.fragment}
+
+::: fragment
+![](‎Union.‎001.png){width="80%"}
+:::
+
+## Top Hat Question 🎩
+
+Consider rolling one fair six-sided die. Let A = rolling an odd number and B = rolling a prime number. What is the probability of A or B occurring?
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+**Answer Question 5 in Top Hat under the "Classroom" tab.**
+
+## Additional Practice 🎩
+
+ 
+
+Please complete the remaining questions in Top Hat to earn full credit for today's class.
+
+ 
+
+You can find questions 6-10 in the **"Assigned"** tab on Top Hat.
+
+# Conditional and Independent Probabilities
+
+## Example {.smaller}
+
+ 
+
+An aircraft emergency locator transmitter (ELT) is a device designed to transmit a signal in the case of a crash. Suppose there are only four manufacturers that produce all ELTs. We'll call these manufacturers *Companies W, X, Y,* and *Z*.
+
+ 
+
+```{=html}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%; /* Set the table width to 100% of its container */
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+/* Set the width for the empty column (2nd column) */
+
+td:nth-child(2) {
+  width: 75%; /* Adjust the width as needed */
+}
+</style>
+```
+|                                           | Marginal Probabilities   |
+|-------------------------------------------|--------------------------|
+| Company *W* manufactures 60% of all ELTs. | [P(*W*)=0.6]{.fragment}  |
+| Company *X* manufactures 20% of all ELTs. | [P(*X*)=0.2]{.fragment}  |
+| Company *Y* manufactures 15% of all ELTs. | [P(*Y*)=0.15]{.fragment} |
+| Company *Z* manufactures 5% of all ELTs.  | [P(*Z*)=0.05]{.fragment} |
+
+
+
+## Conditional Probability
+
+["$A$ given $B$"]{.fragment}
+
+[$P(A|B)=$$\frac{P(A \text{ and } B)}{P(B)}$]{.fragment}
+
+::: columns
+::: {.column width="60%"}
+::: fragment
+![](Cond/‎Cond.‎001.png){.absolute top="40%" right="40%" width="70%"}
+:::
+
+::: fragment
+![](Cond/‎Cond.‎002.png){.absolute top="40%" right="40%" width="70%"}
+:::
+:::
+
+::: {.column width="40%"}
+::: fragment
+ 
+
+Conditional probabilities redefine the sample space to only include outcomes that are in the conditional subset.
+:::
+:::
+:::
+
+## Example {.smaller}
+
+ 
+
+An aircraft emergency locator transmitter (ELT) is a device designed to transmit a signal in the case of a crash. Suppose there are only four manufacturers that produce all ELTs. We'll call these manufacturers *Companies W, X, Y,* and *Z*.
+
+ 
+
+|                                                    | Conditional Probabilities      |
+|----------------------------------------------|-------------------------|
+| Of ELTs produced by Company *W*, 2% are defective. | [$P(Def|W) = 0.02$]{.fragment} |
+| Of ELTs produced by Company *X*, 2% are defective. | [$P(Def|X) = 0.02$]{.fragment} |
+| Of ELTs produced by Company *Y*, 4% are defective. | [$P(Def|Y) = 0.04$]{.fragment} |
+| Of ELTs produced by Company *Z*, 6% are defective. | [$P(Def|Z) = 0.06$]{.fragment} |
+
+## General Multiplication Rule
+
+[$P(A \text{ and }B)=$?]{.fragment}
+
+[Recall the definition of a conditional probability:]{.fragment}
+
+::: fragment
+$P(A|B) = \frac{P(A \text{ and }B)}{P(B)}$
+:::
+
+::: fragment
+Additionally,
+
+$P(B|A) = \frac{P(A \text{ and }B)}{P(A)}$
+:::
+
+::: fragment
+Therefore,
+
+[$P(A \text{ and }B)= P(A|B)P(B) = P(B|A)P(A)$]{.fragment .highlight-red}
+:::
+
+## Independent Events
+
+[Events are considered **independent** if]{.fragment} [the outcome of one event does not impact the outcome of the other.]{.fragment}
+
+[$P(A|B) = P(A)$ if and only if $A$ and $B$ are independent.]{.fragment} [$P(B|A) = P(B)$ if and only if $A$ and $B$ are independent.]{.fragment}
+
+ 
+
+[Apply the general multiplication rule to independent events: $P(A \text{ and }B)= P(A|B)P(B) = P(A)P(B)$]{.fragment}
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+**Formal definition of independent events:**
+
+$A$ and $B$ are independent *if and only if* $P(A \text{ and } B) = P(A)\times P(B)$.
+:::
+
+## Example {.smaller}
+
+::: columns
+::: {.column width="50%"}
+Suppose an ELT has been randomly selected from the general population of all ELTs produced.
+
+ 
+
+ 
+
+ 
+
+ 
+
+Each quadrant of the room has been assigned a company. Based on your assigned company, calculate the probability that the randomly selected ELT is from your company **and** is defective.
+:::
+
+::: {.column width="50%"}
+```{=html}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%; /* Set the table width to 100% of its container */
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+/* Set the width for the empty column (2nd column) */
+
+td:nth-child(1) {
+  width: 50%; /* Adjust the width as needed */
+}
+</style>
+```
+|             |                  |
+|-------------|------------------|
+| P(W) = 0.6  | P(Def\|W) = 0.02 |
+| P(X) = 0.2  | P(Def\|X) = 0.02 |
+| P(Y) = 0.15 | P(Def\|Y) = 0.04 |
+| P(Z) = 0.05 | P(Def\|Z) = 0.06 |
+
+ 
+
+ 
+
+|                                                  |
+|--------------------------------------------------|
+| P(*W* and Def) = [0.6(0.02) = 0.012]{.fragment}  |
+| P(*X* and Def) = [0.2(0.02) = 0.004]{.fragment}  |
+| P(*Y* and Def) = [0.15(0.04) = 0.006]{.fragment} |
+| P(*Z* and Def) = [0.05(0.06) = 0.003]{.fragment} |
+:::
+:::
+
+## Example
+
+|                                     |
+|-------------------------------------|
+| P(*W* and Def) = 0.6(0.02) = 0.012  |
+| P(*X* and Def) = 0.2(0.02) = 0.004  |
+| P(*Y* and Def) = 0.15(0.04) = 0.006 |
+| P(*Z* and Def) = 0.05(0.06) = 0.003 |
+
+The sum of the four values above yields the probability of what event?
+
+[The probability a randomly selected ELT from any of the four companies is defective, P(Def)]{.fragment style="color:blue;"}
+
+Calculate this probability. [P(Def)=0.012+0.004+0.006+0.003=0.025]{.fragment style="color:blue;"}
+
+## Law of Total Probability
+
+[The marginal probability of event $A$ is equal to the sum of the probabilities of all disjoint events that contain $A$.]{.fragment}
+
+::: fragment
+$$P(A) = P(A \text{ and } B_1) + P(A \text{ and } B_2) + ... + P(A \text{ and } B_k)$$
+
+where $B_1, B_2, ..., B_k$ are disjoint events.
+:::
+
+ 
+
+::: fragment
+**For example,**
+
+P(Def)=P(W and Def)+P(X and Def)+P(Y and Def)+P(Z and Def)
+:::
+
+## Example
+
+Suppose we have randomly selected an ELT and found it to be defective. What is the probability the ELT was produced by company *X*?
+
+ 
+
+[$P(X|Def)=$$\frac{P(X \text{ and } Def)}{P(W \text{ and } Def) + P(X \text{ and } Def) + P(Y \text{ and } Def) + P(Z \text{ and } Def)}$]{.fragment}
+
+ 
+
+[$P(X|Def) = \frac{0.004}{0.025}$$=0.16$]{.fragment}
+
+## Bayes' Theorem
+
+[Let $B_1,B_2,...,B_k$ be disjoint events.]{.fragment}
+
+[$P(B_1|A) =$$\frac{P(B_1 \text{ and } A)}{P(A)}$$=\frac{P(A|B_1)P(B_1)}{P(A \text{ and } B_1) + P(A \text{ and } B_2) + ... + P(A \text{ and } B_k)}$$=\frac{P(A|B_1)P(B_1)}{P(A|B_1)P(B_1) + P(A|B_2)P(B_2) +...+ P(A|B_k)P(B_k)}$]{.fragment}
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+**Bayes Theorem:**
+
+$P(B_1|A) = \frac{P(A|B_1)P(B_1)}{P(A|B_1)P(B_1) + P(A|B_2)P(B_2) +...+ P(A|B_k)P(B_k)}$
+:::
+
