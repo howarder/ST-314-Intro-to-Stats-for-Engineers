@@ -50,7 +50,7 @@ erin.howard\@oregonstate.edu
 -   Name & preferred pronouns
 -   Major
 -   Year in school
--   Something you're looking forward to this year
+-   Something you're looking forward to this term
 -   Your experience with learning or using statistics
 
 ```{r}
