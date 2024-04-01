@@ -130,6 +130,10 @@ Use a random mechanism when sampling from the population.
 -   Cluster random sampling
 -   Systematic random sampling
 
+:::{.notes}
+SRS, Strat, Cluster on page 27 of OpenIntro. Systematic in section 1.2 of openstax
+:::
+
 ## Designed Experiments
 
 . . .
