@@ -155,6 +155,10 @@ Four principles of a well-designed randomized experient:
 3.  Replication
 4.  Blocking
 
+:::{.notes}
+pg. 32 openintro
+:::
+
 ## Design an Observational Study: Part 1 {.smaller}
 
 A very large college class has 600 students. The students are divided into 25 groups, each of 24 students, for lab sections administered by different teaching assistants. The instructor wants to conduct a survey about how satisfied the students are with the course, and she believes that the lab section a student is in might affect the student’s overall satisfaction with the course.
