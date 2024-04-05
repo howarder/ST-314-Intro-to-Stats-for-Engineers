@@ -495,3 +495,6 @@ where ${{n}\choose{x}} = \frac{n!}{x!(n-x)!}$
 $p(x) = P(X = x)$: `dbinom(x, n, p)` $F(x) = P(X \leq x)$: `pbinom(q, n, p)`
 
  
+
+
+
