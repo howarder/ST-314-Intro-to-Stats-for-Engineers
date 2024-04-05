@@ -130,7 +130,7 @@ Use a random mechanism when sampling from the population.
 -   Cluster random sampling
 -   Systematic random sampling
 
-:::{.notes}
+::: notes
 SRS, Strat, Cluster on page 27 of OpenIntro. Systematic in section 1.2 of openstax
 :::
 
@@ -155,7 +155,7 @@ Four principles of a well-designed randomized experient:
 3.  Replication
 4.  Blocking
 
-:::{.notes}
+::: notes
 pg. 32 openintro
 :::
 
@@ -163,7 +163,7 @@ pg. 32 openintro
 
 A very large college class has 600 students. The students are divided into 25 groups, each of 24 students, for lab sections administered by different teaching assistants. The instructor wants to conduct a survey about how satisfied the students are with the course, and she believes that the lab section a student is in might affect the student’s overall satisfaction with the course.
 
-Using one of the sampling schemes discussed in this week's assigned reading, in a few sentences, propose a strategy to sample 100 students from the class so that you have a representative sample of the entire population of interest. 
+Using one of the sampling schemes discussed in this week's assigned reading, in a few sentences, propose a strategy to sample 100 students from the class so that you have a representative sample of the entire population of interest.
 
 **Sampling Schemes:**
 
@@ -385,5 +385,3 @@ ggplot(data = loans_full_schema, aes(x = homeownership)) +
 ```
 
 # R Programming Demo
-
-

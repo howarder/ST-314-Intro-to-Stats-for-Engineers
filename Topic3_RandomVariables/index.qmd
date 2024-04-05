@@ -1,0 +1,497 @@
+---
+title: "Topic 3 - Random Variables"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: true
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+
+
+```{r}
+library(countdown)
+```
+
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+# Key Concepts
+
+## Random Variables {.smaller}
+
+[A **random variable** (RV) is a random process with numerical outcomes]{.fragment}
+
+[*Random* indicates that a single outcome of the process is uncertain.]{.fragment}
+
+ 
+
+[**Examples:**]{.fragment}
+
+::: incremental
+-   The sum of the dots that appear when two fair dice are rolled.
+
+-   The number of patients that enter a hospital waiting room in any given hour interval.
+
+-   The daily recorded high temperature in Corvallis.
+:::
+
+ 
+
+[The **support** of a random variable is the set of possible outcomes the RV can take on.]{.fragment}
+
+## 
+
+### Random Variables
+
+::: columns
+::: {.column width="50%"}
+[**Discrete RVs**]{style="color:green;"}
+
+[A random variable that has a **countable** set of possible outcomes.]{.fragment style="color:green;"}
+
+::: {style="color:green;"}
+::: incremental
+-   finite OR
+
+-   infinite with as many elements are there are whole numbers
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="color:purple;"}
+**Continuous RVs**
+
+[A random variable that has an **infinite, continuous** set of possible outcomes in a given interval.]{.fragment}
+:::
+:::
+:::
+
+##  {.smaller}
+
+### Examples
+
+::: {.fragment fragment-index="1"}
+[**DISCRETE**]{.fragment fragment-index="3" style="color:green;"}
+
+(1) Let the random variable $X$ represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+
+|        |      |      |      |      |      |      |
+|--------|------|------|------|------|------|------|
+| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+:::
+
+ 
+
+::: {.fragment fragment-index="2"}
+[**CONTINUOUS**]{.fragment fragment-index="4" style="color:purple;"}
+
+(2) Suppose the random variable $X$ is defined on the interval \[0,1\] and has the following probability density function: $$ f(x) = 3x^2 $$
+:::
+
+##  {.smaller}
+
+::: columns
+::: {.column width="50%"}
+::: {style="color:green;"}
+[**Discrete RVs**]{style="color:green;"}
+
+Probability Mass Function (PMF), $p(x)$
+
+ 
+
+[$p(x)$$= P(X = x)$]{.fragment}
+
+ 
+
+[The PMF may be represented as a]{.fragment}
+
+::: incremental
+-   table
+
+-   mathematical function
+:::
+
+ 
+
+::: fragment
+Properties:
+
+::: incremental
+-   $0 \leq p(x) \leq 1$
+
+-   $\sum \limits_{i=1}^n p(x_i) =1$
+:::
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="color:purple;"}
+**Continuous RVs**
+
+Probability Density Function (PDF), $f(x)$
+
+ 
+
+[$P(c \leq X \leq d) = \int \limits_{c}^d f(x) dx$]{.fragment}
+
+ 
+
+ 
+
+ 
+
+ 
+
+::: fragment
+Properties:
+
+::: incremental
+-   $f(x) \geq 0$ for all values of $x$ in the support
+
+-   $\int \limits_{-\infty}^{\infty} f(x) dx = 1$
+:::
+:::
+:::
+:::
+:::
+
+## 
+
+### Example - PMF
+
+::: {style="color:green;"}
+(1) Let the random variable $X$ represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+
+|        |      |      |      |      |      |      |
+|--------|------|------|------|------|------|------|
+| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+
+ 
+
+::: fragment
+$$p(2) = 0.32$$
+:::
+
+::: fragment
+$$p(4) = 0.12$$
+:::
+:::
+
+##  {.smaller}
+
+### Example - PDF
+
+::: {style="color:purple;"}
+(2) Suppose the random variable $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
+:::
+
+<iframe src="https://www.desmos.com/calculator/himmqtoy4t" width="90%" height="70%" style="border: 1px solid #ccc" frameborder="1">
+
+</iframe>
+
+##  {.smaller}
+
+### Cumulative Distribution Function (CDF)
+
+::: columns
+::: {.column width="50%"}
+::: {style="color:green;"}
+Discrete RVs
+
+ 
+
+[$F(x)$$=P(X \leq x)$]{.fragment}
+
+ 
+
+[$F(x) = \sum \limits_{t\leq x}p(t)$]{.fragment}
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="color:purple;"}
+Continuous RVs
+
+ 
+
+[$F(x)$$=P(X \leq x)$]{.fragment}
+
+ 
+
+[$F(x) = \int \limits_{-\infty}^x f(t) dt$]{.fragment}
+
+ 
+
+::: fragment
+Continuous CDF Properties:
+
+::: incremental
+-   $P(a \leq X \leq b) = F(b) - F(a)$
+
+-   $\frac{d}{dx}F(x) = f(x)$
+
+-   $P(X \leq a) = P(X < a) = F(a)$
+:::
+:::
+:::
+:::
+:::
+
+::: notes
+Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
+:::
+
+## 
+
+### Example - Discrete CDF
+
+::: {style="color:green;"}
+(1) Let the random variable $X$ represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+
+|        |      |      |      |      |      |      |
+|--------|------|------|------|------|------|------|
+| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+
+ 
+
+[$F(2)=$$P(X \leq 2)$$=p(0)+p(1)+p(2)$$=0.08+0.16+0.32=0.56$]{.fragment}
+:::
+
+##  {.smaller}
+
+### Example - Continuous CDF
+
+::: {style="color:purple;"}
+(2) Suppose the random variable $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
+
+[$F(x) =$$\int \limits_{0}^x 3t^2 dt$$=t^3 \bigg \vert _0^x$$=x^3$]{.fragment}
+:::
+
+<iframe src="https://www.desmos.com/calculator/driz8xpoed" width="90%" height="60%" style="border: 1px solid #ccc" frameborder="1">
+
+</iframe>
+
+## 
+
+### Expectation $E(X)$
+
+::: columns
+::: {.column width="50%"}
+::: {style="color:green;"}
+Discrete RVs
+
+::: fragment
+$$E(X) = \sum \limits_{i=1}^n x_i p(x_i)$$
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="color:purple;"}
+Continuous RVs
+
+::: fragment
+$$E(X) = \int \limits_{-\infty}^{\infty} x f(x) dx$$
+:::
+
+[$-\infty$ and $\infty$ can be replaced with the bounds of the support of $X$.]{.fragment}
+:::
+:::
+:::
+
+##  {.smaller}
+
+### Example - Discrete Expectation
+
+::: {style="color:green;"}
+(1) Let the random variable $X$ represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+
+|        |      |      |      |      |      |      |
+|--------|------|------|------|------|------|------|
+| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+
+ 
+
+::: fragment
+$$E(X) = 0(0.08) + 1(0.16) + 2(0.32) + 3(0.28) + 4(0.12) + 5(0.04) = 2.32$$
+:::
+
+ 
+
+[During a 12-hour shift, we **expect** a post-op patient will ring the nurse 2.32 times.]{.fragment}
+:::
+
+## 
+
+### Example - Continuous Expectation
+
+::: {style="color:purple;"}
+(2) Suppose the random variable $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
+
+[$E(X) =$$\int \limits _0^1 x (3x^2) dx$$= \frac{3}{4}x^4 \bigg \vert_0^1$$= \frac{3}{4}$]{.fragment}
+:::
+
+##  {.smaller}
+
+### Variance and Standard Deviation
+
+::: columns
+::: {.column width="50%"}
+::: {style="color:green;"}
+Discrete RVs
+
+[$Var(X) = \sum \limits_{i=1}^n(x_i-E(X))^2p(x_i)$]{.fragment} [$=E(X^2) - (E(X))^2$]{.fragment}
+
+ 
+
+[$E(X^2) = \sum \limits_{i=1}^n x_i^2 p(x_i)$]{.fragment}
+
+ 
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="color:purple;"}
+Continuous RVs
+
+[$Var(X) = \int \limits_{-\infty}^{\infty}(x-E(X))^2f(x) dx$]{.fragment} [$=E(X^2) - (E(X))^2$]{.fragment}
+
+ 
+
+[$E(X^2) = \int \limits_{-\infty}^{\infty} x^2 f(x) dx$]{.fragment}
+
+ 
+
+[$-\infty$ and $\infty$ can be replaced with the bounds of the support of $X$.]{.fragment}
+:::
+:::
+:::
+
+ 
+
+::: {style="text-align:center"}
+[$SD(X) = \sqrt{Var(X)}$]{.fragment}
+:::
+
+##  {.smaller}
+
+### Example - Discrete Variance and Standard Deviation
+
+::: {style="color:green;"}
+1.  Let the random variable 𝑋 represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+
+|        |      |      |      |      |      |      |
+|--------|------|------|------|------|------|------|
+| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+
+::: fragment
+$$Var(X) = E(X^2)-(E(X))^2$$
+:::
+
+::: fragment
+$$E(X^2) = 0^2(0.08) + 1^2(0.16) + 2^2(0.32) + 3^2(0.28) + 4^2(0.12) + 5^2(0.04) = 6.88$$
+:::
+
+::: fragment
+$$Var(X) = E(X^2)-(E(X))^2 = 6.88 - 2.32^2 = 1.4976$$
+:::
+
+::: fragment
+$$SD(X) = \sqrt{1.4976} = 1.2238$$
+:::
+:::
+
+##  {.smaller}
+
+### Example - Continuous Variance and Standard Deviation
+
+::: {style="color:purple;"}
+Suppose the random variable X is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
+
+::: fragment
+$$Var(X) = E(X^2)-(E(X))^2$$
+:::
+
+::: {.fragment style="text-align:center"}
+$E(X^2)=\int \limits_0^1 x^2(3x^2)dx$$=\frac{3}{5}x^5 \bigg \vert_0^1$$= \frac{3}{5}$
+:::
+
+::: fragment
+$$Var(X) = E(X^2)-(E(X))^2 = \frac{3}{5} - \bigg ( \frac{3}{4}\bigg)^2 = 0.0375$$
+:::
+
+::: fragment
+$$SD(X) = \sqrt{0.0375} = 0.1936$$
+:::
+:::
+
+## Binomial Distribution {.smaller}
+
+::: columns
+::: column
+-   **When to use:**
+
+[Want to model the number of successful outcomes from $n$ independent [Bernoulli]{.fragment .highlight-red} trials.]{.fragment}
+
+-   **Parameters of the distribution:**
+
+::: fragment
+$n=$ the number of independent Bernoulli trials
+
+$p=$ the probability of success on each independent trial
+:::
+:::
+
+::: column
+-   **Probability Mass Function:**
+
+::: fragment
+$$ p(x) = {{n}\choose{x}}p^x(1-p)^{n-x}$$ for $x$ in $\{0, 1, 2, ..., n \}$
+:::
+
+::: fragment
+where ${{n}\choose{x}} = \frac{n!}{x!(n-x)!}$
+:::
+
+-   **Expectation:**
+
+[$E(X) = np$]{.fragment}
+
+-   **Variance:**
+
+[$Var(X) = np(1-p)$]{.fragment}
+:::
+:::
+
+## R Demonstration
+
+ 
+
+**Binomial Distribution**
+
+$p(x) = P(X = x)$: `dbinom(x, n, p)` $F(x) = P(X \leq x)$: `pbinom(q, n, p)`
+
+ 
