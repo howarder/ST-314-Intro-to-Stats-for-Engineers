@@ -155,9 +155,11 @@ Four principles of a well-designed randomized experient:
 3.  Replication
 4.  Blocking
 
+<<<<<<< HEAD
 ::: notes
 pg. 32 openintro
 :::
+
 
 ## Design an Observational Study: Part 1 {.smaller}
 

@@ -301,8 +301,6 @@ td:nth-child(2) {
 | Company *Y* manufactures 15% of all ELTs. | [P(*Y*)=0.15]{.fragment} |
 | Company *Z* manufactures 5% of all ELTs.  | [P(*Z*)=0.05]{.fragment} |
 
-
-
 ## Conditional Probability
 
 ["$A$ given $B$"]{.fragment}
@@ -338,7 +336,7 @@ An aircraft emergency locator transmitter (ELT) is a device designed to transmit
  
 
 |                                                    | Conditional Probabilities      |
-|----------------------------------------------|-------------------------|
+|----------------------------------------------|--------------------------|
 | Of ELTs produced by Company *W*, 2% are defective. | [$P(Def|W) = 0.02$]{.fragment} |
 | Of ELTs produced by Company *X*, 2% are defective. | [$P(Def|X) = 0.02$]{.fragment} |
 | Of ELTs produced by Company *Y*, 4% are defective. | [$P(Def|Y) = 0.04$]{.fragment} |
@@ -495,4 +493,3 @@ Suppose we have randomly selected an ELT and found it to be defective. What is t
 
 $P(B_1|A) = \frac{P(A|B_1)P(B_1)}{P(A|B_1)P(B_1) + P(A|B_2)P(B_2) +...+ P(A|B_k)P(B_k)}$
 :::
-
