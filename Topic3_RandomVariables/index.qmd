@@ -452,11 +452,11 @@ $$SD(X) = \sqrt{0.0375} = 0.1936$$
 ::: column
 -   **When to use:**
 
-[Want to model the number of successful outcomes from $n$ independent [Bernoulli]{.fragment .highlight-red} trials.]{.fragment}
+[Want to model the number of successful outcomes from $n$ independent Bernoulli trials.]{.fragment}
 
 -   **Parameters of the distribution:**
 
-::: {.fragment}
+::: fragment
 $n=$ the number of independent Bernoulli trials
 
 $p=$ the probability of success on each independent trial
