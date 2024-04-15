@@ -7,7 +7,7 @@ format:
     html-math-method: mathjax
     multiplex: true
 editor: visual
----
+--- 
 
 ```{r}
 library(countdown)
