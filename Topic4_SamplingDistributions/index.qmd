@@ -53,7 +53,7 @@ Answer the one question in the google form that can be accessed in any of the fo
 
 ## Inferential Statistics
 
-::: {.incremental}
+::: incremental
 -   Recall that inferential statistics use information from a sample to estimate or test characteristics from a population of interest.
 
 -   Typically, we calculate a **point estimate** from the sample as our best guess of the **parameter** of interest.
