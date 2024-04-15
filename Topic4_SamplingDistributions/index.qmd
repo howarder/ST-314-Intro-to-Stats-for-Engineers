@@ -1,0 +1,377 @@
+---
+title: "Topic 4 - The Normal Distribution and Sampling Variability"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+## Sampling Distributions Simulation {.smaller}
+
+Please do the following:
+
+::: nonincremental
+Answer the one question in the google form that can be accessed in any of the following ways:
+:::
+
+::: columns
+::: {.column width="50%"}
+::: nonincremental
+-   Typing the following URL into your browser. The URL is case sensitive. <https://forms.gle/eZZTVwzDFNuxdpPH7>
+
+-   Find the Week 4 Survey link on Canvas under the Week 4 module
+
+-   Scan the QR code
+:::
+:::
+
+::: {.column width="50%"}
+![](Class%207%20QR%20Code.png){height="300"}
+:::
+:::
+
+# Key Concepts
+
+## Inferential Statistics
+
+::: {.incremental}
+-   Recall that inferential statistics use information from a sample to estimate or test characteristics from a population of interest.
+
+-   Typically, we calculate a **point estimate** from the sample as our best guess of the **parameter** of interest.
+
+    -   Naturally, our best guess for the population mean, $\mu$, from a sample is the [sample mean, $\overline{x}$.]{.fragment .fade-in}
+
+    -   Our best guess for the population proportion, $p$, is the [sample proportion, $\hat{p}$.]{.fragment .fade-in}
+:::
+
+## Sampling Variability
+
+. . .
+
+Even when robust sampling schemes are used, different samples will yield different point estimates.
+
+::: fragment
+![](pop.png){.absolute top="35%" right="75%" height="400"} [**Population**]{.absolute top="30%" right="83%"}
+:::
+
+::: fragment
+[**Sample 1**]{.absolute top="40%" right="50%"} ![](samp1.png){.absolute top="35%" right="35%" height="100"}
+:::
+
+::: fragment
+[**Sample 2**]{.absolute top="60%" right="50%"} ![](samp2.png){.absolute top="55%" right="35%" height="100"}
+:::
+
+::: fragment
+[**Sample 3**]{.absolute top="80%" right="50%"} ![](samp3.png){.absolute top="75%" right="35%" height="100"}
+:::
+
+::: fragment
+![](right_arrow.png){.absolute top="40%" right="25%" height="20"} [$\hat{\theta}_1$]{.absolute top="39%" right="20%"} ![](right_arrow.png){.absolute top="60%" right="25%" height="20"} [$\hat{\theta}_2$]{.absolute top="59%" right="20%"} ![](right_arrow.png){.absolute top="80%" right="25%" height="20"} [$\hat{\theta}_3$]{.absolute top="79%" right="20%"} [$\hat{\theta}$ represents a generic point estimate.]{.absolute top="95%" right="20%"}
+:::
+
+##  {.smaller}
+
+### Distributions of Inference
+
+::: columns
+::: {.column width="32%"}
+Population Distribution
+
+::: fragment
+```{r}
+library(tidyverse)
+library(viridis)
+pool <- data.frame("times" = rgamma(10000, 2, 1.25))
+ggplot(pool, aes(x = times)) +
+  geom_histogram(binwidth = 0.5, color = "black",
+                 boundary = 0, fill = viridis(1)) +
+  labs(x = "") +
+  theme(axis.line = element_line(color = "black"),
+        panel.background = element_blank())
+```
+
+Distribution of the entire collection of interest.
+:::
+:::
+
+::: {.column width="32%"}
+Sampl**ED** Distribution
+
+::: fragment
+```{r}
+samp <- data.frame("times" = sample(pool$times, 20))
+ggplot(samp, aes(x = times)) + 
+  geom_histogram(binwidth = 0.5, color = "black", 
+                 boundary = 0, fill = viridis(6)[6]) + 
+  labs(x = "") + 
+  theme(axis.line = element_line(color = "black"), 
+        panel.background = element_blank())
+```
+
+Distribution of $n$ observations obtained from a single sample.
+:::
+:::
+
+::: {.column width="32%"}
+Sampl**ING** Distribution
+
+::: fragment
+```{r}
+library(infer)
+rep_samples <- pool |>
+  rep_sample_n(size = 20, reps = 10000, replace = TRUE) |>
+  group_by(replicate) |>
+  summarise(samp_mean = mean(times))
+
+ggplot(rep_samples, aes(x = samp_mean)) + 
+  geom_histogram(color = "black", 
+                 boundary = 0, fill = viridis(6)[3]) +
+  labs(x = "") + 
+  theme(axis.line = element_line(color = "black"), 
+        panel.background = element_blank())
+```
+
+Distribution of a sample statistic, such as $\overline{x}$ or $\hat{p}$, from repeated samples of size $n$ from the population.
+:::
+:::
+:::
+
+## Sampling Distributions
+
+ 
+
+#### If we can't observe the sampling distribution in real-world applications, why do we care about it?
+
+ 
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+Understanding the sampling distribution of commonly used statistics, such as $\overline{x}$ and $\hat{p}$, allows us to quantify the uncertainty in our point estimates.
+:::
+
+## Unbiased Estimators
+
+Recall that because of sampling variability, a statistic from a sample is a random variable.
+
+A statistic is called **unbiased** if its expectation is equal to the corresponding population parameter.
+
+ 
+
+. . .
+
+$\overline{x}$, $\hat{p}$, and $s^2$ are unbiased.
+
+ 
+
+. . .
+
+$E(\overline{x}) =$ [$\mu$]{.fragment .fade-in}
+
+$E(\hat{p}) =$ [$p$]{.fragment .fade-in}
+
+$E(s^2) =$ [$\sigma^2$]{.fragment .fade-in}
+
+## Consistent Estimators & The Law of Large Numbers {.smaller}
+
+A point estimate is called **consistent** if it converges in probability to its corresponding population parameter.
+
+ 
+
+Under the Law of Large Numbers, we have that as sample size, $n$, increases the point estimate will approach the population parameter.
+
+. . .
+
+ 
+
+$\overline{x}$, $\hat{p}$, and $s^2$ are consistent.
+
+. . .
+
+Therefore, as $n$ increases towards the size of the population
+
+$\overline{x} \rightarrow$ [$\mu$]{.fragment .fade-in}
+
+$\hat{p} \rightarrow$ [$p$]{.fragment .fade-in}
+
+$s^2 \rightarrow$ [$\sigma^2$]{.fragment .fade-in}
+
+## Sample Size & Sampling Variability {.smaller}
+
+![](samp_size.png)
+
+::: {incremental}
+-   The variability of the point estimate is called the [standard error]{.fragment .highlight-red}.
+
+-   The standard error is the [standard deviation]{.fragment .highlight-red} of the sampling distribution.
+
+-   As $n$ increases, the standard error of the point estimate decreases.
+:::
+
+##  {.smaller}
+
+### Central Limit Theorem
+
+When observations are independent and the sample size, $n$, is sufficiently large, the central limit theorem states that the distributions of $\hat{p}$ and $\overline{x}$ are approximately Normal.
+
+::: fragment
+**The sample size conditions ("sufficiently large") and the details of these normal distributions differ for** $\hat{p}$ and $\overline{x}$.
+:::
+
+::: fragment
+::: columns
+::: {.column width="50%"}
+**Sample Proportion,** $\hat{p}$
+
+::: fragment
+$$\hat{p}\sim N\bigg(p, \sqrt{\frac{p(1-p)}{n}}\bigg)$$ where $p$ represents the population proportion
+:::
+:::
+
+::: {.column width="\"50%"}
+**Sample Mean,** $\overline{x}$
+
+::: fragment
+$$\overline{x}\sim N\bigg(\mu, \frac{\sigma}{\sqrt{n}}\bigg)$$ where $\mu$ and $\sigma$ represent the population mean and standard deviation, respectively.
+:::
+:::
+:::
+:::
+
+## Central Limit Theorem
+
+### Sampling Distribution of Sample Proportion, $\hat{p}$
+
+```{r}
+#| message: false
+library(latex2exp)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(TeX(r'(p - 2\sqrt{\frac{p(1-p)}{n}})'),
+                                TeX(r'(p - \sqrt{\frac{p(1-p)}{n}})'), 
+                                "p", 
+                                TeX(r'(p + \sqrt{\frac{p(1-p)}{n}})'), 
+                                TeX(r'(p + 2\sqrt{\frac{p(1-p)}{n}})')))
+```
+
+## Central Limit Theorem
+
+### Sampling Distribution of Sample Mean, $\overline{x}$
+
+```{r}
+#| message: false
+library(latex2exp)
+library(viridis)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = viridis(6)[3], linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = viridis(6)[3], face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(TeX(r'(\mu - 2\frac{\sigma}{\sqrt{n}})'),
+                                TeX(r'(\mu - \frac{\sigma}{\sqrt{n}})'), 
+                                TeX(r'(\mu)'), 
+                                TeX(r'(\mu + \frac{\sigma}{\sqrt{n}})'), 
+                                TeX(r'(\mu + 2\frac{\sigma}{\sqrt{n}})')))
+```
+
+## CLT - Sample Size Conditions {.smaller}
+
+The sample size conditions needed to apply the Central Limit Theorem differ depending on the statistic.
+
+::: fragment
+::: columns
+::: {.column width="30%"}
+**Sample proportion,** $\hat{p}$
+
+::: fragment
+For the CLT to apply to the distribution of the sample proportion, we need the following sample size conditions to be met:
+
+-   $np \geq 10$
+
+-   $n(1-p) \geq 10$
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="65%"}
+**Sample mean,** $\overline{x}$
+
+::: fragment
+Use the sample size and observe the shape of the sampled distribution to determine if the sample size is sufficiently large:
+
+-   If $n\geq 30$, we can typically assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.
+
+-   If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.
+:::
+:::
+:::
+:::
+
+::: fragment
+**If the sample size conditions aren't met, we cannot apply the results of the CLT.**
+:::
+
+## Example from last class {.smaller}
+
+**Question of interest:** What proportion of students in ST 314 have attended a career fair this year?
+
+::: fragment
+**Parameter of interest:**
+:::
+
+## 
+
+### Practice!
+
+Please complete the Class 8 Activity in Top Hat (can be found under the Assigned tab). Collaboration is encouraged! When you are finished with the activity, you are free to go.
+
+ 
+
+### Coming Up
+
+::: nonincremental
+-   **Due tonight:** Data Analysis 3
+
+-   **Midterm exam:**
+
+    -   Tuesday of Week 6 (2/13/24) during class
+
+        -   Exam will begin at 7 pm in Milam 026. Please arrive a few minutes early so that you have the full 80 minutes.
+
+    -   Will cover material from weeks 1-5
+
+    -   Practice exam is available on Canvas
+
+    -   Exam is open-note; however, notes must be in hard copies (written or typed)
+
+    -   **No electronic devices (calculators, phones, laptops, tablets)**
+:::
