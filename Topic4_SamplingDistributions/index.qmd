@@ -214,6 +214,16 @@ $p^{th}$ percentile:
 `qnorm(p, mean, sd, lower.tail = TRUE)`
 
 
+## Class 7 Activity
+
+Please complete the short Class 7 Activity in Top Hat. 
+
+```{r}
+library(countdown)
+countdown(5)
+```
+
+
 # Sampling Distributions
 
 ## Sampling Distributions Simulation {.smaller}
@@ -547,22 +557,4 @@ Please complete the Class 8 Activity in Top Hat (can be found under the Assigned
 
  
 
-### Coming Up
 
-::: nonincremental
--   **Due tonight:** Data Analysis 3
-
--   **Midterm exam:**
-
-    -   Tuesday of Week 6 (2/13/24) during class
-
-        -   Exam will begin at 7 pm in Milam 026. Please arrive a few minutes early so that you have the full 80 minutes.
-
-    -   Will cover material from weeks 1-5
-
-    -   Practice exam is available on Canvas
-
-    -   Exam is open-note; however, notes must be in hard copies (written or typed)
-
-    -   **No electronic devices (calculators, phones, laptops, tablets)**
-:::
