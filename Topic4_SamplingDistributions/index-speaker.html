@@ -346,6 +346,133 @@
 </div>
 <p>This feature has been confirmed to work in Google Chrome and Firefox.</p>
 </section>
+<section>
+<section id="the-normal-distribution" class="title-slide slide level1 center">
+<h1>The Normal Distribution</h1>
+
+</section>
+<section id="normal-distribution" class="slide level2 smaller">
+<h2>Normal Distribution</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>When to use:</li>
+</ul>
+<p><span class="fragment" style="color:blue;">Useful when modeling a continuous random variable that has a bell-shaped distribution.</span></p>
+<div class="fragment" style="color:blue;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div><div class="column">
+<ul>
+<li>Parameters of the distribution:</li>
+</ul>
+<div class="fragment" style="color:blue;">
+<p><span class="math inline">\(\mu\)</span>: mean - determines the center of the distribution</p>
+<p><span class="math inline">\(\sigma\)</span>: standard deviation - determines the spread of the distribution</p>
+</div>
+<ul>
+<li>Probability Density Function:</li>
+</ul>
+<div class="fragment" style="color:blue;">
+<p><span class="math display">\[f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]</span> for <span class="math inline">\(x\)</span> in <span class="math inline">\((-\infty, \infty)\)</span></p>
+</div>
+<p>&nbsp;</p>
+<ul>
+<li><p>Expectation: <span class="fragment" style="color:blue;"><span class="math inline">\(E(X) = \mu\)</span></span></p></li>
+<li><p>Variance:<span class="fragment" style="color:blue;"><span class="math inline">\(Var(X) = \sigma^2\)</span></span></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="standard-normal-distribution" class="slide level2">
+<h2>Standard Normal Distribution</h2>
+<p><span class="fragment" style="color:blue;">The <em>Standard</em> Normal Distribution is a Normal distribution with mean <span class="math inline">\(\mu=0\)</span> and standard deviation <span class="math inline">\(\sigma=1\)</span>.</span></p>
+<div class="fragment" style="color:blue;">
+<p><span class="math display">\[Z \sim N(0, 1)\]</span></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="standardizing-any-normal-random-variable" class="slide level2 smaller">
+<h2>Standardizing Any Normal Random Variable</h2>
+<p><span class="fragment" style="color:blue;">For a Normal random variable, <span class="math inline">\(X\)</span>, a z-score represents the number of standard deviations any observation <span class="math inline">\(x\)</span> is from the mean.</span></p>
+<div class="fragment" style="color:blue;">
+<p><span class="math display">\[z = \frac{x-\mu}{\sigma}\]</span></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment" style="color:blue;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>For a particular bridge, recorded vehicle speeds are normally distributed with a mean of 58 mph and a standard deviation of 10 mph. Suppose a randomly chosen vehicle is going 40 miles per hour.</p>
+<p>How many standard deviations away from the mean is 40 mph?</p>
+<p><span class="fragment" style="color:blue;">Calculate the z-score!</span></p>
+<p><span class="fragment" style="color:blue;"><span class="math inline">\(z=\)</span><span class="math inline">\(\frac{x-\mu}{\sigma}\)</span><span class="math inline">\(=\frac{40-58}{10}\)</span><span class="math inline">\(=-1.8\)</span></span></p>
+<p>&nbsp;</p>
+<p><span class="fragment" style="color:blue;">The randomly chosen vehicle is traveling 1.8 <em>standard deviations</em> slower than the average vehicle on the bridge.</span></p>
+</section>
+<section id="example-1" class="slide level2 smaller">
+<h2>Example</h2>
+<p>For a particular bridge, recorded vehicle speeds are normally distributed with a mean of 58 mph and a standard deviation of 10 mph. Suppose a randomly chosen vehicle is going 40 miles per hour.</p>
+<p>What is the probability of a randomly selecting a vehicle going less than 40 mph?</p>
+<div class="columns">
+<div class="column">
+<div class="fragment" style="color:blue;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div><div class="column">
+<p><span class="fragment" style="color:blue;"><span class="math display">\[P(X &lt; 40) = \int \limits_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi 10^2}}e^{-\frac{(x-58)^2}{2(10^2)}} dx\]</span></span></p>
+<p>&nbsp;</p>
+<p><span class="fragment" style="color:blue;">We cannot solve this analytically - we must use R!</span></p>
+</div>
+</div>
+</section>
+<section id="r-demonstration" class="slide level2">
+<h2>R Demonstration</h2>
+<p>&nbsp;</p>
+<p><strong>Normal Distribution</strong></p>
+<p>&nbsp;</p>
+<p><span class="math inline">\(F(x) = P(X \leq x)\)</span>:</p>
+<p><code>pnorm(q, mean, sd, lower.tail = TRUE)</code></p>
+<p>&nbsp;</p>
+<p><span class="math inline">\(p^{th}\)</span> percentile:</p>
+<p><code>qnorm(p, mean, sd, lower.tail = TRUE)</code></p>
+</section></section>
+<section>
+<section id="sampling-distributions" class="title-slide slide level1 center">
+<h1>Sampling Distributions</h1>
+
+</section>
 <section id="sampling-distributions-simulation" class="slide level2 smaller">
 <h2>Sampling Distributions Simulation</h2>
 <p>Please do the following:</p>
@@ -365,7 +492,7 @@
 <p><img data-src="Class%207%20QR%20Code.png" height="300"></p>
 </div>
 </div>
-</section>
+</section></section>
 <section>
 <section id="key-concepts" class="title-slide slide level1 center">
 <h1>Key Concepts</h1>
@@ -414,7 +541,7 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </div>
 </div>
 <p>Distribution of the entire collection of interest.</p>
@@ -424,7 +551,7 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </div>
 </div>
 <p>Distribution of <span class="math inline">\(n\)</span> observations obtained from a single sample.</p>
@@ -434,7 +561,7 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </div>
 </div>
 <p>Distribution of a sample statistic, such as <span class="math inline">\(\overline{x}\)</span> or <span class="math inline">\(\hat{p}\)</span>, from repeated samples of size <span class="math inline">\(n\)</span> from the population.</p>
@@ -442,7 +569,7 @@
 </div>
 </div>
 </section>
-<section id="sampling-distributions" class="slide level2">
+<section id="sampling-distributions-1" class="slide level2">
 <h2>Sampling Distributions</h2>
 <p>&nbsp;</p>
 <h4 id="if-we-cant-observe-the-sampling-distribution-in-real-world-applications-why-do-we-care-about-it">If we can’t observe the sampling distribution in real-world applications, why do we care about it?</h4>
@@ -520,12 +647,12 @@
 <h2>Central Limit Theorem</h2>
 <h3 id="sampling-distribution-of-sample-proportion-hatp">Sampling Distribution of Sample Proportion, <span class="math inline">\(\hat{p}\)</span></h3>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="central-limit-theorem-2" class="slide level2">
 <h2>Central Limit Theorem</h2>
 <h3 id="sampling-distribution-of-sample-mean-overlinex">Sampling Distribution of Sample Mean, <span class="math inline">\(\overline{x}\)</span></h3>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="clt---sample-size-conditions" class="slide level2 smaller">
 <h2>CLT - Sample Size Conditions</h2>
 <p>The sample size conditions needed to apply the Central Limit Theorem differ depending on the statistic.</p>

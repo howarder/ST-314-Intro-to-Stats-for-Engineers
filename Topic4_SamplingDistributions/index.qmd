@@ -25,6 +25,197 @@ If you'd like to export this presentation to a PDF, do the following
 
 This feature has been confirmed to work in Google Chrome and Firefox.
 
+# The Normal Distribution
+
+## Normal Distribution {.smaller}
+
+::: columns
+::: column
+-   When to use:
+
+[Useful when modeling a continuous random variable that has a bell-shaped distribution.]{.fragment style="color:blue;"}
+
+::: {.fragment style="color:blue;"}
+```{r}
+library(latex2exp)
+library(tidyverse)
+library(viridis)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = viridis(6)[3], linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() + 
+  scale_x_continuous(breaks = NULL)
+```
+:::
+:::
+
+::: column
+-   Parameters of the distribution:
+
+::: {.fragment style="color:blue;"}
+$\mu$: mean - determines the center of the distribution
+
+$\sigma$: standard deviation - determines the spread of the distribution
+:::
+
+-   Probability Density Function:
+
+::: {.fragment style="color:blue;"}
+$$f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$ for $x$ in $(-\infty, \infty)$
+:::
+
+ 
+
+-   Expectation: [$E(X) = \mu$]{.fragment style="color:blue;"}
+
+-   Variance:[$Var(X) = \sigma^2$]{.fragment style="color:blue;"}
+:::
+:::
+
+## Standard Normal Distribution
+
+[The *Standard* Normal Distribution is a Normal distribution with mean $\mu=0$ and standard deviation $\sigma=1$.]{.fragment style="color:blue;"}
+
+::: {.fragment style="color:blue;"}
+$$Z \sim N(0, 1)$$
+:::
+
+::: fragment
+```{r}
+#| fig-height: 4
+library(latex2exp)
+library(tidyverse)
+library(viridis)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = viridis(6)[3], linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw()
+```
+:::
+
+## Standardizing Any Normal Random Variable {.smaller}
+
+[For a Normal random variable, $X$, a z-score represents the number of standard deviations any observation $x$ is from the mean.]{.fragment style="color:blue;"}
+
+::: {.fragment style="color:blue;"}
+$$z = \frac{x-\mu}{\sigma}$$
+:::
+
+::: columns
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| fig-height: 6
+library(latex2exp)
+library(tidyverse)
+library(viridis)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = viridis(6)[1], linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() + 
+    theme(axis.text.x = element_text(size = 18, color = viridis(6)[1], face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(TeX(r'(\mu - 2\sigma)'),
+                                TeX(r'(\mu - \sigma)'), 
+                                TeX(r'(\mu)'), 
+                                TeX(r'(\mu + \sigma)'), 
+                                TeX(r'(\mu + 2\sigma)')))
+```
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment style="color:blue;"}
+```{r}
+#| fig-height: 6
+library(latex2exp)
+library(tidyverse)
+library(viridis)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = viridis(6)[3], linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() + 
+    theme(axis.text.x = element_text(size = 18, color = viridis(6)[3], face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1))
+```
+:::
+:::
+:::
+
+## Example
+
+For a particular bridge, recorded vehicle speeds are normally distributed with a mean of 58 mph and a standard deviation of 10 mph. Suppose a randomly chosen vehicle is going 40 miles per hour.
+
+How many standard deviations away from the mean is 40 mph?
+
+[Calculate the z-score!]{.fragment style="color:blue;"}
+
+[$z=$$\frac{x-\mu}{\sigma}$$=\frac{40-58}{10}$$=-1.8$]{.fragment style="color:blue;"}
+
+ 
+
+[The randomly chosen vehicle is traveling 1.8 *standard deviations* slower than the average vehicle on the bridge.]{.fragment style="color:blue;"}
+
+## Example {.smaller}
+
+For a particular bridge, recorded vehicle speeds are normally distributed with a mean of 58 mph and a standard deviation of 10 mph. Suppose a randomly chosen vehicle is going 40 miles per hour.
+
+What is the probability of a randomly selecting a vehicle going less than 40 mph?
+
+::: columns
+::: column
+::: {.fragment style="color:blue;"}
+```{r}
+#| fig-height: 6
+
+ggplot(data = data.frame(x = c(28, 88)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 58, sd = 10), color = viridis(6)[3], linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() + 
+    theme(axis.text.x = element_text(size = 18, color = viridis(6)[3], face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(38,78,10))
+```
+:::
+:::
+
+::: {.column}
+[$$P(X < 40) = \int \limits_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi 10^2}}e^{-\frac{(x-58)^2}{2(10^2)}} dx$$]{.fragment style="color:blue;"}
+
+ 
+
+[We cannot solve this analytically - we must use R!]{.fragment style="color:blue;"}
+:::
+:::
+
+## R Demonstration
+
+ 
+
+**Normal Distribution**
+
+ 
+
+$F(x) = P(X \leq x)$:
+
+`pnorm(q, mean, sd, lower.tail = TRUE)`
+
+ 
+
+$p^{th}$ percentile:
+
+`qnorm(p, mean, sd, lower.tail = TRUE)`
+
+
+# Sampling Distributions
+
 ## Sampling Distributions Simulation {.smaller}
 
 Please do the following:
