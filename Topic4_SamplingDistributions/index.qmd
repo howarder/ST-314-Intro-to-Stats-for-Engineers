@@ -216,6 +216,7 @@ $p^{th}$ percentile:
 
 ## Class 7 Activity
 
+
 Please complete the short Class 7 Activity in Top Hat. 
 
 ```{r}
