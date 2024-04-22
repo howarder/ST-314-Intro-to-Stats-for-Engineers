@@ -238,7 +238,7 @@ Answer the one question in the google form that can be accessed in any of the fo
 ::: columns
 ::: {.column width="50%"}
 ::: nonincremental
--   Typing the following URL into your browser. The URL is case sensitive. <https://forms.gle/eZZTVwzDFNuxdpPH7>
+-   Typing the following URL into your browser. The URL is case sensitive. <https://forms.gle/BAacMpspkP4GRMJR6>
 
 -   Find the Week 4 Survey link on Canvas under the Week 4 module
 
@@ -247,7 +247,7 @@ Answer the one question in the google form that can be accessed in any of the fo
 :::
 
 ::: {.column width="50%"}
-![](Class%207%20QR%20Code.png){height="300"}
+![](QR.png){height="300"}
 :::
 :::
 
