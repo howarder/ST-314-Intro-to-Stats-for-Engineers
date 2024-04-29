@@ -1,0 +1,860 @@
+---
+title: "Topic 5 - Confidence Intervals"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+## Example {.smaller}
+
+*From Class 8 Activity*
+
+As part of a quality control process for computer chips, an engineer at a factory randomly samples 212 chips during a week of production to test the current rate of chips with severe defects. She finds that 27 of the chips are defective.
+
+The information above describes the outcome of a single sample. Suppose the true proportion of defective chips at this factory is $p=0.1$.
+
+[**Sampling distribution of** $\hat{p}$:]{.fragment} [The distribution of the sample proportion of defective chips from a sample of size 212 is **approximately Normal** with a mean of $0.1$]{.fragment} [and a standard error equal to]{.fragment} [$\sqrt{\frac{0.1(1-0.1)}{212}} = 0.021$.]{.fragment}
+
+::: notes
+Draw normal dist with marks at 0.058, 0.079, 0.1, 0.121, 0.142.
+:::
+
+##  {.smaller}
+
+Calculate the probability of collecting a sample of size $n=212$ and observing a sample proportion of defective chips of 0.127 or less. That is, calculate $P(\hat{p}<0.127)$.
+
+```{r}
+#| message: false
+#| fig-height: 4
+library(ggplot2)
+library(latex2exp)
+ex_curve <- ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(0.058,
+                                0.079, 
+                                0.1, 
+                                0.121, 
+                                0.142))
+ex_curve
+```
+
+[`pnorm(0.127, 0.1, 0.021)` = 0.901]{.fragment}
+
+[The probability of observing a sample proportion of defective components less than 0.127 is 0.901.]{.fragment}
+
+##  {.smaller}
+
+Calculate the probability of observing a sample proportion of defective chips that is [within two standard errors]{.fragment .highlight-red} of the true population proportion, $p$.
+
+```{r}
+#| message: false
+#| fig-height: 4
+ex_curve
+```
+
+[$P(0.058 < \hat{p} < 0.142) =$]{.fragment}
+
+[`pnorm(0.142, 0.1, 0.021) - pnorm(0.058, 0.1, 0.021)` = 0.954]{.fragment}
+
+# Confidence Intervals of a Proportion
+
+## Point Estimate
+
+::: fragment
+The single value considered to be the "best guess" for the parameter of interest.
+:::
+
+ 
+
+::: fragment
+For example, if the parameter of interest is a **population [proportion]{.fragment .highlight-red},** $p$, the point estimate from a sample is the **sample [proportion]{.fragment .highlight-red},** $\hat{p}$.
+:::
+
+## Sampling Variability
+
+::: fragment
+A point estimate is rarely exactly equal to the population parameter and has some sampling variability associated with it.
+:::
+
+ 
+
+[The **Central Limit Theorem** can help us understand this variability for $\hat{p}$ and $\overline{x}.$]{.fragment}
+
+## Confidence Intervals
+
+[A confidence interval considers the sampling variability of the point estimate to provide a range of plausible values for the parameter of interest.]{.fragment}
+
+## Sampling Distribution of $\hat{p}$ {.smaller}
+
+**Central Limit Theorem for** $\hat{p}$: For a sufficiently large sample, $$ \hat{p} \sim N\bigg(p, \sqrt{\frac{p(1-p)}{n}}\bigg)$$
+
+::: center
+```{r}
+#| message: false
+#| fig-height: 2.5
+library(ggplot2)
+library(latex2exp)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(TeX(r'(p - 2\sqrt{\frac{p(1-p)}{n}})'),
+                                TeX(r'(p - \sqrt{\frac{p(1-p)}{n}})'), 
+                                "p", 
+                                TeX(r'(p + \sqrt{\frac{p(1-p)}{n}})'), 
+                                TeX(r'(p + 2\sqrt{\frac{p(1-p)}{n}})')))
+```
+:::
+
+## Standardizing the Sampling Distribution of $\hat{p}$ {.smaller}
+
+Recall that we can standardize any Normal random variable by subtracting its mean and dividing by its standard deviation: $$ \frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}} \sim $$
+
+::: center
+```{r}
+#| message: false
+#| fig-height: 2.5
+library(ggplot2)
+library(latex2exp)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2, -1, 0, 1, 2))
+```
+:::
+
+##  {.smaller}
+
+```{r}
+#| message: false
+#| fig-height: 3
+library(ggplot2)
+library(latex2exp)
+phat_dist <- ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(TeX(r'(p - 2\sqrt{\frac{p(1-p)}{n}})'),
+                                TeX(r'(p - \sqrt{\frac{p(1-p)}{n}})'), 
+                                "p", 
+                                TeX(r'(p + \sqrt{\frac{p(1-p)}{n}})'), 
+                                TeX(r'(p + 2\sqrt{\frac{p(1-p)}{n}})'))) + 
+  labs(title = "Sampling Distribution of the Sample Proportion")
+
+phat_dist
+```
+
+```{r}
+#| message: false
+#| fig-height: 3
+library(ggplot2)
+library(latex2exp)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2, -1, 0, 1, 2)) + 
+  labs(title = "Standardized Sampling Distribution of the Sample Proportion")
+
+```
+
+## 95% Confidence Interval {.smaller}
+
+::: columns
+::: {.column width="30%"}
+If the sampling distribution of $\hat{p}$ is normal, then **95%** of all possible point estimates will be within $z^*$ standard errors of the population proportion $p$.
+:::
+
+::: {.column width="70%"}
+```{r}
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+    geom_area(stat = "function", 
+            fun = dnorm, 
+            fill = "#440154FF", 
+            alpha = .5,
+            xlim = c(-1.96, 1.96)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(TeX(r'(p - 2\sqrt{\frac{p(1-p)}{n}})'),
+                                TeX(r'(p - \sqrt{\frac{p(1-p)}{n}})'), 
+                                "p", 
+                                TeX(r'(p + \sqrt{\frac{p(1-p)}{n}})'), 
+                                TeX(r'(p + 2\sqrt{\frac{p(1-p)}{n}})'))) + 
+  geom_segment(aes(x = 1.96, y = 0, xend = 1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(p + z* \sqrt{\frac{p(1-p)}{n}})'), size=8) + 
+    geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(p - z* \sqrt{\frac{p(1-p)}{n}})'), 
+            size = 8)
+
+```
+:::
+:::
+
+. . .
+
+**How can we determine the value of** $z^*$**?**
+
+##  {.smaller}
+
+Sampling Distribution of $\hat{p}$
+
+```{r}
+#| message: false
+#| fig-height: 2.5
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+    geom_area(stat = "function", 
+            fun = dnorm, 
+            fill = "#440154FF", 
+            alpha = .5,
+            xlim = c(-1.96, 1.96)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(TeX(r'(p - 2\sqrt{\frac{p(1-p)}{n}})'),
+                                TeX(r'(p - \sqrt{\frac{p(1-p)}{n}})'), 
+                                "p", 
+                                TeX(r'(p + \sqrt{\frac{p(1-p)}{n}})'), 
+                                TeX(r'(p + 2\sqrt{\frac{p(1-p)}{n}})'))) + 
+  geom_segment(aes(x = 1.96, y = 0, xend = 1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(p + z* \sqrt{\frac{p(1-p)}{n}})'), size=6) + 
+    geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(p - z* \sqrt{\frac{p(1-p)}{n}})'), 
+            size = 6)
+
+```
+
+Standard Normal Distribution
+
+```{r}
+#| message: false
+#| fig-height: 2.5
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+    geom_area(stat = "function", 
+            fun = dnorm, 
+            fill = "#22A884FF", 
+            alpha = .5,
+            xlim = c(-1.96, 1.96)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2, -1, 0, 1, 2)) + 
+  geom_segment(aes(x = 1.96, y = 0, xend = 1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(z*)'), size=6) + 
+    geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(-z*)'), 
+            size = 6)
+
+```
+
+##  {.smaller}
+
+Standard Normal Distribution
+
+```{r}
+#| message: false
+#| fig-height: 2.5
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+    geom_area(stat = "function", 
+            fun = dnorm, 
+            fill = "#22A884FF", 
+            alpha = .5,
+            xlim = c(-1.96, 1.96)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2, -1, 0, 1, 2)) + 
+  geom_segment(aes(x = 1.96, y = 0, xend = 1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(z*)'), size=6) + 
+    geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(-z*)'), 
+            size = 6)
+
+```
+
+[The `qnorm()` function in `R` is the inverse of `pnorm()`. We can provide the area under the Normal distribution curve **to the left** of the value on the distribution that we're looking for.]{.fragment}
+
+[$z^*=$ `qnorm(0.975, mean = 0, sd = 1)`$= 1.96$]{.fragment}
+
+## 95% Confidence Interval {.smaller}
+
+::: columns
+::: {.column width="30%"}
+If the sampling distribution of $\hat{p}$ is normal, then **95%** of all possible point estimates will be within **1.96** standard errors of the population proportion $p$.
+:::
+
+::: {.column width="70%"}
+```{r}
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+    geom_area(stat = "function", 
+            fun = dnorm, 
+            fill = "#440154FF", 
+            alpha = .5,
+            xlim = c(-1.96, 1.96)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(TeX(r'(p - 2\sqrt{\frac{p(1-p)}{n}})'),
+                                TeX(r'(p - \sqrt{\frac{p(1-p)}{n}})'), 
+                                "p", 
+                                TeX(r'(p + \sqrt{\frac{p(1-p)}{n}})'), 
+                                TeX(r'(p + 2\sqrt{\frac{p(1-p)}{n}})'))) + 
+  geom_segment(aes(x = 1.96, y = 0, xend = 1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
+               linewidth = 2) + 
+  geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(p + 1.96 \sqrt{\frac{p(1-p)}{n}})'), size=8) + 
+    geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
+            label = TeX(r'(p - 1.96 \sqrt{\frac{p(1-p)}{n}})'), 
+            size = 8)
+
+```
+:::
+:::
+
+## 95% Confidence Interval {.smaller}
+
+::: columns
+::: {.column width="60%"}
+If a point estimate, $\hat{p}$ within 1.96 standard errors of $p$ is selected, then the interval
+
+[$$ \hat{p} \pm 1.96 \sqrt{\frac{p(1-p)}{n}}$$]{.fragment}
+
+:::{.fragment}
+will capture the parameter $p$.
+:::
+
+ 
+
+:::{.fragment}
+We can be 95% confident that the parameter is captured by the above interval estimate.
+:::
+
+ 
+
+
+:::{.fragment}
+5% of these "95% confidence intervals" won't capture $p$. In practice, we don't know $p$ (remember the goal here is to estimate it), so we won't know if the interval we constructed is one of the "good ones."
+:::
+:::
+
+::: {.column width="40%"}
+![](intervals.png){width="448"}
+:::
+:::
+
+##  {.smaller}
+
+### Constructing a Confidence Interval
+
+ 
+
+All confidence intervals have the same general form:
+
+ 
+
+::: {.fragment style="border: 2px solid #000000; text-align: center"}
+[point estimate]{style="color:#440154FF;"} [$\pm$]{.fragment} [critical value $\times$ standard error of point estimate]{.fragment style="color:#33638DFF;"}
+:::
+
+ 
+
+:::{.fragment}
+[critical value $\times$ standard error of point estimate]{style="color:#33638DFF;"} is often referred to as the **margin of error**
+:::
+
+##  {.smaller}
+
+### Constructing a Confidence Interval for $p$
+
+::: incremental
+1.  Calculate the point estimate, $\hat{p}$, from the observed sample.
+
+ 
+
+2.  Identify the confidence level, $CL$, and the error associated with this confidence level $100-CL$.
+
+ 
+
+3.  Determine the critical value, $z^*$, by finding the $CL + \frac{100-CL}{2}$ percentile on the Standard Normal Distribution:
+
+[`qnorm(`$(CL + \frac{100-CL}{2})\times \frac{1}{100}$`, mean = 0, sd = 1)`]{.fragment}
+
+ 
+
+4.  Calculate the standard error estimate from the observed sample: [$\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$]{.fragment}
+:::
+
+## 
+
+### Constructing a Confidence Interval for $p$
+
+ 
+
+ 
+
+[$$\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$]{.fragment}
+
+## Check the sample size
+
+Recall that the construction of the confidence interval was based on the Central Limit Theorem for the sample proportion. The CLT requires that we have sufficiently large sample sizes, so we should only construct a confidence interval for $p$ if
+
+1.  [$n\hat{p} \geq 10$]{.fragment}
+
+AND
+
+2.  [$n(1-\hat{p}) \geq 10$]{.fragment}
+
+## Choosing a Confidence Level {.smaller}
+
+The confidence level is chosen based on whether precision or accuracy is more desirable.
+
+![](target.png){width="50%"}
+
+**As we increase the confidence level, we lose precision but gain accuracy.**
+
+## Interpreting a Confidence Interval {.smaller}
+
+ 
+
+**Template:** We are \_\_\_\_\_\_% confident that the population \_\_\_\_\_\_\_\_\_\_\_\_\_ of \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ is between \_\_\_\_\_\_\_\_\_\_ and \_\_\_\_\_\_\_\_\_\_, with a point estimate of \_\_\_\_\_\_\_\_\_\_.
+
+::: incremental
+-   Interpretation is always about the population **parameter**.
+
+-   The confidence interval should not be interpreted as the probability of observing the parameter.
+
+-   The confidence interval does not provide an interpretation corresponding to a single observation or single point estimate.
+
+-   The confidence interval simply provides a range of plausible values for the parameter.
+:::
+
+##  {.smaller}
+
+### Example - Please open Class 9 Activity in TH 🎩
+
+In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
+
+Construct a 90% confidence interval for the true proportion of U.S. adults interested in an EV. Interpret the interval with context.
+
+::: {style="color:#453781FF"}
+::: columns
+::: {.column width="60%"}
+::: incremental
+1.  $\hat{p} = \frac{3925}{10329}$
+
+2.  CL = 90%, 100-CL = 10%
+
+3.  $z^*=$ `qnorm(0.95, 0, 1)` $=1.645$
+
+4.  Standard error: $\sqrt{\frac{\frac{3925}{10329}\bigg(1-\frac{3925}{10329}\bigg)}{10329}}$
+:::
+
+[$$\frac{3925}{10329} \pm 1.645\sqrt{\frac{\frac{3925}{10329}(1-\frac{3925}{10329})}{10329}} = (0.372, 0.388)$$]{.fragment}
+:::
+
+::: {.column width="40%"}
+[**Interpretation:**]{.fragment}
+
+[We are **90%** confident that the population **proportion** of **U.S. adults interested in an EV** is between **0.372** and **0.388**, with a point estimate of **0.38**.]{.fragment}
+:::
+:::
+:::
+
+# Confidence Intervals of a Mean
+
+## Motivating Example
+
+ 
+
+**Question of interest:** What is the average mile time for all racers in the 10 Mile event in the 2017 Cherry Blossom Run?
+
+ 
+
+**Parameter of interest:** [$\mu$, the average mile time for **all** racers in the 10-mile event]{.fragment style="color:#481567FF;"}
+
+## Example continued - Sampled Data
+
+```{r}
+library(tidyverse)
+library(openintro)
+library(viridis)
+
+runner_samp <- read_csv("runner_sample.csv")
+
+ggplot(runner_samp, aes(x = pace_sec)) + 
+  geom_histogram(bins = 20, color = "black", fill = viridis(6)[6]) + 
+  theme(axis.line = element_line(color = "black"),
+        panel.background = element_blank(),
+        axis.text = element_text(size = 12), 
+        axis.title.x = element_text(size = 18)) + 
+  labs(x = "Average time per mile, in seconds", 
+       title = "Sampled Distribution of Average Mile Times", 
+       subtitle = "for 45 randomly selected runners in the 2017 Cherry Blossom 10 Mile Run")
+
+
+```
+
+```{r}
+#| include: false
+samp_mean <- mean(runner_samp$pace_sec)
+pop_mean <- run17 |>
+  filter(event == "10 Mile") |>
+  summarise(mean = mean(pace_sec))
+pop_mean <- pop_mean$mean[1]
+samp_sd <- sd(runner_samp$pace_sec)
+```
+
+$\overline{x} = 591.53$ seconds
+
+$\overline{x}$ is the [**point estimate**]{.fragment style="color:#481567FF;"} for the average mile time for all runners in the 10 Mile event.
+
+##  {.smaller}
+
+### Example continued - Quantifying the Uncertainy in $\overline{x}$
+
+::: incremental
+-   The point estimate, $\overline{x} = 591.53$ is our best guess for the population mean, $\mu$; however, since this estimate came from a subset of the population, we need to address the possible error or uncertainty in this estimate.
+
+-   To do this, we need to identify the sampling distribution of $\overline{x}$.
+
+-   The sample size is sufficiently large ($n=45$), so according to the central limit theorem, what is the sampling distribution of the sample mean, $\overline{x}$?
+
+::: {style="text-align: center"}
+[$\overline{x} \sim N$]{.fragment style="color:#481567FF;"}[$\bigg($$\mu$,]{.fragment style="color:#481567FF;"}[$\frac{\sigma}{\sqrt{n}}$$\bigg)$]{.fragment style="color:#481567FF;"} 
+:::
+:::
+
+## Interlude - Standardizing the point estimate
+
+ 
+
+::: columns
+::: {.column width="50%"}
+$\overline{x} \sim N\bigg(\mu, \frac{\sigma}{\sqrt{n}}\bigg)$
+
+ 
+
+$z = \frac{\overline{x} - \mu}{\sigma/\sqrt{n}} \sim$$N(0,1)$
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+## *t* Distributions
+
+ 
+
+::: incremental
+-   When the population standard deviation, $\sigma$ is unknown, we can use the sample standard deviation, $s$, in its place; however, the standardized sampling distribution of $\frac{\overline{x}-\mu}{s/\sqrt{n}}$ is **not** normal.
+
+ 
+
+-   When $n$ is sufficiently large, $\frac{\overline{x}-\mu}{s/\sqrt{n}}$ follows a [*t* distribution]{.fragment .highlight-red}.
+:::
+
+## *t* Distribution vs. Standard Normal
+
+<iframe src="https://www.desmos.com/calculator/tkvigsfzgy" width="1000" height="500">
+
+</iframe>
+
+## *t* Distribution vs. Standard Normal
+
+```{r}
+ggplot() + 
+  geom_function(fun = dnorm, args = list(mean = 0, sd = 1), 
+                color = "orange", linewidth=2) + 
+  geom_function(fun = dt, args = list(df = 2), 
+                color = "black", linewidth=2) + 
+  xlim(c(-4,4)) + 
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), 
+        axis.line.x = element_line(), 
+        panel.background = element_blank(), 
+        panel.grid = element_blank())
+
+```
+
+## *t* Distributions
+
+::: incremental
+-   A *t* distribution is symmetric and centered at [0]{.fragment style="color:#481567FF;"}.
+
+-   A *t* distribution is defined by its [degrees of freedom]{.fragment style="color:#481567FF;"}.
+
+-   The degrees of freedom determine the [spread]{.fragment style="color:#481567FF;"} of the distribution.
+
+-   As the degrees of freedom of increase toward $\infty$, the *t* distribution approaches the [Standard Normal distribution]{.fragment style="color:#481567FF;"}.
+
+-   Degrees of freedom are determined by the sample size and number of unknown parameters.
+:::
+
+## Sampling Distribution of the Standardized Sample Mean
+
+ 
+
+For sufficiently large $n$, the distiribution of the standardized sample mean, $\frac{\overline{x}-\mu}{s/\sqrt{n}}$ follows a *t* distribution with $n-1$ degrees of freedom.
+
+[$$\frac{\overline{x}-\mu}{\frac{s}{\sqrt{n}}} \sim t_{n-1} $$]{.fragment style="color:#481567FF;"}
+
+## Check the sample size {.smaller}
+
+Recall that the construction of the confidence interval was based on the Central Limit Theorem for the sample mean. The CLT requires that we have sufficiently large sample sizes.
+
+Use the sample size and observe the shape of the sampled distribution to determine if the sample size is sufficiently large:
+
+-   If $n\geq 30$, we can typically assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.
+
+-   If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.
+
+## Confidence Interval for $\mu$ {.smaller}
+
+A confidence interval for $\mu$ should be constructed when we want to estimate the population mean $\mu$ based on an observed sample of $n$ observations.
+
+**Constructing a Confidence Interval for** $\mu$
+
+::: incremental
+1.  Calculate the point estimate, $\overline{x}$, from the observed sample.
+
+2.  Identify the confidence level, $CL$, and the error associated with this confidence level $100-CL$.
+
+3.  Determine the critical value, $t^*$, by finding the $CL + \frac{100-CL}{2}$ percentile on the *t* distribution with $n-1$ degrees of freedom:
+
+[`qt(`$(CL + \frac{100-CL}{2})\times \frac{1}{100}$`, n-1)`]{.fragment}
+
+ 
+
+4.  Calculate the standard error estimate from the observed sample: [$\frac{s}{\sqrt{n}}$]{.fragment}
+:::
+
+## 
+
+**Confidence Interval Construction for** $\mu$  
+
+ 
+
+[$$\overline{x}\pm t^* \bigg( \frac{s}{\sqrt{n}}\bigg)$$]{.fragment}
+
+## Finding *t* Critical Values {.smaller}
+
+1.  Determine the confidence level, $CL$
+2.  The critical value, $t^*$, is found by computing the $CL + \frac{100-CL}{2}$ percentile on a *t* distribution with $n-1$ degrees of freedom.
+
+-   For a 90% confidence interval, the critical value $t^*$ is equal to \_\_\_\_\_\_\_\_\_\_\_\_ percentile on a *t* distribution with $n-1$ degrees of freedom.
+-   For a 95% confidence interval, the critical value $t^*$ is equal to \_\_\_\_\_\_\_\_\_\_\_\_ percentile on a *t* distribution with $n-1$ degrees of freedom.
+-   For a 99% confidence interval, the critical value $t^*$ is equal to \_\_\_\_\_\_\_\_\_\_\_\_ percentile on a *t* distribution with $n-1$ degrees of freedom.
+
+## Finding *t* Critical Values using `qt()`
+
+ 
+
+`qt(p, df)` calculates the value on a *t* distribution curve with `df` degrees of freedom that has an area of `p` to the left of it.
+
+ 
+
+**Example:** To find the critical value needed to construct a 90% confidence interval for the mean when $n=85$, run the following R code:
+
+[`qt(0.95, 84)`]{.fragment}
+
+## Example continued
+
+Using the sampled data, construct a 95% confidence interval for the average mile time for all runners in the 10 Mile event at the 2017 Cherry Blossom Run.
+
+```{r}
+ggplot(runner_samp, aes(x = pace_sec)) + 
+  geom_histogram(bins = 20, color = "black", fill = viridis(6)[6]) + 
+  theme(axis.line = element_line(color = "black"),
+        panel.background = element_blank(),
+        axis.text = element_text(size = 12), 
+        axis.title.x = element_text(size = 18)) + 
+  labs(x = "Average time per mile, in seconds", 
+       title = "Sampled Distribution of Average Mile Times", 
+       subtitle = "for 45 randomly selected runners in the 2017 Cherry Blossom 10 Mile Run")
+```
+
+$\overline{x} = 591.53$ seconds
+
+$s = 105.66$ seconds
+
+$n = 45$
+
+## Example continued {.smaller}
+
+Using the sampled data, construct a 95% confidence interval for the average mile time for all runners in the 10 Mile event at the 2017 Cherry Blossom Run.
+
+::: columns
+::: {.column width="65%"}
+$\overline{x} = 591.53$ seconds
+
+$s = 105.66$ seconds
+
+$n = 45$
+
+::: incremental
+1.  [**Point estimate: 591.53**]{.fragment style="color:#481567FF;"}
+
+2.  [**Confidence level: 95%**]{.fragment style="color:#481567FF;"}
+
+3.  [**Critical value** $t^*$=`qt(0.975, 44)`=2.015]{.fragment style="color:#481567FF;"}
+
+4.  [**Standard error:** $105.66/\sqrt{45}$]{.fragment style="color:#481567FF;"}
+:::
+
+::: {.fragment style="color:#481567FF;"}
+**Confidence Interval:** $$591.53 \pm 2.015 \bigg(\frac{105.66}{\sqrt{45}}\bigg) = (559.79, 623.27)$$
+:::
+:::
+
+::: {.column width="35%"}
+::: {.fragment style="color:#481567FF;"}
+**Interpretation:**
+
+We are **95%** confident that the **average mile time for all runners in the 10 Mile event at the 2017 Cherry Blossom Run** was between **559.79 seconds** and **623.27 seconds** with a point estimate of **591.53 seconds**.
+:::
+:::
+:::
+
+##  {.smaller}
+
+### Example 2
+
+A random sample of 24 possums in Australia and New Guinea was collected. The length of each sampled possum's head was measured in millimeters. The sampled distribution and sample statistics of the head lengths is shown below.
+
+::: columns
+::: {.column width="70%"}
+```{r}
+possum_samp <- read_csv("possum_sample.csv")
+# ggplot(possum_samp) + 
+#   geom_histogram(binwidth = 2, aes(x = head_l), 
+#                  color = "black", fill = "lightblue") + 
+#   labs(x = "Head Length (mm)")
+
+ggplot(possum_samp) + 
+  geom_boxplot(aes(x = head_l)) + 
+  labs(x = "Head Length (mm)") + 
+  theme(axis.text.y = element_blank(), 
+        axis.ticks.y = element_blank())
+```
+:::
+
+::: {.column width="30%"}
+ 
+
+ 
+
+$\overline{x} = 93.175$ mm $s = 1.808$ mm
+:::
+:::
+
+```{r}
+#| include: false
+poss_mean <- mean(possum_samp$head_l)
+poss_sd <- sd(possum_samp$head_l)
+```
+
+Use the sampled data to construct a 99% confidence interval for the true average head length of all possums in Australia and New Guinea. *Don't forget to check the sample size conditions before constructing the interval.*
+
+##  {.smaller}
+
+### Example 2
+
+[**Check sample size condition!**]{.fragment style="color:#481567FF;"} [The sample size is less than 30; however, the sampled distribution does not suggest any skewness or outliers, so we can still construct confidence interval with the smaller sample size.]{.fragment style="color:#481567FF;"}
+
+::: columns
+::: {.column width="65%"}
+::: incremental
+1.  [**Point estimate: 93.175**]{.fragment style="color:#481567FF;"}
+
+2.  [**Confidence level: 99%**]{.fragment style="color:#481567FF;"}
+
+3.  [**Critical value** $t^*$=`qt(0.995, 23)`=2.807]{.fragment style="color:#481567FF;"}
+
+4.  [**Standard error:** $1.808/\sqrt{24}$]{.fragment style="color:#481567FF;"}
+:::
+
+::: {.fragment style="color:#481567FF;"}
+**Confidence Interval:** $$93.175 \pm 2.807 \bigg(\frac{1.808}{\sqrt{24}}\bigg) = (92.139, 94.211)$$
+:::
+:::
+
+::: {.column width="35%"}
+::: {.fragment style="color:#481567FF;"}
+**Interpretation:**
+
+We are **99%** confident that the **average head length of all possums in Australia and New Guinea** is between **92.139 mm** and **94.211 mm** with a point estimate of **93.175 mm**.
+:::
+:::
+:::
+
+## Practice!
+
+
+
+Please complete the **End of Class 10 Activity** in Top Hat (can be found under the Assigned tab). Collaboration is encouraged!

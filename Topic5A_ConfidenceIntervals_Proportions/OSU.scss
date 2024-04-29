@@ -1,0 +1,65 @@
+/*-- scss:defaults --*/
+
+// fonts
+
+/* Define the font family for Stratum2 */
+@font-face {
+  font-family: 'Stratum2 Black';
+  src: url('Fonts/Stratum2/Stratum2 Black.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Stratum2 Bold';
+  src: url('Fonts/Stratum2/Stratum2 Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Stratum2 Medium';
+  src: url('Fonts/Stratum2/Stratum2 Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Stratum2 Regular';
+  src: url('Fonts/Stratum2/Stratum2 Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Set the default sans-serif font with a generic fallback
+// $font-family-sans-serif: "Times New Roman", "Book Antiqua", Palatino, FreeSerif, serif !default;
+
+// headings
+$presentation-heading-font: 'Stratum2'; 
+//$font-family-sans-serif !default;
+$presentation-heading-color: #D73F09 !default;
+//$presentation-heading-text-transform: uppercase !default;
+
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.3em;
+}
+
+.blue {
+  color: #01364C;
+  font-weight: bold;
+}
+
+.header{
+  background: #F4BA02;
+}
+
+
+
+.vertical-divider {
+  border-left: 1px solid black; /* Adjust the color and width of the line as needed */
+  height: 50%; /* Set the height to cover half of the slide */
+  position: fixed;
+  top: 50%; /* Adjust the top position as needed */
+  left: 50%; /* Position the line in the middle of the slide */
+  transform: translateX(-50%); /* Center the line horizontally */
+  z-index: 999; /* Ensure the line is above other content */
+}
