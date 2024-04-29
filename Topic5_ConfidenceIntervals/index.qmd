@@ -384,20 +384,19 @@ If a point estimate, $\hat{p}$ within 1.96 standard errors of $p$ is selected, t
 
 [$$ \hat{p} \pm 1.96 \sqrt{\frac{p(1-p)}{n}}$$]{.fragment}
 
-:::{.fragment}
+::: fragment
 will capture the parameter $p$.
 :::
 
  
 
-:::{.fragment}
+::: fragment
 We can be 95% confident that the parameter is captured by the above interval estimate.
 :::
 
  
 
-
-:::{.fragment}
+::: fragment
 5% of these "95% confidence intervals" won't capture $p$. In practice, we don't know $p$ (remember the goal here is to estimate it), so we won't know if the interval we constructed is one of the "good ones."
 :::
 :::
@@ -423,7 +422,7 @@ All confidence intervals have the same general form:
 
  
 
-:::{.fragment}
+::: fragment
 [critical value $\times$ standard error of point estimate]{style="color:#33638DFF;"} is often referred to as the **margin of error**
 :::
 
@@ -585,7 +584,7 @@ $\overline{x}$ is the [**point estimate**]{.fragment style="color:#481567FF;"} f
 -   The sample size is sufficiently large ($n=45$), so according to the central limit theorem, what is the sampling distribution of the sample mean, $\overline{x}$?
 
 ::: {style="text-align: center"}
-[$\overline{x} \sim N$]{.fragment style="color:#481567FF;"}[$\bigg($$\mu$,]{.fragment style="color:#481567FF;"}[$\frac{\sigma}{\sqrt{n}}$$\bigg)$]{.fragment style="color:#481567FF;"} 
+[$\overline{x} \sim N$$\bigg($$\mu$,$\frac{\sigma}{\sqrt{n}}$$\bigg)$]{.fragment style="color:#481567FF;"}
 :::
 :::
 
@@ -854,7 +853,5 @@ We are **99%** confident that the **average head length of all possums in Austra
 :::
 
 ## Practice!
-
-
 
 Please complete the **End of Class 10 Activity** in Top Hat (can be found under the Assigned tab). Collaboration is encouraged!
