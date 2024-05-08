@@ -1,0 +1,1376 @@
+---
+title: "Topic 5 - Confidence Intervals"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+## Motivating Example {.smaller}
+
+**Consider the Mario Kart example from your pre-lecture assignment:**
+
+::: fragment
+In your edition of Mario Kart there are four different cups you can race in:
+
+🍄 Mushroom Cup
+
+🌻 Flower Cup
+
+⭐ Star Cup
+
+👑 Special Cup
+
+::: fragment
+Each round, you and your friends randomly generate the cup to race in. After a handful of rounds, you're frustrated. It seems like the random generator is picking the Special Cup more often than the other three.
+
+::: fragment
+**If the random generator is picking the cups uniformly (e.g. each cup has the same probability of being selected), what proportion of the 100 rounds do you expect to be played in the Special Cup?**
+
+::: fragment
+$$ p = 0.25 $$
+:::
+:::
+:::
+:::
+
+
+## Motivating Example - The Sampling Distribution {.smaller}
+
+You decide to set up an experiment to test whether the generator is choosing the Special Cup more often than the other three cups. You play 100 rounds. On each round, you record the number of times the Special Cup was selected for the races.
+
+::: fragment
+According to the Central Limit Theorem, if $p=0.25$, what is the sampling distribution of the sample proportion, $\hat{p}$, of rounds played in the Special Cup out of the 100 total rounds played?
+
+::: columns
+::: {.column width="40%"}
+::: fragment
+$\hat{p} \sim$ [$N$]{.fragment} $\bigg($ [$0.25$]{.fragment}, [$\sqrt{\frac{0.25(1-0.25)}{100}}$]{.fragment}$\bigg)$
+:::
+:::
+
+::: {.column width="60%"}
+::: fragment
+```{r}
+#| message: false
+library(latex2exp)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(0.1634,
+                                0.2067, 
+                                0.25, 
+                                0.2933, 
+                                0.3366))
+```
+:::
+:::
+:::
+:::
+
+## Motivating Example - The Sample
+
+After playing 100 rounds, you count up that 34 rounds were played in the Special Cup.
+
+::: fragment
+What is the point estimate for the true proportion of times the Special Cup is chosen?
+
+::: fragment
+$$\hat{p} = \frac{34}{100} = 0.34$$
+:::
+:::
+
+## Motivating Example - The Probability {.smaller}
+
+If the true (theoretical) proportion of times the Special Cup is chosen is $p=0.25$, what is the probability that we would observe a sample of 100 rounds where [at least 34 rounds]{.fragment .highlight-red} result in playing in the Special Cup?
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+$$ P(\hat{p} \geq 0.34) $$
+:::
+:::
+
+::: {.column width="70%"}
+::: fragment
+```{r}
+#| message: false
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(p-3*s, p+3*s)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0.25, sd = sqrt((0.25*0.75)/100)), color = "#440154FF", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dnorm,
+            args = list(mean = 0.25, sd = sqrt((0.25*0.75)/100)),
+            fill = "#440154FF", 
+            alpha = .5,
+            xlim = c(0.34, p+3*s)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(p-2*s,p+2*s,s), 
+                     labels = c(0.1634,
+                                0.2067, 
+                                0.25, 
+                                0.2933, 
+                                0.3366))
+```
+:::
+:::
+:::
+
+##  {.smaller}
+
+#### Motivating Example - The Standardized Distribution
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+$$P(\hat{p} \geq 0.34)$$
+:::
+:::
+
+::: {.column width="70%"}
+::: fragment
+```{r}
+#| message: false
+#| fig-height: 3
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(p-3*s, p+3*s)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0.25, sd = sqrt((0.25*0.75)/100)), color = "#440154FF", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dnorm,
+            args = list(mean = 0.25, sd = sqrt((0.25*0.75)/100)),
+            fill = "#440154FF", 
+            alpha = .5,
+            xlim = c(0.34, p+3*s)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#440154FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(p-2*s,p+2*s,s), 
+                     labels = c(0.1634,
+                                0.2067, 
+                                0.25, 
+                                0.2933, 
+                                0.3366))
+```
+:::
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+$$ P\Bigg(z \geq \frac{0.34-0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}}\Bigg) $$
+:::
+
+::: fragment
+$$= P(z \geq 2.078)$$
+:::
+:::
+
+::: {.column width="70%"}
+::: fragment
+```{r}
+#| message: false
+#| fig-height: 3
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dnorm,
+            args = list(mean = 0, sd = 1),
+            fill = "#22A884FF", 
+            alpha = .5,
+            xlim = c((0.34-0.25)/s, 3)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2))
+```
+:::
+:::
+:::
+
+::: fragment
+R code: [`1-pnorm(2.078, 0, 1)`]{.fragment} [= 0.019]{.fragment}
+:::
+
+## Motivating Example - The Conclusion
+
+:::{.incremental}
+-   The previous result tells us that the probability that we would have selected the Special Cup at least 34 times if the true proportion of rounds that would theoretically be played in the Special Cup is only 0.25 is 0.019.
+
+-   This means there is **less than a 2% chance** that the random generator would have selected the Special Cup 34 or more times if the true population proportion is only 0.25.
+
+-   Based on this result, do you think it seems reasonable to conclude that the random generator is selecting cups (mushroom, flower, star, and special) in equal proportions?
+:::
+##  {.smaller}
+
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+
+1.  State the question of interest
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+
+::: fragment
+Is the proportion of rounds played in the Special Cup greater than 0.25?
+:::
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+2.  Identify the parameter of interest
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: fragment
+$p$, the true proportion of rounds selected in the Special Cup.
+:::
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+3.  [State the null and alternative hypotheses.]{.fragment .highlight-red}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+## The Hypotheses {.smaller}
+
+::: columns
+::: {.column width="50%"}
+**The Null Hypothesis**
+
+-   Establishes the claim.
+
+-   Is assumed to be the **truth** when performing a hypothesis test.
+
+-   Is always a statement of **equality**.
+
+-   Denoted $H_0$
+:::
+
+::: {.column width="50%"}
+**The Alternative Hypothesis**
+
+-   Reflects the question of interest.
+
+-   Contradicts the null hypothesis.
+
+-   Is one- or two-sided, depending on the question of interest.
+
+-   Denoted $H_A$
+:::
+:::
+
+ 
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+The hypotheses are **ALWAYS** made with respect to the **parameter**.
+:::
+
+##  {.smaller}
+
+### One-sided Alternative Hypotheses {.smaller}
+
+ 
+
+::: fragment
+**Lower one-sided**
+
+[Question of interest:]{.fragment} [Is the parameter of interest less than the claimed value?]{.fragment}
+
+::: columns
+::: {.column width="50%"}
+::: fragment
+[If testing the population proportion, $p$: $H_A: p < p_0$]{style="color:green;"}
+
+[where $p_0$ is the claimed value.]{style="color:green;"}
+:::
+:::
+
+::: {.column width="50%"}
+::: fragment
+[If testing the population mean, $\mu$: $H_A: \mu < \mu_0$]{style="color:purple;"}
+
+[where $\mu_0$ is the claimed value.]{style="color:purple;"}
+:::
+:::
+:::
+
+**Upper one-sided**
+
+[Question of interest:]{.fragment} [Is the parameter of interest greater than the claimed value?]{.fragment}
+
+::: columns
+::: {.column width="50%"}
+::: fragment
+[If testing the population proportion, $p$: $H_A: p > p_0$]{style="color:green;"}
+
+[where $p_0$ is the claimed value.]{style="color:green;"}
+:::
+:::
+
+::: {.column width="50%"}
+::: fragment
+[If testing the population mean, $\mu$: $H_A: \mu > \mu_0$]{style="color:purple;"}
+
+[where $\mu_0$ is the claimed value.]{style="color:purple;"}
+:::
+:::
+:::
+:::
+
+##  {.smaller}
+
+### Two-sided Alternative Hypotheses
+
+ 
+
+[Question of interest:]{.fragment} [Is the parameter of interest different from (not equal to) the claimed value?]{.fragment}
+
+::: columns
+::: {.column width="50%"}
+::: fragment
+[If testing the population proportion, $p$: $H_A: p \neq p_0$]{style="color:green;"}
+
+[where $p_0$ is the claimed value.]{style="color:green;"}
+:::
+:::
+
+::: {.column width="50%"}
+::: fragment
+[If testing the population mean, $\mu$: $H_A: \mu \neq \mu_0$]{style="color:purple;"}
+
+[where $\mu_0$ is the claimed value.]{style="color:purple;"}
+:::
+:::
+:::
+
+##  {.smaller}
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+
+1.  State the question of interest
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+
+Is the proportion of rounds played in the Special Cup greater than 0.25?
+:::
+:::
+:::
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+2.  Identify the parameter of interest
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+$p$, the true proportion of rounds selected in the Special Cup.
+:::
+:::
+:::
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+3.  State the null and alternative hypotheses.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: fragment
+$H_0: p = 0.25$
+:::
+
+::: fragment
+$H_A: p > 0.25$
+:::
+:::
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+4.  [Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.]{.fragment .highlight-red}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+##  {.smaller}
+
+### "As or more extreme" results, when testing $p$
+
+::: columns
+::: {.column width="\"50%"}
+[**Lower one-sided**: $H_A: p<p_0$]{.fragment fragment-index="2" style="color:green;"}
+
+[An "as or more extreme" result than our observed $\hat{p}$ would be anything]{.fragment fragment-index="3" style="color:green;"} [**less than**]{.fragment fragment-index="4" style="color:green;"} [the observed $\hat{p}$.]{.fragment fragment-index="3" style="color:green;"}
+
+ 
+
+[**Upper one-sided**: $H_A: p>p_0$]{.fragment fragment-index="5" style="color:green;"}
+
+[An "as or more extreme" result than our observed $\hat{p}$ would be anything]{.fragment fragment-index="6" style="color:green;"} [**greater than**]{.fragment fragment-index="7" style="color:green;"} [the observed $\hat{p}$.]{.fragment fragment-index="6" style="color:green;"}
+
+ 
+
+[**Two-sided**: $H_A: p\neq p_0$]{.fragment fragment-index="8" style="color:green;"}
+
+[An "as or more extreme" result than our observed $\hat{p}$ would be anything]{.fragment fragment-index="9" style="color:green;"} [**further from** $p_0$ than]{.fragment fragment-index="10" style="color:green;"} [the observed $\hat{p}$.]{.fragment fragment-index="9" style="color:green;"}
+:::
+
+::: {.column width="50%"}
+::: {.fragment fragment-index="3"}
+![](num_line_1.png)
+:::
+
+ 
+
+ 
+
+::: {.fragment fragment-index="6"}
+![](num_line_2.png)
+:::
+
+ 
+
+ 
+
+::: {.fragment fragment-index="9"}
+![](num_line_1.png)
+:::
+:::
+:::
+
+##  {.smaller}
+
+### "As or more extreme" results, when testing $\mu$
+
+::: columns
+::: {.column width="\"50%"}
+[**Lower one-sided**: $H_A: \mu<\mu_0$]{.fragment fragment-index="2" style="color:purple;"}
+
+[An "as or more extreme" result than our observed $\overline{x}$ would be anything]{.fragment fragment-index="3" style="color:purple;"} [**less than**]{.fragment fragment-index="4" style="color:purple;"} [the observed $\overline{x}$.]{.fragment fragment-index="3" style="color:purple;"}
+
+ 
+
+[**Upper one-sided**: $H_A: \mu >\mu _0$]{.fragment fragment-index="5" style="color:purple;"}
+
+[An "as or more extreme" result than our observed $\overline{x}$ would be anything]{.fragment fragment-index="6" style="color:purple;"} [**greater than**]{.fragment fragment-index="7" style="color:purple;"} [the observed $\overline{x}$.]{.fragment fragment-index="6" style="color:purple;"}
+
+ 
+
+[**Two-sided**: $H_A: \mu \neq \mu_0$]{.fragment fragment-index="8" style="color:purple;"}
+
+[An "as or more extreme" result than our observed $\overline{x}$ would be anything]{.fragment fragment-index="9" style="color:purple;"} [**further from** $\mu_0$ than]{.fragment fragment-index="10" style="color:purple;"} [the observed $\overline{x}$.]{.fragment fragment-index="9" style="color:purple;"}
+:::
+
+::: {.column width="50%"}
+::: {.fragment fragment-index="3"}
+![](num_line_3.png)
+:::
+
+ 
+
+ 
+
+::: {.fragment fragment-index="6"}
+![](num_line_4.png)
+:::
+
+ 
+
+ 
+
+::: {.fragment fragment-index="9"}
+![](num_line_3.png)
+:::
+:::
+:::
+
+##  {.smaller}
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+
+1.  State the question of interest
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+
+Is the proportion of rounds played in the Special Cup greater than 0.25?
+:::
+:::
+:::
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+2.  Identify the parameter of interest
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+$p$, the true proportion of rounds selected in the Special Cup.
+:::
+:::
+:::
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+3.  State the null and alternative hypotheses.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+$H_0: p = 0.25$
+
+$H_A: p > 0.25$
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+4.  Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+[Any sample proportion greater than or equal to $\hat{p}=0.34$ would have be considered as or more extreme than the observed statistic.]{.fragment}
+:::
+:::
+:::
+
+##  {.smaller}
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+:::
+:::
+:::
+
+::: columns
+::: {.column width="40%"}
+5.  [Determine the null distribution. (Don't forget to check the sample size conditions!)]{.fragment .highlight-red}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+## Null Distribution {.smaller}
+
+The [null distribution]{style="color:red;"} refers to the sampling distribution of the [standardized]{style="color:red;"} point estimate under the null hypothesis.
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+"Under the null hypothesis" is equivalent to saying "assuming the null hypothesis is true."
+:::
+
+::: columns
+ 
+
+::: {.column width="50%"}
+[When testing the population proportion, $p$,]{.fragment style="color:green;"}
+
+[the standardized point estimate is $z=\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}$.]{.fragment style="color:green;"}
+
+[If the sample size is sufficiently large, the null distribution of this random variable is$N(0,1)$.]{.fragment style="color:green;"}
+:::
+
+::: {.column width="50%"}
+[When testing the population mean, $\mu$,]{.fragment style="color:purple;"}
+
+[the standardized point estimate is $t=\frac{\overline{x}-\mu_0}{\frac{s}{\sqrt{n}}}$.]{.fragment style="color:purple;"}
+
+[If the sample size is sufficiently large, the null distribution of this random variable is]{.fragment style="color:purple;"} [a $t$ distribution with $n-1$ degrees of freedom.]{.fragment style="color:purple;"}
+:::
+:::
+
+##  {.smaller}
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+5.  Determine the null distribution. (Don't forget to check the sample size conditions!)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+[The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is $N(0,1)$.]{.fragment}
+:::
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+6.  [Calculate the test statistic.]{.fragment .highlight-red}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+## The Test Statistic {.smaller}
+
+[The test statistic compares the observed sampled statistic to the hypothesized value while accounting for sampling variability.]{.fragment}
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+General form a test statistic: [$\frac{\text{point estimate - hypothesized value}}{\text{standard error estimate of the point estimate}}$]{.fragment}
+:::
+
+ 
+
+::: columns
+::: {.column width="50%"}
+[When testing the population proportion, $p$, the test statistic is]{.fragment style="color:green;"}
+
+[$$z = \frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}$$]{.fragment style="color:green;"}
+:::
+
+::: {.column width="50%"}
+[When testing the population mean, $\mu$, the test statistic is]{.fragment style="color:purple;"}
+
+[$$t = \frac{\overline{x}-\mu_0}{\frac{s}{\sqrt{n}}}$$]{.fragment style="color:purple;"}
+:::
+:::
+
+##  {.smaller}
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+5.  Determine the null distribution. (Don't forget to check the sample size conditions!)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is $N(0,1)$.
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+6.  Calculate the test statistic.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+[$$z = \frac{0.34 - 0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}} = 2.078$$]{.fragment}
+:::
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+7.  [Calculate the p-value using the test statistic and null distribution.]{.fragment .highlight-red}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+## The p-value {.smaller}
+
+ 
+
+ 
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+The p-value is the **probability** of observing data as or more extreme than our current dataset according to the alternative hypothesis, [if the null hypothesis were true]{.fragment .highlight-red}.
+:::
+
+```{css, echo = FALSE}
+.right-align {
+  text-align: right
+}
+```
+
+##  {.smaller}
+
+### [The p-value when testing $p$]{style="color:green;"}
+
+::: columns
+::: {.column width="30%"}
+[**Lower one-sided**:]{.fragment fragment-index="2" style="color:green;"}
+
+[$H_A: p<p_0$]{.fragment fragment-index="2" style="color:green;"}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+[**Upper one-sided**:]{.fragment fragment-index="2" style="color:green;"}
+
+[$H_A: p>p_0$]{.fragment fragment-index="2" style="color:green;"}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+[**Two-sided**:]{.fragment fragment-index="2" style="color:green;"}
+
+[$H_A: p\neq p_0$]{.fragment fragment-index="2" style="color:green;"}
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dnorm,
+            args = list(mean = 0, sd = 1),
+            fill = "#22A884FF", 
+            alpha = .5,
+            xlim = c(-3, -1.5)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = -1.5, y = 0, xend = -1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=-2, y=0.27, label="z test statistic", size = 5)
+```
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dnorm,
+            args = list(mean = 0, sd = 1),
+            fill = "#22A884FF", 
+            alpha = .5,
+            xlim = c(1.5, 3)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = 1.5, y = 0, xend = 1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=2, y=0.27, label="z test statistic", size = 5)
+```
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dnorm,
+            args = list(mean = 0, sd = 1),
+            fill = "#22A884FF", 
+            alpha = .5,
+            xlim = c(1.5, 3)) + 
+    geom_area(stat = "function", 
+            fun = dnorm,
+            args = list(mean = 0, sd = 1),
+            fill = "#22A884FF", 
+            alpha = .5,
+            xlim = c(-3,-1.5)) +
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = 1.5, y = 0, xend = 1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=2, y=0.27, label="|z test statistic|", size = 5) + 
+  geom_segment(aes(x = -1.5, y = 0, xend = -1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=-2, y=0.27, label="-|z test statistic|", size = 5)
+```
+:::
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+R code:
+
+`pnorm(z)`
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+R code:
+
+`1-pnorm(z)`
+:::
+:::
+
+::: {.column width="35%"}
+::: fragment
+::: right-align
+R code:
+
+`2*(1-pnorm(abs(z)))`
+:::
+:::
+:::
+:::
+
+##  {.smaller}
+
+### [The p-value when testing $\mu$]{style="color:purple;"}
+
+::: columns
+::: {.column width="30%"}
+[**Lower one-sided**:]{.fragment fragment-index="2" style="color:purple;"}
+
+[$H_A: \mu<\mu_0$]{.fragment fragment-index="2" style="color:purple;"}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+[**Upper one-sided**:]{.fragment fragment-index="2" style="color:purple;"}
+
+[$H_A: \mu>\mu_0$]{.fragment fragment-index="2" style="color:purple;"}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+[**Two-sided**:]{.fragment fragment-index="2" style="color:purple;"}
+
+[$H_A: \mu\neq \mu_0$]{.fragment fragment-index="2" style="color:purple;"}
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dt, n = 101, args = list(df=50), color = "purple", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dt,
+            args = list(df=50),
+            fill = "purple", 
+            alpha = .5,
+            xlim = c(-3, -1.5)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "purple", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = -1.5, y = 0, xend = -1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=-2, y=0.27, label="t test statistic", size = 5)
+```
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dt, n = 101, args = list(df=50), color = "purple", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dt,
+            args = list(df=50),
+            fill = "purple", 
+            alpha = .5,
+            xlim = c(1.5, 3)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "purple", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = 1.5, y = 0, xend = 1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=2, y=0.27, label="t test statistic", size = 5)
+```
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dt, n = 101, args = list(df=50), color = "purple", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dt,
+            args = list(df=50),
+            fill = "purple", 
+            alpha = .5,
+            xlim = c(1.5, 3)) + 
+    geom_area(stat = "function", 
+            fun = dt,
+            args = list(df=50),
+            fill = "purple", 
+            alpha = .5,
+            xlim = c(-3,-1.5)) +
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "purple", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = 1.5, y = 0, xend = 1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=2, y=0.27, label="|t test statistic|", size = 5) + 
+  geom_segment(aes(x = -1.5, y = 0, xend = -1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=-2, y=0.27, label="-|t test statistic|", size = 5)
+```
+:::
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+R code:
+
+`pt(t, df)`
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+R code:
+
+`1-pt(t, df))`
+:::
+:::
+
+::: {.column width="35%"}
+::: fragment
+::: right-align
+R code:
+
+`2*(1-pt(abs(t), df))`
+:::
+:::
+:::
+:::
+
+##  {.smaller}
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+5.  Determine the null distribution. (Don't forget to check the sample size conditions!)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is $N(0,1)$.
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+6.  Calculate the test statistic.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+$$z = \frac{0.34 - 0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}} = 2.078$$
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+7.  Calculate the p-value using the test statistic and null distribution.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| message: false
+#| fig-height: 5
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#22A884FF", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dnorm,
+            args = list(mean = 0, sd = 1),
+            fill = "#22A884FF", 
+            alpha = .5,
+            xlim = c((0.34-0.25)/s, 3)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "#22A884FF", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+   geom_segment(aes(x = 2.078, y = 0, xend = 2.078, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=2, y=0.27, label="2.078", size = 5)
+```
+
+R code: `1-pnorm(2.078)` = 0.019
+:::
+:::
+:::
+:::
+
+##  {.smaller}
+
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
+8.  [Make a conclusion.]{.fragment .highlight-red}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+## Conclusion {.smaller}
+
+### Decisions based on a significance level
+
+[How do we decide if our p-value is small enough to say whether or not we think the null hypothesis is reasonable?]{.fragment}
+
+:::{.incremental}
+-   Typically, we will compare our p-value to a predetermined significance level, $\alpha$
+    -   $\alpha=0.05$ is the most commonly used threshold (although not the only option)
+-   The significance level represents the largest p-value that would suggest the point estimate was not simply due to random chance under the null hypothesis
+:::
+
+[If p-value $< \alpha$ then we will]{.fragment} [**reject the null hypothesis.**]{.fragment .fade-in}
+
+[If p-value $> \alpha$ then we will]{.fragment} [**fail to reject the null hypothesis.**]{.fragment .fade-in}
+
+ 
+
+[*When designing a study the significance level should be determined before collecting any data.*]{.fragment}
+
+## Conclusion {.smaller}
+
+### A statement in terms of the alternative hypothesis
+
+:::{.incremental}
+-   Using terms like "reject" and "fail to reject the null" may be confusing to novice readers.
+-   We’ll provide a more complete conclusion by providing a statement of evidence in terms of the alternative hypothesis that reflects the question of interest.
+:::
+
+::: fragment
+![](pval.png)
+:::
+
+## Conclusion {.smaller}
+
+### The four-part conclusion
+
+[A good conclusion must have **context** and should include the following four important pieces:]{.fragment}
+
+:::{.incremental}
+1.  A statement for the strength of **evidence in favor the alternative hypothesis**.
+
+2.  Whether to **reject** or **fail to reject** the null hypothesis.
+
+3.  The **point estimate** for the parameter of interest.
+
+4.  A $(1-\alpha)100\%$ confidence interval estimate for the parameter of interest.
+:::
+
+##  {.smaller}
+
+::: columns
+::: {.column width="45%"}
+**Steps in Performing a Hypothesis Test**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+**Mario Kart Example**
+:::
+:::
+
+::: nonincremental
+::: columns
+::: {.column width="45%"}
+8.  Make a conclusion.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+[There is moderately suggestive evidence that the true proportion of times the generator will select the Special Cup is greater than 0.25.]{.fragment}
+
+[At the $\alpha = 0.05$ significance level, we reject the null hypothesis.]{.fragment}
+
+[We are 95% confident that the true proportion of times the Special Cup is chosen is between 0.247 and 0.433 with a point estimate of 0.34.]{.fragment}
+:::
+:::
+:::
+
+
+
