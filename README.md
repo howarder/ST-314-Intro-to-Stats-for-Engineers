@@ -6,3 +6,4 @@
 - Topic 3 - Random Variables: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic3_RandomVariables/#/title-slide
 - Topic 4 - The Normal Distribution and Sampling Distributions: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic4_SamplingDistributions/#/title-slide
 - Topic 5 - Confidence Intervals: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic5_ConfidenceIntervals/#/title-slide
+- Topic 6 - Introduction to Hypothesis Testing: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic6_HypothesisTestingIntro/#/title-slide
