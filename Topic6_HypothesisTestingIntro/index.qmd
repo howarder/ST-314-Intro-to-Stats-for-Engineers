@@ -1,5 +1,5 @@
 ---
-title: "Topic 5 - Confidence Intervals"
+title: "Topic 6 - Intro to Hypothesis Testing"
 format: 
   revealjs:
     theme: OSU.scss
@@ -41,10 +41,9 @@ $$ p = 0.25 $$
 :::
 :::
 
-
 ## Motivating Example - The Sampling Distribution {.smaller}
 
-You decide to set up an experiment to test whether the generator is choosing the Special Cup more often than the other three cups. You play 100 rounds. On each round, you record the number of times the Special Cup was selected for the races.
+You decide to set up an experiment to test whether the generator is choosing the Special Cup more often than the other three cups. You play 100 rounds and record the number of times the Special Cup was selected for the races.
 
 ::: fragment
 According to the Central Limit Theorem, if $p=0.25$, what is the sampling distribution of the sample proportion, $\hat{p}$, of rounds played in the Special Cup out of the 100 total rounds played?
@@ -226,13 +225,14 @@ R code: [`1-pnorm(2.078, 0, 1)`]{.fragment} [= 0.019]{.fragment}
 
 ## Motivating Example - The Conclusion
 
-:::{.incremental}
+::: incremental
 -   The previous result tells us that the probability that we would have selected the Special Cup at least 34 times if the true proportion of rounds that would theoretically be played in the Special Cup is only 0.25 is 0.019.
 
 -   This means there is **less than a 2% chance** that the random generator would have selected the Special Cup 34 or more times if the true population proportion is only 0.25.
 
 -   Based on this result, do you think it seems reasonable to conclude that the random generator is selecting cups (mushroom, flower, star, and special) in equal proportions?
 :::
+
 ##  {.smaller}
 
 ::: columns
@@ -1295,7 +1295,7 @@ R code: `1-pnorm(2.078)` = 0.019
 
 [How do we decide if our p-value is small enough to say whether or not we think the null hypothesis is reasonable?]{.fragment}
 
-:::{.incremental}
+::: incremental
 -   Typically, we will compare our p-value to a predetermined significance level, $\alpha$
     -   $\alpha=0.05$ is the most commonly used threshold (although not the only option)
 -   The significance level represents the largest p-value that would suggest the point estimate was not simply due to random chance under the null hypothesis
@@ -1313,7 +1313,7 @@ R code: `1-pnorm(2.078)` = 0.019
 
 ### A statement in terms of the alternative hypothesis
 
-:::{.incremental}
+::: incremental
 -   Using terms like "reject" and "fail to reject the null" may be confusing to novice readers.
 -   We’ll provide a more complete conclusion by providing a statement of evidence in terms of the alternative hypothesis that reflects the question of interest.
 :::
@@ -1328,7 +1328,7 @@ R code: `1-pnorm(2.078)` = 0.019
 
 [A good conclusion must have **context** and should include the following four important pieces:]{.fragment}
 
-:::{.incremental}
+::: incremental
 1.  A statement for the strength of **evidence in favor the alternative hypothesis**.
 
 2.  Whether to **reject** or **fail to reject** the null hypothesis.
@@ -1371,6 +1371,3 @@ R code: `1-pnorm(2.078)` = 0.019
 :::
 :::
 :::
-
-
-
