@@ -1,0 +1,641 @@
+---
+title: "Topic 7: Errors in Hypothesis Testing & Hypothesis Testing for the Difference in Means"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+getwd()
+```
+
+
+
+
+# Key Concepts
+
+## Hypothesis Testing Decision Errors {.smaller}
+
+::: fragment
+When performing a hypothesis test, we are using [sampled data]{style="color:red;"} to draw a conclusion about the population. It's possible that our conclusion will be incorrect.
+:::
+
+::: fragment
+![](errors.png){width="75%"}
+:::
+
+:::{.incremental}
+-   What is the probability of making a **Type 1 Error**? [$\alpha$, the predetermined significance level]{.fragment}
+
+-   Determining the probability of making a **Type 2 Error** is not as straight forward. *We won't focus on this. We will focus on...*
+
+-   the fact that Type 1 and Type 2 errors are related.
+
+    -   Decreasing the chance of making a Type 1 Error (i.e. decreasing $\alpha$), will increase the chance of making a Type 2 Error.
+    
+:::
+
+## Practice! 🎩
+
+Please answer the Hypothesis Testing Decision Error question in the **Classroom** tab on Top Hat.
+
+## Difference of Two Means
+
+::: fragment
+**Motivating Example:** A study is done by a community group to determine if the students at two different universities (A and B) graduate having taken a different number of math courses, on average.
+:::
+
+::: fragment
+**The data:** To answer this question, the group randomly samples students from each university.
+
+-   University A samples 46 graduates. Their average is four math classes with a standard deviation of 1.5 math classes.
+
+-   University B samples 32 graduates. Their average is 3.5 math classes with a standard deviation of one math class.
+:::
+
+# Estimation
+
+##  {.smaller}
+
+### A Confidence Interval for the Difference in Means, $\mu_1-\mu_2$
+
+:::{.incremental}
+1.  Calculate the point estimate, [$\overline{x}_1 - \overline{x}_2$]{.fragment style="color:red;"}
+
+2.  Identify the confidence level, $CL$, and the error associated with this confidence level $100-CL$.
+
+3.  Determine the critical value, $t^*$, by finding the $CL + \frac{100-CL}{2}$ percentile on the t distribution with [$\nu$]{style="color:red;"} degrees of freedom (df).
+
+    -   [$\nu$ represents the Satterthwaite degrees of freedom (see next slide)]{style="color:red;"}
+
+4.  Calculate the standard error estimate from the observed sample:
+
+[$$\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$$]{.fragment style="color:red;"}
+
+:::
+
+##  {.smaller}
+
+### Sattherthwaite Degrees of Freedom, $\nu$
+
+<iframe src="https://www.desmos.com/calculator/pz3s5ezbrn" width="1000" height="500">
+
+</iframe>
+
+*Link to this calculator and an R script alternative is available in the Week 7 Canvas module.*
+
+## 
+
+### Finding *t* Critical Values using `qt()`
+
+ 
+
+`qt(p, df)` calculates the value on a *t* distribution curve with `df` degrees of freedom that has an area of `p` to the left of it.
+
+ 
+
+::: fragment
+**Example:** To find the critical value needed to construct a 99% confidence interval for the difference in means when $s_1 = 1.5$, $n_1 = 46$, $s_2 = 1$, $n_2 = 32$:
+
+ 
+
+[`qt(0.995, 75.897)` = 2.642]{.fragment}
+:::
+
+## 
+
+### Confidence Interval Construction for $\mu_1-\mu_2$
+
+ 
+
+ 
+
+::: {style="text-align: center"}
+[($\overline{x}_1 - \overline{x}_2)$]{.fragment} [$\pm$]{.fragment} [$t^*_{\nu}$]{.fragment} [$\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$]{.fragment}
+:::
+
+# Hypothesis Testing
+
+## 
+
+### Testing for a Difference in Means
+
+:::{.incremental}
+
+-   We can perform a formal hypothesis test to answer questions concerning a difference in two population means.
+
+-   We'll use the same steps introduced in our Introduction to Hypothesis Testing notes, but some of the details will differ in this new scenario.
+
+:::
+
+## 
+
+### 1. State the question of interest
+
+ 
+
+[Motivating Example:]{.fragment style="color:blue;"}
+
+[Is there a **difference** in the average number of math courses taken between graduates at University A and University B?]{.fragment style="color:blue;"}
+
+## 
+
+### 2. Identify the parameter of interest
+
+ 
+
+[Motivating Example:]{.fragment style="color:blue;"}
+
+[The difference in the average number of math courses taken, $\mu_A - \mu_B$]{.fragment style="color:blue;"}
+
+##  {.smaller}
+
+### 3. State the null and alternative hypotheses
+
+**Null hypothesis**
+
+[$$H_0: \mu_1 = \mu_2$$]{.fragment}
+
+**Alternative hypothesis:**
+
+[*This depends on the question of interest.*]{.fragment}
+
+::: fragment
+::: columns
+::: {.column width="33%"}
+**Lower one-sided**
+
+[Question of interest: Is the mean of population 1 less than the mean of population 2?]{.fragment}
+
+[$H_A: \mu_1 <\mu_2$]{.fragment}
+:::
+
+::: {.column width="33%"}
+**Upper one-sided**
+
+[Question of interest: Is the mean of population 1 greater than the mean of population 2?]{.fragment}
+
+[$H_A: \mu_1 >\mu_2$]{.fragment}
+:::
+
+::: {.column width="33%"}
+**Two-sided**
+
+[Question of interest: Is the mean of population 1 different from the mean of population 2?]{.fragment}
+
+[$H_A: \mu_1 \neq\mu_2$]{.fragment}
+:::
+:::
+:::
+
+## 
+
+### 3. State the null and alternative hypotheses
+
+ 
+
+[Motivating Example:]{.fragment style="color:blue;"}
+
+ 
+
+[$H_0:$]{.fragment style="color:blue;"}[$\mu_A = \mu_B$]{.fragment style="color:blue;"}
+
+ 
+
+[$H_0:$]{.fragment style="color:blue;"}[$\mu_A \neq \mu_B$]{.fragment style="color:blue;"}
+
+##  {.smaller}
+
+::: nonincremental
+**4. Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.**
+:::
+
+::: columns
+::: {.column width="\"50%"}
+ 
+
+[**Lower one-sided**: $H_A: \mu_1<\mu_2$]{.fragment fragment-index="2"}
+
+ 
+
+ 
+
+ 
+
+[**Upper one-sided**: $H_A: \mu_1 >\mu _1$]{.fragment fragment-index="4"}
+
+ 
+
+ 
+
+ 
+
+ 
+
+[**Two-sided**: $H_A: \mu_1 \neq \mu_2$]{.fragment fragment-index="6"}
+:::
+
+::: {.column width="50%"}
+::: {.fragment fragment-index="3"}
+![](lower.png)
+:::
+
+ 
+
+ 
+
+::: {.fragment fragment-index="5"}
+![](upper.png)
+:::
+
+ 
+
+ 
+
+::: {.fragment fragment-index="7"}
+![](two.png)
+:::
+:::
+:::
+
+##  {.smaller}
+
+::: nonincremental
+**4. Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.**
+:::
+
+ 
+
+[Motivating Example:]{.fragment style="color:blue;"}
+
+ 
+
+[$\overline{x}_A - \overline{x}_B = 4 - 3.5 = 0.5$]{.fragment style="color:blue;"}
+
+ 
+
+[Any difference in sample means greater than 0.5 in magnitude would be considered as or more extreme than the observed sampled statistic.]{.fragment style="color:blue;"}
+
+## 5. Determine the Null Distribution {.smaller}
+
+ 
+
+[If the sample sizes are sufficiently large, under the null hypothesis, the distribution of the test statistic used in testing the difference between two population means is a]{.fragment}
+
+[t distribution with $\nu$ degrees of freedom.]{.fragment style="color:red;"}
+
+[$\nu$ represents the Satterthwaite degrees of freedom.]{.fragment}
+
+ 
+
+[How large do the samples need to be?]{.fragment}
+
+:::{.incremental}
+
+-   If both $n_1\geq 30$ and $n_2 \geq 30$, we can move forward.
+
+-   If either $n_1 < 30$ or $n_2 < 30$, we need to look at the **sampled distribution(s)** of the small sample(s). If there are no clear outliers or strong skewness in the sampled data, we can move forward. If either sampled distribution suggests skewness or outliers, we should not proceed.
+:::
+
+## 5. Determine the Null Distribution {.smaller}
+
+::: columns
+::: {.column width="50%"}
+[Motivating Example:]{.fragment style="color:blue;"}
+
+[Are the sample sizes sufficiently large?]{.fragment style="color:blue;"}
+
+[Yes, both $n_1\geq$ and $n_2\geq30$.]{.fragment style="color:blue;"}
+
+ 
+
+[So the null distribution is a]{.fragment style="color:blue;"}[**t distribution with 75.897 degrees of freedom**.]{.fragment style="color:blue;"}
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| message: false
+#| fig-height: 6
+
+library(latex2exp)
+
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dt, n = 101, args = list(df=75.897), color = "blue", linewidth = 2) + 
+  # geom_area(stat = "function", 
+  #           fun = dt,
+  #           args = list(df=50),
+  #           fill = "purple", 
+  #           alpha = .5,
+  #           xlim = c(-3, -1.5)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "blue", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2))
+  # geom_segment(aes(x = -1.5, y = 0, xend = -1.5, yend = 0.25), 
+  #              size = 1.5) + 
+  # geom_text(x=-2, y=0.27, label="t test statistic", size = 5)
+```
+:::
+:::
+:::
+
+##  {.smaller}
+
+### 6. Calculate the test statistic
+
+[When testing the difference in population means, $\mu_1$ vs. $\mu_2$, the test statistic is]{.fragment}
+
+ 
+
+[$$t = \frac{\overline{x}_1-\overline{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$]{.fragment}
+
+ 
+
+[Motivating Example:]{.fragment style="color:blue;"}
+
+[$$t = \frac{4-3}{\sqrt{\frac{1.5^2}{46} + \frac{1^2}{32}}} = 1.766$$]{.fragment style="color:blue;"}
+
+##  {.smaller}
+
+### 7. Calculate the p-value using the test statistic and null distribution.
+
+::: columns
+::: {.column width="30%"}
+[**Lower one-sided**:]{.fragment fragment-index="2"}
+
+[$H_A: \mu_1<\mu_1$]{.fragment fragment-index="2"}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+[**Upper one-sided**:]{.fragment fragment-index="2"}
+
+[$H_A: \mu_1>\mu_2$]{.fragment fragment-index="2"}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+[**Two-sided**:]{.fragment fragment-index="2"}
+
+[$H_A: \mu_1\neq \mu_2$]{.fragment fragment-index="2"}
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dt, n = 101, args = list(df=50), color = "purple", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dt,
+            args = list(df=50),
+            fill = "purple", 
+            alpha = .5,
+            xlim = c(-3, -1.5)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "purple", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = -1.5, y = 0, xend = -1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=-2, y=0.27, label="t test statistic", size = 5)
+```
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dt, n = 101, args = list(df=50), color = "purple", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dt,
+            args = list(df=50),
+            fill = "purple", 
+            alpha = .5,
+            xlim = c(1.5, 3)) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "purple", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = 1.5, y = 0, xend = 1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=2, y=0.27, label="t test statistic", size = 5)
+```
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+```{r}
+#| message: false
+
+library(latex2exp)
+p <- 0.25
+s <- sqrt((p*(1-p))/100)
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dt, n = 101, args = list(df=50), color = "purple", linewidth = 2) + 
+  geom_area(stat = "function", 
+            fun = dt,
+            args = list(df=50),
+            fill = "purple", 
+            alpha = .5,
+            xlim = c(1.5, 3)) + 
+    geom_area(stat = "function", 
+            fun = dt,
+            args = list(df=50),
+            fill = "purple", 
+            alpha = .5,
+            xlim = c(-3,-1.5)) +
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "purple", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = 1.5, y = 0, xend = 1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=2, y=0.27, label="|t test statistic|", size = 5) + 
+  geom_segment(aes(x = -1.5, y = 0, xend = -1.5, yend = 0.25), 
+               size = 1.5) + 
+  geom_text(x=-2, y=0.27, label="-|t test statistic|", size = 5)
+```
+:::
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+::: fragment
+R code:
+
+`pt(t, df)`
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+::: fragment
+R code:
+
+`1-pt(t, df))`
+:::
+:::
+
+::: {.column width="35%"}
+::: fragment
+::: right-align
+R code:
+
+`2*(1-pt(abs(t), df))`
+:::
+:::
+:::
+:::
+
+[where `df` is the Satterthwaite degrees of freedom, $\nu$]{.fragment}
+
+##  {.smaller}
+
+### 7. Calculate the p-value using the test statistic and null distribution.
+
+[Motivating Example:]{.fragment style="color:blue;"}
+
+ 
+
+::: fragment
+```{r}
+#| message: false
+#| fig-height: 4
+
+library(latex2exp)
+
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dt, n = 101, args = list(df=75.897), color = "blue", linewidth = 2) + 
+  geom_area(stat = "function",
+            fun = dt,
+            args = list(df=75.897),
+            fill = "blue",
+            alpha = .5,
+            xlim = c(-3, -1.766)) +
+  geom_area(stat = "function",
+            fun = dt,
+            args = list(df=75.897),
+            fill = "blue",
+            alpha = .5,
+            xlim = c(1.766, 3)) +
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18, color = "blue", face = "bold")) + 
+  scale_y_continuous(breaks = NULL) + 
+  scale_x_continuous(breaks = seq(-2,2,1), 
+                     labels = c(-2,
+                                -1, 
+                                0, 
+                                1, 
+                                2)) + 
+  geom_segment(aes(x = -1.766, y = 0, xend = -1.766, yend = 0.25), 
+                size = 1.5) + 
+  geom_text(x=-2, y=0.27, label="-1.766", size = 5) + 
+  geom_segment(aes(x = 1.766, y = 0, xend = 1.766, yend = 0.25), 
+                size = 1.5) + 
+  geom_text(x=2, y=0.27, label="1.766", size = 5)
+```
+:::
+
+[[`2*(1-pt(abs(1.766), 75.897))` = 0.0814]{.fragment}]{.fragment}
+
+## 8. Make a conclusion
+
+Write a 4-part conclusion. The conclusion should be written in the context of the problem and contain the following components:
+
+:::{.incremental}
+
+1.  A statement for the strength of evidence in favor the alternative hypothesis.
+
+2.  Whether to reject or fail to reject the null hypothesis.
+
+3.  The point estimate for the parameter of interest.
+
+4.  A $(1-\alpha)100\%$ confidence interval estimate for the parameter of interest.
+
+:::
+
+## 8. Make a conclusion {.smaller}
+
+### A statement in terms of the alternative hypothesis
+
+::: incremental
+-   Using terms like "reject" and "fail to reject the null" may be confusing to novice readers.
+-   We’ll provide a more complete conclusion by providing a statement of evidence in terms of the alternative hypothesis that reflects the question of interest.
+:::
+
+::: fragment
+![](pval.png)
+:::
+
+## 8. Make a conclusion
+
+[Motivating Example: Write a 4-part conclusion with a $\alpha=0.01$ significance level.]{.fragment style="color:blue;"}
+
+[1. There is *slightly suggestive* evidence that the graduates at University A and University B take a different number of math courses, on average.]{.fragment style="color:blue;"}
+
+[2. At the $\alpha=0.01$ significance level, we fail to reject the null hypothesis.]{.fragment style="color:blue;"}
+
+[3. and 4. We are 99% confident that the students at University A take 0.248 fewer to 1.248 more math courses than students at University B on average, with an estimate difference in the average number of math courses of 0.5.]{.fragment style="color:blue;"}
