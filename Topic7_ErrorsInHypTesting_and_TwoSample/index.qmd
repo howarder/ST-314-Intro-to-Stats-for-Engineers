@@ -1,5 +1,5 @@
 ---
-title: "Topic 7: Errors in Hypothesis Testing & Hypothesis Testing for the Difference in Means"
+title: "Topic 7: Errors in Hypothesis Testing & Inference for the Difference in Means"
 format: 
   revealjs:
     theme: OSU.scss
