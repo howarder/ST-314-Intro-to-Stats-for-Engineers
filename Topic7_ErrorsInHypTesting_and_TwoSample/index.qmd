@@ -11,7 +11,6 @@ editor: visual
 
 ```{r}
 library(tidyverse)
-getwd()
 ```
 
 
