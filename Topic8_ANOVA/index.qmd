@@ -1,0 +1,331 @@
+---
+title: "Topic 8: Analysis of Variance (ANOVA)"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+##  {.smaller}
+
+### Motivating Exercises
+
+In each of the side-by-side boxplots below, you'll see data sampled from three different populations. The red dot in each plot corresponds to the sample mean.
+
+::: columns
+::: {.column width="50%"}
+::: fragment
+**Example 1**
+
+```{r}
+#| fig-height: 3
+set.seed(1893249793)
+
+mu_1 <- 25
+mu_2 <- 35
+mu_3 <- 15
+
+s_1 <- 50
+s_2 <- 3
+
+samp1 <- rnorm(50, mu_1, s_1)
+samp2 <- rnorm(50, mu_2, s_1)
+samp3 <- rnorm(50, mu_3, s_1)
+
+plot1_dat <- data.frame("sample" = c(rep("Sample 1", 50), rep("Sample 2", 50), rep("Sample 3", 50)),
+                        "data" = c(samp1, samp2, samp3))
+
+plot1 <- ggplot(plot1_dat, aes(x = sample, y = data)) + 
+  geom_boxplot() + 
+  stat_summary(fun.y=mean, geom="point", color = "red", size=3) +
+  labs(x = "", y = "") + 
+  theme(axis.text = element_text(size = 16))
+
+plot1
+
+```
+:::
+
+[🎩 In Top Hat, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.]{.fragment}
+:::
+
+::: {.column width="50%"}
+::: fragment
+**Example 2**
+
+```{r}
+#| fig-height: 3
+set.seed(1893249793)
+
+samp4 <- rnorm(50, mu_1, s_2)
+samp5 <- rnorm(50, mu_2, s_2)
+samp6 <- rnorm(50, mu_3, s_2)
+
+plot2_dat <- data.frame("sample" = c(rep("Sample 4", 50), rep("Sample 5", 50), rep("Sample 6", 50)),
+                        "data" = c(samp4, samp5, samp6))
+
+plot2 <- ggplot(plot2_dat, aes(x = sample, y = data)) + 
+  geom_boxplot() + 
+  stat_summary(fun.y=mean, geom="point", color = "red", size=3) +
+  labs(x = "", y = "") + 
+  theme(axis.text = element_text(size = 16))
+
+plot2
+```
+:::
+
+[🎩 Again, in Top Hat, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.]{.fragment}
+:::
+:::
+
+## Analysis of Variance (ANOVA) {.smaller}
+
+-   An ANOVA is a holistic procedure used to test whether there is evidence that [at least one pair of populations]{.fragment .highlight-red} have different means when comparing more than two populations.
+
+-   Why is it called an *Analysis of **Variance*** if the goal is to compare means?
+
+    -   In an ANOVA, we'll compare the variability *across* groups to the variability *within* groups.
+
+::: fragment
+```{r}
+#| fig-height: 3
+plot2
+```
+:::
+
+## Notation
+
+-   $k=$ [number of groups (i.e. number of populations of interest)]{.fragment}
+
+-   $n=$ [overall sample size (i.e. size of all samples combined)]{.fragment}
+
+-   $\overline{x}=$ [overall sample mean (i.e. mean of all observations ignoring groups)]{.fragment}
+
+-   $n_i=$ [sample size of the $i$th group]{.fragment}
+
+-   $\mu_i=$ [population mean of the $i$th group]{.fragment}
+
+-   $\overline{x}_i=$ [sample mean of the $i$th group]{.fragment}
+
+-   $s_i=$ [sample standard deviation of the $i$th group]{.fragment}
+
+## ANOVA Procedure Steps
+
+ 
+
+::: fragment
+### 1. Question of interest
+
+[Are there differences in the means of the multiple populations?]{.fragment}
+:::
+
+ 
+
+::: fragment
+### 2. Parameters of interest
+
+[$\mu_1, \mu_2, ..., \mu_k$, the population means of the $k$ groups]{.fragment}
+:::
+
+## ANOVA Procedure Steps
+
+ 
+
+### 3. Null and Alternative Hypotheses
+
+ 
+
+[$H_0: \mu_1 = \mu_2 = ... = \mu_k$]{.fragment}
+
+ 
+
+[$H_A:$]{.fragment}[[At least one]{.fragment .highlight-red} mean is different]{.fragment}
+
+##  {.smaller}
+
+### ANOVA Procedure Steps
+
+#### 4. The $F$ test statistic
+
+[In order to answer our question of interest, we must compare the variability between groups to the variability within groups.]{.fragment}
+
+::: fragment
+::: columns
+::: {.column width="45%"}
+**Mean Square Between Groups (MSG)**
+
+-   Measures the average variability [between]{style="color:red;"} groups
+
+[$$MSG = \frac{1}{k-1}\sum \limits_{i=1}^k n_i (\overline{x}_i - \overline{x})^2$$]{.fragment}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+**Mean Square Error (MSE)**
+
+-   Measures the average variability [within]{style="color:red;"} groups
+
+[$$MSE = \frac{1}{n-k}\sum \limits_{i=1}^k (n_i-1)s_i^2 $$]{.fragment}
+:::
+:::
+:::
+
+::: fragment
+The test statistic is the ratio of the average between group variability to the average within group variability $$F = \frac{MSG}{MSE}$$
+:::
+
+##  {.smaller}
+
+### ANOVA Procedure Steps
+
+#### 5. Determine the Null Distribution
+
+[There are two conditions that need to be met in order to assume the upcoming null distribution:]{.fragment}
+
+:::{.incremental}
+1.  The samples sizes must be sufficiently large.
+
+-   If $n_i\geq 30$, we can move forward.
+
+-   If any of the sample sizes are less than 30, we need to look at the sampled distribution(s) of the small sample(s). If there are no clear outliers or strong skewness in the sampled data, we can move forward.
+
+2.  We need to be able to assume constant variance across the groups.
+
+-   To assess this condition, we should use the sampled distributions and make a judgement as to whether the standard deviations are similar between samples.
+:::
+
+[If the above conditions are met, under the null hypothesis, the test statistic, $F = \frac{MSG}{MSE}$, follows an [*F* distribution with $k-1$ and $n-k$ degrees of freedom.]{.fragment .highlight-red}]{.fragment}
+
+##  {.smaller}
+
+### ANOVA Procedure Steps
+
+#### 5. Determine the Null Distribution
+
+[If the above conditions are met, under the null hypothesis, the test statistic, $F = \frac{MSG}{MSE}$, follows an *F* distribution with $k-1$ and $n-k$ degrees of freedom.]{.fragment}
+
+::: columns
+::: {.column width="60%"}
+::: fragment
+```{r}
+ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
+  stat_function(fun = df, n = 101, args = list(df1 = 4, df2=98), color = "darkgreen", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() 
+```
+:::
+:::
+
+::: {.column width="40%"}
+:::{.incremental}
+-   The $F$ distribution is right skewed whose support is $(0, \infty)$
+
+-   Its shape is defined by **two** values:
+
+    -   The numerator degrees of freedom, $k-1$
+
+    -   The denonminator degrees of freedom, $n-k$
+
+-   Denoted: [$F_{k-1, n-k}$]{.fragment}
+:::
+:::
+:::
+
+## ANOVA Procedure Steps
+
+ 
+
+#### 6. Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.
+
+ 
+
+[Any ratio of $MSG$ to $MSE$ greater than the calculated $F$ test statistic would be considered "as or more extreme" than our observed data.]{.fragment}
+
+::: fragment
+![](f.png)
+:::
+
+## ANOVA Procedure Steps {.smaller}
+
+### 7. Calculate the p-value
+
+[Recall that the p-value represents the probability of observing data as or more extreme than our current dataset according to the alternative hypothesis, if the null hypothesis were true.]{.fragment}
+
+::: columns
+::: {.column width="60%"}
+::: fragment
+```{r}
+#| fig-height: 3
+ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
+  stat_function(fun = df, n = 101, args = list(df1 = 4, df2=98), color = "darkgreen", linewidth = 2) + 
+  ylab("") +
+  xlab("") + 
+  theme_bw() +
+  geom_area(stat = "function", 
+            fun = df,
+            args = list(df1 = 4, df2=98),
+            fill = "darkgreen", 
+            alpha = .5,
+            xlim = c(1.5, 6)) + 
+  geom_segment(aes(x = 1.5, y = 0, xend = 1.5, yend = 0.4), 
+               size = 1.5) + 
+  geom_text(x=2, y=0.45, label="F test statistic", size =7)
+```
+:::
+:::
+
+::: {.column width="40%"}
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+In an ANVOA *F* test, the p-value is always the area under the null distribution curve to the **right** of the *F* test statistic.
+:::
+:::
+:::
+
+::: fragment
+**R code:** [`1-pf(F, k-1, n-k)`]{.fragment}
+:::
+
+## ANOVA Procedure Steps
+
+### 8. Make a conclusion
+
+[Write a 2-part conclusion (we'll exclude a single point estimate and confidence interval). The conclusion should be written in the context of the problem and contain the following components:]{.fragment}
+
+:::{.incremental}
+
+1.  A statement for the strength of evidence in favor the alternative hypothesis.
+
+2.  Whether to reject or fail to reject the null hypothesis.
+:::
+
+## Practice! 
+
+Complete the Class 15 Practice - ANOVA assignment in Top Hat.
+
+
