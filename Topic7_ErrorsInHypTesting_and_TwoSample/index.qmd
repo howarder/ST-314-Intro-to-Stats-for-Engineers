@@ -13,9 +13,6 @@ editor: visual
 library(tidyverse)
 ```
 
-
-
-
 # Key Concepts
 
 ## Hypothesis Testing Decision Errors {.smaller}
@@ -28,7 +25,7 @@ When performing a hypothesis test, we are using [sampled data]{style="color:red;
 ![](errors.png){width="75%"}
 :::
 
-:::{.incremental}
+::: incremental
 -   What is the probability of making a **Type 1 Error**? [$\alpha$, the predetermined significance level]{.fragment}
 
 -   Determining the probability of making a **Type 2 Error** is not as straight forward. *We won't focus on this. We will focus on...*
@@ -36,7 +33,6 @@ When performing a hypothesis test, we are using [sampled data]{style="color:red;
 -   the fact that Type 1 and Type 2 errors are related.
 
     -   Decreasing the chance of making a Type 1 Error (i.e. decreasing $\alpha$), will increase the chance of making a Type 2 Error.
-    
 :::
 
 ## Practice! 🎩
@@ -63,7 +59,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
 ### A Confidence Interval for the Difference in Means, $\mu_1-\mu_2$
 
-:::{.incremental}
+::: incremental
 1.  Calculate the point estimate, [$\overline{x}_1 - \overline{x}_2$]{.fragment style="color:red;"}
 
 2.  Identify the confidence level, $CL$, and the error associated with this confidence level $100-CL$.
@@ -75,7 +71,6 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 4.  Calculate the standard error estimate from the observed sample:
 
 [$$\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$$]{.fragment style="color:red;"}
-
 :::
 
 ##  {.smaller}
@@ -125,7 +120,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
  
 
 ::: {style="text-align: center"}
-[($4-3.5)$]{.fragment style="color:blue;"} [$\pm$]{.fragment style="color:blue;"} [$2.645$]{.fragment style="color:blue;"} [$\sqrt{\frac{1.5^2}{46}+\frac{1^2}{32}}$]{.fragment style="color:blue;"}[$= (-0.248, 1.248)$]{.fragment style="color:blue;"}
+[($4-3.5)$]{.fragment style="color:blue;"} [$\pm$]{.fragment style="color:blue;"} [$2.645$]{.fragment style="color:blue;"} [$\sqrt{\frac{1.5^2}{46}+\frac{1^2}{32}}$$= (-0.248, 1.248)$]{.fragment style="color:blue;"}
 :::
 
  
@@ -138,12 +133,10 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
 ### Testing for a Difference in Means
 
-:::{.incremental}
-
+::: incremental
 -   We can perform a formal hypothesis test to answer questions concerning a difference in two population means.
 
 -   We'll use the same steps introduced in our Introduction to Hypothesis Testing notes, but some of the details will differ in this new scenario.
-
 :::
 
 ## 
@@ -216,11 +209,11 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
  
 
-[$H_0:$]{.fragment style="color:blue;"}[$\mu_A = \mu_B$]{.fragment style="color:blue;"}
+[$H_0:$$\mu_A = \mu_B$]{.fragment style="color:blue;"}
 
  
 
-[$H_0:$]{.fragment style="color:blue;"}[$\mu_A \neq \mu_B$]{.fragment style="color:blue;"}
+[$H_0:$$\mu_A \neq \mu_B$]{.fragment style="color:blue;"}
 
 ##  {.smaller}
 
@@ -240,7 +233,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
  
 
-[**Upper one-sided**: $H_A: \mu_1 >\mu _1$]{.fragment fragment-index="4"}
+[**Upper one-sided**: $H_A: \mu_1 >\mu _2$]{.fragment fragment-index="4"}
 
  
 
@@ -308,8 +301,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
 [How large do the samples need to be?]{.fragment}
 
-:::{.incremental}
-
+::: incremental
 -   If both $n_1\geq 30$ and $n_2 \geq 30$, we can move forward.
 
 -   If either $n_1 < 30$ or $n_2 < 30$, we need to look at the **sampled distribution(s)** of the small sample(s). If there are no clear outliers or strong skewness in the sampled data, we can move forward. If either sampled distribution suggests skewness or outliers, we should not proceed.
@@ -327,7 +319,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
  
 
-[So the null distribution is a]{.fragment style="color:blue;"}[**t distribution with 75.897 degrees of freedom**.]{.fragment style="color:blue;"}
+[So the null distribution is a**t distribution with 75.897 degrees of freedom**.]{.fragment style="color:blue;"}
 :::
 
 ::: {.column width="50%"}
@@ -379,7 +371,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 [Motivating Example:]{.fragment style="color:blue;"}
 
-[$$t = \frac{4-3}{\sqrt{\frac{1.5^2}{46} + \frac{1^2}{32}}} = 1.766$$]{.fragment style="color:blue;"}
+[$$t = \frac{4-3.5}{\sqrt{\frac{1.5^2}{46} + \frac{1^2}{32}}} = 1.766$$]{.fragment style="color:blue;"}
 
 ##  {.smaller}
 
@@ -389,7 +381,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 ::: {.column width="30%"}
 [**Lower one-sided**:]{.fragment fragment-index="2"}
 
-[$H_A: \mu_1<\mu_1$]{.fragment fragment-index="2"}
+[$H_A: \mu_1<\mu_2$]{.fragment fragment-index="2"}
 :::
 
 ::: {.column width="5%"}
@@ -612,14 +604,13 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 ```
 :::
 
-[[`2*(1-pt(abs(1.766), 75.897))` = 0.0814]{.fragment}]{.fragment}
+[`2*(1-pt(abs(1.766), 75.897))` = 0.0814]{.fragment}
 
 ## 8. Make a conclusion
 
 Write a 4-part conclusion. The conclusion should be written in the context of the problem and contain the following components:
 
-:::{.incremental}
-
+::: incremental
 1.  A statement for the strength of evidence in favor the alternative hypothesis.
 
 2.  Whether to reject or fail to reject the null hypothesis.
@@ -627,7 +618,6 @@ Write a 4-part conclusion. The conclusion should be written in the context of th
 3.  The point estimate for the parameter of interest.
 
 4.  A $(1-\alpha)100\%$ confidence interval estimate for the parameter of interest.
-
 :::
 
 ## 8. Make a conclusion {.smaller}
@@ -652,7 +642,6 @@ Write a 4-part conclusion. The conclusion should be written in the context of th
 [2. At the $\alpha=0.01$ significance level, we fail to reject the null hypothesis.]{.fragment style="color:blue;"}
 
 [3. and 4. We are 99% confident that the students at University A take 0.248 fewer to 1.248 more math courses than students at University B on average, with an estimate difference in the average number of math courses of 0.5.]{.fragment style="color:blue;"}
-
 
 ## Practice! 🎩
 
