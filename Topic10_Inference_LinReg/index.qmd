@@ -1,0 +1,269 @@
+---
+title: "Topic 10 - Inference for Linear Regression"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+library(datasets)
+ 
+state <- state.x77 |>
+    as_tibble(rownames = "States")
+
+set.seed(7493410)
+
+keep <- sample(1:50, 30, replace = FALSE)
+
+state_30 <- state[keep,]
+state_30 <- state_30 |>
+  rename("LifeExp"=`Life Exp`)
+mod <- lm(LifeExp ~ Illiteracy, data = state_30)
+
+```
+
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+## Inference for Linear Regression {.smaller}
+
+[Recall that if we're using a **sample** of data to try and model the true relationship between two quantitative variables, then the intercept, $b_0$, and slope, $b_1$, estimates are *random variables*.]{.fragment}
+
+::: columns
+::: column
+::: fragment
+```{r}
+#| fig-width: 5
+#| fig-height: 4
+state_30 |>
+  ggplot(aes(x = `HS Grad`, y = Income)) +
+  geom_point(color = viridis::viridis(6)[5], size = 3) + 
+  labs(y = "Per Capita Income", 
+       x = "Percentage of Population with High School Diploma", 
+       title = "High School Graduation Rates vs. Income ",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = viridis::viridis(6)[5])
+```
+:::
+
+```{r}
+mod1 <- lm(Income ~ `HS Grad`, data = state_30)
+```
+
+[$\hat{y} = 1994.39 + 46.68 x$]{.fragment}
+:::
+
+::: column
+```{r}
+set.seed(7493489)
+keep2 <- sample(1:50, 30, replace = FALSE)
+
+state_30_2 <- state[keep2,]
+```
+
+::: fragment
+```{r}
+#| fig-width: 5
+#| fig-height: 4
+state_30_2 |>
+  ggplot(aes(x = `HS Grad`, y = Income)) +
+  geom_point(color = viridis::viridis(6)[2], size = 3) + 
+  labs(y = "Per Capita Income", 
+       x = "Percentage of Population with High School Diploma", 
+       title = "High School Graduation Rates vs. Income ",
+       subtitle = "for a different set of 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = viridis::viridis(6)[2])
+```
+:::
+
+```{r}
+mod2 <- lm(Income ~ `HS Grad`, data = state_30_2)
+```
+
+[$\hat{y} = 1191.82 + 62.98 x$]{.fragment}
+:::
+:::
+
+## Estimating Parameters {.smaller}
+
+The LSRL is based on sampled data, so $$\hat{y} = b_0 + b_1x$$ is the estimate for the true population regression equation [$$y = \beta_0 + \beta_1 x + \varepsilon$$]{.fragment}
+
+-   $b_0$ is the point estimate for [$\beta_0$]{.fragment}
+
+-   $b_1$ is the point estimate for [$\beta_1$]{.fragment}
+
+-   $\varepsilon$ is the error (variability around the regression line)
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+Our focus from here on out will be on inference about the slope parameter, $\beta_1$.
+:::
+
+## Inference about $\beta_1$ {.smaller}
+
+Consider the LSRL for the relationship between the percentage a state's population with a high school diploma and per capita income.
+
+::: columns
+::: column
+::: fragment
+$\hat{y} = 1994.39 + 46.68 x$
+
+```{r}
+#| fig-width: 5
+#| fig-height: 4
+state_30 |>
+  ggplot(aes(x = `HS Grad`, y = Income)) +
+  geom_point(color = viridis::viridis(6)[5], size = 3) + 
+  labs(y = "Per Capita Income", 
+       x = "Percentage of Population with High School Diploma", 
+       title = "High School Graduation Rates vs. Income ",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = viridis::viridis(6)[5])
+```
+:::
+:::
+
+::: column
+[The slope in the LSRL, $46.68$, is an **estimate** for the true population regression line.]{.fragment}
+
+[We might wonder, do these data provide strong evidence that the percentage of HS graduates is useful predictor of a state's per capita income?]{.fragment}
+
+::: fragment
+Frame this question of interest into a hypothesis test:
+
+$H_0:$ [$\beta_1 = 0$]{.fragment} [The true linear model has slope zero.]{.fragment}
+
+$H_A:$ [$\beta_1 \neq 0$]{.fragment} [The true linear model has a slope different than zero. *The explanatory variable is good predictor of the response.*]{.fragment}
+:::
+:::
+:::
+
+## Using Software Output to Perform a Hypothesis Test on $\beta_1$ {.smaller}
+
+::: fragment
+```{r}
+state_30 <- state_30 |>
+  rename("HSGrad"=`HS Grad`)
+```
+
+::: columns
+::: column
+R Code:
+
+```{r}
+#| echo: true
+
+LSRL <- lm(Income ~ HSGrad, data = state_30)
+summary(LSRL)
+```
+:::
+
+::: column
+```{r}
+#| fig-width: 5
+#| fig-height: 4
+state_30 |>
+  ggplot(aes(x = HSGrad, y = Income)) +
+  geom_point(color = viridis::viridis(6)[5], size = 3) + 
+  labs(y = "Per Capita Income", 
+       x = "Percentage of Population with High School Diploma", 
+       title = "High School Graduation Rates vs. Income ",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = viridis::viridis(6)[5])
+```
+:::
+:::
+:::
+
+## Interpreting the p-value and drawing a conclusion {.smaller}
+
+[Perform a hypothesis test on the slope parameter, $\beta_1$, using a significance level of $\alpha = 0.05$.]{.fragment}
+
+[The p-value for the hypothesis test on the slope parameter is $0.000658$.]{.fragment}
+
+[Since $0.000658 < \alpha$, we will [reject]{style="color:red;"} the null hypothesis.]{.fragment}
+
+[There is [convincing]{style="color:red;"} evidence that the percentage of high school graduates is a useful predictor of a state's per capita income in the 1970s.]{.fragment}
+
+## R Code for This Week's Examples {.smaller}
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Open the tidyverse library
+library(tidyverse)
+
+# Import the dataset, first need to download the data from Canvas
+state_30 <- read_csv(file.choose())
+
+# Create a scatterplot of the Illiteracy and LifeExp variables
+ggplot(data = state_30, aes(x = Illiteracy, y = LifeExp)) + 
+  geom_point(color = "purple", size = 3) + 
+  labs(y = "Life Expectancy (years)", 
+       x = "Illiteracy Rate (% of population)", 
+       title = "Illiteracy Rate vs. Life Expectancy",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = "darkgreen")
+
+## Calculate the correlation between illiteracy rate and life exp
+state_30 %>% summarise(cor = cor(Illiteracy, LifeExp))
+
+# Estimate intercept and slope for LSRL
+lm(LifeExp ~ Illiteracy, data = state_30)
+```
+
+
+## Practice 🎩 
+
+Please complete the Class 18 Activity in Top Hat.
