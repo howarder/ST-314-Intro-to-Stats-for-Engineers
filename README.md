@@ -11,3 +11,4 @@
 - Topic 8 - Analysis of Variance: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic8_ANOVA/#/title-slide
 - Topic 9 - Simple Linear Regression: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic9_SLR/#/title-slide
 - Topic 10 - Inference for Linear Regression: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic10_Inference_LinReg/#/title-slide
+- Topic 11 - Multiple Linear Regression: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic11_MLR/#/title-slide
