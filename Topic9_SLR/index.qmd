@@ -1,0 +1,502 @@
+---
+title: "Topic 9 - Simple Linear Regression"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+## Bivariate Relationships {.smaller}
+
+```{r}
+library(datasets)
+ 
+state <- state.x77 |>
+    as_tibble(rownames = "States")
+
+set.seed(7493410)
+
+keep <- sample(1:50, 30, replace = FALSE)
+
+state_30 <- state[keep,]
+
+```
+
+::: columns
+::: column
+::: fragment
+```{r}
+#| fig-height: 4
+#| fig-width: 5
+
+
+state_30 |>
+  ggplot(aes(x = Illiteracy, y = `Life Exp`)) +
+  geom_point(color = viridis::viridis(6)[1], size = 3) + 
+  labs(y = "Life Expectancy (years)", 
+       x = "Illiteracy Rate (% of population)", 
+       title = "Illiteracy Rate vs. Life Expectancy",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw()
+
+
+
+
+  #stat_smooth(method = "lm",
+  #            formula = y ~ x, 
+  #            geom = "smooth", 
+  #            se = FALSE)
+
+```
+:::
+:::
+
+::: column
+::: fragment
+```{r}
+#| fig-width: 5
+#| fig-height: 4
+state_30 |>
+  ggplot(aes(x = `HS Grad`, y = Income)) +
+  geom_point(color = viridis::viridis(6)[5], size = 3) + 
+  labs(y = "Per Capita Income", 
+       x = "Percentage of Population with High School Diploma", 
+       title = "High School Graduation Rates vs. Income ",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw()
+```
+:::
+:::
+:::
+
+::: columns
+::: column
+[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the [scatterplot]{style="color:red;"} above.]{.fragment}
+:::
+
+::: column
+[🗣 Describe the relationship between high school graduation rate and income using the scatterplot above.]{.fragment}
+:::
+:::
+
+## Explanatory and Response Variables {.smaller}
+
+[When discussing bivariate relationships, it is common to treat one variable as the **explanatory** and one as the **response**.]{.fragment}
+
+:::{.incremental}
+
+::: fragment
++----------------------------------------------------------------------+-----------------------------------------------+
+| Explanatory Variable                                                 | Response Variable                             |
++======================================================================+===============================================+
+| -   May help to explain or predict changes in the response variable. | -   The variable to be estimated or predicted |
+|                                                                      |                                               |
+| -   Quantitative                                                     | -   Quantitative                              |
+|                                                                      |                                               |
+| -   Sometimes referred to as                                         | -   Sometimes referred to as                  |
+|                                                                      |                                               |
+|     -   $x$ variable                                                 |     -   $y$ variable                          |
+|                                                                      |                                               |
+|     -   independent variable                                         |     -   dependent variable                    |
+|                                                                      |                                               |
+|     -   predictor variable                                           |                                               |
++----------------------------------------------------------------------+-----------------------------------------------+
+:::
+
+:::
+
+## Practice 🎩
+
+Answer Question 1 in the classroom tab on Top Hat using the scatterplot below.
+
+```{r}
+#| fig-height: 4
+#| fig-width: 5
+state_30 |>
+  ggplot(aes(x = Illiteracy, y = `Life Exp`)) +
+  geom_point(color = viridis::viridis(6)[1], size = 3) + 
+  labs(y = "Life Expectancy (years)", 
+       x = "Illiteracy Rate (% of population)", 
+       title = "Illiteracy Rate vs. Life Expectancy",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw()
+```
+
+## Measuring *Linear* Strength {.smaller}
+
+:::{.incremental}
+-   The correlation coefficient, $R$, measures the strength of a [linear]{.fragment .highlight-red} association between two quantitative variables.
+
+-   The correlation between two quantitative variables will always be a value between -1 and 1.
+
+::: fragment
+![](corr.png)
+:::
+
+-   $R = \frac{1}{n-1}\sum \limits_{i=1}^n\bigg(\frac{x_i-\overline{x}}{s_x} \bigg)\bigg(\frac{y_i-\overline{y}}{s_y} \bigg)$
+
+:::
+
+## Practice 🎩
+
+Answer Question 2 in the classroom tab on Top Hat using the scatterplots below.
+
+![](plots.png)
+
+## Simple Linear Regression {.smaller}
+
+:::{.incremental}
+-   Simple linear regression is the statistical method for fitting a line to describe the relationship between two quantitative variables.
+
+-   We want to find a line of the form $\hat{y} = b_0 + b_1 x$
+
+:::
+
+
+::: columns
+::: column
+::: fragment
+```{r}
+#| fig-height: 4
+#| fig-width: 5
+
+
+state_30 |>
+  ggplot(aes(x = Illiteracy, y = `Life Exp`)) +
+  geom_point(color = viridis::viridis(6)[1], size = 3) + 
+  labs(y = "Life Expectancy (years)", 
+       x = "Illiteracy Rate (% of population)", 
+       title = "Illiteracy Rate vs. Life Expectancy",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = viridis::viridis(6)[4])
+```
+:::
+:::
+
+::: column
+ 
+
+[**What characteristics would the "line of best fit" have?**]{.fragment}
+:::
+:::
+
+## Simple Linear Regression {.smaller}
+
+<iframe src="https://www.desmos.com/calculator/dygdzhgfpq" width="850" height="350">
+
+</iframe>
+
+::: columns
+::: {.column width="85%"}
+Open the link: https://beav.es/cTp (also found in the Week 9 module on Canvas called "SLR Demo")
+
+Try to find the line that best fits the data by adjusting the sliders below $b_0$ and $b_1$.
+
+🗣 Compare your values of $b_0$ and $b_1$ to somewhere nearby. Discuss how you chose the values of $b_0$ and $b_1$.
+:::
+
+::: {.column width="15%"}
+```{r}
+library(countdown)
+countdown(minutes = 2, seconds = 0)
+```
+:::
+:::
+
+:::{.notes}
+slope = -1.14608
+intercept = 72.1813
+:::
+
+## Residuals {.smaller}
+
+:::{.incremental}
+
+::: columns
+::: column
+-   The residual of an observation is the difference in the observed response, $y_i$, and the predicted response based on the model fit, $\hat{y}_i$.
+
+-   $e_i = y_i - \hat{y}_i$
+:::
+
+
+::: column
+::: fragment
+```{r}
+#| fig-height: 4
+#| fig-width: 5
+
+
+state_30 |>
+  ggplot(aes(x = Illiteracy, y = `Life Exp`)) +
+  geom_point(color = viridis::viridis(6)[1], size = 3) + 
+  labs(y = "Life Expectancy (years)", 
+       x = "Illiteracy Rate (% of population)", 
+       title = "Illiteracy Rate vs. Life Expectancy",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = viridis::viridis(6)[4])
+```
+:::
+:::
+:::
+:::
+
+## Least Squares Regression Line {.smaller}
+:::{.incremental}
+
+-   The least squares regression line (LSRL) is calculated by finding the line that minimizes the sum of the squared residuals.
+
+-   When fitting the LSRL, we generally require:
+
+    -   Linearity - the data should indicate a linear trend
+
+    -   Nearly normal residuals - the residuals should be approximately normally distributed
+
+    -   Constant variability - the variability of the points around the line should be roughly constant
+
+    -   Independent observations
+
+-   If the above conditions are met, we can fit the LSRL using the following estimates $b_1 = \frac{s_y}{s_x}R$ and $b_0 = \overline{y} - b_1\overline{x}$
+
+[*In practice, we compute these estimates using R*. *Coming up...*]{.fragment}
+:::
+
+## Interpreting the LSRL {.smaller}
+
+$$ \hat{y} = b_0 + b_1 x$$
+
+-   Interpreting the intercept estimate, $b_0$: [the expected value of the response variable when the explanatory variable is equal to 0.]{.fragment}
+
+-   Interpreting the slope estimate, $b_1$: [For a one unit increase in the explanatory variable, we expect the response to change by $b_1$.]{.fragment}
+
+::: columns
+::: column
+::: fragment
+```{r}
+#| fig-height: 3.5
+#| fig-width: 4.5
+
+
+state_30 |>
+  ggplot(aes(x = Illiteracy, y = `Life Exp`)) +
+  geom_point(color = viridis::viridis(6)[1], size = 3) + 
+  labs(y = "Life Expectancy (years)", 
+       x = "Illiteracy Rate (% of population)", 
+       title = "Illiteracy Rate vs. Life Expectancy",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = viridis::viridis(6)[4])
+```
+:::
+:::
+
+::: column
+```{r}
+state_30 <- state_30 |>
+  rename("LifeExp"=`Life Exp`)
+```
+
+::: fragment
+```{r}
+#| echo: true
+lm(LifeExp ~ Illiteracy, data = state_30)
+```
+:::
+
+[$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{.fragment}
+:::
+:::
+
+## Practice 🎩
+
+Answer Question 3 in the classroom tab on Top Hat using the fitted LSRL.
+
+$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
+
+## Basic Predictions from the LSRL {.smaller}
+
+-   The LSRL can be used to predict the outcome of the response variable for given values of the explanatory variable.
+
+::: fragment
+### Practice 🎩
+
+Answer Question 4 in the classroom tab on Top Hat using the fitted LSRL.
+
+$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
+:::
+
+## Residuals (again) {.smaller}
+
+Recall that the residual is difference in the observed response variable and the predicted response based on the model fit: $$e_i = y_i - \hat{y}_i$$
+
+::: fragment
+### Practice 🎩
+
+Answer Question 5 in the classroom tab on Top Hat using the fitted LSRL.
+
+$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
+:::
+
+## Residual Plot {.smaller}
+
+[Recall that to fit the LSRL, we need four conditions to hold (see *Least Squares Regression Line* slide).]{.fragment}
+
+[**Some of these conditions can be easily checked using a residual plot.**]{.fragment}
+
+::: columns
+::: column
+::: fragment
+```{r}
+#| fig-height: 3.5
+#| fig-width: 4.5
+mod <- lm(LifeExp ~ Illiteracy, data = state_30)
+
+ggplot(mod, aes(y = .resid)) + 
+  geom_point(aes(x = state_30$Illiteracy),
+             color = viridis::viridis(6)[2], size = 3) + 
+  geom_hline(yintercept = 0) + 
+  labs(y = "Residuals", 
+       x = "Illiteracy Rate (% of population)") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw()
+```
+:::
+:::
+
+::: column
+:::{.incremental}
+-   Ideally, when fitting the LSRL, we see no obvious patterns in the residual plot.
+
+-   If a pattern is visible, it might be an indication that one or more of the LSRL conditions are violated.
+:::
+:::
+:::
+
+## Violations of LSRL Conditions {.smaller}
+
+![](scatter.png)
+
+::: fragment
+![](res.png)
+:::
+
+::: columns
+::: {.column width="4%"}
+:::
+
+::: {.column width="24%"}
+[Linearity violated]{.fragment}
+:::
+
+::: {.column width="24%"}
+[Nearly normal residuals violated]{.fragment}
+:::
+
+::: {.column width="24%"}
+[Constant variability violated]{.fragment}
+:::
+
+::: {.column width="24%"}
+[Independence violated]{.fragment}
+:::
+:::
+
+## Practice 🎩 {.smaller}
+
+Answer Question 6 in the classroom tab on Top Hat using the fitted LSRL and corresponding residual plot.
+
+$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
+
+```{r}
+#| fig-height: 3.5
+#| fig-width: 4.5
+mod <- lm(LifeExp ~ Illiteracy, data = state_30)
+
+ggplot(mod, aes(y = .resid)) + 
+  geom_point(aes(x = state_30$Illiteracy),
+             color = viridis::viridis(6)[2], size = 3) + 
+  geom_hline(yintercept = 0) + 
+  labs(y = "Residuals", 
+       x = "Illiteracy Rate (% of population)") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw()
+```
+
+
+
+## R Code for This Week's Examples {.smaller}
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Open the tidyverse library
+library(tidyverse)
+
+# Import the dataset, first need to download the data from Canvas
+state_30 <- read_csv(file.choose())
+
+# Create a scatterplot of the Illiteracy and LifeExp variables
+ggplot(data = state_30, aes(x = Illiteracy, y = LifeExp)) + 
+  geom_point(color = "purple", size = 3) + 
+  labs(y = "Life Expectancy (years)", 
+       x = "Illiteracy Rate (% of population)", 
+       title = "Illiteracy Rate vs. Life Expectancy",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = "darkgreen")
+
+## Calculate the correlation between illiteracy rate and life exp
+state_30 %>% summarise(cor = cor(Illiteracy, LifeExp))
+
+# Estimate intercept and slope for LSRL
+lm(LifeExp ~ Illiteracy, data = state_30)
+```
