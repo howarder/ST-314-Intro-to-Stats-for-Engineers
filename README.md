@@ -10,3 +10,4 @@
 - Topic 7 - Errors in Hypothesis Testing and Inference for the Difference in Two Means: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic7_ErrorsInHypTesting_and_TwoSample/#/title-slide
 - Topic 8 - Analysis of Variance: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic8_ANOVA/#/title-slide
 - Topic 9 - Simple Linear Regression: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic9_SLR/#/title-slide
+- Topic 10 - Inference for Linear Regression: https://howarder.github.io/ST-314-Intro-to-Stats-for-Engineers/Topic10_Inference_LinReg/#/title-slide
