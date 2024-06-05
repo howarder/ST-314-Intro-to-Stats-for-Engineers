@@ -1,0 +1,71 @@
+---
+title: "Final Review - Spring 2024"
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+    incremental: true
+editor: visual
+---
+
+## Final Exam Information {.smaller}
+
+::: nonincremental
+-   **Tuesday, June 11, 8-9:20 p.m. in Milam 026**
+
+    -   The exam will **begin** at 8 p.m. - please arrive a few minutes early.
+
+-   The exam will cover material presented in weeks 1-10; however, there will be a greater emphasis on the material covered in weeks 6-10.
+
+-   You may use any hard copy materials you'd like, such as your class notes (typed and printed or handwritten).
+
+-   You MAY NOT use any materials that are digital.
+
+-   Please the Final Exam Info page for more details and study suggestions.
+:::
+
+## Student Learning Experience Survey
+
+Please fill out the SLE survey for this class (found in the left menu of our Canvas page). The survey is open until 11:59 pm on Sunday, June 9.
+
+## Extra Credit - Exam Review Questions {.smaller}
+
+In Top Hat the Extra Credit - Final Exam Review Questions
+
+::: nonincremental
+-   You have one attempt per question.
+-   Extensions will not be granted on this activity. You must complete this activity by its due date, 6/7/24 at 11:59 pm, to receive any possible extra credit.
+-   This assignment is worth 3% of your overall final grade.
+    -   If you answer all 24 questions correctly, you will see a 3% increase in your final grade.
+    -   Each individual question is worth 0.125%, so every individual question that is answered correctly will yield a 0.125% increase in your final grade.
+-   At 12 am on June 8, you will be able to see your score on the activity and review any and all questions.
+-   You are welcome to work with others on this assignment.
+:::
+
+## Looking ahead
+
+-   **Fall 2024 (Ecampus) -** ST 436: R Programming for Data Analytics
+
+-   **Spring 2025 -** ST 437: Data Visualization
+
+-   Interested in other statistics courses or pursuing a minor in statistics? Talk to me!
+
+## Hypothesis Testing Review {.smaller}
+
+-   Please locate the **Class 20 Final Review Problems** document on the Week 10 Class Slides & Additional Materials page on Canvas (Week 10 module.)
+
+-   This document contains four scenarios (labeled parts 1, 2, 3, and 4).
+
+-   Before trying to work through all of the questions associated with each scenario, simply read through the scenarios.
+
+    -   As you're reading through the scenarios, try to identify the parameter(s) of interest in the problem.
+
+    -   Locate the Class 20 Activity in the Assigned tab on Top Hat and answer questions 1-4.
+
+-   For the remainder of the class period, you should work through the questions on the Final Review Problems document.
+
+    -   You are encouraged to work together and ask questions of each other and Erin when needed!
+
+-   **Before you leave class today, be sure to answer Question 5 on the Class 20 Top Hat activity.**
