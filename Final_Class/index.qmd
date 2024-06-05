@@ -44,13 +44,15 @@ In Top Hat the Extra Credit - Final Exam Review Questions
 -   You are welcome to work with others on this assignment.
 :::
 
-## Looking ahead
+## Wrapping up & Looking ahead
 
 -   **Fall 2024 (Ecampus) -** ST 436: R Programming for Data Analytics
 
 -   **Spring 2025 -** ST 437: Data Visualization
 
 -   Interested in other statistics courses or pursuing a minor in statistics? Talk to me!
+
+[THANK YOU!]{.fragment}
 
 ## Hypothesis Testing Review {.smaller}
 
