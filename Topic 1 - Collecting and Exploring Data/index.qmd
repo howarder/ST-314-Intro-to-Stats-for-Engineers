@@ -155,12 +155,6 @@ Four principles of a well-designed randomized experient:
 3.  Replication
 4.  Blocking
 
-<<<<<<< HEAD
-::: notes
-pg. 32 openintro
-:::
-
-
 ## Design an Observational Study: Part 1 {.smaller}
 
 A very large college class has 600 students. The students are divided into 25 groups, each of 24 students, for lab sections administered by different teaching assistants. The instructor wants to conduct a survey about how satisfied the students are with the course, and she believes that the lab section a student is in might affect the student’s overall satisfaction with the course.
@@ -292,8 +286,8 @@ $$ \text{Sample mean: } \overline{x} = \frac{\sum \limits_{i = 1}^n x_i}{n}$$
 
 Standard deviation: [the typical deviation of observations from the mean]{.fragment}
 
-::: fragment
-::: columns
+:::::: fragment
+::::: columns
 ::: column
 $$s = \sqrt{s^2} = \sqrt{\frac{\sum \limits_{i=1}^n(x_i-\overline{x})^2}{n-1}}$$
 :::
@@ -301,8 +295,8 @@ $$s = \sqrt{s^2} = \sqrt{\frac{\sum \limits_{i=1}^n(x_i-\overline{x})^2}{n-1}}$$
 ::: column
 [*Standard deviation is often used instead of variance to describe the spread of a distribution since it is expressed in the same units as the variable of interest.*]{.fragment}
 :::
-:::
-:::
+:::::
+::::::
 
 ## Describing Distributions of Quantitative Data
 
@@ -324,13 +318,13 @@ $Q_3$ is the third quartile: 75th percentile, the value such that 75% of data fa
 
 [An observation are considered outliers if it is]{.fragment}
 
-::: fragment
+:::: fragment
 ::: incremental
 -   less than $Q_1 - 1.5\times IQR$
 
 -   greater than $Q_3 + 1.5 \times IQR$
 :::
-:::
+::::
 
 ## Histogram
 
@@ -362,12 +356,12 @@ ggplot(data = nycflights, aes(x = air_time)) +
 
 In a sample of 10,000 loans made through Lending Club, whether the individual that received the loan rented, had a mortgage, or owned their home was recorded.
 
-| Homeownership | Count | Proportion                             | Percentage                              |
-|-------------|-------------|-----------------------|-----------------------|
-| rent          | 3858  | [0.3858]{.fragment fragment-index="1"} | [38.58%]{.fragment fragment-index="3"}  |
-| mortgage      | 4789  | [0.4789]{.fragment fragment-index="2"} | [47.89%]{.fragment fragment-index="4"}  |
-| own           | 1353  | [0.1353]{.fragment fragment-index="2"} | [13.53%]{.fragment fragment-index="4"}  |
-| **Total**     | 10000 | [1.0000]{.fragment fragment-index="2"} | [100.00%]{.fragment fragment-index="4"} |
+| Homeownership | Count | Proportion | Percentage |
+|----------------|----------------|--------------------|--------------------|
+| rent | 3858 | [0.3858]{.fragment fragment-index="1"} | [38.58%]{.fragment fragment-index="3"} |
+| mortgage | 4789 | [0.4789]{.fragment fragment-index="2"} | [47.89%]{.fragment fragment-index="4"} |
+| own | 1353 | [0.1353]{.fragment fragment-index="2"} | [13.53%]{.fragment fragment-index="4"} |
+| **Total** | 10000 | [1.0000]{.fragment fragment-index="2"} | [100.00%]{.fragment fragment-index="4"} |
 
 ## Barplots
 
