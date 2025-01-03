@@ -21,7 +21,7 @@ mean(data_small)
 median(data_small)
 sd(data_small)
 var(data_small)
-IQR(data_small)
+IQR(data_small, type = 1)
 length(data_small)
 
 # Use a data set already stored in R:
