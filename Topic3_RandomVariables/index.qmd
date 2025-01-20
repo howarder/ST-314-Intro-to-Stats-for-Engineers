@@ -7,7 +7,7 @@ format:
     html-math-method: mathjax
     multiplex: true
 editor: visual
---- 
+---
 
 ```{r}
 library(countdown)
@@ -57,29 +57,29 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 ### Random Variables
 
-::: columns
-::: {.column width="50%"}
+:::::::: columns
+::::: {.column width="50%"}
 [**Discrete RVs**]{style="color:green;"}
 
 [A random variable that has a **countable** set of possible outcomes.]{.fragment style="color:green;"}
 
-::: {style="color:green;"}
+:::: {style="color:green;"}
 ::: incremental
 -   finite OR
 
 -   infinite with as many elements are there are whole numbers
 :::
-:::
-:::
+::::
+:::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: {style="color:purple;"}
 **Continuous RVs**
 
 [A random variable that has an **infinite, continuous** set of possible outcomes in a given interval.]{.fragment}
 :::
-:::
-:::
+::::
+::::::::
 
 ##  {.smaller}
 
@@ -88,12 +88,12 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 ::: {.fragment fragment-index="1"}
 [**DISCRETE**]{.fragment fragment-index="3" style="color:green;"}
 
-(1) Let the random variable $X$ represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
 
-|        |      |      |      |      |      |      |
-|--------|------|------|------|------|------|------|
-| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
-| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+|        |      |      |      |      |      |
+|--------|------|------|------|------|------|
+| $x$    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.16 | 0.32 | 0.36 | 0.12 | 0.04 |
 :::
 
  
@@ -106,9 +106,9 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 ##  {.smaller}
 
-::: columns
-::: {.column width="50%"}
-::: {style="color:green;"}
+:::::::::::: columns
+::::::: {.column width="50%"}
+:::::: {style="color:green;"}
 [**Discrete RVs**]{style="color:green;"}
 
 Probability Mass Function (PMF), $p(x)$
@@ -129,7 +129,7 @@ Probability Mass Function (PMF), $p(x)$
 
  
 
-::: fragment
+:::: fragment
 Properties:
 
 ::: incremental
@@ -137,12 +137,12 @@ Properties:
 
 -   $\sum \limits_{i=1}^n p(x_i) =1$
 :::
-:::
-:::
-:::
+::::
+::::::
+:::::::
 
-::: {.column width="50%"}
-::: {style="color:purple;"}
+:::::: {.column width="50%"}
+::::: {style="color:purple;"}
 **Continuous RVs**
 
 Probability Density Function (PDF), $f(x)$
@@ -159,7 +159,7 @@ Probability Density Function (PDF), $f(x)$
 
  
 
-::: fragment
+:::: fragment
 Properties:
 
 ::: incremental
@@ -167,22 +167,22 @@ Properties:
 
 -   $\int \limits_{-\infty}^{\infty} f(x) dx = 1$
 :::
-:::
-:::
-:::
-:::
+::::
+:::::
+::::::
+::::::::::::
 
 ## 
 
 ### Example - PMF
 
-::: {style="color:green;"}
-(1) Let the random variable $X$ represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+::::: {style="color:green;"}
+(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
 
-|        |      |      |      |      |      |      |
-|--------|------|------|------|------|------|------|
-| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
-| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+|        |      |      |      |      |      |
+|--------|------|------|------|------|------|
+| $x$    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.16 | 0.32 | 0.36 | 0.12 | 0.04 |
 
  
 
@@ -193,7 +193,7 @@ $$p(2) = 0.32$$
 ::: fragment
 $$p(4) = 0.12$$
 :::
-:::
+:::::
 
 ##  {.smaller}
 
@@ -211,8 +211,8 @@ $$p(4) = 0.12$$
 
 ### Cumulative Distribution Function (CDF)
 
-::: columns
-::: {.column width="50%"}
+::::::::: columns
+:::: {.column width="50%"}
 ::: {style="color:green;"}
 Discrete RVs
 
@@ -224,10 +224,10 @@ Discrete RVs
 
 [$F(x) = \sum \limits_{t\leq x}p(t)$]{.fragment}
 :::
-:::
+::::
 
-::: {.column width="50%"}
-::: {style="color:purple;"}
+:::::: {.column width="50%"}
+::::: {style="color:purple;"}
 Continuous RVs
 
  
@@ -240,7 +240,7 @@ Continuous RVs
 
  
 
-::: fragment
+:::: fragment
 Continuous CDF Properties:
 
 ::: incremental
@@ -250,10 +250,10 @@ Continuous CDF Properties:
 
 -   $P(X \leq a) = P(X < a) = F(a)$
 :::
-:::
-:::
-:::
-:::
+::::
+:::::
+::::::
+:::::::::
 
 ::: notes
 Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
@@ -264,16 +264,19 @@ Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
 ### Example - Discrete CDF
 
 ::: {style="color:green;"}
-(1) Let the random variable $X$ represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
 
-|        |      |      |      |      |      |      |
-|--------|------|------|------|------|------|------|
-| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
-| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+|        |      |      |      |      |      |
+|--------|------|------|------|------|------|
+| $x$    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.16 | 0.32 | 0.36 | 0.12 | 0.04 |
 
  
 
-[$F(2)=$$P(X \leq 2)$$=p(0)+p(1)+p(2)$$=0.08+0.16+0.32=0.56$]{.fragment}
+
+:::{.fragment}
+\$\$F(2)=P(X \\leq 2)=p(1)+p(2)=0.16+0.32=0.48\$\$
+:::
 :::
 
 ##  {.smaller}
@@ -294,19 +297,19 @@ Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
 
 ### Expectation $E(X)$
 
-::: columns
-::: {.column width="50%"}
-::: {style="color:green;"}
+::::::::: columns
+::::: {.column width="50%"}
+:::: {style="color:green;"}
 Discrete RVs
 
 ::: fragment
 $$E(X) = \sum \limits_{i=1}^n x_i p(x_i)$$
 :::
-:::
-:::
+::::
+:::::
 
-::: {.column width="50%"}
-::: {style="color:purple;"}
+::::: {.column width="50%"}
+:::: {style="color:purple;"}
 Continuous RVs
 
 ::: fragment
@@ -314,32 +317,32 @@ $$E(X) = \int \limits_{-\infty}^{\infty} x f(x) dx$$
 :::
 
 [$-\infty$ and $\infty$ can be replaced with the bounds of the support of $X$.]{.fragment}
-:::
-:::
-:::
+::::
+:::::
+:::::::::
 
 ##  {.smaller}
 
 ### Example - Discrete Expectation
 
-::: {style="color:green;"}
-(1) Let the random variable $X$ represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+:::: {style="color:green;"}
+(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
 
-|        |      |      |      |      |      |      |
-|--------|------|------|------|------|------|------|
-| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
-| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+|        |      |      |      |      |      |
+|--------|------|------|------|------|------|
+| $x$    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.16 | 0.32 | 0.36 | 0.12 | 0.04 |
 
  
 
 ::: fragment
-$$E(X) = 0(0.08) + 1(0.16) + 2(0.32) + 3(0.28) + 4(0.12) + 5(0.04) = 2.32$$
+$E(X) = 1(0.16) + 2(0.32) + 3(0.36) + 4(0.12) + 5(0.04) = 2.56$$
 :::
 
  
 
-[During a 12-hour shift, we **expect** a post-op patient will ring the nurse 2.32 times.]{.fragment}
-:::
+[We **expect** a randomly selected student at the community college to be enrolled in 2.56 courses.]{.fragment}
+::::
 
 ## 
 
@@ -355,8 +358,8 @@ $$E(X) = 0(0.08) + 1(0.16) + 2(0.32) + 3(0.28) + 4(0.12) + 5(0.04) = 2.32$$
 
 ### Variance and Standard Deviation
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ::: {style="color:green;"}
 Discrete RVs
 
@@ -368,9 +371,9 @@ Discrete RVs
 
  
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: {style="color:purple;"}
 Continuous RVs
 
@@ -384,8 +387,8 @@ Continuous RVs
 
 [$-\infty$ and $\infty$ can be replaced with the bounds of the support of $X$.]{.fragment}
 :::
-:::
-:::
+::::
+:::::::
 
  
 
@@ -397,36 +400,36 @@ Continuous RVs
 
 ### Example - Discrete Variance and Standard Deviation
 
-::: {style="color:green;"}
-1.  Let the random variable 𝑋 represent the number of times a post-op patient will ring the nurse during a 12-hour shift. A random sample of patients yielded the following model for the random variable.
+::::::: {style="color:green;"}
+1.  Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
 
-|        |      |      |      |      |      |      |
-|--------|------|------|------|------|------|------|
-| $x$    | 0    | 1    | 2    | 3    | 4    | 5    |
-| $p(x)$ | 0.08 | 0.16 | 0.32 | 0.28 | 0.12 | 0.04 |
+|        |      |      |      |      |      |
+|--------|------|------|------|------|------|
+| $x$    | 1    | 2    | 3    | 4    | 5    |
+| $p(x)$ | 0.16 | 0.32 | 0.36 | 0.12 | 0.04 |
 
 ::: fragment
 $$Var(X) = E(X^2)-(E(X))^2$$
 :::
 
 ::: fragment
-$$E(X^2) = 0^2(0.08) + 1^2(0.16) + 2^2(0.32) + 3^2(0.28) + 4^2(0.12) + 5^2(0.04) = 6.88$$
+$$E(X^2) = 1^2(0.16) + 2^2(0.32) + 3^2(0.36) + 4^2(0.12) + 5^2(0.04) = 7.6$$
 :::
 
 ::: fragment
-$$Var(X) = E(X^2)-(E(X))^2 = 6.88 - 2.32^2 = 1.4976$$
+$$Var(X) = E(X^2)-(E(X))^2 = 7.6 - 2.56^2 = 1.0464$$
 :::
 
 ::: fragment
-$$SD(X) = \sqrt{1.4976} = 1.2238$$
+$$SD(X) = \sqrt{1.0464} = 1.022937$$
 :::
-:::
+:::::::
 
 ##  {.smaller}
 
 ### Example - Continuous Variance and Standard Deviation
 
-::: {style="color:purple;"}
+::::::: {style="color:purple;"}
 Suppose the random variable X is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
 
 ::: fragment
@@ -444,12 +447,12 @@ $$Var(X) = E(X^2)-(E(X))^2 = \frac{3}{5} - \bigg ( \frac{3}{4}\bigg)^2 = 0.0375$
 ::: fragment
 $$SD(X) = \sqrt{0.0375} = 0.1936$$
 :::
-:::
+:::::::
 
 ## Binomial Distribution {.smaller}
 
-::: columns
-::: column
+:::::::: columns
+:::: column
 -   **When to use:**
 
 [Want to model the number of successful outcomes from $n$ independent Bernoulli trials.]{.fragment}
@@ -461,9 +464,9 @@ $n=$ the number of independent Bernoulli trials
 
 $p=$ the probability of success on each independent trial
 :::
-:::
+::::
 
-::: column
+::::: column
 -   **Probability Mass Function:**
 
 ::: fragment
@@ -481,8 +484,8 @@ where ${{n}\choose{x}} = \frac{n!}{x!(n-x)!}$
 -   **Variance:**
 
 [$Var(X) = np(1-p)$]{.fragment}
-:::
-:::
+:::::
+::::::::
 
 ## R Demonstration
 
