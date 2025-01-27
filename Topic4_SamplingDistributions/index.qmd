@@ -29,8 +29,8 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 ## Normal Distribution {.smaller}
 
-::: columns
-::: column
+:::::::: columns
+:::: column
 -   When to use:
 
 [Useful when modeling a continuous random variable that has a bell-shaped distribution.]{.fragment style="color:blue;"}
@@ -48,9 +48,9 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   scale_x_continuous(breaks = NULL)
 ```
 :::
-:::
+::::
 
-::: column
+::::: column
 -   Parameters of the distribution:
 
 ::: {.fragment style="color:blue;"}
@@ -70,8 +70,8 @@ $$f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$ for $x
 -   Expectation: [$E(X) = \mu$]{.fragment style="color:blue;"}
 
 -   Variance:[$Var(X) = \sigma^2$]{.fragment style="color:blue;"}
-:::
-:::
+:::::
+::::::::
 
 ## Standard Normal Distribution
 
@@ -103,8 +103,8 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 $$z = \frac{x-\mu}{\sigma}$$
 :::
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ::: fragment
 ```{r}
 #| fig-height: 6
@@ -126,9 +126,9 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
                                 TeX(r'(\mu + 2\sigma)')))
 ```
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: {.fragment style="color:blue;"}
 ```{r}
 #| fig-height: 6
@@ -145,8 +145,8 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   scale_x_continuous(breaks = seq(-2,2,1))
 ```
 :::
-:::
-:::
+::::
+:::::::
 
 ## Example
 
@@ -168,8 +168,8 @@ For a particular bridge, recorded vehicle speeds are normally distributed with a
 
 What is the probability of a randomly selecting a vehicle going less than 40 mph?
 
-::: columns
-::: column
+:::::: columns
+:::: column
 ::: {.fragment style="color:blue;"}
 ```{r}
 #| fig-height: 6
@@ -184,16 +184,16 @@ ggplot(data = data.frame(x = c(28, 88)), aes(x)) +
   scale_x_continuous(breaks = seq(38,78,10))
 ```
 :::
-:::
+::::
 
-::: {.column}
+::: column
 [$$P(X < 40) = \int \limits_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi 10^2}}e^{-\frac{(x-58)^2}{2(10^2)}} dx$$]{.fragment style="color:blue;"}
 
  
 
 [We cannot solve this analytically - we must use R!]{.fragment style="color:blue;"}
 :::
-:::
+::::::
 
 ## R Demonstration
 
@@ -213,17 +213,14 @@ $p^{th}$ percentile:
 
 `qnorm(p, mean, sd, lower.tail = TRUE)`
 
-
 ## Class 7 Activity
 
-
-Please complete the short Class 7 Activity in Top Hat. 
+Please complete the short Class 7 Activity in Top Hat.
 
 ```{r}
 library(countdown)
 countdown(5)
 ```
-
 
 # Sampling Distributions
 
@@ -235,21 +232,21 @@ Please do the following:
 Answer the one question in the google form that can be accessed in any of the following ways:
 :::
 
-::: columns
-::: {.column width="50%"}
+:::::: columns
+:::: {.column width="50%"}
 ::: nonincremental
--   Typing the following URL into your browser. The URL is case sensitive. <https://forms.gle/BAacMpspkP4GRMJR6>
+-   Typing the following URL into your browser. The URL is case sensitive. <https://beav.es/GaJ>
 
 -   Find the Week 4 Survey link on Canvas under the Week 4 module
 
 -   Scan the QR code
 :::
-:::
+::::
 
 ::: {.column width="50%"}
-![](QR.png){height="300"}
+![](QR.jpeg){height="300"}
 :::
-:::
+::::::
 
 # Key Concepts
 
@@ -295,8 +292,8 @@ Even when robust sampling schemes are used, different samples will yield differe
 
 ### Distributions of Inference
 
-::: columns
-::: {.column width="32%"}
+::::::::: columns
+:::: {.column width="32%"}
 Population Distribution
 
 ::: fragment
@@ -314,9 +311,9 @@ ggplot(pool, aes(x = times)) +
 
 Distribution of the entire collection of interest.
 :::
-:::
+::::
 
-::: {.column width="32%"}
+:::: {.column width="32%"}
 Sampl**ED** Distribution
 
 ::: fragment
@@ -332,9 +329,9 @@ ggplot(samp, aes(x = times)) +
 
 Distribution of $n$ observations obtained from a single sample.
 :::
-:::
+::::
 
-::: {.column width="32%"}
+:::: {.column width="32%"}
 Sampl**ING** Distribution
 
 ::: fragment
@@ -355,8 +352,8 @@ ggplot(rep_samples, aes(x = samp_mean)) +
 
 Distribution of a sample statistic, such as $\overline{x}$ or $\hat{p}$, from repeated samples of size $n$ from the population.
 :::
-:::
-:::
+::::
+:::::::::
 
 ## Sampling Distributions
 
@@ -438,25 +435,25 @@ When observations are independent and the sample size, $n$, is sufficiently larg
 **The sample size conditions ("sufficiently large") and the details of these normal distributions differ for** $\hat{p}$ and $\overline{x}$.
 :::
 
-::: fragment
-::: columns
-::: {.column width="50%"}
+:::::::: fragment
+::::::: columns
+:::: {.column width="50%"}
 **Sample Proportion,** $\hat{p}$
 
 ::: fragment
 $$\hat{p}\sim N\bigg(p, \sqrt{\frac{p(1-p)}{n}}\bigg)$$ where $p$ represents the population proportion
 :::
-:::
+::::
 
-::: {.column width="\"50%"}
+:::: {.column width="\"50%"}
 **Sample Mean,** $\overline{x}$
 
 ::: fragment
 $$\overline{x}\sim N\bigg(\mu, \frac{\sigma}{\sqrt{n}}\bigg)$$ where $\mu$ and $\sigma$ represent the population mean and standard deviation, respectively.
 :::
-:::
-:::
-:::
+::::
+:::::::
+::::::::
 
 ## Central Limit Theorem
 
@@ -507,9 +504,9 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 The sample size conditions needed to apply the Central Limit Theorem differ depending on the statistic.
 
-::: fragment
-::: columns
-::: {.column width="30%"}
+::::::::: fragment
+:::::::: columns
+:::: {.column width="30%"}
 **Sample proportion,** $\hat{p}$
 
 ::: fragment
@@ -519,12 +516,12 @@ For the CLT to apply to the distribution of the sample proportion, we need the f
 
 -   $n(1-p) \geq 10$
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="65%"}
+:::: {.column width="65%"}
 **Sample mean,** $\overline{x}$
 
 ::: fragment
@@ -534,9 +531,9 @@ Use the sample size and observe the shape of the sampled distribution to determi
 
 -   If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.
 :::
-:::
-:::
-:::
+::::
+::::::::
+:::::::::
 
 ::: fragment
 **If the sample size conditions aren't met, we cannot apply the results of the CLT.**
@@ -557,5 +554,3 @@ Use the sample size and observe the shape of the sampled distribution to determi
 Please complete the Class 8 Activity in Top Hat (can be found under the Assigned tab). Collaboration is encouraged! When you are finished with the activity, you are free to go.
 
  
-
-
