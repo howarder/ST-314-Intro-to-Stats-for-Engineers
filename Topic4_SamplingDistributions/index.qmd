@@ -164,7 +164,7 @@ How many standard deviations away from the mean is 40 mph?
 
 ## Example {.smaller}
 
-For a particular bridge, recorded vehicle speeds are normally distributed with a mean of 58 mph and a standard deviation of 10 mph. Suppose a randomly chosen vehicle is going 40 miles per hour.
+For a particular bridge, recorded vehicle speeds are normally distributed with a mean of 58 mph and a standard deviation of 10 mph. 
 
 What is the probability of a randomly selecting a vehicle going less than 40 mph?
 
