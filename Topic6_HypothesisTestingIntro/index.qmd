@@ -13,11 +13,17 @@ editor: visual
 library(tidyverse)
 ```
 
+
+
+
+
+
+
 ## Motivating Example {.smaller}
 
 **Consider the Mario Kart example from your pre-lecture assignment:**
 
-:::::: fragment
+:::{.fragment}
 In your edition of Mario Kart there are four different cups you can race in:
 
 🍄 Mushroom Cup
@@ -27,6 +33,7 @@ In your edition of Mario Kart there are four different cups you can race in:
 ⭐ Star Cup
 
 👑 Special Cup
+:::
 
 ::::: fragment
 Each round, you and your friends randomly generate the cup to race in. After a handful of rounds, you're frustrated. It seems like the random generator is picking the Special Cup more often than the other three.
@@ -39,7 +46,6 @@ $$ p = 0.25 $$
 :::
 ::::
 :::::
-::::::
 
 ## Motivating Example - The Sampling Distribution {.smaller}
 
