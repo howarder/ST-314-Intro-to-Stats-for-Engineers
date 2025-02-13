@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>Topic 6 - Intro to Hypothesis Testing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -373,8 +373,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="motivating-example---the-sample" class="slide level2">
@@ -407,8 +406,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section" class="slide level2 smaller">
 <h2></h2>
@@ -430,8 +428,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="fragment">
@@ -452,8 +449,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <div class="fragment">
 <p>R code: <span class="fragment"><code>1-pnorm(2.078, 0, 1)</code></span> <span class="fragment">= 0.019</span></p>
 </div>
@@ -483,8 +479,7 @@
 <div class="fragment">
 <p>Is the proportion of rounds played in the Special Cup greater than 0.25?</p>
 </div>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="2" type="1">
@@ -496,8 +491,7 @@
 <div class="fragment">
 <p><span class="math inline">\(p\)</span>, the true proportion of rounds selected in the Special Cup.</p>
 </div>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="3" type="1">
@@ -507,30 +501,32 @@
 
 </div><div class="column" style="width:50%;">
 
-</div>
-</div>
+</div></div>
 </section>
 <section id="the-hypotheses" class="slide level2 smaller">
 <h2>The Hypotheses</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>The Null Hypothesis</strong></p>
+<div>
 <ul>
-<li><p>Establishes the claim.</p></li>
-<li><p>Is assumed to be the <strong>truth</strong> when performing a hypothesis test.</p></li>
-<li><p>Is always a statement of <strong>equality</strong>.</p></li>
-<li><p>Denoted <span class="math inline">\(H_0\)</span></p></li>
+<li class="fragment"><p>Establishes the claim.</p></li>
+<li class="fragment"><p>Is assumed to be the <strong>truth</strong> when performing a hypothesis test.</p></li>
+<li class="fragment"><p>Is always a statement of <strong>equality</strong>.</p></li>
+<li class="fragment"><p>Denoted <span class="math inline">\(H_0\)</span></p></li>
 </ul>
+</div>
 </div><div class="column" style="width:50%;">
 <p><strong>The Alternative Hypothesis</strong></p>
+<div>
 <ul>
-<li><p>Reflects the question of interest.</p></li>
-<li><p>Contradicts the null hypothesis.</p></li>
-<li><p>Is one- or two-sided, depending on the question of interest.</p></li>
-<li><p>Denoted <span class="math inline">\(H_A\)</span></p></li>
+<li class="fragment"><p>Reflects the question of interest.</p></li>
+<li class="fragment"><p>Contradicts the null hypothesis.</p></li>
+<li class="fragment"><p>Is one- or two-sided, depending on the question of interest.</p></li>
+<li class="fragment"><p>Denoted <span class="math inline">\(H_A\)</span></p></li>
 </ul>
 </div>
-</div>
+</div></div>
 <p>&nbsp;</p>
 <div class="fragment" style="border: 2px solid #2A788EFF; text-align: center">
 <p>The hypotheses are <strong>ALWAYS</strong> made with respect to the <strong>parameter</strong>.</p>
@@ -554,8 +550,7 @@
 <p><span style="color:purple;">If testing the population mean, <span class="math inline">\(\mu\)</span>: <span class="math inline">\(H_A: \mu &lt; \mu_0\)</span></span></p>
 <p><span style="color:purple;">where <span class="math inline">\(\mu_0\)</span> is the claimed value.</span></p>
 </div>
-</div>
-</div>
+</div></div>
 <p><strong>Upper one-sided</strong></p>
 <p><span class="fragment">Question of interest:</span> <span class="fragment">Is the parameter of interest greater than the claimed value?</span></p>
 <div class="columns">
@@ -569,8 +564,7 @@
 <p><span style="color:purple;">If testing the population mean, <span class="math inline">\(\mu\)</span>: <span class="math inline">\(H_A: \mu &gt; \mu_0\)</span></span></p>
 <p><span style="color:purple;">where <span class="math inline">\(\mu_0\)</span> is the claimed value.</span></p>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="section-3" class="slide level2 smaller">
@@ -589,8 +583,7 @@
 <p><span style="color:purple;">If testing the population mean, <span class="math inline">\(\mu\)</span>: <span class="math inline">\(H_A: \mu \neq \mu_0\)</span></span></p>
 <p><span style="color:purple;">where <span class="math inline">\(\mu_0\)</span> is the claimed value.</span></p>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-4" class="slide level2 smaller">
 <h2></h2>
@@ -606,8 +599,7 @@
 </div><div class="column" style="width:50%;">
 <p><strong>Mario Kart Example</strong></p>
 <p>Is the proportion of rounds played in the Special Cup greater than 0.25?</p>
-</div>
-</div>
+</div></div>
 </div>
 <div>
 <div class="columns">
@@ -619,8 +611,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(p\)</span>, the true proportion of rounds selected in the Special Cup.</p>
-</div>
-</div>
+</div></div>
 </div>
 <div>
 <div class="columns">
@@ -637,8 +628,7 @@
 <div class="fragment">
 <p><span class="math inline">\(H_A: p &gt; 0.25\)</span></p>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 <div class="columns">
 <div class="column" style="width:45%;">
@@ -649,8 +639,7 @@
 
 </div><div class="column" style="width:50%;">
 
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-5" class="slide level2 smaller">
 <h2></h2>
@@ -679,8 +668,7 @@
 <div class="fragment" data-fragment-index="9">
 <p><img data-src="num_line_1.png"></p>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-6" class="slide level2 smaller">
 <h2></h2>
@@ -709,8 +697,7 @@
 <div class="fragment" data-fragment-index="9">
 <p><img data-src="num_line_3.png"></p>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-7" class="slide level2 smaller">
 <h2></h2>
@@ -726,8 +713,7 @@
 </div><div class="column" style="width:50%;">
 <p><strong>Mario Kart Example</strong></p>
 <p>Is the proportion of rounds played in the Special Cup greater than 0.25?</p>
-</div>
-</div>
+</div></div>
 </div>
 <div>
 <div class="columns">
@@ -739,8 +725,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(p\)</span>, the true proportion of rounds selected in the Special Cup.</p>
-</div>
-</div>
+</div></div>
 </div>
 <div>
 <div class="columns">
@@ -753,8 +738,7 @@
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(H_0: p = 0.25\)</span></p>
 <p><span class="math inline">\(H_A: p &gt; 0.25\)</span></p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="4" type="1">
@@ -764,8 +748,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><span class="fragment">Any sample proportion greater than or equal to <span class="math inline">\(\hat{p}=0.34\)</span> would have be considered as or more extreme than the observed statistic.</span></p>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="section-8" class="slide level2 smaller">
@@ -778,8 +761,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><strong>Mario Kart Example</strong></p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="columns">
 <div class="column" style="width:40%;">
@@ -790,8 +772,7 @@
 
 </div><div class="column" style="width:50%;">
 
-</div>
-</div>
+</div></div>
 </section>
 <section id="null-distribution" class="slide level2 smaller">
 <h2>Null Distribution</h2>
@@ -808,8 +789,7 @@
 <p><span class="fragment" style="color:purple;">When testing the population mean, <span class="math inline">\(\mu\)</span>,</span></p>
 <p><span class="fragment" style="color:purple;">the standardized point estimate is <span class="math inline">\(t=\frac{\overline{x}-\mu_0}{\frac{s}{\sqrt{n}}}\)</span>.</span></p>
 <p><span class="fragment" style="color:purple;">If the sample size is sufficiently large, the null distribution of this random variable is</span> <span class="fragment" style="color:purple;">a <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-9" class="slide level2 smaller">
 <h2></h2>
@@ -821,8 +801,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><strong>Mario Kart Example</strong></p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="5" type="1">
@@ -832,8 +811,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><span class="fragment">The null distribution of <span class="math inline">\(\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}\)</span> is <span class="math inline">\(N(0,1)\)</span>.</span></p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="columns">
 <div class="column" style="width:45%;">
@@ -844,8 +822,7 @@
 
 </div><div class="column" style="width:50%;">
 
-</div>
-</div>
+</div></div>
 </section>
 <section id="the-test-statistic" class="slide level2 smaller">
 <h2>The Test Statistic</h2>
@@ -861,8 +838,7 @@
 </div><div class="column" style="width:50%;">
 <p><span class="fragment" style="color:purple;">When testing the population mean, <span class="math inline">\(\mu\)</span>, the test statistic is</span></p>
 <p><span class="fragment" style="color:purple;"><span class="math display">\[t = \frac{\overline{x}-\mu_0}{\frac{s}{\sqrt{n}}}\]</span></span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-10" class="slide level2 smaller">
 <h2></h2>
@@ -874,8 +850,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><strong>Mario Kart Example</strong></p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="5" type="1">
@@ -885,8 +860,7 @@
 
 </div><div class="column" style="width:50%;">
 <p>The null distribution of <span class="math inline">\(\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}\)</span> is <span class="math inline">\(N(0,1)\)</span>.</p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="6" type="1">
@@ -896,8 +870,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><span class="fragment"><span class="math display">\[z = \frac{0.34 - 0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}} = 2.078\]</span></span></p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="columns">
 <div class="column" style="width:45%;">
@@ -908,8 +881,7 @@
 
 </div><div class="column" style="width:50%;">
 
-</div>
-</div>
+</div></div>
 </section>
 <section id="the-p-value" class="slide level2 smaller">
 <h2>The p-value</h2>
@@ -943,8 +915,7 @@
 </div><div class="column" style="width:30%;">
 <p><span class="fragment" data-fragment-index="2" style="color:green;"><strong>Two-sided</strong>:</span></p>
 <p><span class="fragment" data-fragment-index="2" style="color:green;"><span class="math inline">\(H_A: p\neq p_0\)</span></span></p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="fragment">
@@ -986,8 +957,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="fragment">
@@ -1008,8 +978,7 @@
 <p><code>2*(1-pnorm(abs(z)))</code></p>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-12" class="slide level2 smaller">
 <h2></h2>
@@ -1028,8 +997,7 @@
 </div><div class="column" style="width:30%;">
 <p><span class="fragment" data-fragment-index="2" style="color:purple;"><strong>Two-sided</strong>:</span></p>
 <p><span class="fragment" data-fragment-index="2" style="color:purple;"><span class="math inline">\(H_A: \mu\neq \mu_0\)</span></span></p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="fragment">
@@ -1071,8 +1039,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="fragment">
@@ -1093,8 +1060,7 @@
 <p><code>2*(1-pt(abs(t), df))</code></p>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-13" class="slide level2 smaller">
 <h2></h2>
@@ -1106,8 +1072,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><strong>Mario Kart Example</strong></p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="5" type="1">
@@ -1117,8 +1082,7 @@
 
 </div><div class="column" style="width:50%;">
 <p>The null distribution of <span class="math inline">\(\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}\)</span> is <span class="math inline">\(N(0,1)\)</span>.</p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="6" type="1">
@@ -1128,8 +1092,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><span class="math display">\[z = \frac{0.34 - 0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}} = 2.078\]</span></p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="7" type="1">
@@ -1150,8 +1113,7 @@
 </div>
 <p>R code: <code>1-pnorm(2.078)</code> = 0.019</p>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="section-14" class="slide level2 smaller">
@@ -1163,8 +1125,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><strong>Mario Kart Example</strong></p>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column" style="width:45%;">
 <ol start="8" type="1">
@@ -1174,8 +1135,7 @@
 
 </div><div class="column" style="width:50%;">
 
-</div>
-</div>
+</div></div>
 </section>
 <section id="conclusion" class="slide level2 smaller">
 <h2>Conclusion</h2>
@@ -1230,8 +1190,7 @@
 
 </div><div class="column" style="width:50%;">
 <p><strong>Mario Kart Example</strong></p>
-</div>
-</div>
+</div></div>
 <div>
 <div class="columns">
 <div class="column" style="width:45%;">
@@ -1244,8 +1203,7 @@
 <p><span class="fragment">There is moderately suggestive evidence that the true proportion of times the generator will select the Special Cup is greater than 0.25.</span></p>
 <p><span class="fragment">At the <span class="math inline">\(\alpha = 0.05\)</span> significance level, we reject the null hypothesis.</span></p>
 <p><span class="fragment">We are 95% confident that the true proportion of times the Special Cup is chosen is between 0.247 and 0.433 with a point estimate of 0.34.</span></p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1536,18 +1494,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1579,7 +1526,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1587,7 +1556,7 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

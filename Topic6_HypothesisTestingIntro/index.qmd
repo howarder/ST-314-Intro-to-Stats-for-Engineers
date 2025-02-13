@@ -17,7 +17,7 @@ library(tidyverse)
 
 **Consider the Mario Kart example from your pre-lecture assignment:**
 
-::: fragment
+:::::: fragment
 In your edition of Mario Kart there are four different cups you can race in:
 
 🍄 Mushroom Cup
@@ -28,34 +28,34 @@ In your edition of Mario Kart there are four different cups you can race in:
 
 👑 Special Cup
 
-::: fragment
+::::: fragment
 Each round, you and your friends randomly generate the cup to race in. After a handful of rounds, you're frustrated. It seems like the random generator is picking the Special Cup more often than the other three.
 
-::: fragment
+:::: fragment
 **If the random generator is picking the cups uniformly (e.g. each cup has the same probability of being selected), what proportion of the 100 rounds do you expect to be played in the Special Cup?**
 
 ::: fragment
 $$ p = 0.25 $$
 :::
-:::
-:::
-:::
+::::
+:::::
+::::::
 
 ## Motivating Example - The Sampling Distribution {.smaller}
 
 You decide to set up an experiment to test whether the generator is choosing the Special Cup more often than the other three cups. You play 100 rounds and record the number of times the Special Cup was selected for the races.
 
-::: fragment
+:::::::: fragment
 According to the Central Limit Theorem, if $p=0.25$, what is the sampling distribution of the sample proportion, $\hat{p}$, of rounds played in the Special Cup out of the 100 total rounds played?
 
-::: columns
-::: {.column width="40%"}
+::::::: columns
+:::: {.column width="40%"}
 ::: fragment
 $\hat{p} \sim$ [$N$]{.fragment} $\bigg($ [$0.25$]{.fragment}, [$\sqrt{\frac{0.25(1-0.25)}{100}}$]{.fragment}$\bigg)$
 :::
-:::
+::::
 
-::: {.column width="60%"}
+:::: {.column width="60%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -75,34 +75,34 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
                                 0.3366))
 ```
 :::
-:::
-:::
-:::
+::::
+:::::::
+::::::::
 
 ## Motivating Example - The Sample
 
 After playing 100 rounds, you count up that 34 rounds were played in the Special Cup.
 
-::: fragment
+:::: fragment
 What is the point estimate for the true proportion of times the Special Cup is chosen?
 
 ::: fragment
 $$\hat{p} = \frac{34}{100} = 0.34$$
 :::
-:::
+::::
 
 ## Motivating Example - The Probability {.smaller}
 
 If the true (theoretical) proportion of times the Special Cup is chosen is $p=0.25$, what is the probability that we would observe a sample of 100 rounds where [at least 34 rounds]{.fragment .highlight-red} result in playing in the Special Cup?
 
-::: columns
-::: {.column width="30%"}
+::::::: columns
+:::: {.column width="30%"}
 ::: fragment
 $$ P(\hat{p} \geq 0.34) $$
 :::
-:::
+::::
 
-::: {.column width="70%"}
+:::: {.column width="70%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -130,21 +130,21 @@ ggplot(data = data.frame(x = c(p-3*s, p+3*s)), aes(x)) +
                                 0.3366))
 ```
 :::
-:::
-:::
+::::
+:::::::
 
 ##  {.smaller}
 
 #### Motivating Example - The Standardized Distribution
 
-::: columns
-::: {.column width="30%"}
+::::::: columns
+:::: {.column width="30%"}
 ::: fragment
 $$P(\hat{p} \geq 0.34)$$
 :::
-:::
+::::
 
-::: {.column width="70%"}
+:::: {.column width="70%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -173,11 +173,11 @@ ggplot(data = data.frame(x = c(p-3*s, p+3*s)), aes(x)) +
                                 0.3366))
 ```
 :::
-:::
-:::
+::::
+:::::::
 
-::: columns
-::: {.column width="30%"}
+:::::::: columns
+::::: {.column width="30%"}
 ::: fragment
 $$ P\Bigg(z \geq \frac{0.34-0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}}\Bigg) $$
 :::
@@ -185,9 +185,9 @@ $$ P\Bigg(z \geq \frac{0.34-0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}}\Bigg) $$
 ::: fragment
 $$= P(z \geq 2.078)$$
 :::
-:::
+:::::
 
-::: {.column width="70%"}
+:::: {.column width="70%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -216,8 +216,8 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
                                 2))
 ```
 :::
-:::
-:::
+::::
+::::::::
 
 ::: fragment
 R code: [`1-pnorm(2.078, 0, 1)`]{.fragment} [= 0.019]{.fragment}
@@ -235,7 +235,7 @@ R code: [`1-pnorm(2.078, 0, 1)`]{.fragment} [= 0.019]{.fragment}
 
 ##  {.smaller}
 
-::: columns
+::::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 
@@ -245,16 +245,16 @@ R code: [`1-pnorm(2.078, 0, 1)`]{.fragment} [= 0.019]{.fragment}
 ::: {.column width="5%"}
 :::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 **Mario Kart Example**
 
 ::: fragment
 Is the proportion of rounds played in the Special Cup greater than 0.25?
 :::
-:::
-:::
+::::
+:::::::
 
-::: columns
+::::::: columns
 ::: {.column width="45%"}
 2.  Identify the parameter of interest
 :::
@@ -262,14 +262,14 @@ Is the proportion of rounds played in the Special Cup greater than 0.25?
 ::: {.column width="5%"}
 :::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: fragment
 $p$, the true proportion of rounds selected in the Special Cup.
 :::
-:::
-:::
+::::
+:::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 3.  [State the null and alternative hypotheses.]{.fragment .highlight-red}
 :::
@@ -279,14 +279,15 @@ $p$, the true proportion of rounds selected in the Special Cup.
 
 ::: {.column width="50%"}
 :::
-:::
+::::::
 
 ## The Hypotheses {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 **The Null Hypothesis**
 
+:::{.incremental}
 -   Establishes the claim.
 
 -   Is assumed to be the **truth** when performing a hypothesis test.
@@ -295,9 +296,12 @@ $p$, the true proportion of rounds selected in the Special Cup.
 
 -   Denoted $H_0$
 :::
+:::
 
 ::: {.column width="50%"}
 **The Alternative Hypothesis**
+
+:::{.incremental}
 
 -   Reflects the question of interest.
 
@@ -308,6 +312,7 @@ $p$, the true proportion of rounds selected in the Special Cup.
 -   Denoted $H_A$
 :::
 :::
+:::::
 
  
 
@@ -321,51 +326,51 @@ The hypotheses are **ALWAYS** made with respect to the **parameter**.
 
  
 
-::: fragment
+::::::::::::: fragment
 **Lower one-sided**
 
 [Question of interest:]{.fragment} [Is the parameter of interest less than the claimed value?]{.fragment}
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ::: fragment
 [If testing the population proportion, $p$: $H_A: p < p_0$]{style="color:green;"}
 
 [where $p_0$ is the claimed value.]{style="color:green;"}
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: fragment
 [If testing the population mean, $\mu$: $H_A: \mu < \mu_0$]{style="color:purple;"}
 
 [where $\mu_0$ is the claimed value.]{style="color:purple;"}
 :::
-:::
-:::
+::::
+:::::::
 
 **Upper one-sided**
 
 [Question of interest:]{.fragment} [Is the parameter of interest greater than the claimed value?]{.fragment}
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ::: fragment
 [If testing the population proportion, $p$: $H_A: p > p_0$]{style="color:green;"}
 
 [where $p_0$ is the claimed value.]{style="color:green;"}
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: fragment
 [If testing the population mean, $\mu$: $H_A: \mu > \mu_0$]{style="color:purple;"}
 
 [where $\mu_0$ is the claimed value.]{style="color:purple;"}
 :::
-:::
-:::
-:::
+::::
+:::::::
+:::::::::::::
 
 ##  {.smaller}
 
@@ -375,28 +380,28 @@ The hypotheses are **ALWAYS** made with respect to the **parameter**.
 
 [Question of interest:]{.fragment} [Is the parameter of interest different from (not equal to) the claimed value?]{.fragment}
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ::: fragment
 [If testing the population proportion, $p$: $H_A: p \neq p_0$]{style="color:green;"}
 
 [where $p_0$ is the claimed value.]{style="color:green;"}
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: fragment
 [If testing the population mean, $\mu$: $H_A: \mu \neq \mu_0$]{style="color:purple;"}
 
 [where $\mu_0$ is the claimed value.]{style="color:purple;"}
 :::
-:::
-:::
+::::
+:::::::
 
 ##  {.smaller}
 
-::: nonincremental
-::: columns
+::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 
@@ -411,11 +416,11 @@ The hypotheses are **ALWAYS** made with respect to the **parameter**.
 
 Is the proportion of rounds played in the Special Cup greater than 0.25?
 :::
-:::
-:::
+::::::
+:::::::
 
-::: nonincremental
-::: columns
+::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 2.  Identify the parameter of interest
 :::
@@ -426,11 +431,11 @@ Is the proportion of rounds played in the Special Cup greater than 0.25?
 ::: {.column width="50%"}
 $p$, the true proportion of rounds selected in the Special Cup.
 :::
-:::
-:::
+::::::
+:::::::
 
-::: nonincremental
-::: columns
+::::::::: nonincremental
+:::::::: columns
 ::: {.column width="45%"}
 3.  State the null and alternative hypotheses.
 :::
@@ -438,7 +443,7 @@ $p$, the true proportion of rounds selected in the Special Cup.
 ::: {.column width="5%"}
 :::
 
-::: {.column width="50%"}
+::::: {.column width="50%"}
 ::: fragment
 $H_0: p = 0.25$
 :::
@@ -446,11 +451,11 @@ $H_0: p = 0.25$
 ::: fragment
 $H_A: p > 0.25$
 :::
-:::
-:::
-:::
+:::::
+::::::::
+:::::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 4.  [Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.]{.fragment .highlight-red}
 :::
@@ -460,13 +465,13 @@ $H_A: p > 0.25$
 
 ::: {.column width="50%"}
 :::
-:::
+::::::
 
 ##  {.smaller}
 
 ### "As or more extreme" results, when testing $p$
 
-::: columns
+:::::::: columns
 ::: {.column width="\"50%"}
 [**Lower one-sided**: $H_A: p<p_0$]{.fragment fragment-index="2" style="color:green;"}
 
@@ -485,7 +490,7 @@ $H_A: p > 0.25$
 [An "as or more extreme" result than our observed $\hat{p}$ would be anything]{.fragment fragment-index="9" style="color:green;"} [**further from** $p_0$ than]{.fragment fragment-index="10" style="color:green;"} [the observed $\hat{p}$.]{.fragment fragment-index="9" style="color:green;"}
 :::
 
-::: {.column width="50%"}
+:::::: {.column width="50%"}
 ::: {.fragment fragment-index="3"}
 ![](num_line_1.png)
 :::
@@ -505,14 +510,14 @@ $H_A: p > 0.25$
 ::: {.fragment fragment-index="9"}
 ![](num_line_1.png)
 :::
-:::
-:::
+::::::
+::::::::
 
 ##  {.smaller}
 
 ### "As or more extreme" results, when testing $\mu$
 
-::: columns
+:::::::: columns
 ::: {.column width="\"50%"}
 [**Lower one-sided**: $H_A: \mu<\mu_0$]{.fragment fragment-index="2" style="color:purple;"}
 
@@ -531,7 +536,7 @@ $H_A: p > 0.25$
 [An "as or more extreme" result than our observed $\overline{x}$ would be anything]{.fragment fragment-index="9" style="color:purple;"} [**further from** $\mu_0$ than]{.fragment fragment-index="10" style="color:purple;"} [the observed $\overline{x}$.]{.fragment fragment-index="9" style="color:purple;"}
 :::
 
-::: {.column width="50%"}
+:::::: {.column width="50%"}
 ::: {.fragment fragment-index="3"}
 ![](num_line_3.png)
 :::
@@ -551,13 +556,13 @@ $H_A: p > 0.25$
 ::: {.fragment fragment-index="9"}
 ![](num_line_3.png)
 :::
-:::
-:::
+::::::
+::::::::
 
 ##  {.smaller}
 
-::: nonincremental
-::: columns
+::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 
@@ -572,11 +577,11 @@ $H_A: p > 0.25$
 
 Is the proportion of rounds played in the Special Cup greater than 0.25?
 :::
-:::
-:::
+::::::
+:::::::
 
-::: nonincremental
-::: columns
+::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 2.  Identify the parameter of interest
 :::
@@ -587,11 +592,11 @@ Is the proportion of rounds played in the Special Cup greater than 0.25?
 ::: {.column width="50%"}
 $p$, the true proportion of rounds selected in the Special Cup.
 :::
-:::
-:::
+::::::
+:::::::
 
-::: nonincremental
-::: columns
+::::::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 3.  State the null and alternative hypotheses.
 :::
@@ -604,9 +609,9 @@ $H_0: p = 0.25$
 
 $H_A: p > 0.25$
 :::
-:::
+::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 4.  Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.
 :::
@@ -617,13 +622,13 @@ $H_A: p > 0.25$
 ::: {.column width="50%"}
 [Any sample proportion greater than or equal to $\hat{p}=0.34$ would have be considered as or more extreme than the observed statistic.]{.fragment}
 :::
-:::
-:::
+::::::
+:::::::::::
 
 ##  {.smaller}
 
-::: nonincremental
-::: columns
+::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 :::
@@ -634,10 +639,10 @@ $H_A: p > 0.25$
 ::: {.column width="50%"}
 **Mario Kart Example**
 :::
-:::
-:::
+::::::
+:::::::
 
-::: columns
+:::::: columns
 ::: {.column width="40%"}
 5.  [Determine the null distribution. (Don't forget to check the sample size conditions!)]{.fragment .highlight-red}
 :::
@@ -647,7 +652,7 @@ $H_A: p > 0.25$
 
 ::: {.column width="50%"}
 :::
-:::
+::::::
 
 ## Null Distribution {.smaller}
 
@@ -657,7 +662,7 @@ The [null distribution]{style="color:red;"} refers to the sampling distribution 
 "Under the null hypothesis" is equivalent to saying "assuming the null hypothesis is true."
 :::
 
-::: columns
+::::: columns
  
 
 ::: {.column width="50%"}
@@ -675,12 +680,12 @@ The [null distribution]{style="color:red;"} refers to the sampling distribution 
 
 [If the sample size is sufficiently large, the null distribution of this random variable is]{.fragment style="color:purple;"} [a $t$ distribution with $n-1$ degrees of freedom.]{.fragment style="color:purple;"}
 :::
-:::
+:::::
 
 ##  {.smaller}
 
-::: nonincremental
-::: columns
+::::::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 :::
@@ -691,9 +696,9 @@ The [null distribution]{style="color:red;"} refers to the sampling distribution 
 ::: {.column width="50%"}
 **Mario Kart Example**
 :::
-:::
+::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 5.  Determine the null distribution. (Don't forget to check the sample size conditions!)
 :::
@@ -704,10 +709,10 @@ The [null distribution]{style="color:red;"} refers to the sampling distribution 
 ::: {.column width="50%"}
 [The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is $N(0,1)$.]{.fragment}
 :::
-:::
-:::
+::::::
+:::::::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 6.  [Calculate the test statistic.]{.fragment .highlight-red}
 :::
@@ -717,7 +722,7 @@ The [null distribution]{style="color:red;"} refers to the sampling distribution 
 
 ::: {.column width="50%"}
 :::
-:::
+::::::
 
 ## The Test Statistic {.smaller}
 
@@ -729,7 +734,7 @@ General form a test statistic: [$\frac{\text{point estimate - hypothesized value
 
  
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 [When testing the population proportion, $p$, the test statistic is]{.fragment style="color:green;"}
 
@@ -741,12 +746,12 @@ General form a test statistic: [$\frac{\text{point estimate - hypothesized value
 
 [$$t = \frac{\overline{x}-\mu_0}{\frac{s}{\sqrt{n}}}$$]{.fragment style="color:purple;"}
 :::
-:::
+:::::
 
 ##  {.smaller}
 
-::: nonincremental
-::: columns
+::::::::::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 :::
@@ -757,9 +762,9 @@ General form a test statistic: [$\frac{\text{point estimate - hypothesized value
 ::: {.column width="50%"}
 **Mario Kart Example**
 :::
-:::
+::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 5.  Determine the null distribution. (Don't forget to check the sample size conditions!)
 :::
@@ -770,9 +775,9 @@ General form a test statistic: [$\frac{\text{point estimate - hypothesized value
 ::: {.column width="50%"}
 The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is $N(0,1)$.
 :::
-:::
+::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 6.  Calculate the test statistic.
 :::
@@ -783,10 +788,10 @@ The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is
 ::: {.column width="50%"}
 [$$z = \frac{0.34 - 0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}} = 2.078$$]{.fragment}
 :::
-:::
-:::
+::::::
+:::::::::::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 7.  [Calculate the p-value using the test statistic and null distribution.]{.fragment .highlight-red}
 :::
@@ -796,7 +801,7 @@ The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is
 
 ::: {.column width="50%"}
 :::
-:::
+::::::
 
 ## The p-value {.smaller}
 
@@ -818,7 +823,7 @@ The p-value is the **probability** of observing data as or more extreme than our
 
 ### [The p-value when testing $p$]{style="color:green;"}
 
-::: columns
+:::::::: columns
 ::: {.column width="30%"}
 [**Lower one-sided**:]{.fragment fragment-index="2" style="color:green;"}
 
@@ -842,10 +847,10 @@ The p-value is the **probability** of observing data as or more extreme than our
 
 [$H_A: p\neq p_0$]{.fragment fragment-index="2" style="color:green;"}
 :::
-:::
+::::::::
 
-::: columns
-::: {.column width="30%"}
+::::::::::: columns
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -877,12 +882,12 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=-2, y=0.27, label="z test statistic", size = 5)
 ```
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -914,12 +919,12 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=2, y=0.27, label="z test statistic", size = 5)
 ```
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -960,45 +965,45 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=-2, y=0.27, label="-|z test statistic|", size = 5)
 ```
 :::
-:::
-:::
+::::
+:::::::::::
 
-::: columns
-::: {.column width="30%"}
+::::::::::: columns
+:::: {.column width="30%"}
 ::: fragment
 R code:
 
 `pnorm(z)`
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 R code:
 
 `1-pnorm(z)`
 :::
-:::
+::::
 
-::: {.column width="35%"}
-::: fragment
+::::: {.column width="35%"}
+:::: fragment
 ::: right-align
 R code:
 
 `2*(1-pnorm(abs(z)))`
 :::
-:::
-:::
-:::
+::::
+:::::
+:::::::::::
 
 ##  {.smaller}
 
 ### [The p-value when testing $\mu$]{style="color:purple;"}
 
-::: columns
+:::::::: columns
 ::: {.column width="30%"}
 [**Lower one-sided**:]{.fragment fragment-index="2" style="color:purple;"}
 
@@ -1022,10 +1027,10 @@ R code:
 
 [$H_A: \mu\neq \mu_0$]{.fragment fragment-index="2" style="color:purple;"}
 :::
-:::
+::::::::
 
-::: columns
-::: {.column width="30%"}
+::::::::::: columns
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -1057,12 +1062,12 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=-2, y=0.27, label="t test statistic", size = 5)
 ```
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -1094,12 +1099,12 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=2, y=0.27, label="t test statistic", size = 5)
 ```
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -1140,44 +1145,44 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=-2, y=0.27, label="-|t test statistic|", size = 5)
 ```
 :::
-:::
-:::
+::::
+:::::::::::
 
-::: columns
-::: {.column width="30%"}
+::::::::::: columns
+:::: {.column width="30%"}
 ::: fragment
 R code:
 
 `pt(t, df)`
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 R code:
 
 `1-pt(t, df))`
 :::
-:::
+::::
 
-::: {.column width="35%"}
-::: fragment
+::::: {.column width="35%"}
+:::: fragment
 ::: right-align
 R code:
 
 `2*(1-pt(abs(t), df))`
 :::
-:::
-:::
-:::
+::::
+:::::
+:::::::::::
 
 ##  {.smaller}
 
-::: nonincremental
-::: columns
+:::::::::::::::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 :::
@@ -1188,9 +1193,9 @@ R code:
 ::: {.column width="50%"}
 **Mario Kart Example**
 :::
-:::
+::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 5.  Determine the null distribution. (Don't forget to check the sample size conditions!)
 :::
@@ -1201,9 +1206,9 @@ R code:
 ::: {.column width="50%"}
 The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is $N(0,1)$.
 :::
-:::
+::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 6.  Calculate the test statistic.
 :::
@@ -1214,9 +1219,9 @@ The null distribution of $\frac{\hat{p}-0.25}{\sqrt{\frac{0.25(1-0.25)}{n}}}$ is
 ::: {.column width="50%"}
 $$z = \frac{0.34 - 0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}} = 2.078$$
 :::
-:::
+::::::
 
-::: columns
+::::::: columns
 ::: {.column width="45%"}
 7.  Calculate the p-value using the test statistic and null distribution.
 :::
@@ -1224,7 +1229,7 @@ $$z = \frac{0.34 - 0.25}{\sqrt{\frac{0.25(1-0.25)}{100}}} = 2.078$$
 ::: {.column width="5%"}
 :::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -1258,13 +1263,13 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 R code: `1-pnorm(2.078)` = 0.019
 :::
-:::
-:::
-:::
+::::
+:::::::
+::::::::::::::::::::
 
 ##  {.smaller}
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 :::
@@ -1275,9 +1280,9 @@ R code: `1-pnorm(2.078)` = 0.019
 ::: {.column width="50%"}
 **Mario Kart Example**
 :::
-:::
+::::::
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 8.  [Make a conclusion.]{.fragment .highlight-red}
 :::
@@ -1287,7 +1292,7 @@ R code: `1-pnorm(2.078)` = 0.019
 
 ::: {.column width="50%"}
 :::
-:::
+::::::
 
 ## Conclusion {.smaller}
 
@@ -1340,7 +1345,7 @@ R code: `1-pnorm(2.078)` = 0.019
 
 ##  {.smaller}
 
-::: columns
+:::::: columns
 ::: {.column width="45%"}
 **Steps in Performing a Hypothesis Test**
 :::
@@ -1351,10 +1356,10 @@ R code: `1-pnorm(2.078)` = 0.019
 ::: {.column width="50%"}
 **Mario Kart Example**
 :::
-:::
+::::::
 
-::: nonincremental
-::: columns
+::::::: nonincremental
+:::::: columns
 ::: {.column width="45%"}
 8.  Make a conclusion.
 :::
@@ -1369,5 +1374,5 @@ R code: `1-pnorm(2.078)` = 0.019
 
 [We are 95% confident that the true proportion of times the Special Cup is chosen is between 0.247 and 0.433 with a point estimate of 0.34.]{.fragment}
 :::
-:::
-:::
+::::::
+:::::::
