@@ -125,8 +125,6 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
  
 
-[🎩 Answer Question 3 in the Class 14 Activity Top Hat]{.fragment}
-
 # Hypothesis Testing
 
 ## 
@@ -171,8 +169,8 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
 [*This depends on the question of interest.*]{.fragment}
 
-::: fragment
-::: columns
+::::::: fragment
+:::::: columns
 ::: {.column width="33%"}
 **Lower one-sided**
 
@@ -196,8 +194,8 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
 [$H_A: \mu_1 \neq\mu_2$]{.fragment}
 :::
-:::
-:::
+::::::
+:::::::
 
 ## 
 
@@ -221,7 +219,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 **4. Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.**
 :::
 
-::: columns
+:::::::: columns
 ::: {.column width="\"50%"}
  
 
@@ -246,7 +244,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 [**Two-sided**: $H_A: \mu_1 \neq \mu_2$]{.fragment fragment-index="6"}
 :::
 
-::: {.column width="50%"}
+:::::: {.column width="50%"}
 ::: {.fragment fragment-index="3"}
 ![](lower.png)
 :::
@@ -266,8 +264,8 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 ::: {.fragment fragment-index="7"}
 ![](two.png)
 :::
-:::
-:::
+::::::
+::::::::
 
 ##  {.smaller}
 
@@ -309,7 +307,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
 ## 5. Determine the Null Distribution {.smaller}
 
-::: columns
+:::::: columns
 ::: {.column width="50%"}
 [Motivating Example:]{.fragment style="color:blue;"}
 
@@ -322,7 +320,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 [So the null distribution is a**t distribution with 75.897 degrees of freedom**.]{.fragment style="color:blue;"}
 :::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -354,8 +352,8 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   # geom_text(x=-2, y=0.27, label="t test statistic", size = 5)
 ```
 :::
-:::
-:::
+::::
+::::::
 
 ##  {.smaller}
 
@@ -377,7 +375,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 ### 7. Calculate the p-value using the test statistic and null distribution.
 
-::: columns
+:::::::: columns
 ::: {.column width="30%"}
 [**Lower one-sided**:]{.fragment fragment-index="2"}
 
@@ -401,10 +399,10 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 [$H_A: \mu_1\neq \mu_2$]{.fragment fragment-index="2"}
 :::
-:::
+::::::::
 
-::: columns
-::: {.column width="30%"}
+::::::::::: columns
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -436,12 +434,12 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=-2, y=0.27, label="t test statistic", size = 5)
 ```
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -473,12 +471,12 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=2, y=0.27, label="t test statistic", size = 5)
 ```
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 ```{r}
 #| message: false
@@ -519,39 +517,39 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_text(x=-2, y=0.27, label="-|t test statistic|", size = 5)
 ```
 :::
-:::
-:::
+::::
+:::::::::::
 
-::: columns
-::: {.column width="30%"}
+::::::::::: columns
+:::: {.column width="30%"}
 ::: fragment
 R code:
 
 `pt(t, df)`
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="30%"}
+:::: {.column width="30%"}
 ::: fragment
 R code:
 
 `1-pt(t, df))`
 :::
-:::
+::::
 
-::: {.column width="35%"}
-::: fragment
+::::: {.column width="35%"}
+:::: fragment
 ::: right-align
 R code:
 
 `2*(1-pt(abs(t), df))`
 :::
-:::
-:::
-:::
+::::
+:::::
+:::::::::::
 
 [where `df` is the Satterthwaite degrees of freedom, $\nu$]{.fragment}
 
@@ -645,4 +643,4 @@ Write a 4-part conclusion. The conclusion should be written in the context of th
 
 ## Practice! 🎩
 
-Please locate the Class 14 Activity in Top Hat and answer **Questions 4-10**.
+Please locate the Class 15 Activity in Top Hat and answer **Questions 1-7.**
