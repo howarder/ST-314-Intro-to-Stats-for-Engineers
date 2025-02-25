@@ -211,7 +211,7 @@ Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
  
 
-[$H_0:$$\mu_A \neq \mu_B$]{.fragment style="color:blue;"}
+[$H_A:\mu_A \neq \mu_B$]{.fragment style="color:blue;"}
 
 ##  {.smaller}
 
