@@ -35,8 +35,8 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 In each of the side-by-side boxplots below, you'll see data sampled from three different populations. The red dot in each plot corresponds to the sample mean.
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ::: fragment
 **Example 1**
 
@@ -70,9 +70,9 @@ plot1
 :::
 
 [🎩 In Top Hat, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.]{.fragment}
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: fragment
 **Example 2**
 
@@ -98,16 +98,19 @@ plot2
 :::
 
 [🎩 Again, in Top Hat, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.]{.fragment}
-:::
-:::
+::::
+:::::::
 
 ## Analysis of Variance (ANOVA) {.smaller}
 
+:::{.incremental}
 -   An ANOVA is a holistic procedure used to test whether there is evidence that [at least one pair of populations]{.fragment .highlight-red} have different means when comparing more than two populations.
 
 -   Why is it called an *Analysis of **Variance*** if the goal is to compare means?
 
     -   In an ANOVA, we'll compare the variability *across* groups to the variability *within* groups.
+    
+:::    
 
 ::: fragment
 ```{r}
@@ -162,7 +165,7 @@ plot2
 
  
 
-[$H_A:$]{.fragment}[[At least one]{.fragment .highlight-red} mean is different]{.fragment}
+[$H_A:$ [ At least one]{.fragment .highlight-red} mean is different]{.fragment}
 
 ##  {.smaller}
 
@@ -172,8 +175,8 @@ plot2
 
 [In order to answer our question of interest, we must compare the variability between groups to the variability within groups.]{.fragment}
 
-::: fragment
-::: columns
+::::::: fragment
+:::::: columns
 ::: {.column width="45%"}
 **Mean Square Between Groups (MSG)**
 
@@ -192,8 +195,8 @@ plot2
 
 [$$MSE = \frac{1}{n-k}\sum \limits_{i=1}^k (n_i-1)s_i^2 $$]{.fragment}
 :::
-:::
-:::
+::::::
+:::::::
 
 ::: fragment
 The test statistic is the ratio of the average between group variability to the average within group variability $$F = \frac{MSG}{MSE}$$
@@ -207,7 +210,7 @@ The test statistic is the ratio of the average between group variability to the 
 
 [There are two conditions that need to be met in order to assume the upcoming null distribution:]{.fragment}
 
-:::{.incremental}
+::: incremental
 1.  The samples sizes must be sufficiently large.
 
 -   If $n_i\geq 30$, we can move forward.
@@ -229,8 +232,8 @@ The test statistic is the ratio of the average between group variability to the 
 
 [If the above conditions are met, under the null hypothesis, the test statistic, $F = \frac{MSG}{MSE}$, follows an *F* distribution with $k-1$ and $n-k$ degrees of freedom.]{.fragment}
 
-::: columns
-::: {.column width="60%"}
+::::::: columns
+:::: {.column width="60%"}
 ::: fragment
 ```{r}
 ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
@@ -240,10 +243,10 @@ ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
   theme_bw() 
 ```
 :::
-:::
+::::
 
-::: {.column width="40%"}
-:::{.incremental}
+:::: {.column width="40%"}
+::: incremental
 -   The $F$ distribution is right skewed whose support is $(0, \infty)$
 
 -   Its shape is defined by **two** values:
@@ -254,8 +257,8 @@ ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
 
 -   Denoted: [$F_{k-1, n-k}$]{.fragment}
 :::
-:::
-:::
+::::
+:::::::
 
 ## ANOVA Procedure Steps
 
@@ -277,8 +280,8 @@ ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
 
 [Recall that the p-value represents the probability of observing data as or more extreme than our current dataset according to the alternative hypothesis, if the null hypothesis were true.]{.fragment}
 
-::: columns
-::: {.column width="60%"}
+::::::: columns
+:::: {.column width="60%"}
 ::: fragment
 ```{r}
 #| fig-height: 3
@@ -298,14 +301,14 @@ ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
   geom_text(x=2, y=0.45, label="F test statistic", size =7)
 ```
 :::
-:::
+::::
 
-::: {.column width="40%"}
+:::: {.column width="40%"}
 ::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
 In an ANVOA *F* test, the p-value is always the area under the null distribution curve to the **right** of the *F* test statistic.
 :::
-:::
-:::
+::::
+:::::::
 
 ::: fragment
 **R code:** [`1-pf(F, k-1, n-k)`]{.fragment}
@@ -317,15 +320,12 @@ In an ANVOA *F* test, the p-value is always the area under the null distribution
 
 [Write a 2-part conclusion (we'll exclude a single point estimate and confidence interval). The conclusion should be written in the context of the problem and contain the following components:]{.fragment}
 
-:::{.incremental}
-
+::: incremental
 1.  A statement for the strength of evidence in favor the alternative hypothesis.
 
 2.  Whether to reject or fail to reject the null hypothesis.
 :::
 
-## Practice! 
+## Practice!
 
-Complete the Class 15 Practice - ANOVA assignment in Top Hat.
-
-
+Complete the Class 16 Practice - ANOVA assignment in Top Hat.

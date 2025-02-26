@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>Topic 8: Analysis of Variance (ANOVA)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -380,18 +380,19 @@
 </div>
 </div>
 <p><span class="fragment">🎩 Again, in Top Hat, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="analysis-of-variance-anova" class="slide level2 smaller">
 <h2>Analysis of Variance (ANOVA)</h2>
+<div>
 <ul>
-<li><p>An ANOVA is a holistic procedure used to test whether there is evidence that <span class="fragment highlight-red">at least one pair of populations</span> have different means when comparing more than two populations.</p></li>
-<li><p>Why is it called an <em>Analysis of <strong>Variance</strong></em> if the goal is to compare means?</p>
+<li class="fragment"><p>An ANOVA is a holistic procedure used to test whether there is evidence that <span class="fragment highlight-red">at least one pair of populations</span> have different means when comparing more than two populations.</p></li>
+<li class="fragment"><p>Why is it called an <em>Analysis of <strong>Variance</strong></em> if the goal is to compare means?</p>
 <ul>
-<li>In an ANOVA, we’ll compare the variability <em>across</em> groups to the variability <em>within</em> groups.</li>
+<li class="fragment">In an ANOVA, we’ll compare the variability <em>across</em> groups to the variability <em>within</em> groups.</li>
 </ul></li>
 </ul>
+</div>
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
@@ -438,7 +439,7 @@
 <p>&nbsp;</p>
 <p><span class="fragment"><span class="math inline">\(H_0: \mu_1 = \mu_2 = ... = \mu_k\)</span></span></p>
 <p>&nbsp;</p>
-<p><span class="fragment"><span class="math inline">\(H_A:\)</span></span><span class="fragment"><span class="fragment highlight-red">At least one</span> mean is different</span></p>
+<p><span class="fragment"><span class="math inline">\(H_A:\)</span> <span class="fragment highlight-red">At least one</span> mean is different</span></p>
 </section>
 <section id="section-1" class="slide level2 smaller">
 <h2></h2>
@@ -461,8 +462,7 @@
 <li>Measures the average variability <span style="color:red;">within</span> groups</li>
 </ul>
 <p><span class="fragment"><span class="math display">\[MSE = \frac{1}{n-k}\sum \limits_{i=1}^k (n_i-1)s_i^2 \]</span></span></p>
-</div>
-</div>
+</div></div>
 </div>
 <div class="fragment">
 <p>The test statistic is the ratio of the average between group variability to the average within group variability <span class="math display">\[F = \frac{MSG}{MSE}\]</span></p>
@@ -520,8 +520,7 @@
 <li class="fragment"><p>Denoted: <span class="fragment"><span class="math inline">\(F_{k-1, n-k}\)</span></span></p></li>
 </ul>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="anova-procedure-steps-5" class="slide level2">
 <h2>ANOVA Procedure Steps</h2>
@@ -554,8 +553,7 @@
 <div class="fragment" style="border: 2px solid #2A788EFF; text-align: center">
 <p>In an ANVOA <em>F</em> test, the p-value is always the area under the null distribution curve to the <strong>right</strong> of the <em>F</em> test statistic.</p>
 </div>
-</div>
-</div>
+</div></div>
 <div class="fragment">
 <p><strong>R code:</strong> <span class="fragment"><code>1-pf(F, k-1, n-k)</code></span></p>
 </div>
@@ -573,7 +571,7 @@
 </section>
 <section id="practice" class="slide level2">
 <h2>Practice!</h2>
-<p>Complete the Class 15 Practice - ANOVA assignment in Top Hat.</p>
+<p>Complete the Class 16 Practice - ANOVA assignment in Top Hat.</p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -863,18 +861,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -906,7 +893,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -914,7 +923,7 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
