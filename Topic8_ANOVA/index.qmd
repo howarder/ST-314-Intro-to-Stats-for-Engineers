@@ -328,4 +328,4 @@ In an ANVOA *F* test, the p-value is always the area under the null distribution
 
 ## Practice!
 
-Complete the Class 16 Practice - ANOVA assignment in Top Hat.
+Complete the Class 17 Practice - ANOVA assignment in Top Hat.
