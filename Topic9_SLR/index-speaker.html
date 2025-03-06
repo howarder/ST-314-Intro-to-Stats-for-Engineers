@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>Topic 9 - Simple Linear Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -441,22 +441,20 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <div class="columns">
 <div class="column">
-<p><span class="fragment">✍️ Describe the relationship between illiteracy rate and life expectancy shown in the <span style="color:red;">scatterplot</span> above.</span></p>
+<p><span class="fragment">✍️ Describe the relationship between illiteracy rate and life expectancy shown in the</span><span style="color:red;">scatterplot</span> above.</p>
 </div><div class="column">
 <p><span class="fragment">🗣 Describe the relationship between high school graduation rate and income using the scatterplot above.</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="explanatory-and-response-variables" class="slide level2 smaller">
 <h2>Explanatory and Response Variables</h2>
 <p><span class="fragment">When discussing bivariate relationships, it is common to treat one variable as the <strong>explanatory</strong> and one as the <strong>response</strong>.</span></p>
 <div>
 <div class="fragment">
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 59%">
 <col style="width: 40%">
@@ -543,8 +541,7 @@
 </div><div class="column">
 <p>&nbsp;</p>
 <p><span class="fragment"><strong>What characteristics would the “line of best fit” have?</strong></span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="simple-linear-regression-1" class="slide level2 smaller">
 <h2>Simple Linear Regression</h2>
@@ -558,14 +555,13 @@
 </div><div class="column" style="width:15%;">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_2af9103a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_a6f21e4e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>slope = -1.14608 intercept = 72.1813</p>
 <style type="text/css">
@@ -601,8 +597,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="least-squares-regression-line" class="slide level2 smaller">
@@ -658,12 +653,11 @@ Coefficients:
 </div>
 </div>
 <p><span class="fragment"><span class="math display">\[\hat{y} = 72.181 - 1.146x\]</span> where <span class="math inline">\(\hat{y}\)</span> is the predicted average life expectancy and <span class="math inline">\(x\)</span> represents illiteracy rate.</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="practice-2" class="slide level2">
 <h2>Practice 🎩</h2>
-<p>Answer Question 3 in the classroom tab on Top Hat using the fitted LSRL.</p>
+<p>Answer Class 18 - Question 1 in the classroom tab on Top Hat using the fitted LSRL.</p>
 <p><span class="math display">\[\hat{y} = 72.181 - 1.146x\]</span> where <span class="math inline">\(\hat{y}\)</span> is the predicted average life expectancy and <span class="math inline">\(x\)</span> represents illiteracy rate.</p>
 </section>
 <section id="basic-predictions-from-the-lsrl" class="slide level2 smaller">
@@ -674,7 +668,7 @@ Coefficients:
 <div class="fragment">
 <!-- -->
 <h3 id="practice-3">Practice 🎩</h3>
-<p>Answer Question 4 in the classroom tab on Top Hat using the fitted LSRL.</p>
+<p>Answer Class 18 - Question 2 in the classroom tab on Top Hat using the fitted LSRL.</p>
 <p><span class="math display">\[\hat{y} = 72.181 - 1.146x\]</span> where <span class="math inline">\(\hat{y}\)</span> is the predicted average life expectancy and <span class="math inline">\(x\)</span> represents illiteracy rate.</p>
 </div>
 </section>
@@ -684,7 +678,7 @@ Coefficients:
 <div class="fragment">
 <!-- -->
 <h3 id="practice-4">Practice 🎩</h3>
-<p>Answer Question 5 in the classroom tab on Top Hat using the fitted LSRL.</p>
+<p>Answer Class 18 - Question 3 in the classroom tab on Top Hat using the fitted LSRL.</p>
 <p><span class="math display">\[\hat{y} = 72.181 - 1.146x\]</span> where <span class="math inline">\(\hat{y}\)</span> is the predicted average life expectancy and <span class="math inline">\(x\)</span> represents illiteracy rate.</p>
 </div>
 </section>
@@ -712,8 +706,7 @@ Coefficients:
 <li class="fragment"><p>If a pattern is visible, it might be an indication that one or more of the LSRL conditions are violated.</p></li>
 </ul>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="violations-of-lsrl-conditions" class="slide level2 smaller">
 <h2>Violations of LSRL Conditions</h2>
@@ -732,12 +725,11 @@ Coefficients:
 <p><span class="fragment">Constant variability violated</span></p>
 </div><div class="column" style="width:24%;">
 <p><span class="fragment">Independence violated</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="practice-5" class="slide level2 smaller">
 <h2>Practice 🎩</h2>
-<p>Answer Question 6 in the classroom tab on Top Hat using the fitted LSRL and corresponding residual plot.</p>
+<p>Answer Class 18 - Question 4 in the classroom tab on Top Hat using the fitted LSRL and corresponding residual plot.</p>
 <p><span class="math display">\[\hat{y} = 72.181 - 1.146x\]</span> where <span class="math inline">\(\hat{y}\)</span> is the predicted average life expectancy and <span class="math inline">\(x\)</span> represents illiteracy rate.</p>
 
 <img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="432" class="r-stretch"></section>
@@ -1060,18 +1052,7 @@ Coefficients:
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1103,7 +1084,29 @@ Coefficients:
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1111,7 +1114,7 @@ Coefficients:
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

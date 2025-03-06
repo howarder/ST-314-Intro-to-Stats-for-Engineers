@@ -45,8 +45,8 @@ state_30 <- state[keep,]
 
 ```
 
-::: columns
-::: column
+::::::: columns
+:::: column
 ::: fragment
 ```{r}
 #| fig-height: 4
@@ -73,9 +73,9 @@ state_30 |>
 
 ```
 :::
-:::
+::::
 
-::: column
+:::: column
 ::: fragment
 ```{r}
 #| fig-width: 5
@@ -91,25 +91,24 @@ state_30 |>
   theme_bw()
 ```
 :::
-:::
-:::
+::::
+:::::::
 
-::: columns
+::::: columns
 ::: column
-[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the [scatterplot]{style="color:red;"} above.]{.fragment}
+[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the ]{.fragment}[scatterplot]{style="color:red;"} above.
 :::
 
 ::: column
 [🗣 Describe the relationship between high school graduation rate and income using the scatterplot above.]{.fragment}
 :::
-:::
+:::::
 
 ## Explanatory and Response Variables {.smaller}
 
 [When discussing bivariate relationships, it is common to treat one variable as the **explanatory** and one as the **response**.]{.fragment}
 
-:::{.incremental}
-
+:::: incremental
 ::: fragment
 +----------------------------------------------------------------------+-----------------------------------------------+
 | Explanatory Variable                                                 | Response Variable                             |
@@ -127,8 +126,7 @@ state_30 |>
 |     -   predictor variable                                           |                                               |
 +----------------------------------------------------------------------+-----------------------------------------------+
 :::
-
-:::
+::::
 
 ## Practice 🎩
 
@@ -150,7 +148,7 @@ state_30 |>
 
 ## Measuring *Linear* Strength {.smaller}
 
-:::{.incremental}
+:::: incremental
 -   The correlation coefficient, $R$, measures the strength of a [linear]{.fragment .highlight-red} association between two quantitative variables.
 
 -   The correlation between two quantitative variables will always be a value between -1 and 1.
@@ -160,8 +158,7 @@ state_30 |>
 :::
 
 -   $R = \frac{1}{n-1}\sum \limits_{i=1}^n\bigg(\frac{x_i-\overline{x}}{s_x} \bigg)\bigg(\frac{y_i-\overline{y}}{s_y} \bigg)$
-
-:::
+::::
 
 ## Practice 🎩
 
@@ -171,16 +168,14 @@ Answer Question 2 in the classroom tab on Top Hat using the scatterplots below.
 
 ## Simple Linear Regression {.smaller}
 
-:::{.incremental}
+::: incremental
 -   Simple linear regression is the statistical method for fitting a line to describe the relationship between two quantitative variables.
 
 -   We want to find a line of the form $\hat{y} = b_0 + b_1 x$
-
 :::
 
-
-::: columns
-::: column
+:::::: columns
+:::: column
 ::: fragment
 ```{r}
 #| fig-height: 4
@@ -203,14 +198,14 @@ state_30 |>
               color = viridis::viridis(6)[4])
 ```
 :::
-:::
+::::
 
 ::: column
  
 
 [**What characteristics would the "line of best fit" have?**]{.fragment}
 :::
-:::
+::::::
 
 ## Simple Linear Regression {.smaller}
 
@@ -218,7 +213,7 @@ state_30 |>
 
 </iframe>
 
-::: columns
+::::: columns
 ::: {.column width="85%"}
 Open the link: https://beav.es/cTp (also found in the Week 9 module on Canvas called "SLR Demo")
 
@@ -233,26 +228,23 @@ library(countdown)
 countdown(minutes = 2, seconds = 0)
 ```
 :::
-:::
+:::::
 
-:::{.notes}
-slope = -1.14608
-intercept = 72.1813
+::: notes
+slope = -1.14608 intercept = 72.1813
 :::
 
 ## Residuals {.smaller}
 
-:::{.incremental}
-
-::: columns
+::::::: incremental
+:::::: columns
 ::: column
 -   The residual of an observation is the difference in the observed response, $y_i$, and the predicted response based on the model fit, $\hat{y}_i$.
 
 -   $e_i = y_i - \hat{y}_i$
 :::
 
-
-::: column
+:::: column
 ::: fragment
 ```{r}
 #| fig-height: 4
@@ -275,13 +267,13 @@ state_30 |>
               color = viridis::viridis(6)[4])
 ```
 :::
-:::
-:::
-:::
+::::
+::::::
+:::::::
 
 ## Least Squares Regression Line {.smaller}
-:::{.incremental}
 
+::: incremental
 -   The least squares regression line (LSRL) is calculated by finding the line that minimizes the sum of the squared residuals.
 
 -   When fitting the LSRL, we generally require:
@@ -307,8 +299,8 @@ $$ \hat{y} = b_0 + b_1 x$$
 
 -   Interpreting the slope estimate, $b_1$: [For a one unit increase in the explanatory variable, we expect the response to change by $b_1$.]{.fragment}
 
-::: columns
-::: column
+::::::: columns
+:::: column
 ::: fragment
 ```{r}
 #| fig-height: 3.5
@@ -331,9 +323,9 @@ state_30 |>
               color = viridis::viridis(6)[4])
 ```
 :::
-:::
+::::
 
-::: column
+:::: column
 ```{r}
 state_30 <- state_30 |>
   rename("LifeExp"=`Life Exp`)
@@ -347,12 +339,12 @@ lm(LifeExp ~ Illiteracy, data = state_30)
 :::
 
 [$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{.fragment}
-:::
-:::
+::::
+:::::::
 
 ## Practice 🎩
 
-Answer Question 3 in the classroom tab on Top Hat using the fitted LSRL.
+Answer Class 18 - Question 1 in the classroom tab on Top Hat using the fitted LSRL.
 
 $$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
 
@@ -363,7 +355,7 @@ $$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expe
 ::: fragment
 ### Practice 🎩
 
-Answer Question 4 in the classroom tab on Top Hat using the fitted LSRL.
+Answer Class 18 - Question 2 in the classroom tab on Top Hat using the fitted LSRL.
 
 $$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
 :::
@@ -375,7 +367,7 @@ Recall that the residual is difference in the observed response variable and the
 ::: fragment
 ### Practice 🎩
 
-Answer Question 5 in the classroom tab on Top Hat using the fitted LSRL.
+Answer Class 18 - Question 3 in the classroom tab on Top Hat using the fitted LSRL.
 
 $$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
 :::
@@ -386,8 +378,8 @@ $$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expe
 
 [**Some of these conditions can be easily checked using a residual plot.**]{.fragment}
 
-::: columns
-::: column
+::::::: columns
+:::: column
 ::: fragment
 ```{r}
 #| fig-height: 3.5
@@ -404,16 +396,16 @@ ggplot(mod, aes(y = .resid)) +
   theme_bw()
 ```
 :::
-:::
+::::
 
-::: column
-:::{.incremental}
+:::: column
+::: incremental
 -   Ideally, when fitting the LSRL, we see no obvious patterns in the residual plot.
 
 -   If a pattern is visible, it might be an indication that one or more of the LSRL conditions are violated.
 :::
-:::
-:::
+::::
+:::::::
 
 ## Violations of LSRL Conditions {.smaller}
 
@@ -423,7 +415,7 @@ ggplot(mod, aes(y = .resid)) +
 ![](res.png)
 :::
 
-::: columns
+:::::::: columns
 ::: {.column width="4%"}
 :::
 
@@ -442,11 +434,11 @@ ggplot(mod, aes(y = .resid)) +
 ::: {.column width="24%"}
 [Independence violated]{.fragment}
 :::
-:::
+::::::::
 
 ## Practice 🎩 {.smaller}
 
-Answer Question 6 in the classroom tab on Top Hat using the fitted LSRL and corresponding residual plot.
+Answer Class 18 - Question 4 in the classroom tab on Top Hat using the fitted LSRL and corresponding residual plot.
 
 $$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
 
@@ -464,8 +456,6 @@ ggplot(mod, aes(y = .resid)) +
   theme(axis.title = element_text(size = 18)) + 
   theme_bw()
 ```
-
-
 
 ## R Code for This Week's Examples {.smaller}
 
