@@ -50,8 +50,8 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 [Recall that if we're using a **sample** of data to try and model the true relationship between two quantitative variables, then the intercept, $b_0$, and slope, $b_1$, estimates are *random variables*.]{.fragment}
 
-::: columns
-::: column
+::::::: columns
+:::: column
 ::: fragment
 ```{r}
 #| fig-width: 5
@@ -78,9 +78,9 @@ mod1 <- lm(Income ~ `HS Grad`, data = state_30)
 ```
 
 [$\hat{y} = 1994.39 + 46.68 x$]{.fragment}
-:::
+::::
 
-::: column
+:::: column
 ```{r}
 set.seed(7493489)
 keep2 <- sample(1:50, 30, replace = FALSE)
@@ -114,8 +114,8 @@ mod2 <- lm(Income ~ `HS Grad`, data = state_30_2)
 ```
 
 [$\hat{y} = 1191.82 + 62.98 x$]{.fragment}
-:::
-:::
+::::
+:::::::
 
 ## Estimating Parameters {.smaller}
 
@@ -135,8 +135,8 @@ Our focus from here on out will be on inference about the slope parameter, $\bet
 
 Consider the LSRL for the relationship between the percentage a state's population with a high school diploma and per capita income.
 
-::: columns
-::: column
+::::::: columns
+:::: column
 ::: fragment
 $\hat{y} = 1994.39 + 46.68 x$
 
@@ -159,9 +159,9 @@ state_30 |>
               color = viridis::viridis(6)[5])
 ```
 :::
-:::
+::::
 
-::: column
+:::: column
 [The slope in the LSRL, $46.68$, is an **estimate** for the true population regression line.]{.fragment}
 
 [We might wonder, do these data provide strong evidence that the percentage of HS graduates is useful predictor of a state's per capita income?]{.fragment}
@@ -173,18 +173,18 @@ $H_0:$ [$\beta_1 = 0$]{.fragment} [The true linear model has slope zero.]{.fragm
 
 $H_A:$ [$\beta_1 \neq 0$]{.fragment} [The true linear model has a slope different than zero. *The explanatory variable is good predictor of the response.*]{.fragment}
 :::
-:::
-:::
+::::
+:::::::
 
 ## Using Software Output to Perform a Hypothesis Test on $\beta_1$ {.smaller}
 
-::: fragment
+:::::: fragment
 ```{r}
 state_30 <- state_30 |>
   rename("HSGrad"=`HS Grad`)
 ```
 
-::: columns
+::::: columns
 ::: column
 R Code:
 
@@ -216,8 +216,8 @@ state_30 |>
               color = viridis::viridis(6)[5])
 ```
 :::
-:::
-:::
+:::::
+::::::
 
 ## Interpreting the p-value and drawing a conclusion {.smaller}
 
@@ -225,9 +225,9 @@ state_30 |>
 
 [The p-value for the hypothesis test on the slope parameter is $0.000658$.]{.fragment}
 
-[Since $0.000658 < \alpha$, we will [reject]{style="color:red;"} the null hypothesis.]{.fragment}
+[Since $0.000658 < \alpha$, we will ]{.fragment}[reject]{style="color:red;"} the null hypothesis.
 
-[There is [convincing]{style="color:red;"} evidence that the percentage of high school graduates is a useful predictor of a state's per capita income in the 1970s.]{.fragment}
+[There is ]{.fragment}[convincing]{style="color:red;"} evidence that the percentage of high school graduates is a useful predictor of a state's per capita income in the 1970s.
 
 ## R Code for This Week's Examples {.smaller}
 
@@ -242,11 +242,12 @@ library(tidyverse)
 state_30 <- read_csv(file.choose())
 
 # Create a scatterplot of the Illiteracy and LifeExp variables
-ggplot(data = state_30, aes(x = Illiteracy, y = LifeExp)) + 
-  geom_point(color = "purple", size = 3) + 
-  labs(y = "Life Expectancy (years)", 
-       x = "Illiteracy Rate (% of population)", 
-       title = "Illiteracy Rate vs. Life Expectancy",
+state_30 |>
+  ggplot(aes(x = `HS Grad`, y = Income)) +
+  geom_point(color = viridis::viridis(6)[5], size = 3) + 
+  labs(y = "Per Capita Income", 
+       x = "Percentage of Population with High School Diploma", 
+       title = "High School Graduation Rates vs. Income ",
        subtitle = "for 30 US States in 1970") + 
   theme(axis.title = element_text(size = 18)) + 
   theme_bw() + 
@@ -254,16 +255,17 @@ ggplot(data = state_30, aes(x = Illiteracy, y = LifeExp)) +
               formula = y ~ x, 
               geom = "smooth", 
               se = FALSE, 
-              color = "darkgreen")
+              color = viridis::viridis(6)[5])
 
-## Calculate the correlation between illiteracy rate and life exp
-state_30 %>% summarise(cor = cor(Illiteracy, LifeExp))
+# Rename HS Grad variable
+state_30 <- state_30 |>
+  rename("HSGrad"=`HS Grad`)
 
 # Estimate intercept and slope for LSRL
-lm(LifeExp ~ Illiteracy, data = state_30)
+LSRL <- lm(Income ~ HSGrad, data = state_30)
+summary(LSRL)
 ```
 
+## Practice 🎩
 
-## Practice 🎩 
-
-Please complete the Class 18 Activity in Top Hat.
+Please complete the Class 19 Activity in Top Hat.

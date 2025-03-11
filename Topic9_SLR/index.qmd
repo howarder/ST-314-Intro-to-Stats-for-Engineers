@@ -96,7 +96,7 @@ state_30 |>
 
 ::::: columns
 ::: column
-[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the ]{.fragment}[scatterplot]{style="color:red;"} above.
+[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the]{.fragment}[scatterplot]{style="color:red;"} above.
 :::
 
 ::: column

@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>Topic 10 - Inference for Linear Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -442,8 +442,7 @@
 </div>
 </div>
 <p><span class="fragment"><span class="math inline">\(\hat{y} = 1191.82 + 62.98 x\)</span></span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="estimating-parameters" class="slide level2 smaller">
 <h2>Estimating Parameters</h2>
@@ -482,8 +481,7 @@
 <p><span class="math inline">\(H_0:\)</span> <span class="fragment"><span class="math inline">\(\beta_1 = 0\)</span></span> <span class="fragment">The true linear model has slope zero.</span></p>
 <p><span class="math inline">\(H_A:\)</span> <span class="fragment"><span class="math inline">\(\beta_1 \neq 0\)</span></span> <span class="fragment">The true linear model has a slope different than zero. <em>The explanatory variable is good predictor of the response.</em></span></p>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="using-software-output-to-perform-a-hypothesis-test-on-beta_1" class="slide level2 smaller">
 <h2>Using Software Output to Perform a Hypothesis Test on <span class="math inline">\(\beta_1\)</span></h2>
@@ -525,16 +523,15 @@ F-statistic: 14.68 on 1 and 28 DF,  p-value: 0.0006581</code></pre>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="interpreting-the-p-value-and-drawing-a-conclusion" class="slide level2 smaller">
 <h2>Interpreting the p-value and drawing a conclusion</h2>
 <p><span class="fragment">Perform a hypothesis test on the slope parameter, <span class="math inline">\(\beta_1\)</span>, using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>.</span></p>
 <p><span class="fragment">The p-value for the hypothesis test on the slope parameter is <span class="math inline">\(0.000658\)</span>.</span></p>
-<p><span class="fragment">Since <span class="math inline">\(0.000658 &lt; \alpha\)</span>, we will <span style="color:red;">reject</span> the null hypothesis.</span></p>
-<p><span class="fragment">There is <span style="color:red;">convincing</span> evidence that the percentage of high school graduates is a useful predictor of a state’s per capita income in the 1970s.</span></p>
+<p><span class="fragment">Since <span class="math inline">\(0.000658 &lt; \alpha\)</span>, we will</span><span style="color:red;">reject</span> the null hypothesis.</p>
+<p><span class="fragment">There is</span><span style="color:red;">convincing</span> evidence that the percentage of high school graduates is a useful predictor of a state’s per capita income in the 1970s.</p>
 </section>
 <section id="r-code-for-this-weeks-examples" class="slide level2 smaller">
 <h2>R Code for This Week’s Examples</h2>
@@ -546,30 +543,33 @@ F-statistic: 14.68 on 1 and 28 DF,  p-value: 0.0006581</code></pre>
 <span id="cb3-5"><a href=""></a>state_30 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.choose</span>())</span>
 <span id="cb3-6"><a href=""></a></span>
 <span id="cb3-7"><a href=""></a><span class="co"># Create a scatterplot of the Illiteracy and LifeExp variables</span></span>
-<span id="cb3-8"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> state_30, <span class="fu">aes</span>(<span class="at">x =</span> Illiteracy, <span class="at">y =</span> LifeExp)) <span class="sc">+</span> </span>
-<span id="cb3-9"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"purple"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb3-10"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Life Expectancy (years)"</span>, </span>
-<span id="cb3-11"><a href=""></a>       <span class="at">x =</span> <span class="st">"Illiteracy Rate (% of population)"</span>, </span>
-<span id="cb3-12"><a href=""></a>       <span class="at">title =</span> <span class="st">"Illiteracy Rate vs. Life Expectancy"</span>,</span>
-<span id="cb3-13"><a href=""></a>       <span class="at">subtitle =</span> <span class="st">"for 30 US States in 1970"</span>) <span class="sc">+</span> </span>
-<span id="cb3-14"><a href=""></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)) <span class="sc">+</span> </span>
-<span id="cb3-15"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb3-16"><a href=""></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb3-17"><a href=""></a>              <span class="at">formula =</span> y <span class="sc">~</span> x, </span>
-<span id="cb3-18"><a href=""></a>              <span class="at">geom =</span> <span class="st">"smooth"</span>, </span>
-<span id="cb3-19"><a href=""></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb3-20"><a href=""></a>              <span class="at">color =</span> <span class="st">"darkgreen"</span>)</span>
-<span id="cb3-21"><a href=""></a></span>
-<span id="cb3-22"><a href=""></a><span class="do">## Calculate the correlation between illiteracy rate and life exp</span></span>
-<span id="cb3-23"><a href=""></a>state_30 <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">cor =</span> <span class="fu">cor</span>(Illiteracy, LifeExp))</span>
-<span id="cb3-24"><a href=""></a></span>
-<span id="cb3-25"><a href=""></a><span class="co"># Estimate intercept and slope for LSRL</span></span>
-<span id="cb3-26"><a href=""></a><span class="fu">lm</span>(LifeExp <span class="sc">~</span> Illiteracy, <span class="at">data =</span> state_30)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href=""></a>state_30 <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">HS Grad</span><span class="st">`</span>, <span class="at">y =</span> Income)) <span class="sc">+</span></span>
+<span id="cb3-10"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="dv">6</span>)[<span class="dv">5</span>], <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb3-11"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Per Capita Income"</span>, </span>
+<span id="cb3-12"><a href=""></a>       <span class="at">x =</span> <span class="st">"Percentage of Population with High School Diploma"</span>, </span>
+<span id="cb3-13"><a href=""></a>       <span class="at">title =</span> <span class="st">"High School Graduation Rates vs. Income "</span>,</span>
+<span id="cb3-14"><a href=""></a>       <span class="at">subtitle =</span> <span class="st">"for 30 US States in 1970"</span>) <span class="sc">+</span> </span>
+<span id="cb3-15"><a href=""></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)) <span class="sc">+</span> </span>
+<span id="cb3-16"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb3-17"><a href=""></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb3-18"><a href=""></a>              <span class="at">formula =</span> y <span class="sc">~</span> x, </span>
+<span id="cb3-19"><a href=""></a>              <span class="at">geom =</span> <span class="st">"smooth"</span>, </span>
+<span id="cb3-20"><a href=""></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb3-21"><a href=""></a>              <span class="at">color =</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="dv">6</span>)[<span class="dv">5</span>])</span>
+<span id="cb3-22"><a href=""></a></span>
+<span id="cb3-23"><a href=""></a><span class="co"># Rename HS Grad variable</span></span>
+<span id="cb3-24"><a href=""></a>state_30 <span class="ot">&lt;-</span> state_30 <span class="sc">|&gt;</span></span>
+<span id="cb3-25"><a href=""></a>  <span class="fu">rename</span>(<span class="st">"HSGrad"</span><span class="ot">=</span><span class="st">`</span><span class="at">HS Grad</span><span class="st">`</span>)</span>
+<span id="cb3-26"><a href=""></a></span>
+<span id="cb3-27"><a href=""></a><span class="co"># Estimate intercept and slope for LSRL</span></span>
+<span id="cb3-28"><a href=""></a>LSRL <span class="ot">&lt;-</span> <span class="fu">lm</span>(Income <span class="sc">~</span> HSGrad, <span class="at">data =</span> state_30)</span>
+<span id="cb3-29"><a href=""></a><span class="fu">summary</span>(LSRL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="practice" class="slide level2">
 <h2>Practice 🎩</h2>
-<p>Please complete the Class 18 Activity in Top Hat.</p>
+<p>Please complete the Class 19 Activity in Top Hat.</p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -859,18 +859,7 @@ F-statistic: 14.68 on 1 and 28 DF,  p-value: 0.0006581</code></pre>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -902,7 +891,29 @@ F-statistic: 14.68 on 1 and 28 DF,  p-value: 0.0006581</code></pre>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -910,7 +921,7 @@ F-statistic: 14.68 on 1 and 28 DF,  p-value: 0.0006581</code></pre>
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

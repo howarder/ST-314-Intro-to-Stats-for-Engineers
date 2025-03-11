@@ -50,8 +50,8 @@ You decide you're going to sell the game on Ebay, but aren't quite sure how much
 
 [Luckily, we have a dataset that contains the sale prices, along with other information, for 143 Ebay sales of the Mario Kart Wii game.]{.fragment}
 
-::: columns
-::: column
+:::::: columns
+:::: column
 ::: fragment
 ```{r}
 library(openintro)
@@ -63,7 +63,7 @@ head(mariokart, 10) |>
   gt()
 ```
 :::
-:::
+::::
 
 ::: column
 -   `duration`: auction length, in days
@@ -80,7 +80,7 @@ head(mariokart, 10) |>
 
 -   `sale`: the final sale price of the game
 :::
-:::
+::::::
 
 ## Simple Linear Regression
 
@@ -159,11 +159,10 @@ $\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{
 
 [How do we know if the model is good fit?]{.fragment}
 
-[The coefficient of determination, $R^2$ defines]{.fragment}
-[the proportion of variability in the response variable that can be explained by the model.]{.fragment style="color:blue;"}
+[The coefficient of determination, $R^2$ defines]{.fragment} [the proportion of variability in the response variable that can be explained by the model.]{.fragment style="color:blue;"}
 
-::: fragment
-::: columns
+::::::::: fragment
+:::::::: columns
 ::: {.column width="30%"}
 **Total Sum of Squares** [$$SST = \sum \limits_{i=1}^n (y_i-\overline{y})^2$$]{.fragment} [Total variability in the response variable.]{.fragment}
 :::
@@ -181,8 +180,8 @@ $\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{
 ::: {.column width="30%"}
 **Error Sum of Squares** [$$SSE = \sum \limits_{i=1}^n (y_i-\hat{y}_i)^2$$]{.fragment} [Unexplained variability in the response variable.]{.fragment}
 :::
-:::
-:::
+::::::::
+:::::::::
 
 [$$R^2 = \frac{SSR}{SST} = 1-\frac{SSE}{SST}$$]{.fragment}
 
@@ -232,7 +231,7 @@ summary(mlr_small)
 
 ## $R^2$ vs. Adjusted $R^2$ {.smaller}
 
-::: columns
+::::: columns
 ::: column
 **Model 1**
 
@@ -256,7 +255,7 @@ $R^2 = 0.1698$
 
 Adjusted $R^2 = 0.1457$
 :::
-:::
+:::::
 
 ##  {.smaller}
 
@@ -274,11 +273,11 @@ summary(mod)
 Let's use the `loans_full_schema` dataset to fit a model for interest rate using multiple explanatory variables.
 
 ::: fragment
-| Variable         | Description                                                                                                |
-|---------------|---------------------------------------------------------|
-| `interest_rate`  | Interest on the loan, in an annual percentage.                                                             |
+| Variable | Description |
+|-----------------|-------------------------------------------------------|
+| `interest_rate` | Interest on the loan, in an annual percentage. |
 | `debt_to_income` | Debt-to-income ratio, which is the percentage of total debt of the borrower divided by their total income. |
-| `homeownership`  | The ownership status of the borrower's residence: rent, mortgage, own.                                     |
+| `homeownership` | The ownership status of the borrower's residence: rent, mortgage, own. |
 :::
 
 ::: fragment
@@ -293,7 +292,7 @@ Let's use the `loans_full_schema` dataset to fit a model for interest rate using
 
 ### Categorical Variables in Multiple Linear Regression
 
-::: columns
+::::::: columns
 ::: {.column width="60%"}
 ```{r echo=TRUE}
 mod <- lm(interest_rate ~ debt_to_income + homeownership, 
@@ -302,7 +301,7 @@ summary(mod)
 ```
 :::
 
-::: {.column width="40%"}
+::::: {.column width="40%"}
 ::: {.fragment fragment-index="2"}
 🎩 **Question 3:** Consider a borrower who **has a mortgage on their home**. What would the multiple linear regression look like for the borrower?
 :::
@@ -310,8 +309,8 @@ summary(mod)
 ::: {.fragment fragment-index="3"}
 🎩 **Question 4:** Consider a borrower who is **renting their home**. What would the multiple linear regression look like for the borrower?
 :::
-:::
-:::
+:::::
+:::::::
 
 ::: {.fragment fragment-index="1"}
 $$\text{interest\_rate} = 11.0465 + 0.0494 \text{debt\_to\_income} + 0.3207\text{own} + 0.9819\text{rent}$$
@@ -321,7 +320,7 @@ $$\text{interest\_rate} = 11.0465 + 0.0494 \text{debt\_to\_income} + 0.3207\text
 
 ### Checking Model Conditions
 
-::: columns
+::::: columns
 ::: {.column width="65%"}
 ```{r}
 #| fig-height: 4.5
@@ -347,13 +346,13 @@ When fitting the LSRL, we generally require:
 
 -   Independent observations
 :::
-:::
+:::::
 
 ##  {.smaller}
 
 ### Checking Model Conditions
 
-::: columns
+:::::: columns
 ::: {.column width="65%"}
 ```{r}
 #| fig-height: 4.5
@@ -368,12 +367,12 @@ ggplot(mod, aes(x = .fitted, y = .resid)) +
 ```
 :::
 
-::: {.column width="35%"}
+:::: {.column width="35%"}
 ::: fragment
 🎩 **Question 5:** Using the residual plot, does it appear that any of the least squares regression line conditions (linearity, normal residuals, constant variability, or independence) are violated for the model? Explain why and use the residual plot to justify your answer.
 :::
-:::
-:::
+::::
+::::::
 
 ```{r}
 library(countdown)
@@ -394,8 +393,8 @@ summary(mod2)
 When `debt_to_income` is removed, the fitted model is $\hat{\text{interest\_rate}} = 12.0589 +
 0.2551 \text{ own} + 0.8661 \text{ rent}$
 
-::: columns
-::: {.column width="65%"}
+:::::: columns
+:::: {.column width="65%"}
 ::: fragment
 ```{r}
 #| fig-height: 4.5
@@ -409,12 +408,12 @@ ggplot(mod2, aes(x = .fitted, y = .resid)) +
   theme_bw()
 ```
 :::
-:::
+::::
 
 ::: {.column width="35%"}
 [🎩 **Question 6:** The residual plot for this reduced model displays fitted values (based on the model) on the x-axis and residuals on the y-axis. Why do the residuals appear to follow three vertical lines?]{.fragment}
 :::
-:::
+::::::
 
 ```{r}
 library(countdown)
@@ -438,7 +437,7 @@ summary(mod_full)
 
 ### Model Selection: Backward Elimination Using p-values
 
-::: columns
+::::: columns
 ::: {.column width="65%"}
 ```{r}
 mod_red <- lm(interest_rate ~ annual_income + total_credit_limit + public_record_bankrupt, data = loans_full_schema)
@@ -451,7 +450,7 @@ summary(mod_red)
 
 [If the largest p-value is less than $\alpha= 0.05$, then we would not eliminate any predictors and the current model would be our best-fitting model.]{.fragment}
 :::
-:::
+:::::
 
 ##  {.smaller}
 
@@ -476,4 +475,3 @@ Model 1 has 4 explanatory variable with an adjusted $R^2$ value of 0.765.
 Model 2 has 5 explanatory variable with an adjusted $R^2$ value of 0.778.
 
 Model 3 has 6 explanatory variable with an adjusted $R^2$ value of 0.768.
-
