@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>Topic 11 - Multiple Linear Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -437,24 +437,23 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<div id="bbcwapstvu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bbcwapstvu table {
+<div id="ydbouofooc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ydbouofooc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bbcwapstvu thead, #bbcwapstvu tbody, #bbcwapstvu tfoot, #bbcwapstvu tr, #bbcwapstvu td, #bbcwapstvu th {
+#ydbouofooc thead, #ydbouofooc tbody, #ydbouofooc tfoot, #ydbouofooc tr, #ydbouofooc td, #ydbouofooc th {
   border-style: none;
 }
 
-#bbcwapstvu p {
+#ydbouofooc p {
   margin: 0;
   padding: 0;
 }
 
-#bbcwapstvu .gt_table {
+#ydbouofooc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -480,12 +479,12 @@
   border-left-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_caption {
+#ydbouofooc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bbcwapstvu .gt_title {
+#ydbouofooc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -497,7 +496,7 @@
   border-bottom-width: 0;
 }
 
-#bbcwapstvu .gt_subtitle {
+#ydbouofooc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -509,7 +508,7 @@
   border-top-width: 0;
 }
 
-#bbcwapstvu .gt_heading {
+#ydbouofooc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -521,13 +520,13 @@
   border-right-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_bottom_border {
+#ydbouofooc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_col_headings {
+#ydbouofooc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -542,7 +541,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_col_heading {
+#ydbouofooc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -562,7 +561,7 @@
   overflow-x: hidden;
 }
 
-#bbcwapstvu .gt_column_spanner_outer {
+#ydbouofooc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -574,15 +573,15 @@
   padding-right: 4px;
 }
 
-#bbcwapstvu .gt_column_spanner_outer:first-child {
+#ydbouofooc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bbcwapstvu .gt_column_spanner_outer:last-child {
+#ydbouofooc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bbcwapstvu .gt_column_spanner {
+#ydbouofooc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -594,11 +593,11 @@
   width: 100%;
 }
 
-#bbcwapstvu .gt_spanner_row {
+#ydbouofooc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bbcwapstvu .gt_group_heading {
+#ydbouofooc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -624,7 +623,7 @@
   text-align: left;
 }
 
-#bbcwapstvu .gt_empty_group_heading {
+#ydbouofooc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -639,15 +638,15 @@
   vertical-align: middle;
 }
 
-#bbcwapstvu .gt_from_md > :first-child {
+#ydbouofooc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bbcwapstvu .gt_from_md > :last-child {
+#ydbouofooc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bbcwapstvu .gt_row {
+#ydbouofooc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -666,7 +665,7 @@
   overflow-x: hidden;
 }
 
-#bbcwapstvu .gt_stub {
+#ydbouofooc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -679,7 +678,7 @@
   padding-right: 5px;
 }
 
-#bbcwapstvu .gt_stub_row_group {
+#ydbouofooc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -693,15 +692,15 @@
   vertical-align: top;
 }
 
-#bbcwapstvu .gt_row_group_first td {
+#ydbouofooc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bbcwapstvu .gt_row_group_first th {
+#ydbouofooc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bbcwapstvu .gt_summary_row {
+#ydbouofooc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -711,16 +710,16 @@
   padding-right: 5px;
 }
 
-#bbcwapstvu .gt_first_summary_row {
+#ydbouofooc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_first_summary_row.thick {
+#ydbouofooc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bbcwapstvu .gt_last_summary_row {
+#ydbouofooc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -730,7 +729,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_grand_summary_row {
+#ydbouofooc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -740,7 +739,7 @@
   padding-right: 5px;
 }
 
-#bbcwapstvu .gt_first_grand_summary_row {
+#ydbouofooc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -750,7 +749,7 @@
   border-top-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_last_grand_summary_row_top {
+#ydbouofooc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -760,11 +759,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_striped {
+#ydbouofooc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bbcwapstvu .gt_table_body {
+#ydbouofooc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -773,7 +772,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_footnotes {
+#ydbouofooc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -787,7 +786,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_footnote {
+#ydbouofooc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -796,7 +795,7 @@
   padding-right: 5px;
 }
 
-#bbcwapstvu .gt_sourcenotes {
+#ydbouofooc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -810,7 +809,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bbcwapstvu .gt_sourcenote {
+#ydbouofooc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -818,68 +817,77 @@
   padding-right: 5px;
 }
 
-#bbcwapstvu .gt_left {
+#ydbouofooc .gt_left {
   text-align: left;
 }
 
-#bbcwapstvu .gt_center {
+#ydbouofooc .gt_center {
   text-align: center;
 }
 
-#bbcwapstvu .gt_right {
+#ydbouofooc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bbcwapstvu .gt_font_normal {
+#ydbouofooc .gt_font_normal {
   font-weight: normal;
 }
 
-#bbcwapstvu .gt_font_bold {
+#ydbouofooc .gt_font_bold {
   font-weight: bold;
 }
 
-#bbcwapstvu .gt_font_italic {
+#ydbouofooc .gt_font_italic {
   font-style: italic;
 }
 
-#bbcwapstvu .gt_super {
+#ydbouofooc .gt_super {
   font-size: 65%;
 }
 
-#bbcwapstvu .gt_footnote_marks {
+#ydbouofooc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bbcwapstvu .gt_asterisk {
+#ydbouofooc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bbcwapstvu .gt_indent_1 {
+#ydbouofooc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bbcwapstvu .gt_indent_2 {
+#ydbouofooc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bbcwapstvu .gt_indent_3 {
+#ydbouofooc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bbcwapstvu .gt_indent_4 {
+#ydbouofooc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bbcwapstvu .gt_indent_5 {
+#ydbouofooc .gt_indent_5 {
   text-indent: 25px;
+}
+
+#ydbouofooc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ydbouofooc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
-<table class="gt_table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_col_headings">
 <th id="duration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">duration</th>
@@ -989,7 +997,6 @@
 </div>
 </div>
 </div>
-</div>
 </div><div class="column">
 <ul>
 <li class="fragment"><p><code>duration</code>: auction length, in days</p></li>
@@ -1000,8 +1007,7 @@
 <li class="fragment"><p><code>wheels</code>: number of Wii wheels included in sale</p></li>
 <li class="fragment"><p><code>sale</code>: the final sale price of the game</p></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="simple-linear-regression" class="slide level2">
 <h2>Simple Linear Regression</h2>
@@ -1100,8 +1106,7 @@ F-statistic: 4.719 on 6 and 136 DF,  p-value: 0.0002139</code></pre>
 
 </div><div class="column" style="width:30%;">
 <p><strong>Error Sum of Squares</strong> <span class="fragment"><span class="math display">\[SSE = \sum \limits_{i=1}^n (y_i-\hat{y}_i)^2\]</span></span> <span class="fragment">Unexplained variability in the response variable.</span></p>
-</div>
-</div>
+</div></div>
 </div>
 <p><span class="fragment"><span class="math display">\[R^2 = \frac{SSR}{SST} = 1-\frac{SSE}{SST}\]</span></span></p>
 </section>
@@ -1201,18 +1206,17 @@ F-statistic: 7.056 on 4 and 138 DF,  p-value: 3.372e-05</code></pre>
 </div>
 <p><span class="math inline">\(R^2 = 0.1698\)</span></p>
 <p>Adjusted <span class="math inline">\(R^2 = 0.1457\)</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-1" class="slide level2 smaller">
 <h2></h2>
 <h3 id="categorical-variables-in-multiple-linear-regression">Categorical Variables in Multiple Linear Regression</h3>
 <p>Let’s use the <code>loans_full_schema</code> dataset to fit a model for interest rate using multiple explanatory variables.</p>
 <div class="fragment">
-<table>
+<table class="caption-top">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 79%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1284,8 +1288,7 @@ F-statistic: 96.92 on 3 and 9972 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="fragment" data-fragment-index="3">
 <p>🎩 <strong>Question 4:</strong> Consider a borrower who is <strong>renting their home</strong>. What would the multiple linear regression look like for the borrower?</p>
 </div>
-</div>
-</div>
+</div></div>
 <div class="fragment" data-fragment-index="1">
 <p><span class="math display">\[\text{interest\_rate} = 11.0465 + 0.0494 \text{debt\_to\_income} + 0.3207\text{own} + 0.9819\text{rent}\]</span></p>
 </div>
@@ -1312,8 +1315,7 @@ F-statistic: 96.92 on 3 and 9972 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li class="fragment"><p>Constant variability - the variability of the points around the line should be roughly constant</p></li>
 <li class="fragment"><p>Independent observations</p></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-4" class="slide level2 smaller">
 <h2></h2>
@@ -1333,11 +1335,10 @@ F-statistic: 96.92 on 3 and 9972 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="fragment">
 <p>🎩 <strong>Question 5:</strong> Using the residual plot, does it appear that any of the least squares regression line conditions (linearity, normal residuals, constant variability, or independence) are violated for the model? Explain why and use the residual plot to justify your answer.</p>
 </div>
-</div>
-</div>
+</div></div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9f9aa22b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_dfc114a9" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1364,11 +1365,10 @@ F-statistic: 96.92 on 3 and 9972 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div><div class="column" style="width:35%;">
 <p><span class="fragment">🎩 <strong>Question 6:</strong> The residual plot for this reduced model displays fitted values (based on the model) on the x-axis and residuals on the y-axis. Why do the residuals appear to follow three vertical lines?</span></p>
-</div>
-</div>
+</div></div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6aeb466c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_4f53fce3" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -1441,8 +1441,7 @@ F-statistic: 67.55 on 3 and 9996 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div><div class="column" style="width:35%;">
 <p><span class="fragment"><strong>Backward elimination:</strong> identify the predictor corresponding to the largest p-value. If the p-value is above the significance level, usually <span class="math inline">\(\alpha= 0.05\)</span>, drop that variable, refit the model, and repeat the process.</span></p>
 <p><span class="fragment">If the largest p-value is less than <span class="math inline">\(\alpha= 0.05\)</span>, then we would not eliminate any predictors and the current model would be our best-fitting model.</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-8" class="slide level2 smaller">
 <h2></h2>
@@ -1748,18 +1747,7 @@ F-statistic: 67.55 on 3 and 9996 DF,  p-value: &lt; 2.2e-16</code></pre>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1791,7 +1779,29 @@ F-statistic: 67.55 on 3 and 9996 DF,  p-value: &lt; 2.2e-16</code></pre>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1799,7 +1809,7 @@ F-statistic: 67.55 on 3 and 9996 DF,  p-value: &lt; 2.2e-16</code></pre>
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

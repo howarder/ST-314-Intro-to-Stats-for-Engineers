@@ -274,7 +274,7 @@ Let's use the `loans_full_schema` dataset to fit a model for interest rate using
 
 ::: fragment
 | Variable | Description |
-|-----------------|-------------------------------------------------------|
+|------------------------------------|------------------------------------|
 | `interest_rate` | Interest on the loan, in an annual percentage. |
 | `debt_to_income` | Debt-to-income ratio, which is the percentage of total debt of the borrower divided by their total income. |
 | `homeownership` | The ownership status of the borrower's residence: rent, mortgage, own. |
