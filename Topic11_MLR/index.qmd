@@ -470,6 +470,8 @@ summary(mod_red)
 
  
 
+ 
+
 Model 1 has 4 explanatory variable with an adjusted $R^2$ value of 0.765.
 
 Model 2 has 5 explanatory variable with an adjusted $R^2$ value of 0.778.
