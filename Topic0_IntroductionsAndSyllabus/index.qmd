@@ -47,10 +47,10 @@ erin.howard\@oregonstate.edu
 
 ## Introduce Yourself to Your Classmates 👋
 
--   Name & preferred pronouns
+-   Name
 -   Major
 -   Year in school
--   Something you're looking forward to this term
+-   Something you did over the summer
 -   Your experience with learning or using statistics
 
 ```{r}
@@ -68,17 +68,17 @@ countdown(minutes = 2, seconds = 0)
 
 Syllabus quiz on Canvas due tomorrow at 11:59 pm.
 
-## Class Meeting Info 👥
+<!-- ## Class Meeting Info 👥 -->
 
--   In-person attendance and participation in your registered section are mandatory.
+<!-- -   In-person attendance and participation in your registered section are mandatory. -->
 
-. . .
+<!-- . . . -->
 
--   Participation assignments will primarily be completed in Top Hat, unless otherwise specified.
+<!-- -   In most in-class meetings, there will be participation activities, either on paper, through Poll Everywhere, or on Canvas. -->
 
-. . .
+<!-- . . . -->
 
--   Everyone is excused from three classes, for any reason. In-class activities will not be excused beyond three absences.
+<!-- -   Everyone is excused from two in-class participation activities, for any reason. In-class activities will not be excused beyond two absences. -->
 
 ## Communication 🗣️
 
@@ -98,14 +98,6 @@ Syllabus quiz on Canvas due tomorrow at 11:59 pm.
 
 ## Required Course Materials 📚 {.smaller}
 
--   Top Hat
-
-    -   Starting Thursday of **Week 2**, you will need a smart phone, laptop, or tablet with you each class.
-
-    -   Top Hat licenses can be purchased from the Beaver Store (link in Syllabus on Canvas).
-
-. . .
-
 -   R **AND** RStudio Statistical Software
 
     -   R is a free open-source programming language.
@@ -116,7 +108,7 @@ Syllabus quiz on Canvas due tomorrow at 11:59 pm.
 
 . . .
 
--   Word Processor
+-   A smart phone, tablet, or laptop with you in class so that you can participate in class. Talk to me if you need assistance getting one of these things!
 
 . . .
 
@@ -154,11 +146,11 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   Your 3 lowest in-class activity grades will be dropped.
+-   Your 2 lowest in-class activity grades will be dropped.
 
 . . .
 
--   Occasionally, we will do an R programming demo in class. I will do my best to announce these demos ahead of time so that you can bring a laptop if you choose.
+-   On Thursdays, at the end of class you will complete and submit a Concept Quiz (more on the next slide).
 
 . . .
 
@@ -168,6 +160,24 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 -   You are strongly encouraged to ask questions throughout class. No need to wait for a good stopping point or the end of class - the sooner you get your questions answered the better.
 
+## Concept Quizzes 📝 {.smaller}
+
+#### Thursdays, at the end of class...
+
+::: incremental
+-   A short quiz will be administered, on paper.
+
+-   These quizzes are intended to encourage a deeper understanding of the conceptual aspects of the course material.
+
+-   You will not be permitted to use any technology during these quizzes (i.e., no phones, tablets, laptops).
+
+-   Concept quizzes will cover material from the previous two class periods (not the class period in which the quiz is given).
+
+-   You should prepare for the concept quizzes by completing the required readings, answering and taking notes on pre-lecture activities, completing weekly problem sets, and asking questions.
+
+-   If you miss a class period where a concept quiz was given, you must contact me by 5 pm that day so that we can schedule you to take the alternate version.
+:::
+
 ## Weekly Problem Sets 💻 {.smaller}
 
 . . .
@@ -176,7 +186,7 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   Problem sets are completed in Top Hat.
+-   Problem sets are completed in Canvas.
 
 . . .
 
@@ -184,7 +194,7 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   You will have three attempts per question.
+-   You will have three attempts on the problem sets.
 
 . . .
 
@@ -230,7 +240,7 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   In class activities do not apply.
+-   In-class participation activities do not apply.
 
 ## Exams 📝
 
@@ -238,9 +248,9 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 -   There will be two cumulative exams in this course:
 
-    -   Midterm Exam - February 11 at 7 pm (Tuesday of Week 6)
+    -   Midterm Exam - November 4 during class (Tuesday of Week 6)
 
-    -   Final Exam - March 19 at 4 pm (Wednesday of Finals Week)
+    -   Final Exam - December 10 at 8 am (Wednesday of Finals Week)
 
 . . .
 
@@ -254,11 +264,11 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 -   We will not meet during our usual class time on the following days:
 
-    -   Tuesday, January 14 - watch the Class 3 Video Lessons on Canvas and complete the Class 3 Activity in Top Hat (open Jan 13-15).
+    -   Thursday, November 6 - Erin out of town
 
-    -   Tuesday February 11 - midterm exam at 7 pm instead
+    -   Tuesday, November 11 - Veterans' Day
 
-    -   Thursday, February 20 - watch the Class 7 Video Lessons on Canvas and complete the Class 14 Activity in Top Hat (open Feb 19-21).
+    -   Thursday, November 27 - Thanksgiving
 
 ## Advice from Previous ST 314 Students {.smaller}
 
