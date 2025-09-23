@@ -6,6 +6,7 @@ format:
     chalkboard: true
     html-math-method: mathjax
     multiplex: true
+    jump-to-slide: true
 editor: visual
 ---
 
@@ -132,6 +133,8 @@ Use a random mechanism when sampling from the population.
 
 ::: notes
 SRS, Strat, Cluster on page 27 of OpenIntro. Systematic in section 1.2 of openstax
+
+<https://openintro-ims.netlify.app/data-design>
 :::
 
 ## Designed Experiments
@@ -174,14 +177,13 @@ Using one of the sampling schemes discussed in this week's assigned reading, in 
 countdown(minutes = 4)
 ```
 
-## Poll Everywhere Question - Earn Participation Points! 
+## Poll Everywhere Question - Earn Participation Points!
 
 Please answer the question currently open at
 
 ### PollEv.com/erinhowardstats
 
 ![](images/clipboard-3664498572.png){fig-align="center"}
-
 
 ## Design an Observational Study: Part 2
 
@@ -229,16 +231,6 @@ countdown(minutes = 4)
 
 ## Describing Distributions of Quantitative Data
 
-### Shape: [Overall pattern of the data]{.fragment}
-
-::: incremental
--   Is the distribution symmetric, left-skewed, or right-skewed?
-
--   How many peaks does the distribution have? Unimodal, bimodal, or multimodal?
-:::
-
-## Describing Distributions of Quantitative Data
-
 ### Center: [Central tendency of the data]{.fragment}
 
 ::: fragment
@@ -263,7 +255,7 @@ $$ \text{Sample mean: } \overline{x} = \frac{\sum \limits_{i = 1}^n x_i}{n}$$
 -   If $n$ is even, $M$ is the midpoint (average) of the $\frac{n}{2}$th and $\frac{n}{2}+1$th observation.
 :::
 
-## Poll Everywhere Question - Earn Participation Points! 
+## Poll Everywhere Question - Earn Participation Points!
 
 Please answer the question currently open at
 
@@ -342,6 +334,16 @@ $Q_3$ is the third quartile: 75th percentile, the value such that 75% of data fa
 -   greater than $Q_3 + 1.5 \times IQR$
 :::
 ::::
+
+## Describing Distributions of Quantitative Data
+
+### Shape: [Overall pattern of the data]{.fragment}
+
+::: incremental
+-   Is the distribution symmetric, left-skewed, or right-skewed?
+
+-   How many peaks does the distribution have? Unimodal, bimodal, or multimodal?
+:::
 
 ## Histogram
 
