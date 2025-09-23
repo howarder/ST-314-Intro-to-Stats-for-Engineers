@@ -27,7 +27,7 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 # Defining Probability
 
-## Top Hat Question 🎩
+## Participation Question 📊
 
  
 
@@ -35,7 +35,9 @@ Suppose you roll two fair six-sided dice. How many possible outcomes are there f
 
  
 
-**Answer Question 1 in Top Hat under the "Classroom" tab.**
+**Answer the question at PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){width="220"}
 
 ## Example
 
@@ -55,21 +57,21 @@ Suppose you roll two fair six-sided dice. How many possible outcomes are there f
 $$P(A) = \frac{\text{the number of ways A can occur}}{\text{the number of total possible outcomes}}$$
 :::
 
-## Top Hat Question 🎩
+## Participation Question 📊
+
+ 
 
 Suppose you roll two fair six-sided dice. What is the probability that the sum of the two dice is 7?
 
  
 
- 
 
- 
 
- 
 
- 
 
-**Answer Question 2 in Top Hat under the "Classroom" tab.**
+**Answer the question at PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){width="220"}
 
 ## Probability Distribution
 
@@ -107,8 +109,8 @@ Rules for Probability Distributions
 
 [The complement of event *A* is the set of all outcomes in the sample space that don't contain *A*.]{.fragment}
 
-::: columns
-::: {.column width="70%"}
+::::::: columns
+::::: {.column width="70%"}
 ::: fragment
 ![](‎Comp.‎001.png){.absolute top="30%" right="30%" width="80%"}
 :::
@@ -116,7 +118,7 @@ Rules for Probability Distributions
 ::: fragment
 ![](‎Comp.‎002.png){.absolute top="30%" right="30%" width="80%"}
 :::
-:::
+:::::
 
 ::: {.column width="30%"}
  
@@ -125,23 +127,22 @@ Rules for Probability Distributions
 
 [$P(A') = 1-P(A)$]{.fragment}
 :::
-:::
+:::::::
 
-## Top Hat Question 🎩
+## Participation Question 📊
+
+
 
 Suppose you roll two fair six-sided dice. Let A represent the event that neither die rolled shows an odd number. What is the complement of A?
 
  
 
- 
 
- 
 
- 
+**Answer the question at PollEv.com/erinhowardstats**
 
- 
+![](pollev_qr.png){width="220"}
 
-**Answer Question 3 in Top Hat under the "Classroom" tab.**
 
 ## Intersection - "A and B"
 
@@ -183,11 +184,11 @@ Suppose you roll two fair six-sided dice. Let A represent the event that neither
 
 [$P(A \text { and } B) = 0$]{.fragment}
 
-## Top Hat Question 🎩
+## Participation Question 📊
 
 Consider rolling one fair six-sided die. Each option below describes two events that may occur when the die is rolled. Which pairs of events are disjoint?
 
- 
+
 
 a\) Rolling an odd number and rolling a three.
 
@@ -199,7 +200,9 @@ d\) Rolling a 4 and rolling a 5.
 
  
 
-**Answer Question 4 in Top Hat under the "Classroom" tab.**
+**Answer the question at PollEv.com/erinhowardstats**
+
+
 
 ## Union - "A or B"
 
@@ -239,33 +242,28 @@ d\) Rolling a 4 and rolling a 5.
 ![](‎Union.‎001.png){width="80%"}
 :::
 
-## Top Hat Question 🎩
+## Participation Question 📊
 
 Consider rolling one fair six-sided die. Let A = rolling an odd number and B = rolling a prime number. What is the probability of A or B occurring?
 
  
 
- 
 
- 
+**Answer the question at PollEv.com/erinhowardstats**
 
- 
+![](pollev_qr.png){width="220"}
 
- 
+<!-- ## Additional Practice  -->
 
-**Answer Question 5 in Top Hat under the "Classroom" tab.**
+<!--   -->
 
-## Additional Practice 🎩
+<!-- Please complete the remaining questions in Top Hat to earn full credit for today's class. -->
 
- 
+<!--   -->
 
-Please complete the remaining questions in Top Hat to earn full credit for today's class.
+<!-- You can find questions 6-10 in the **"Assigned"** tab on Top Hat. -->
 
- 
-
-You can find questions 6-10 in the **"Assigned"** tab on Top Hat.
-
-# Conditional and Independent Probabilities
+# OPTIONAL - Conditional and Independent Probabilities
 
 ## Example {.smaller}
 
@@ -294,6 +292,7 @@ td:nth-child(2) {
 }
 </style>
 ```
+
 |                                           | Marginal Probabilities   |
 |-------------------------------------------|--------------------------|
 | Company *W* manufactures 60% of all ELTs. | [P(*W*)=0.6]{.fragment}  |
@@ -307,8 +306,8 @@ td:nth-child(2) {
 
 [$P(A|B)=$$\frac{P(A \text{ and } B)}{P(B)}$]{.fragment}
 
-::: columns
-::: {.column width="60%"}
+:::::::: columns
+::::: {.column width="60%"}
 ::: fragment
 ![](Cond/‎Cond.‎001.png){.absolute top="40%" right="40%" width="70%"}
 :::
@@ -316,16 +315,16 @@ td:nth-child(2) {
 ::: fragment
 ![](Cond/‎Cond.‎002.png){.absolute top="40%" right="40%" width="70%"}
 :::
-:::
+:::::
 
-::: {.column width="40%"}
+:::: {.column width="40%"}
 ::: fragment
  
 
 Conditional probabilities redefine the sample space to only include outcomes that are in the conditional subset.
 :::
-:::
-:::
+::::
+::::::::
 
 ## Example {.smaller}
 
@@ -335,7 +334,7 @@ An aircraft emergency locator transmitter (ELT) is a device designed to transmit
 
  
 
-|                                                    | Conditional Probabilities      |
+|   | Conditional Probabilities |
 |----------------------------------------------|--------------------------|
 | Of ELTs produced by Company *W*, 2% are defective. | [$P(Def|W) = 0.02$]{.fragment} |
 | Of ELTs produced by Company *X*, 2% are defective. | [$P(Def|X) = 0.02$]{.fragment} |
@@ -382,7 +381,7 @@ $A$ and $B$ are independent *if and only if* $P(A \text{ and } B) = P(A)\times P
 
 ## Example {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 Suppose an ELT has been randomly selected from the general population of all ELTs produced.
 
@@ -417,6 +416,7 @@ td:nth-child(1) {
 }
 </style>
 ```
+
 |             |                  |
 |-------------|------------------|
 | P(W) = 0.6  | P(Def\|W) = 0.02 |
@@ -435,7 +435,7 @@ td:nth-child(1) {
 | P(*Y* and Def) = [0.15(0.04) = 0.006]{.fragment} |
 | P(*Z* and Def) = [0.05(0.06) = 0.003]{.fragment} |
 :::
-:::
+:::::
 
 ## Example
 
