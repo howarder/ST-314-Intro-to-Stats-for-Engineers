@@ -1,0 +1,13 @@
+---
+title: "Poll Everywhere Slide"
+format: revealjs
+editor: visual
+---
+
+## Poll Everywhere Question - Earn Participation Points!
+
+Please answer the question currently open at
+
+### PollEv.com/erinhowardstats
+
+![](pollev_qr.png){fig-align="center"}
