@@ -373,16 +373,25 @@ ggplot(data = nycflights, aes(x = air_time)) +
 
 ## Proportions & Percentages {.smaller}
 
-In a sample of 10,000 loans made through Lending Club, whether the individual that received the loan rented, had a mortgage, or owned their home was recorded.
+The table displays the number of Nobel laureates in physics, chemistry, medicine, and economy per country from 1969-2020.
 
-| Homeownership | Count | Proportion | Percentage |
+| Country | Count | Proportion | Percentage |
 |------------------|------------------|------------------|------------------|
-| rent | 3858 | [0.3858]{.fragment fragment-index="1"} | [38.58%]{.fragment fragment-index="3"} |
-| mortgage | 4789 | [0.4789]{.fragment fragment-index="2"} | [47.89%]{.fragment fragment-index="4"} |
-| own | 1353 | [0.1353]{.fragment fragment-index="2"} | [13.53%]{.fragment fragment-index="4"} |
-| **Total** | 10000 | [1.0000]{.fragment fragment-index="2"} | [100.00%]{.fragment fragment-index="4"} |
+| France | 15 | [15/442 = 0.034]{.fragment fragment-index="3"} | [3.4%]{.fragment fragment-index="6"} |
+| Germany | 20 | [20/442 = 0.045]{.fragment fragment-index="4"} | [4.5%]{.fragment fragment-index="7"} |
+| Japan | 15 | [15/442 = 0.034]{.fragment fragment-index="4"} | [3.4%]{.fragment fragment-index="7"} |
+| Sweden | 8 | [8/442 = 0.018]{.fragment fragment-index="4"} | [1.8%]{.fragment fragment-index="7"} |
+| Switzerland | 15 | [15/442 = 0.034]{.fragment fragment-index="4"} | [3.4%]{.fragment fragment-index="7"} |
+| United Kingdom | 45 | [45/442 = 0.102]{.fragment fragment-index="4"} | [10.2%]{.fragment fragment-index="7"} |
+| United States | 281 | [281/442 = 0.636]{.fragment fragment-index="4"} | [63.6%]{.fragment fragment-index="7"} |
+| Other | 43 | [43/442 = 0.097]{.fragment fragment-index="4"} | [9.7%]{.fragment fragment-index="7"} |
+| **Total** | 442 | [1.000]{.fragment fragment-index="2"} | [100.0%]{.fragment fragment-index="5"} |
+
+Source: https://www.statista.com/chart/19646/science-nobel-prizes-by-country-and-immigrant-share/
 
 ## Barplots
+
+![](images/barplot.jpeg){fig-align="center"}
 
 ```{r}
 library(openintro)
@@ -391,12 +400,12 @@ library(viridis)
 ```
 
 ```{r}
-ggplot(data = loans_full_schema, aes(x = homeownership)) + 
-  geom_bar(aes(fill = application_type)) + 
-  scale_fill_viridis(discrete=TRUE, 
-                     name = "Application Type") + 
-  theme_minimal() + 
-  labs(x = "Homeownership")
+# ggplot(data = loans_full_schema, aes(x = homeownership)) + 
+#   geom_bar(aes(fill = application_type)) + 
+#   scale_fill_viridis(discrete=TRUE, 
+#                      name = "Application Type") + 
+#   theme_minimal() + 
+#   labs(x = "Homeownership")
 ```
 
 # R Programming Demo
