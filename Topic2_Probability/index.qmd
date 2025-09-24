@@ -65,10 +65,6 @@ Suppose you roll two fair six-sided dice. What is the probability that the sum o
 
  
 
-
-
-
-
 **Answer the question at PollEv.com/erinhowardstats**
 
 ![](pollev_qr.png){width="220"}
@@ -131,18 +127,13 @@ Rules for Probability Distributions
 
 ## Participation Question 📊
 
-
-
 Suppose you roll two fair six-sided dice. Let A represent the event that neither die rolled shows an odd number. What is the complement of A?
 
  
 
-
-
 **Answer the question at PollEv.com/erinhowardstats**
 
 ![](pollev_qr.png){width="220"}
-
 
 ## Intersection - "A and B"
 
@@ -188,8 +179,6 @@ Suppose you roll two fair six-sided dice. Let A represent the event that neither
 
 Consider rolling one fair six-sided die. Each option below describes two events that may occur when the die is rolled. Which pairs of events are disjoint?
 
-
-
 a\) Rolling an odd number and rolling a three.
 
 b\) Rolling an odd number and rolling an even number.
@@ -201,8 +190,6 @@ d\) Rolling a 4 and rolling a 5.
  
 
 **Answer the question at PollEv.com/erinhowardstats**
-
-
 
 ## Union - "A or B"
 
@@ -248,10 +235,25 @@ Consider rolling one fair six-sided die. Let A = rolling an odd number and B = r
 
  
 
-
 **Answer the question at PollEv.com/erinhowardstats**
 
 ![](pollev_qr.png){width="220"}
+
+## Independent Events
+
+[Events are considered **independent** if]{.fragment} [the outcome of one event does not impact the outcome of the other.]{.fragment}
+
+
+
+ 
+
+
+
+::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
+**Formal definition of independent events:**
+
+$A$ and $B$ are independent *if and only if* $P(A \text{ and } B) = P(A)\times P(B)$.
+:::
 
 <!-- ## Additional Practice  -->
 
@@ -263,7 +265,7 @@ Consider rolling one fair six-sided die. Let A = rolling an odd number and B = r
 
 <!-- You can find questions 6-10 in the **"Assigned"** tab on Top Hat. -->
 
-# OPTIONAL - Conditional and Independent Probabilities
+# OPTIONAL - Conditional Probabilities
 
 ## Example {.smaller}
 
@@ -363,7 +365,9 @@ Therefore,
 [$P(A \text{ and }B)= P(A|B)P(B) = P(B|A)P(A)$]{.fragment .highlight-red}
 :::
 
-## Independent Events
+## 
+
+### Independent Events
 
 [Events are considered **independent** if]{.fragment} [the outcome of one event does not impact the outcome of the other.]{.fragment}
 
