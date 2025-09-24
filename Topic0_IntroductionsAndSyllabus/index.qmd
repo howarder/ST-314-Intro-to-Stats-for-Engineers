@@ -242,6 +242,20 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 -   In-class participation activities do not apply.
 
+## Generative AI Policy 🤖 {.smaller}
+
+ 
+
+The use of generative AI is strongly discouraged across all aspects of this course. Below is a list of instances where generative AI use is **prohibited:**
+
+-   Use of generative AI is **prohibited on exams** and **concept quizzes**. 
+
+-   Use of generative AI is **prohibited for writing**. All written responses to questions on any assignment in this course must be your own writing. 
+
+-   Use of generative AI is **prohibited** **in writing code**. It's common for people to use gen AI to help debug code, which I am not prohibiting in this course, but you cannot rely on large language models to write code from scratch for you. 
+
+Violations of the above policy will be considered acts of academic misconduct and handled as such. 
+
 ## Exams 📝
 
 . . .
