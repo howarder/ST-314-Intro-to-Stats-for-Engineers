@@ -174,7 +174,7 @@ Using one of the sampling schemes discussed in this week's assigned reading, in 
 :::
 
 ```{r}
-countdown(minutes = 4)
+countdown(minutes = 2.5)
 ```
 
 ## Poll Everywhere Question - Earn Participation Points!
@@ -198,7 +198,7 @@ Please answer the question currently open at
 -   Make sure each group member has a chance to share their sampling designs.
 
 ```{r}
-countdown(minutes = 4)
+countdown(minutes = 3)
 ```
 
 ## Design an Experiment: Part 1 {.smaller}
@@ -210,7 +210,7 @@ In a few sentences, briefly outline an experimental design that may allow the re
 Your design should include the four elements of experimental design: controlling, randomization, replication, and blocking.
 
 ```{r}
-countdown(minutes = 4)
+countdown(minutes = 2.5)
 ```
 
 ## Design an Experiment: Part 2
@@ -224,7 +224,7 @@ countdown(minutes = 4)
     -   If one or more these components is missing from the suggested design, discuss how it could be implemented.
 
 ```{r}
-countdown(minutes = 4)
+countdown(minutes = 3)
 ```
 
 # Exploring Data
