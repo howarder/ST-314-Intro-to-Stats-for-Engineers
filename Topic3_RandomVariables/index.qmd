@@ -101,7 +101,7 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 ::: {.fragment fragment-index="2"}
 [**CONTINUOUS**]{.fragment fragment-index="4" style="color:purple;"}
 
-(2) Suppose the random variable $X$ is defined on the interval \[0,1\] and has the following probability density function: $$ f(x) = 3x^2 $$
+(2) A public library has private meeting rooms that can be reserved for up to one hour. Suppose $X$ is the random variable that represents the amount of time the user spends in the meeting room during a reservation. $X$ is defined on the interval \[0,1\] and has the following probability density function: $$ f(x) = 3x^2 $$
 :::
 
 ##  {.smaller}
@@ -200,7 +200,7 @@ $$p(4) = 0.12$$
 ### Example - PDF
 
 ::: {style="color:purple;"}
-(2) Suppose the random variable $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
+(2) Suppose $X$ is the random variable that represents the amount of time the user spends in the meeting room during a reservation. $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
 :::
 
 <iframe src="https://www.desmos.com/calculator/himmqtoy4t" width="90%" height="70%" style="border: 1px solid #ccc" frameborder="1">
@@ -263,7 +263,7 @@ Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
 
 ### Example - Discrete CDF
 
-::: {style="color:green;"}
+:::: {style="color:green;"}
 (1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
 
 |        |      |      |      |      |      |
@@ -273,18 +273,17 @@ Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
 
  
 
-
-:::{.fragment}
+::: fragment
 \$\$F(2)=P(X \\leq 2)=p(1)+p(2)=0.16+0.32=0.48\$\$
 :::
-:::
+::::
 
 ##  {.smaller}
 
 ### Example - Continuous CDF
 
 ::: {style="color:purple;"}
-(2) Suppose the random variable $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
+(2) Suppose $X$ is the random variable that represents the amount of time the user spends in the meeting room during a reservation. $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
 
 [$F(x) =$$\int \limits_{0}^x 3t^2 dt$$=t^3 \bigg \vert _0^x$$=x^3$]{.fragment}
 :::
@@ -349,9 +348,13 @@ $E(X) = 1(0.16) + 2(0.32) + 3(0.36) + 4(0.12) + 5(0.04) = 2.56$
 ### Example - Continuous Expectation
 
 ::: {style="color:purple;"}
-(2) Suppose the random variable $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
+(2) Suppose $X$ is the random variable that represents the amount of time the user spends in the meeting room during a reservation. $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
 
 [$E(X) =$$\int \limits _0^1 x (3x^2) dx$$= \frac{3}{4}x^4 \bigg \vert_0^1$$= \frac{3}{4}$]{.fragment}
+
+
+[We **expect** a randomly select user of the reservation system uses the meeting room for 3/4 of an hour (or 45 minutes).]{.fragment}
+
 :::
 
 ##  {.smaller}
@@ -398,7 +401,7 @@ Continuous RVs
 
 ##  {.smaller}
 
-### Example - Discrete Variance and Standard Deviation
+### Example - Discrete Var and SD
 
 ::::::: {style="color:green;"}
 1.  Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
@@ -423,14 +426,16 @@ $$Var(X) = E(X^2)-(E(X))^2 = 7.6 - 2.56^2 = 1.0464$$
 ::: fragment
 $$SD(X) = \sqrt{1.0464} = 1.022937$$
 :::
+
+[A **typical deviation** from the expected number of enrolled courses is approximately 1.02 courses.]{.fragment}
 :::::::
 
 ##  {.smaller}
 
-### Example - Continuous Variance and Standard Deviation
+### Example - Continuous Var and SD
 
 ::::::: {style="color:purple;"}
-Suppose the random variable X is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
+(2) Suppose $X$ is the random variable that represents the amount of time the user spends in the meeting room during a reservation. $X$ is defined on the interval \[0,1\] and has the following probability density function: $f(x) = 3x^2$
 
 ::: fragment
 $$Var(X) = E(X^2)-(E(X))^2$$
@@ -447,6 +452,9 @@ $$Var(X) = E(X^2)-(E(X))^2 = \frac{3}{5} - \bigg ( \frac{3}{4}\bigg)^2 = 0.0375$
 ::: fragment
 $$SD(X) = \sqrt{0.0375} = 0.1936$$
 :::
+
+[A **typical deviation** from the expected time spent in the reserved meeting room is approximately 0.19 hours (or a little more than 11 minutes).]{.fragment}
+
 :::::::
 
 ## Binomial Distribution {.smaller}
@@ -493,6 +501,8 @@ where ${{n}\choose{x}} = \frac{n!}{x!(n-x)!}$
 
 **Binomial Distribution**
 
-$p(x) = P(X = x)$: `dbinom(x, n, p)` $F(x) = P(X \leq x)$: `pbinom(q, n, p)`
+$p(x) = P(X = x)$: `dbinom(x, n, p)` 
+
+$F(x) = P(X \leq x)$: `pbinom(q, n, p)`
 
  
