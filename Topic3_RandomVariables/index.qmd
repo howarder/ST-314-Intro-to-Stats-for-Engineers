@@ -88,7 +88,7 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 ::: {.fragment fragment-index="1"}
 [**DISCRETE**]{.fragment fragment-index="3" style="color:green;"}
 
-(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
+(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. Enrollment information for the college suggests the following model for the random variable.
 
 |        |      |      |      |      |      |
 |--------|------|------|------|------|------|
@@ -177,7 +177,7 @@ Properties:
 ### Example - PMF
 
 ::::: {style="color:green;"}
-(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
+(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. Enrollment information for the college suggests the following model for the random variable.
 
 |        |      |      |      |      |      |
 |--------|------|------|------|------|------|
@@ -264,7 +264,7 @@ Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
 ### Example - Discrete CDF
 
 :::: {style="color:green;"}
-(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
+(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. Enrollment information for the college suggests the following model for the random variable.
 
 |        |      |      |      |      |      |
 |--------|------|------|------|------|------|
@@ -325,7 +325,7 @@ $$E(X) = \int \limits_{-\infty}^{\infty} x f(x) dx$$
 ### Example - Discrete Expectation
 
 :::: {style="color:green;"}
-(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
+(1) Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. Enrollment information for the college suggests the following model for the random variable.
 
 |        |      |      |      |      |      |
 |--------|------|------|------|------|------|
@@ -352,9 +352,7 @@ $E(X) = 1(0.16) + 2(0.32) + 3(0.36) + 4(0.12) + 5(0.04) = 2.56$
 
 [$E(X) =$$\int \limits _0^1 x (3x^2) dx$$= \frac{3}{4}x^4 \bigg \vert_0^1$$= \frac{3}{4}$]{.fragment}
 
-
-[We **expect** a randomly select user of the reservation system uses the meeting room for 3/4 of an hour (or 45 minutes).]{.fragment}
-
+[We **expect** a randomly selected user of the reservation system occupies the meeting room for 3/4 of an hour (or 45 minutes).]{.fragment}
 :::
 
 ##  {.smaller}
@@ -404,7 +402,7 @@ Continuous RVs
 ### Example - Discrete Var and SD
 
 ::::::: {style="color:green;"}
-1.  Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. A random sample of students yielded the following model for the random variable.
+1.  Let the random variable $X$ represent the number of courses a student is enrolled in at a community college. Enrollment information for the college suggests the following model for the random variable.
 
 |        |      |      |      |      |      |
 |--------|------|------|------|------|------|
@@ -454,7 +452,6 @@ $$SD(X) = \sqrt{0.0375} = 0.1936$$
 :::
 
 [A **typical deviation** from the expected time spent in the reserved meeting room is approximately 0.19 hours (or a little more than 11 minutes).]{.fragment}
-
 :::::::
 
 ## Binomial Distribution {.smaller}
@@ -501,7 +498,7 @@ where ${{n}\choose{x}} = \frac{n!}{x!(n-x)!}$
 
 **Binomial Distribution**
 
-$p(x) = P(X = x)$: `dbinom(x, n, p)` 
+$p(x) = P(X = x)$: `dbinom(x, n, p)`
 
 $F(x) = P(X \leq x)$: `pbinom(q, n, p)`
 
