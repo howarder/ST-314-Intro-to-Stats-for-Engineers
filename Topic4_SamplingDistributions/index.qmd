@@ -27,6 +27,44 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 # The Normal Distribution
 
+## Let's start with an example {.smaller}
+
+In a study on driving reaction time, researchers record the time (in seconds) that it takes study participants to react to the brake lights of a vehicle traveling in front of them.
+
+A histogram of the recorded data is shown below.
+
+
+```{r}
+#| fig-align: "center"
+library(latex2exp)
+library(tidyverse)
+library(viridis)
+
+set.seed(8355)
+react <- rnorm(505, 1.25, 0.46)
+react_df <- data.frame(react)
+react_df <- react_df |>
+  filter(react > 0)
+h <- ggplot(react_df, aes(x = react)) + 
+  geom_histogram(color = "black", fill = "#D73F09", 
+                 breaks = seq(0, max(react_df$react), 
+                              length.out = 15)) + 
+  labs(x = "Reaction Time (s)", y = "Frequency") + 
+  theme_bw()
+h
+```
+
+
+:::{.fragment}
+Describe the shape, center, and spread of the distribution.
+
+```{r}
+library(countdown)
+countdown(minutes = 1)
+```
+:::
+
+
 ## Normal Distribution {.smaller}
 
 :::::::: columns
@@ -37,9 +75,6 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 ::: {.fragment style="color:blue;"}
 ```{r}
-library(latex2exp)
-library(tidyverse)
-library(viridis)
 ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = viridis(6)[3], linewidth = 2) + 
   ylab("") +
@@ -73,6 +108,23 @@ $$f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$ for $x
 :::::
 ::::::::
 
+## Example: Driving Reaction Time
+
+```{r}
+h_d <- ggplot(react_df, aes(x = react)) + 
+  geom_histogram(aes(y=..density..), 
+                 color = "black", fill = "#D73F09", 
+                 breaks = seq(0, max(react_df$react), 
+                              length.out = 15)) + 
+  labs(x = "Reaction Time (s)", y = "Density") + 
+  theme_bw() + 
+  theme(axis.title.y = element_text(size = 18)) + 
+  stat_function(fun = dnorm, n = 101, args = list(mean = 1.25, sd = 0.46), color = viridis(6)[3], linewidth = 2)
+
+h_d
+```
+
+
 ## Standard Normal Distribution
 
 [The *Standard* Normal Distribution is a Normal distribution with mean $\mu=0$ and standard deviation $\sigma=1$.]{.fragment style="color:blue;"}
@@ -91,7 +143,8 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = viridis(6)[3], linewidth = 2) + 
   ylab("") +
   xlab("") + 
-  theme_bw()
+  theme_bw() + 
+  scale_x_continuous(breaks = seq(-3,3,1))
 ```
 :::
 
@@ -148,25 +201,35 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 ::::
 :::::::
 
-## Example
+## Example: Driving Reaction Time {.smaller}
 
-For a particular bridge, recorded vehicle speeds are normally distributed with a mean of 58 mph and a standard deviation of 10 mph. Suppose a randomly chosen vehicle is going 40 miles per hour.
+The driving reaction time study suggests that reaction times to break lights are Normally distributed with a mean of 1.25 seconds and standard deviation of 0.46. 
 
-How many standard deviations away from the mean is 40 mph?
+Consider a driver who reacted in 0.79 seconds. How many standard deviations away from the mean is this driver's reaction time?
 
-[Calculate the z-score!]{.fragment style="color:blue;"}
+:::{.fragment}
+[Calculate the z-score!]{style="color:blue;"}
 
-[$z=$$\frac{x-\mu}{\sigma}$$=\frac{40-58}{10}$$=-1.8$]{.fragment style="color:blue;"}
+```{r}
+countdown(minutes = 0, seconds = 45)
+```
+
+:::
+
+[$z=$$\frac{x-\mu}{\sigma}$$=\frac{0.79-1.25}{0.46}$$=-1$]{.fragment style="color:blue;"}
 
  
 
-[The randomly chosen vehicle is traveling 1.8 *standard deviations* slower than the average vehicle on the bridge.]{.fragment style="color:blue;"}
+[The driver's reaction time is 1 *standard deviation* less than (i.e., faster than) the average driver in the study.]{.fragment style="color:blue;"}
 
-## Example {.smaller}
 
-For a particular bridge, recorded vehicle speeds are normally distributed with a mean of 58 mph and a standard deviation of 10 mph. 
 
-What is the probability of a randomly selecting a vehicle going less than 40 mph?
+
+## Example: Driving Reaction Time {.smaller}
+
+The driving reaction time study suggests that reaction times to break lights are Normally distributed with a mean of 1.25 seconds and standard deviation of 0.46.
+
+What is the probability of a randomly selecting a driver with a reaction time less than 1 second?
 
 :::::: columns
 :::: column
@@ -174,20 +237,21 @@ What is the probability of a randomly selecting a vehicle going less than 40 mph
 ```{r}
 #| fig-height: 6
 
-ggplot(data = data.frame(x = c(28, 88)), aes(x)) +
-  stat_function(fun = dnorm, n = 101, args = list(mean = 58, sd = 10), color = viridis(6)[3], linewidth = 2) + 
+ggplot(data = data.frame(x = c(0,2.5)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, 
+                args = list(mean = 1.25, sd = 0.46), color = viridis(6)[3], linewidth = 2) + 
   ylab("") +
   xlab("") + 
   theme_bw() + 
     theme(axis.text.x = element_text(size = 18, color = viridis(6)[3], face = "bold")) + 
   scale_y_continuous(breaks = NULL) + 
-  scale_x_continuous(breaks = seq(38,78,10))
+  scale_x_continuous(breaks = seq(0,2.5,0.25))
 ```
 :::
 ::::
 
 ::: column
-[$$P(X < 40) = \int \limits_{-\infty}^{40} \frac{1}{\sqrt{2\pi 10^2}}e^{-\frac{(x-58)^2}{2(10^2)}} dx$$]{.fragment style="color:blue;"}
+[$$P(X < 1) = \int \limits_{-\infty}^{1} \frac{1}{\sqrt{2\pi (0.46^2)}}e^{-\frac{(x-1.25)^2}{2(0.46^2)}} dx$$]{.fragment style="color:blue;"}
 
  
 
@@ -213,14 +277,7 @@ $p^{th}$ percentile:
 
 `qnorm(p, mean, sd, lower.tail = TRUE)`
 
-## Class 7 Activity
 
-Please complete the short Class 7 Activity in Top Hat.
-
-```{r}
-library(countdown)
-countdown(5)
-```
 
 # Sampling Distributions
 
@@ -235,16 +292,16 @@ Answer the one question in the google form that can be accessed in any of the fo
 :::::: columns
 :::: {.column width="50%"}
 ::: nonincremental
--   Typing the following URL into your browser. The URL is case sensitive. <https://beav.es/GaJ>
+-   Typing the following URL into your browser. The URL is case sensitive. <https://beav.es/W4_survey>
 
--   Find the Week 4 Survey link on Canvas under the Week 4 module
+-   Find the Week 4 Survey link on Canvas in the Quick Links module
 
 -   Scan the QR code
 :::
 ::::
 
 ::: {.column width="50%"}
-![](QR.jpeg){height="300"}
+![](QR.png){height="500"}
 :::
 ::::::
 
@@ -367,51 +424,51 @@ Distribution of a sample statistic, such as $\overline{x}$ or $\hat{p}$, from re
 Understanding the sampling distribution of commonly used statistics, such as $\overline{x}$ and $\hat{p}$, allows us to quantify the uncertainty in our point estimates.
 :::
 
-## Unbiased Estimators
+<!-- ## Unbiased Estimators -->
 
-Recall that because of sampling variability, a statistic from a sample is a random variable.
+<!-- Recall that because of sampling variability, a statistic from a sample is a random variable. -->
 
-A statistic is called **unbiased** if its expectation is equal to the corresponding population parameter.
+<!-- A statistic is called **unbiased** if its expectation is equal to the corresponding population parameter. -->
 
- 
+<!--   -->
 
-. . .
+<!-- . . . -->
 
-$\overline{x}$, $\hat{p}$, and $s^2$ are unbiased.
+<!-- $\overline{x}$, $\hat{p}$, and $s^2$ are unbiased. -->
 
- 
+<!--   -->
 
-. . .
+<!-- . . . -->
 
-$E(\overline{x}) =$ [$\mu$]{.fragment .fade-in}
+<!-- $E(\overline{x}) =$ [$\mu$]{.fragment .fade-in} -->
 
-$E(\hat{p}) =$ [$p$]{.fragment .fade-in}
+<!-- $E(\hat{p}) =$ [$p$]{.fragment .fade-in} -->
 
-$E(s^2) =$ [$\sigma^2$]{.fragment .fade-in}
+<!-- $E(s^2) =$ [$\sigma^2$]{.fragment .fade-in} -->
 
-## Consistent Estimators & The Law of Large Numbers {.smaller}
+<!-- ## Consistent Estimators & The Law of Large Numbers {.smaller} -->
 
-A point estimate is called **consistent** if it converges in probability to its corresponding population parameter.
+<!-- A point estimate is called **consistent** if it converges in probability to its corresponding population parameter. -->
 
- 
+<!--   -->
 
-Under the Law of Large Numbers, we have that as sample size, $n$, increases the point estimate will approach the population parameter.
+<!-- Under the Law of Large Numbers, we have that as sample size, $n$, increases the point estimate will approach the population parameter. -->
 
-. . .
+<!-- . . . -->
 
- 
+<!--   -->
 
-$\overline{x}$, $\hat{p}$, and $s^2$ are consistent.
+<!-- $\overline{x}$, $\hat{p}$, and $s^2$ are consistent. -->
 
-. . .
+<!-- . . . -->
 
-Therefore, as $n$ increases towards the size of the population
+<!-- Therefore, as $n$ increases towards the size of the population -->
 
-$\overline{x} \rightarrow$ [$\mu$]{.fragment .fade-in}
+<!-- $\overline{x} \rightarrow$ [$\mu$]{.fragment .fade-in} -->
 
-$\hat{p} \rightarrow$ [$p$]{.fragment .fade-in}
+<!-- $\hat{p} \rightarrow$ [$p$]{.fragment .fade-in} -->
 
-$s^2 \rightarrow$ [$\sigma^2$]{.fragment .fade-in}
+<!-- $s^2 \rightarrow$ [$\sigma^2$]{.fragment .fade-in} -->
 
 ## Sample Size & Sampling Variability {.smaller}
 
@@ -438,18 +495,18 @@ When observations are independent and the sample size, $n$, is sufficiently larg
 :::::::: fragment
 ::::::: columns
 :::: {.column width="50%"}
-**Sample Proportion,** $\hat{p}$
+[**Sample Proportion,** $\hat{p}$]{style="color:#440154FF"}
 
 ::: fragment
-$$\hat{p}\sim N\bigg(p, \sqrt{\frac{p(1-p)}{n}}\bigg)$$ where $p$ represents the population proportion
+[$$\hat{p}\sim N\bigg(p, \sqrt{\frac{p(1-p)}{n}}\bigg)$$ where $p$ represents the population proportion]{style="color:#440154FF"}
 :::
 ::::
 
 :::: {.column width="\"50%"}
-**Sample Mean,** $\overline{x}$
+[**Sample Mean,** $\overline{x}$]{style="color:#2A788EFF"} 
 
 ::: fragment
-$$\overline{x}\sim N\bigg(\mu, \frac{\sigma}{\sqrt{n}}\bigg)$$ where $\mu$ and $\sigma$ represent the population mean and standard deviation, respectively.
+[$$\overline{x}\sim N\bigg(\mu, \frac{\sigma}{\sqrt{n}}\bigg)$$ where $\mu$ and $\sigma$ represent the population mean and standard deviation, respectively.]{style="color:#2A788EFF"} 
 :::
 ::::
 :::::::
@@ -507,14 +564,14 @@ The sample size conditions needed to apply the Central Limit Theorem differ depe
 ::::::::: fragment
 :::::::: columns
 :::: {.column width="30%"}
-**Sample proportion,** $\hat{p}$
+[**Sample proportion,** $\hat{p}$]{style="color:#440154FF"}
 
 ::: fragment
-For the CLT to apply to the distribution of the sample proportion, we need the following sample size conditions to be met:
+[For the CLT to apply to the distribution of the sample proportion, we need the following sample size conditions to be met:]{style="color:#440154FF"}
 
--   $np \geq 10$
+-   [$np \geq 10$]{style="color:#440154FF"}
 
--   $n(1-p) \geq 10$
+-   [$n(1-p) \geq 10$]{style="color:#440154FF"}
 :::
 ::::
 
@@ -522,14 +579,14 @@ For the CLT to apply to the distribution of the sample proportion, we need the f
 :::
 
 :::: {.column width="65%"}
-**Sample mean,** $\overline{x}$
+[**Sample mean,** $\overline{x}$]{style="color:#2A788EFF"} 
 
 ::: fragment
-Use the sample size and observe the shape of the sampled distribution to determine if the sample size is sufficiently large:
+[Use the sample size and observe the shape of the sampled distribution to determine if the sample size is sufficiently large:]{style="color:#2A788EFF"}
 
--   If $n\geq 30$, we can typically assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.
+-   [If $n\geq 30$, we can typically assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"}
 
--   If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.
+-   [If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"} 
 :::
 ::::
 ::::::::
@@ -539,18 +596,18 @@ Use the sample size and observe the shape of the sampled distribution to determi
 **If the sample size conditions aren't met, we cannot apply the results of the CLT.**
 :::
 
-## Example from last class {.smaller}
 
-**Question of interest:** What proportion of students in ST 314 have attended a career fair this year?
-
-::: fragment
-**Parameter of interest:**
-:::
 
 ## 
 
 ### Practice!
 
-Please complete the Class 8 Activity in Top Hat (can be found under the Assigned tab). Collaboration is encouraged! When you are finished with the activity, you are free to go.
+ 
+
+Please complete the Class 8 Activity in Canvas (found at the top of our Canvas page in the Quick Links module). 
 
  
+
+Collaboration is encouraged! When you are finished with the activity, you are free to go.
+
+
