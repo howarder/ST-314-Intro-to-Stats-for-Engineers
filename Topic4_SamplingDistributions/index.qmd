@@ -33,7 +33,6 @@ In a study on driving reaction time, researchers record the time (in seconds) th
 
 A histogram of the recorded data is shown below.
 
-
 ```{r}
 #| fig-align: "center"
 library(latex2exp)
@@ -54,8 +53,7 @@ h <- ggplot(react_df, aes(x = react)) +
 h
 ```
 
-
-:::{.fragment}
+::: fragment
 Describe the shape, center, and spread of the distribution.
 
 ```{r}
@@ -63,7 +61,6 @@ library(countdown)
 countdown(minutes = 1)
 ```
 :::
-
 
 ## Normal Distribution {.smaller}
 
@@ -123,7 +120,6 @@ h_d <- ggplot(react_df, aes(x = react)) +
 
 h_d
 ```
-
 
 ## Standard Normal Distribution
 
@@ -203,17 +199,16 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 ## Example: Driving Reaction Time {.smaller}
 
-The driving reaction time study suggests that reaction times to break lights are Normally distributed with a mean of 1.25 seconds and standard deviation of 0.46. 
+The driving reaction time study suggests that reaction times to break lights are Normally distributed with a mean of 1.25 seconds and standard deviation of 0.46.
 
 Consider a driver who reacted in 0.79 seconds. How many standard deviations away from the mean is this driver's reaction time?
 
-:::{.fragment}
+::: fragment
 [Calculate the z-score!]{style="color:blue;"}
 
 ```{r}
 countdown(minutes = 0, seconds = 45)
 ```
-
 :::
 
 [$z=$$\frac{x-\mu}{\sigma}$$=\frac{0.79-1.25}{0.46}$$=-1$]{.fragment style="color:blue;"}
@@ -221,9 +216,6 @@ countdown(minutes = 0, seconds = 45)
  
 
 [The driver's reaction time is 1 *standard deviation* less than (i.e., faster than) the average driver in the study.]{.fragment style="color:blue;"}
-
-
-
 
 ## Example: Driving Reaction Time {.smaller}
 
@@ -277,8 +269,6 @@ $p^{th}$ percentile:
 
 `qnorm(p, mean, sd, lower.tail = TRUE)`
 
-
-
 # Sampling Distributions
 
 ## Sampling Distributions Simulation {.smaller}
@@ -318,6 +308,34 @@ Answer the one question in the google form that can be accessed in any of the fo
 
     -   Our best guess for the population proportion, $p$, is the [sample proportion, $\hat{p}$.]{.fragment .fade-in}
 :::
+
+## Example {.smaller}
+
+As part of a quality control process for computer chips, an engineer at a factory randomly samples 212 chips during a week of production to test the current rate of chips with severe defects. She finds that 27 of the chips are defective.
+
+The information above describes the outcome of a single sample. Suppose the true proportion of defective chips at this factory is $p=0.1$.
+
+:::::: fragment
+::::: columns
+::: {.column width="60%"}
+### Participation Question 📊
+
+The value $p=0.1$ is the
+
+a\. population parameter
+
+b\. sample statistic
+:::
+
+::: {.column width="40%"}
+Answer the question at
+
+**PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){width="320"}
+:::
+:::::
+::::::
 
 ## Sampling Variability
 
@@ -412,6 +430,38 @@ Distribution of a sample statistic, such as $\overline{x}$ or $\hat{p}$, from re
 ::::
 :::::::::
 
+## Example {.smaller}
+
+As part of a quality control process for computer chips, an engineer at a factory randomly samples 212 chips during a week of production to test the current rate of chips with severe defects. She finds that 27 of the chips are defective.
+
+The information above describes the outcome of a single sample. Suppose the true proportion of defective chips at this factory is $p=0.1$.
+
+:::::: fragment
+::::: columns
+::: {.column width="60%"}
+### Participation Question 📊
+
+Suppose we were able to collect every possible sample of size 212 from the population of chips produced.
+
+The distribution of the sample proportions of defective chips is the
+
+a\. population distribution.
+
+b\. sampled distribution.
+
+c\. sampling distribution.
+:::
+
+::: {.column width="40%"}
+Answer the question at
+
+**PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){width="320"}
+:::
+:::::
+::::::
+
 ## Sampling Distributions
 
  
@@ -503,10 +553,10 @@ When observations are independent and the sample size, $n$, is sufficiently larg
 ::::
 
 :::: {.column width="\"50%"}
-[**Sample Mean,** $\overline{x}$]{style="color:#2A788EFF"} 
+[**Sample Mean,** $\overline{x}$]{style="color:#2A788EFF"}
 
 ::: fragment
-[$$\overline{x}\sim N\bigg(\mu, \frac{\sigma}{\sqrt{n}}\bigg)$$ where $\mu$ and $\sigma$ represent the population mean and standard deviation, respectively.]{style="color:#2A788EFF"} 
+[$$\overline{x}\sim N\bigg(\mu, \frac{\sigma}{\sqrt{n}}\bigg)$$ where $\mu$ and $\sigma$ represent the population mean and standard deviation, respectively.]{style="color:#2A788EFF"}
 :::
 ::::
 :::::::
@@ -557,6 +607,32 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
                                 TeX(r'(\mu + 2\frac{\sigma}{\sqrt{n}})')))
 ```
 
+## Example {.smaller}
+
+As part of a quality control process for computer chips, an engineer at a factory randomly samples 212 chips during a week of production to test the current rate of chips with severe defects. She finds that 27 of the chips are defective.
+
+The information above describes the outcome of a single sample. Suppose the true proportion of defective chips at this factory is $p=0.1$.
+
+:::::: fragment
+::::: columns
+::: {.column width="60%"}
+### Participation Question 📊
+
+Suppose we were able to collect every possible sample of size 212 from the population of chips produced.
+
+The distribution of the sample proportion of defective chips is
+:::
+
+::: {.column width="40%"}
+Answer the question at
+
+**PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){width="320"}
+:::
+:::::
+::::::
+
 ## CLT - Sample Size Conditions {.smaller}
 
 The sample size conditions needed to apply the Central Limit Theorem differ depending on the statistic.
@@ -579,14 +655,14 @@ The sample size conditions needed to apply the Central Limit Theorem differ depe
 :::
 
 :::: {.column width="65%"}
-[**Sample mean,** $\overline{x}$]{style="color:#2A788EFF"} 
+[**Sample mean,** $\overline{x}$]{style="color:#2A788EFF"}
 
 ::: fragment
 [Use the sample size and observe the shape of the sampled distribution to determine if the sample size is sufficiently large:]{style="color:#2A788EFF"}
 
 -   [If $n\geq 30$, we can typically assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"}
 
--   [If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"} 
+-   [If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"}
 :::
 ::::
 ::::::::
@@ -596,18 +672,39 @@ The sample size conditions needed to apply the Central Limit Theorem differ depe
 **If the sample size conditions aren't met, we cannot apply the results of the CLT.**
 :::
 
+## Example {.smaller}
+
+As part of a quality control process for computer chips, an engineer at a factory randomly samples 212 chips during a week of production to test the current rate of chips with severe defects. She finds that 27 of the chips are defective.
+
+The information above describes the outcome of a single sample. Suppose the true proportion of defective chips at this factory is $p=0.1$.
+
+:::::: fragment
+::::: columns
+::: {.column width="55%"}
+### Participation Question 📊
+
+In the previous participation question, we stated that the distribution of $\hat{p}$ was Normal, but we didn't check the sample size conditions before doing so! Are the sample size conditions met in this scenario in order to apply the central limit theorem?
+:::
+
+:::{.column width="5%"}
+
+:::
+
+::: {.column width="40%"}
+Answer the question at
+
+**PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){width="320"}
+:::
+:::::
+::::::
 
 
 ## 
 
-### Practice!
+### More Practice!
 
  
 
-Please complete the Class 8 Activity in Canvas (found at the top of our Canvas page in the Quick Links module). 
-
- 
-
-Collaboration is encouraged! When you are finished with the activity, you are free to go.
-
-
+Want more practice with this material? An optional activity is available. Find **Practice with the Central Limit Theorem** in the Week 4 module. 
