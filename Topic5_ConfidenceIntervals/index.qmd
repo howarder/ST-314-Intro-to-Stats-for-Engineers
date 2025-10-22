@@ -9,64 +9,13 @@ format:
 editor: visual
 ---
 
-## Example {.smaller}
-
-*From Class 8 Activity*
-
-As part of a quality control process for computer chips, an engineer at a factory randomly samples 212 chips during a week of production to test the current rate of chips with severe defects. She finds that 27 of the chips are defective.
-
-The information above describes the outcome of a single sample. Suppose the true proportion of defective chips at this factory is $p=0.1$.
-
-[**Sampling distribution of** $\hat{p}$:]{.fragment} [The distribution of the sample proportion of defective chips from a sample of size 212 is **approximately Normal** with a mean of $0.1$]{.fragment} [and a standard error equal to]{.fragment} [$\sqrt{\frac{0.1(1-0.1)}{212}} = 0.021$.]{.fragment}
-
-::: notes
-Draw normal dist with marks at 0.058, 0.079, 0.1, 0.121, 0.142.
-:::
-
-##  {.smaller}
-
-Calculate the probability of collecting a sample of size $n=212$ and observing a sample proportion of defective chips of 0.127 or less. That is, calculate $P(\hat{p}<0.127)$.
-
-```{r}
-#| message: false
-#| fig-height: 4
-library(ggplot2)
-library(latex2exp)
-ex_curve <- ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
-  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), color = "#440154FF", linewidth = 2) + 
-  ylab("") +
-  xlab("") + 
-  theme_bw() +
-  theme(axis.text.x = element_text(size = 18, color = "#440154FF", face = "bold")) + 
-  scale_y_continuous(breaks = NULL) + 
-  scale_x_continuous(breaks = seq(-2,2,1), 
-                     labels = c(0.058,
-                                0.079, 
-                                0.1, 
-                                0.121, 
-                                0.142))
-ex_curve
-```
-
-[`pnorm(0.127, 0.1, 0.021)` = 0.901]{.fragment}
-
-[The probability of observing a sample proportion of defective components less than 0.127 is 0.901.]{.fragment}
-
-##  {.smaller}
-
-Calculate the probability of observing a sample proportion of defective chips that is [within two standard errors]{.fragment .highlight-red} of the true population proportion, $p$.
-
-```{r}
-#| message: false
-#| fig-height: 4
-ex_curve
-```
-
-[$P(0.058 < \hat{p} < 0.142) =$]{.fragment}
-
-[`pnorm(0.142, 0.1, 0.021) - pnorm(0.058, 0.1, 0.021)` = 0.954]{.fragment}
-
 # Confidence Intervals of a Proportion
+
+## Motivating Example 🚗
+
+ 
+
+In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
 
 ## Point Estimate
 
@@ -80,6 +29,22 @@ The single value considered to be the "best guess" for the parameter of interest
 For example, if the parameter of interest is a **population [proportion]{.fragment .highlight-red},** $p$, the point estimate from a sample is the **sample [proportion]{.fragment .highlight-red},** $\hat{p}$.
 :::
 
+## Motivating Example 🚗
+
+ 
+
+In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
+
+::: {.fragment style="color:#D73F09;"}
+If we are interested in estimating the true proportion of **all** U.S. adults interested in an EV, what is the value of the point estimate based on this sample?
+
+```{r}
+library(countdown)
+
+countdown(minutes=0, seconds=30)
+```
+:::
+
 ## Sampling Variability
 
 ::: fragment
@@ -89,6 +54,22 @@ A point estimate is rarely exactly equal to the population parameter and has som
  
 
 [The **Central Limit Theorem** can help us understand this variability for $\hat{p}$ and $\overline{x}.$]{.fragment}
+
+## Motivating Example 🚗
+
+In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
+
+::: {.fragment style="color:#D73F09;"}
+$\hat{p} = \frac{3925}{10329}$ is the sample proportion from just a single sample of 10,329 U.S. adults.
+:::
+
+::: fragment
+According to the Central Limit Theorem, what is the theoretical distribution of all possible $\hat{p}$'s?
+:::
+
+```{r}
+countdown(minutes=0, seconds=45)
+```
 
 ## Confidence Intervals
 
@@ -187,7 +168,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 ## 95% Confidence Interval {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 If the sampling distribution of $\hat{p}$ is normal, then **95%** of all possible point estimates will be within $z^*$ standard errors of the population proportion $p$.
 :::
@@ -217,14 +198,21 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
                linewidth = 2) + 
   geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(p + z* \sqrt{\frac{p(1-p)}{n}})'), size=8) + 
+            label = 
+              TeX(r'(p + z* \sqrt{\frac{p(1-p)}{n}})', 
+                  output = "character"), 
+            parse = TRUE, 
+            size=8) + 
     geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(p - z* \sqrt{\frac{p(1-p)}{n}})'), 
+            label = 
+              TeX(r'(p - z* \sqrt{\frac{p(1-p)}{n}})', 
+                  output = "character"), 
+            parse = TRUE, 
             size = 8)
 
 ```
 :::
-:::
+:::::
 
 . . .
 
@@ -250,20 +238,24 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   theme(axis.text.x = element_text(size = 12, color = "#440154FF", face = "bold")) + 
   scale_y_continuous(breaks = NULL) + 
   scale_x_continuous(breaks = seq(-2,2,1), 
-                     labels = c(TeX(r'(p - 2\sqrt{\frac{p(1-p)}{n}})'),
-                                TeX(r'(p - \sqrt{\frac{p(1-p)}{n}})'), 
-                                "p", 
-                                TeX(r'(p + \sqrt{\frac{p(1-p)}{n}})'), 
-                                TeX(r'(p + 2\sqrt{\frac{p(1-p)}{n}})'))) + 
+                     labels = 
+                       c(TeX(r'(p - 2\sqrt{\frac{p(1-p)}{n}})'),
+                         TeX(r'(p - \sqrt{\frac{p(1-p)}{n}})'),
+                         "p", 
+                         TeX(r'(p + \sqrt{\frac{p(1-p)}{n}})'),
+                         TeX(r'(p + 2\sqrt{\frac{p(1-p)}{n}})'))) + 
   geom_segment(aes(x = 1.96, y = 0, xend = 1.96, yend = (dnorm(1.96)+.1)), 
                linewidth = 2) + 
   geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
                linewidth = 2) + 
   geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(p + z* \sqrt{\frac{p(1-p)}{n}})'), size=6) + 
+            label = TeX(r'(p + z* \sqrt{\frac{p(1-p)}{n}})', 
+                        output = "character"), 
+            parse = TRUE, size=6) + 
     geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(p - z* \sqrt{\frac{p(1-p)}{n}})'), 
-            size = 6)
+            label = TeX(r'(p - z* \sqrt{\frac{p(1-p)}{n}})', 
+                        output = "character"),
+            parse = TRUE, size = 6)
 
 ```
 
@@ -291,10 +283,14 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
                linewidth = 2) + 
   geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(z*)'), size=6) + 
+            label = TeX(r'(z*)', 
+                        output = "character"), 
+            parse = TRUE, 
+            size=6) + 
     geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(-z*)'), 
-            size = 6)
+            label = TeX(r'(-z*)', 
+                        output = "character"), 
+            parse = TRUE, size = 6)
 
 ```
 
@@ -324,10 +320,13 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
                linewidth = 2) + 
   geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(z*)'), size=6) + 
+            label = TeX(r'(z*)',
+                        output = "character"), 
+            parse = TRUE, size=6) + 
     geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(-z*)'), 
-            size = 6)
+            label = TeX(r'(-z*)', 
+                        output = "character"), 
+            parse = TRUE, size = 6)
 
 ```
 
@@ -337,7 +336,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 ## 95% Confidence Interval {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 If the sampling distribution of $\hat{p}$ is normal, then **95%** of all possible point estimates will be within **1.96** standard errors of the population proportion $p$.
 :::
@@ -367,19 +366,22 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_segment(aes(x = -1.96, y = 0, xend = -1.96, yend = (dnorm(1.96)+.1)), 
                linewidth = 2) + 
   geom_text(x = 1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(p + 1.96 \sqrt{\frac{p(1-p)}{n}})'), size=8) + 
+            label = TeX(r'(p + 1.96 \sqrt{\frac{p(1-p)}{n}})', 
+                        output = "character"), 
+            parse = TRUE, size=8) + 
     geom_text(x = -1.96, y = (dnorm(1.96)+.17), 
-            label = TeX(r'(p - 1.96 \sqrt{\frac{p(1-p)}{n}})'), 
-            size = 8)
+            label = TeX(r'(p - 1.96 \sqrt{\frac{p(1-p)}{n}})', 
+                        output = "character"), 
+            parse = TRUE, size = 8)
 
 ```
 :::
-:::
+:::::
 
 ## 95% Confidence Interval {.smaller}
 
-::: columns
-::: {.column width="60%"}
+:::::::: columns
+:::::: {.column width="60%"}
 If a point estimate, $\hat{p}$ within 1.96 standard errors of $p$ is selected, then the interval
 
 [$$ \hat{p} \pm 1.96 \sqrt{\frac{p(1-p)}{n}}$$]{.fragment}
@@ -399,12 +401,12 @@ We can be 95% confident that the parameter is captured by the above interval est
 ::: fragment
 5% of these "95% confidence intervals" won't capture $p$. In practice, we don't know $p$ (remember the goal here is to estimate it), so we won't know if the interval we constructed is one of the "good ones."
 :::
-:::
+::::::
 
 ::: {.column width="40%"}
 ![](intervals.png){width="448"}
 :::
-:::
+::::::::
 
 ##  {.smaller}
 
@@ -448,16 +450,6 @@ All confidence intervals have the same general form:
 4.  Calculate the standard error estimate from the observed sample: [$\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$]{.fragment}
 :::
 
-## 
-
-### Constructing a Confidence Interval for $p$
-
- 
-
- 
-
-[$$\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$]{.fragment}
-
 ## Check the sample size
 
 Recall that the construction of the confidence interval was based on the Central Limit Theorem for the sample proportion. The CLT requires that we have sufficiently large sample sizes, so we should only construct a confidence interval for $p$ if
@@ -468,13 +460,72 @@ AND
 
 2.  [$n(1-\hat{p}) \geq 10$]{.fragment}
 
-## Choosing a Confidence Level {.smaller}
+##  {.smaller}
 
-The confidence level is chosen based on whether precision or accuracy is more desirable.
+### Motivating Example 🚗
 
-![](target.png){width="50%"}
+In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
 
-**As we increase the confidence level, we lose precision but gain accuracy.**
+Complete the 4 steps needed to construct the **90%** confidence interval.
+
+:::: {style="color:#453781FF"}
+::: incremental
+1.  $\hat{p} = \frac{3925}{10329}$
+
+2.  CL = 90%, 100-CL = 10%
+
+3.  $z^*=$ `qnorm(0.95, 0, 1)` $=1.645$
+
+4.  Standard error: $\sqrt{\frac{\frac{3925}{10329}\bigg(1-\frac{3925}{10329}\bigg)}{10329}}$
+:::
+::::
+
+```{r}
+countdown(minutes=2)
+```
+
+## 
+
+### Constructing a Confidence Interval for $p$
+
+ 
+
+ 
+
+[$$\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$]{.fragment}
+
+##  {.smaller}
+
+### Motivating Example 🚗
+
+In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
+
+Construct a 90% confidence interval for the true proportion of U.S. adults interested in an EV.
+
+::::::: {style="color:#453781FF"}
+:::::: columns
+:::: {.column width="60%"}
+::: nonincremental
+1.  $\hat{p} = \frac{3925}{10329}$
+
+2.  CL = 90%, 100-CL = 10%
+
+3.  $z^*=$ `qnorm(0.95, 0, 1)` $=1.645$
+
+4.  Standard error: $\sqrt{\frac{\frac{3925}{10329}\bigg(1-\frac{3925}{10329}\bigg)}{10329}}$
+:::
+
+[$$\frac{3925}{10329} \pm 1.645\sqrt{\frac{\frac{3925}{10329}(1-\frac{3925}{10329})}{10329}} = (0.372, 0.388)$$]{.fragment}
+::::
+
+::: {.column width="40%"}
+:::
+::::::
+:::::::
+
+```{r}
+countdown(minutes=2)
+```
 
 ## Interpreting a Confidence Interval {.smaller}
 
@@ -494,16 +545,16 @@ The confidence level is chosen based on whether precision or accuracy is more de
 
 ##  {.smaller}
 
-### Example - Please open Class 9 Activity in TH 🎩
+### Motivating Example 🚗
 
 In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
 
-Construct a 90% confidence interval for the true proportion of U.S. adults interested in an EV. Interpret the interval with context.
+Construct a 90% confidence interval for the true proportion of U.S. adults interested in an EV. **Interpret the 90% confidence interval in the context of the problem**
 
-::: {style="color:#453781FF"}
-::: columns
-::: {.column width="60%"}
-::: incremental
+::::::: {style="color:#453781FF"}
+:::::: columns
+:::: {.column width="60%"}
+::: nonincremental
 1.  $\hat{p} = \frac{3925}{10329}$
 
 2.  CL = 90%, 100-CL = 10%
@@ -513,20 +564,32 @@ Construct a 90% confidence interval for the true proportion of U.S. adults inter
 4.  Standard error: $\sqrt{\frac{\frac{3925}{10329}\bigg(1-\frac{3925}{10329}\bigg)}{10329}}$
 :::
 
-[$$\frac{3925}{10329} \pm 1.645\sqrt{\frac{\frac{3925}{10329}(1-\frac{3925}{10329})}{10329}} = (0.372, 0.388)$$]{.fragment}
-:::
+$$\frac{3925}{10329} \pm 1.645\sqrt{\frac{\frac{3925}{10329}(1-\frac{3925}{10329})}{10329}} = (0.372, 0.388)$$\]
+::::
 
 ::: {.column width="40%"}
 [**Interpretation:**]{.fragment}
 
 [We are **90%** confident that the population **proportion** of **U.S. adults interested in an EV** is between **0.372** and **0.388**, with a point estimate of **0.38**.]{.fragment}
 :::
-:::
-:::
+::::::
+:::::::
+
+```{r}
+countdown(minutes=1, seconds = 30)
+```
+
+## Choosing a Confidence Level {.smaller}
+
+The confidence level is chosen based on whether precision or accuracy is more desirable.
+
+![](target.png){width="50%"}
+
+**As we increase the confidence level, we lose precision but gain accuracy.**
 
 # Confidence Intervals of a Mean
 
-## Motivating Example
+## Motivating Example 🏃‍♀️
 
  
 
@@ -536,7 +599,7 @@ Construct a 90% confidence interval for the true proportion of U.S. adults inter
 
 **Parameter of interest:** [$\mu$, the average mile time for **all** racers in the 10-mile event]{.fragment style="color:#481567FF;"}
 
-## Example continued - Sampled Data
+## Example 🏃‍♀️ - Sampled Data
 
 ```{r}
 library(tidyverse)
@@ -574,10 +637,10 @@ $\overline{x}$ is the [**point estimate**]{.fragment style="color:#481567FF;"} f
 
 ##  {.smaller}
 
-### Example continued - Quantifying the Uncertainy in $\overline{x}$
+### Example 🏃‍♀️ - Quantifying the Uncertainy in $\overline{x}$
 
-::: incremental
--   The point estimate, $\overline{x} = 591.53$ is our best guess for the population mean, $\mu$; however, since this estimate came from a subset of the population, we need to address the possible error or uncertainty in this estimate.
+:::: incremental
+-   The point estimate, $\overline{x} = 591.53$ seconds is our best guess for the population mean, $\mu$; however, since this estimate came from a subset of the population, we need to address the possible error or uncertainty in this estimate.
 
 -   To do this, we need to identify the sampling distribution of $\overline{x}$.
 
@@ -586,13 +649,13 @@ $\overline{x}$ is the [**point estimate**]{.fragment style="color:#481567FF;"} f
 ::: {style="text-align: center"}
 [$\overline{x} \sim N$$\bigg($$\mu$,$\frac{\sigma}{\sqrt{n}}$$\bigg)$]{.fragment style="color:#481567FF;"}
 :::
-:::
+::::
 
 ## Interlude - Standardizing the point estimate
 
  
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 $\overline{x} \sim N\bigg(\mu, \frac{\sigma}{\sqrt{n}}\bigg)$
 
@@ -603,7 +666,7 @@ $z = \frac{\overline{x} - \mu}{\sigma/\sqrt{n}} \sim$$N(0,1)$
 
 ::: {.column width="50%"}
 :::
-:::
+:::::
 
 ## *t* Distributions
 
@@ -722,7 +785,7 @@ A confidence interval for $\mu$ should be constructed when we want to estimate t
 
 [`qt(0.95, 84)`]{.fragment}
 
-## Example continued
+## Example 🏃‍♀️
 
 Using the sampled data, construct a 95% confidence interval for the average mile time for all runners in the 10 Mile event at the 2017 Cherry Blossom Run.
 
@@ -744,12 +807,12 @@ $s = 105.66$ seconds
 
 $n = 45$
 
-## Example continued {.smaller}
+## Example 🏃‍♀️ {.smaller}
 
 Using the sampled data, construct a 95% confidence interval for the average mile time for all runners in the 10 Mile event at the 2017 Cherry Blossom Run.
 
-::: columns
-::: {.column width="65%"}
+:::::::: columns
+::::: {.column width="65%"}
 $\overline{x} = 591.53$ seconds
 
 $s = 105.66$ seconds
@@ -769,16 +832,16 @@ $n = 45$
 ::: {.fragment style="color:#481567FF;"}
 **Confidence Interval:** $$591.53 \pm 2.015 \bigg(\frac{105.66}{\sqrt{45}}\bigg) = (559.79, 623.27)$$
 :::
-:::
+:::::
 
-::: {.column width="35%"}
+:::: {.column width="35%"}
 ::: {.fragment style="color:#481567FF;"}
 **Interpretation:**
 
 We are **95%** confident that the **average mile time for all runners in the 10 Mile event at the 2017 Cherry Blossom Run** was between **559.79 seconds** and **623.27 seconds** with a point estimate of **591.53 seconds**.
 :::
-:::
-:::
+::::
+::::::::
 
 ##  {.smaller}
 
@@ -786,7 +849,7 @@ We are **95%** confident that the **average mile time for all runners in the 10 
 
 A random sample of 24 possums in Australia and New Guinea was collected. The length of each sampled possum's head was measured in millimeters. The sampled distribution and sample statistics of the head lengths is shown below.
 
-::: columns
+::::: columns
 ::: {.column width="70%"}
 ```{r}
 possum_samp <- read_csv("possum_sample.csv")
@@ -810,7 +873,7 @@ ggplot(possum_samp) +
 
 $\overline{x} = 93.175$ mm $s = 1.808$ mm
 :::
-:::
+:::::
 
 ```{r}
 #| include: false
@@ -826,8 +889,8 @@ Use the sampled data to construct a 99% confidence interval for the true average
 
 [**Check sample size condition!**]{.fragment style="color:#481567FF;"} [The sample size is less than 30; however, the sampled distribution does not suggest any skewness or outliers, so we can still construct confidence interval with the smaller sample size.]{.fragment style="color:#481567FF;"}
 
-::: columns
-::: {.column width="65%"}
+:::::::: columns
+::::: {.column width="65%"}
 ::: incremental
 1.  [**Point estimate: 93.175**]{.fragment style="color:#481567FF;"}
 
@@ -841,17 +904,17 @@ Use the sampled data to construct a 99% confidence interval for the true average
 ::: {.fragment style="color:#481567FF;"}
 **Confidence Interval:** $$93.175 \pm 2.807 \bigg(\frac{1.808}{\sqrt{24}}\bigg) = (92.139, 94.211)$$
 :::
-:::
+:::::
 
-::: {.column width="35%"}
+:::: {.column width="35%"}
 ::: {.fragment style="color:#481567FF;"}
 **Interpretation:**
 
 We are **99%** confident that the **average head length of all possums in Australia and New Guinea** is between **92.139 mm** and **94.211 mm** with a point estimate of **93.175 mm**.
 :::
-:::
-:::
+::::
+::::::::
 
 ## Practice!
 
-Please complete the **End of Class 10 Activity** in Top Hat (can be found under the Assigned tab). Collaboration is encouraged!
+Please complete the **Class 10 Activity - Confidence Intervals** in Canvas (can be found in the Quick Links and Week 5 modules). Collaboration is encouraged!
