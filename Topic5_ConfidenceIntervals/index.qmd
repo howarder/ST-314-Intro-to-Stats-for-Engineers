@@ -543,6 +543,22 @@ countdown(minutes=2)
 -   The confidence interval simply provides a range of plausible values for the parameter.
 :::
 
+
+## {.smaller}
+
+### Motivating Example 🚗
+
+
+In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
+
+Construct a 90% confidence interval for the true proportion of U.S. adults interested in an EV. **Interpret the 90% confidence interval in the context of the problem**
+
+[Answer the question at]{style="color:#D73F09;"}
+
+[**PollEv.com/erinhowardstats**]{style="color:#D73F09;"}
+
+![](pollev_qr.png){width="320"}
+
 ##  {.smaller}
 
 ### Motivating Example 🚗
