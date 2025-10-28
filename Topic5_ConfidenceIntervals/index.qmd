@@ -466,7 +466,7 @@ AND
 
 In a 2023 survey conducted by the Pew Research Center, 3,925 U.S. adults, out of the 10,329 randomly sampled, say they are very to somewhat likely to seriously consider an electric vehicle (EV) for their next vehicle purchase. We'll consider these individuals "interested in an EV."
 
-Complete the 4 steps needed to construct the **90%** confidence interval.
+Complete the 4 steps needed to construct the **90%** confidence interval for the population proportion of U.S. adults who are interested in an electric vehicle.
 
 :::: {style="color:#453781FF"}
 ::: incremental
@@ -524,7 +524,7 @@ Construct a 90% confidence interval for the true proportion of U.S. adults inter
 :::::::
 
 ```{r}
-countdown(minutes=2)
+countdown(minutes=1)
 ```
 
 ## Interpreting a Confidence Interval {.smaller}
@@ -591,9 +591,7 @@ $$\frac{3925}{10329} \pm 1.645\sqrt{\frac{\frac{3925}{10329}(1-\frac{3925}{10329
 ::::::
 :::::::
 
-```{r}
-countdown(minutes=1, seconds = 30)
-```
+
 
 ## Choosing a Confidence Level {.smaller}
 
@@ -647,7 +645,7 @@ pop_mean <- pop_mean$mean[1]
 samp_sd <- sd(runner_samp$pace_sec)
 ```
 
-$\overline{x} = 591.53$ seconds
+$\overline{x} = 591.53$ seconds, $s=105.66$ seconds
 
 $\overline{x}$ is the [**point estimate**]{.fragment style="color:#481567FF;"} for the average mile time for all runners in the 10 Mile event.
 
@@ -738,7 +736,7 @@ ggplot() +
 
  
 
-For sufficiently large $n$, the distiribution of the standardized sample mean, $\frac{\overline{x}-\mu}{s/\sqrt{n}}$ follows a *t* distribution with $n-1$ degrees of freedom.
+For sufficiently large $n$, the distribution of the standardized sample mean, $\frac{\overline{x}-\mu}{s/\sqrt{n}}$ follows a *t* distribution with $n-1$ degrees of freedom.
 
 [$$\frac{\overline{x}-\mu}{\frac{s}{\sqrt{n}}} \sim t_{n-1} $$]{.fragment style="color:#481567FF;"}
 
@@ -933,4 +931,4 @@ We are **99%** confident that the **average head length of all possums in Austra
 
 ## Practice!
 
-Please complete the **Class 10 Activity - Confidence Intervals** in Canvas (can be found in the Quick Links and Week 5 modules). Collaboration is encouraged!
+The **Practice with Confidence Intervals for a Mean** is an optional activity in Canvas, I highly recommend completing before the midterm to assess understanding of this material!
