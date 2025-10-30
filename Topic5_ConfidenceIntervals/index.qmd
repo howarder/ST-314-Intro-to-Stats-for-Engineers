@@ -881,11 +881,13 @@ ggplot(possum_samp) +
 :::
 
 ::: {.column width="30%"}
- 
 
- 
 
 $\overline{x} = 93.175$ mm $s = 1.808$ mm
+
+ 
+
+[Use the sampled data to construct a 99% confidence interval for the true average head length of all possums in Australia and New Guinea.]{style="color:#D73F09;"}
 :::
 :::::
 
@@ -895,8 +897,18 @@ poss_mean <- mean(possum_samp$head_l)
 poss_sd <- sd(possum_samp$head_l)
 ```
 
-Use the sampled data to construct a 99% confidence interval for the true average head length of all possums in Australia and New Guinea. *Don't forget to check the sample size conditions before constructing the interval.*
+ 
 
+ 
+
+*Don't forget to check the sample size conditions before constructing the interval.*
+
+
+```{r}
+library(countdown)
+
+countdown(minutes = 4)
+```
 ##  {.smaller}
 
 ### Example 2
@@ -928,6 +940,9 @@ We are **99%** confident that the **average head length of all possums in Austra
 :::
 ::::
 ::::::::
+
+
+
 
 ## Practice!
 
