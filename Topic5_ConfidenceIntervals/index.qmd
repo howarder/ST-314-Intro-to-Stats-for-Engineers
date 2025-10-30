@@ -787,6 +787,12 @@ A confidence interval for $\mu$ should be constructed when we want to estimate t
 -   For a 95% confidence interval, the critical value $t^*$ is equal to \_\_\_\_\_\_\_\_\_\_\_\_ percentile on a *t* distribution with $n-1$ degrees of freedom.
 -   For a 99% confidence interval, the critical value $t^*$ is equal to \_\_\_\_\_\_\_\_\_\_\_\_ percentile on a *t* distribution with $n-1$ degrees of freedom.
 
+```{r}
+library(countdown)
+countdown(minutes = 1, seconds = 30)
+```
+
+
 ## Finding *t* Critical Values using `qt()`
 
  
@@ -845,6 +851,11 @@ $n = 45$
 
 ::: {.fragment style="color:#481567FF;"}
 **Confidence Interval:** $$591.53 \pm 2.015 \bigg(\frac{105.66}{\sqrt{45}}\bigg) = (559.79, 623.27)$$
+
+```{r}
+countdown(minutes = 1, seconds = 30)
+```
+
 :::
 :::::
 
@@ -905,8 +916,6 @@ poss_sd <- sd(possum_samp$head_l)
 
 
 ```{r}
-library(countdown)
-
 countdown(minutes = 4)
 ```
 ##  {.smaller}
