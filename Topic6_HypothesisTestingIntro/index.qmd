@@ -13,17 +13,11 @@ editor: visual
 library(tidyverse)
 ```
 
-
-
-
-
-
-
 ## Motivating Example {.smaller}
 
 **Consider the Mario Kart example from your pre-lecture assignment:**
 
-:::{.fragment}
+::: fragment
 In your edition of Mario Kart there are four different cups you can race in:
 
 🍄 Mushroom Cup
@@ -239,7 +233,9 @@ R code: [`1-pnorm(2.078, 0, 1)`]{.fragment} [= 0.019]{.fragment}
 -   Based on this result, do you think it seems reasonable to conclude that the random generator is selecting cups (mushroom, flower, star, and special) in equal proportions?
 :::
 
-##  {.smaller}
+# Formal Hypothesis Testing Procedure 
+
+## {.smaller}
 
 ::::::: columns
 ::: {.column width="45%"}
@@ -277,7 +273,7 @@ $p$, the true proportion of rounds selected in the Special Cup.
 
 :::::: columns
 ::: {.column width="45%"}
-3.  [State the null and alternative hypotheses.]{.fragment .highlight-red}
+[3.  [State the null and alternative hypotheses.]{.fragment .highlight-red}]{.fragment}
 :::
 
 ::: {.column width="5%"}
@@ -289,11 +285,11 @@ $p$, the true proportion of rounds selected in the Special Cup.
 
 ## The Hypotheses {.smaller}
 
-::::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 **The Null Hypothesis**
 
-:::{.incremental}
+::: incremental
 -   Establishes the claim.
 
 -   Is assumed to be the **truth** when performing a hypothesis test.
@@ -302,13 +298,12 @@ $p$, the true proportion of rounds selected in the Special Cup.
 
 -   Denoted $H_0$
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 **The Alternative Hypothesis**
 
-:::{.incremental}
-
+::: incremental
 -   Reflects the question of interest.
 
 -   Contradicts the null hypothesis.
@@ -317,8 +312,8 @@ $p$, the true proportion of rounds selected in the Special Cup.
 
 -   Denoted $H_A$
 :::
-:::
-:::::
+::::
+:::::::
 
  
 
@@ -463,7 +458,7 @@ $H_A: p > 0.25$
 
 :::::: columns
 ::: {.column width="45%"}
-4.  [Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.]{.fragment .highlight-red}
+[4. [Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.]{.fragment .highlight-red}]{.fragment}
 :::
 
 ::: {.column width="5%"}
@@ -1382,3 +1377,23 @@ R code: `1-pnorm(2.078)` = 0.019
 :::
 ::::::
 :::::::
+
+## Hypothesis Testing Decision Errors {.smaller}
+
+::: fragment
+When performing a hypothesis test, we are using [sampled data]{style="color:red;"} to draw a conclusion about the population. It's possible that our conclusion will be incorrect.
+:::
+
+::: fragment
+![](errors.png){width="75%" fig-alt="Table describing errors in hypothesis testing. Type 1 error occurs when the null hypothesis is rejected in favor of the alternative but the null hypothesis was true. Type 2 error occurs when the null hypothesis is not rejected but the alternative hypothesis was true."}
+:::
+
+::: incremental
+-   What is the probability of making a **Type 1 Error**? [$\alpha$, the predetermined significance level]{.fragment}
+
+-   Determining the probability of making a **Type 2 Error** is not as straight forward. *We won't focus on this. We will focus on...*
+
+-   the fact that Type 1 and Type 2 errors are related.
+
+    -   Decreasing the chance of making a Type 1 Error (i.e. decreasing $\alpha$), will increase the chance of making a Type 2 Error.
+:::

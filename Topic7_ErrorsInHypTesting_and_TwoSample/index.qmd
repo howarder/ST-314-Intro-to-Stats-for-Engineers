@@ -1,5 +1,5 @@
 ---
-title: "Topic 7: Errors in Hypothesis Testing & Inference for the Difference in Means"
+title: "Topic 7: Inference for the Difference in Means"
 format: 
   revealjs:
     theme: OSU.scss
@@ -12,32 +12,6 @@ editor: visual
 ```{r}
 library(tidyverse)
 ```
-
-# Key Concepts
-
-## Hypothesis Testing Decision Errors {.smaller}
-
-::: fragment
-When performing a hypothesis test, we are using [sampled data]{style="color:red;"} to draw a conclusion about the population. It's possible that our conclusion will be incorrect.
-:::
-
-::: fragment
-![](errors.png){width="75%"}
-:::
-
-::: incremental
--   What is the probability of making a **Type 1 Error**? [$\alpha$, the predetermined significance level]{.fragment}
-
--   Determining the probability of making a **Type 2 Error** is not as straight forward. *We won't focus on this. We will focus on...*
-
--   the fact that Type 1 and Type 2 errors are related.
-
-    -   Decreasing the chance of making a Type 1 Error (i.e. decreasing $\alpha$), will increase the chance of making a Type 2 Error.
-:::
-
-## Practice! 🎩
-
-Please locate the Class 14 Activity in Top Hat and answer **Questions 1 and 2**.
 
 ## Difference of Two Means
 
