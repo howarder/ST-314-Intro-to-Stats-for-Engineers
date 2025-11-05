@@ -99,6 +99,23 @@ library(tidyverse)
 
  
 
+## Practice! 🐓
+
+ 
+
+
+ 
+
+Answer questions 1-6 on the **Class 15 Activity - Difference in Means** activity on Canvas. 
+
+ 
+
+*Leave the activity open. We'll come back to it.*
+```{r}
+library(countdown)
+countdown(minutes = 7)
+```
+
 # Hypothesis Testing
 
 ## 
@@ -186,6 +203,23 @@ library(tidyverse)
  
 
 [$H_A:\mu_A \neq \mu_B$]{.fragment style="color:blue;"}
+
+## Practice! 🐓
+
+ 
+
+
+ 
+
+Answer questions 7-8 on the **Class 15 Activity - Difference in Means** activity on Canvas. 
+
+ 
+
+*Leave the activity open. We'll come back to it.*
+```{r}
+countdown(minutes = 2)
+```
+
 
 ##  {.smaller}
 
@@ -344,6 +378,23 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 [Motivating Example:]{.fragment style="color:blue;"}
 
 [$$t = \frac{4-3.5}{\sqrt{\frac{1.5^2}{46} + \frac{1^2}{32}}} = 1.766$$]{.fragment style="color:blue;"}
+
+## Practice! 🐓
+
+ 
+
+
+ 
+
+Answer question 9 on the **Class 15 Activity - Difference in Means** activity on Canvas. 
+
+ 
+
+*Leave the activity open. We'll come back to it.*
+
+```{r}
+countdown(minutes = 2)
+```
 
 ##  {.smaller}
 
@@ -578,6 +629,19 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 [`2*(1-pt(abs(1.766), 75.897))` = 0.0814]{.fragment}
 
+## Practice! 🐓
+
+ 
+
+
+ 
+
+Answer questions 10-11 on the **Class 15 Activity - Difference in Means** activity on Canvas. 
+
+```{r}
+countdown(minutes = 3)
+```
+
 ## 8. Make a conclusion
 
 Write a 4-part conclusion. The conclusion should be written in the context of the problem and contain the following components:
@@ -615,6 +679,4 @@ Write a 4-part conclusion. The conclusion should be written in the context of th
 
 [3. and 4. We are 99% confident that the students at University A take 0.248 fewer to 1.248 more math courses than students at University B on average, with an estimate difference in the average number of math courses of 0.5.]{.fragment style="color:blue;"}
 
-## Practice! 🎩
 
-Please locate the Class 15 Activity in Top Hat and answer **Questions 1-7.**
