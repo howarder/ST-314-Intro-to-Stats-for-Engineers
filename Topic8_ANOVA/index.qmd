@@ -36,12 +36,12 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 In each of the side-by-side boxplots below, you'll see data sampled from three different populations. The red dot in each plot corresponds to the sample mean.
 
 ::::::: columns
-:::: {.column width="50%"}
+:::: {.column width="60%"}
 ::: fragment
 **Example 1**
 
 ```{r}
-#| fig-height: 3
+#| fig-height: 5
 set.seed(1893249793)
 
 mu_1 <- 25
@@ -69,15 +69,31 @@ plot1
 ```
 :::
 
-[🎩 In Top Hat, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.]{.fragment}
+[📊 In Poll Everywhere, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.]{.fragment}
 ::::
 
-:::: {.column width="50%"}
+:::: {.column width="40%"}
+::: fragment
+![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
+
+**Answer the question at PollEv.com/erinhowardstats**
+:::
+::::
+:::::::
+
+##  {.smaller}
+
+### Motivating Exercises
+
+In each of the side-by-side boxplots below, you'll see data sampled from three different populations. The red dot in each plot corresponds to the sample mean.
+
+::::::: columns
+:::: {.column width="60%"}
 ::: fragment
 **Example 2**
 
 ```{r}
-#| fig-height: 3
+#| fig-height: 5
 set.seed(1893249793)
 
 samp4 <- rnorm(50, mu_1, s_2)
@@ -97,20 +113,49 @@ plot2
 ```
 :::
 
-[🎩 Again, in Top Hat, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.]{.fragment}
+[📊 Again, in Poll Everywhere, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.]{.fragment}
+::::
+
+:::: {.column width="40%"}
+::: fragment
+![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
+
+**Answer the question at PollEv.com/erinhowardstats**
+:::
 ::::
 :::::::
 
+##  {.smaller}
+
+### Motivating Exercises
+
+ 
+
+ 
+
+::::: columns
+::: column
+```{r}
+plot1
+```
+:::
+
+::: column
+```{r}
+plot2
+```
+:::
+:::::
+
 ## Analysis of Variance (ANOVA) {.smaller}
 
-:::{.incremental}
+::: incremental
 -   An ANOVA is a holistic procedure used to test whether there is evidence that [at least one pair of populations]{.fragment .highlight-red} have different means when comparing more than two populations.
 
 -   Why is it called an *Analysis of **Variance*** if the goal is to compare means?
 
     -   In an ANOVA, we'll compare the variability *across* groups to the variability *within* groups.
-    
-:::    
+:::
 
 ::: fragment
 ```{r}
@@ -153,6 +198,20 @@ plot2
 [$\mu_1, \mu_2, ..., \mu_k$, the population means of the $k$ groups]{.fragment}
 :::
 
+## Example Problem 🚲 🚗 🚶‍♀️
+
+[Suppose we are interested in determining if there is a significant difference in the average number of hours of sleep students get per night based on whether they bike, drive, or walk to campus. We'll consider a significant result using the $\alpha = 0.05$ significance level.]{.fragment style="color:blue;"}
+
+[**Question of interest:** Is there is a difference in the average number of hours students get per night based on whether they drive, bike, or walk to campus?]{.fragment style="color:blue;"}
+
+[**Parameters of interest:**]{.fragment style="color:blue;"}
+
+[$\mu_B$, average amount of sleep for **all** students who bike]{.fragment style="color:blue;"}
+
+[$\mu_D$, average amount of sleep for **all** students who drive]{.fragment style="color:blue;"}
+
+[$\mu_W$, average amount of sleep for **all** students who walk]{.fragment style="color:blue;"}
+
 ## ANOVA Procedure Steps
 
  
@@ -165,7 +224,33 @@ plot2
 
  
 
-[$H_A:$ [ At least one]{.fragment .highlight-red} mean is different]{.fragment}
+[$H_A:$At least one mean is different]{.fragment}
+
+## Participation Question 📊
+
+ 
+
+Write the null hypothesis for our [bike, drive, walk example]{style="color:blue;"}.
+
+ 
+
+**Answer the question at PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
+
+## 3. Null and Alternative Hypotheses
+
+ 
+
+[**Example 🚲 🚗 🚶‍♀**]{style="color:blue;"}
+
+ 
+
+[$H_0: \mu_B = \mu_D = \mu_W$]{.fragment style="color:blue;"}
+
+ 
+
+[$H_A:$ At least one transportation group gets a different number of hours of sleep per night, on average, than the others.]{.fragment style="color:blue;"}
 
 ##  {.smaller}
 
@@ -222,7 +307,7 @@ The test statistic is the ratio of the average between group variability to the 
 -   To assess this condition, we should use the sampled distributions and make a judgement as to whether the standard deviations are similar between samples.
 :::
 
-[If the above conditions are met, under the null hypothesis, the test statistic, $F = \frac{MSG}{MSE}$, follows an [*F* distribution with $k-1$ and $n-k$ degrees of freedom.]{.fragment .highlight-red}]{.fragment}
+[If the above conditions are met, under the null hypothesis, the test statistic, $F = \frac{MSG}{MSE}$, follows an *F* distribution with $k-1$ and $n-k$ degrees of freedom.]{.fragment}
 
 ##  {.smaller}
 
@@ -230,7 +315,7 @@ The test statistic is the ratio of the average between group variability to the 
 
 #### 5. Determine the Null Distribution
 
-[If the above conditions are met, under the null hypothesis, the test statistic, $F = \frac{MSG}{MSE}$, follows an *F* distribution with $k-1$ and $n-k$ degrees of freedom.]{.fragment}
+[If the previously mentioned conditions are met, under the null hypothesis, the test statistic, $F = \frac{MSG}{MSE}$, follows an *F* distribution with $k-1$ and $n-k$ degrees of freedom.]{.fragment}
 
 ::::::: columns
 :::: {.column width="60%"}
@@ -259,6 +344,52 @@ ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
 :::
 ::::
 :::::::
+
+## Example Problem 🚲 🚗 🚶‍♀️ {.smaller}
+
+[Data were collected on 250 randomly selected students. The summary statistics and sampled distributions for these data are shown below.]{style="color:blue;"}
+
+::::: columns
+::: column
+ 
+
+ 
+
+|       | Sample Mean | Sample Standard Deviation | Sample Size |
+|-------|-------------|---------------------------|-------------|
+| Bike  | 6.93 hr     | 1.40 hr                   | 33          |
+| Drive | 6.77 hr     | 1.02 hr                   | 37          |
+| Walk  | 6.87 hr     | 1.12 hr                   | 180         |
+:::
+
+::: column
+![](transport_graphs.png){fig-alt="Three histograms showing the distributions of sleep per night for bike, drive, and walk samples. The bike and walk distributions are left skewed. The drive distribution is approximately symmetric." fig-align="center"}
+:::
+:::::
+
+## Participation Question 📊
+
+
+
+Assess the sample size condition needed to perform an ANOVA F test for our [bike, drive, walk example]{style="color:blue;"}.
+
+ 
+
+**Answer the question at PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
+
+## Participation Question 📊
+
+
+
+Consider the constant variance assumption needed to perform an ANOVA F test. Do you think the condition is met for our [bike, drive, walk example]{style="color:blue;"}? Why or why not?
+
+ 
+
+**Answer the question at PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
 
 ## ANOVA Procedure Steps
 
@@ -314,6 +445,21 @@ In an ANVOA *F* test, the p-value is always the area under the null distribution
 **R code:** [`1-pf(F, k-1, n-k)`]{.fragment}
 :::
 
+## Example Problem 🚲 🚗 🚶‍♀️
+
+
+
+[In practice, the ANOVA calculations (e.g., MSG, MSE, F statistic, p-value) won't be computed by hand. When we perform an ANOVA F test, we'll use R to complete the calculations.]{style="color:blue;"}
+
+Typically results are displayed in an **ANOVA table**.
+
+
+
+|           | df  | Sum of Squares | Mean Squares | F     | p-value |
+|-----------|-----|----------------|--------------|-------|---------|
+| Transport | 2   | 0.450          | 0.225        | 0.171 | 0.843   |
+| Residuals | 247 | 324.311        | 1.313        | --    | --      |
+
 ## ANOVA Procedure Steps
 
 ### 8. Make a conclusion
@@ -326,6 +472,22 @@ In an ANVOA *F* test, the p-value is always the area under the null distribution
 2.  Whether to reject or fail to reject the null hypothesis.
 :::
 
-## Practice!
+## Example Problem 🚲 🚗 🚶‍♀️{.smaller}
 
-Complete the Class 17 Practice - ANOVA assignment in Top Hat.
+Using the ANOVA output, write a conclusion for this test using a $\alpha=0.05$ significance level. 
+
+
+|           | df  | Sum of Squares | Mean Squares | F     | p-value |
+|-----------|-----|----------------|--------------|-------|---------|
+| Transport | 2   | 0.450          | 0.225        | 0.171 | 0.843   |
+| Residuals | 247 | 324.311        | 1.313        | --    | --      |
+
+
+[There is no evidence to suggest that the average amount of sleep students get per night differs based on how they travel to campus (biking, driving, or walking). At the 0.05 significance level, we fail to reject the null hypothesis that the average amount sleep students get per night is equal across all three transportation types.]{.fragment style="color:blue;"}
+
+```{r}
+library(countdown)
+
+countdown(minutes = 1, seconds = 30)
+```
+
