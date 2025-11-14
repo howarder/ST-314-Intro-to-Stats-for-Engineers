@@ -103,14 +103,14 @@ library(tidyverse)
 
  
 
-
  
 
-Answer questions 1-6 on the **Class 15 Activity - Difference in Means** activity on Canvas. 
+Answer questions 1-6 on the **Class 15 Activity - Difference in Means** activity on Canvas.
 
  
 
 *Leave the activity open. We'll come back to it.*
+
 ```{r}
 library(countdown)
 countdown(minutes = 7)
@@ -208,18 +208,17 @@ countdown(minutes = 7)
 
  
 
-
  
 
-Answer questions 7-8 on the **Class 15 Activity - Difference in Means** activity on Canvas. 
+Answer questions 7-8 on the **Class 15 Activity - Difference in Means** activity on Canvas.
 
  
 
 *Leave the activity open. We'll come back to it.*
+
 ```{r}
 countdown(minutes = 2)
 ```
-
 
 ##  {.smaller}
 
@@ -375,26 +374,40 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
  
 
-[Motivating Example:]{.fragment style="color:blue;"}
 
-[$$t = \frac{4-3.5}{\sqrt{\frac{1.5^2}{46} + \frac{1^2}{32}}} = 1.766$$]{.fragment style="color:blue;"}
-
-## Practice! 🐓
+## Participation Question 📊
 
  
 
+Compute the test statistic for our motivating example problem.
 
  
 
-Answer question 9 on the **Class 15 Activity - Difference in Means** activity on Canvas. 
+**Answer the question at PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
 
  
-
-*Leave the activity open. We'll come back to it.*
 
 ```{r}
 countdown(minutes = 2)
 ```
+
+##  {.smaller}
+
+### 6. Calculate the test statistic
+
+When testing the difference in population means, $\mu_1$ vs. $\mu_2$, the test statistic is
+
+ 
+
+$$t = \frac{\overline{x}_1-\overline{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$
+
+ 
+
+[Motivating Example:]{style="color:blue;"}
+
+[$$t = \frac{4-3.5}{\sqrt{\frac{1.5^2}{46} + \frac{1^2}{32}}} = 1.766$$]{.fragment style="color:blue;"}
 
 ##  {.smaller}
 
@@ -578,6 +591,22 @@ R code:
 
 [where `df` is the Satterthwaite degrees of freedom, $\nu$]{.fragment}
 
+## Participation Question 📊
+
+ 
+
+ 
+
+**Answer the question at PollEv.com/erinhowardstats**
+
+![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
+
+ 
+
+```{r}
+countdown(minutes = 1, seconds = 30)
+```
+
 ##  {.smaller}
 
 ### 7. Calculate the p-value using the test statistic and null distribution.
@@ -629,18 +658,6 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 [`2*(1-pt(abs(1.766), 75.897))` = 0.0814]{.fragment}
 
-## Practice! 🐓
-
- 
-
-
- 
-
-Answer questions 10-11 on the **Class 15 Activity - Difference in Means** activity on Canvas. 
-
-```{r}
-countdown(minutes = 3)
-```
 
 ## 8. Make a conclusion
 
@@ -677,6 +694,4 @@ Write a 4-part conclusion. The conclusion should be written in the context of th
 
 [2. At the $\alpha=0.01$ significance level, we fail to reject the null hypothesis.]{.fragment style="color:blue;"}
 
-[3. and 4. We are 99% confident that the students at University A take 0.248 fewer to 1.248 more math courses than students at University B on average, with an estimate difference in the average number of math courses of 0.5.]{.fragment style="color:blue;"}
-
-
+[3. and 4. We are 99% confident that the students at University A take 0.248 fewer to 1.248 more math courses than students at University B on average, with an estimated difference in the average number of math courses of 0.5.]{.fragment style="color:blue;"}
