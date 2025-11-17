@@ -198,11 +198,15 @@ plot2
 [$\mu_1, \mu_2, ..., \mu_k$, the population means of the $k$ groups]{.fragment}
 :::
 
-## Example Problem 🚲 🚗 🚶‍♀️
+## Example Problem 🚲 🚗 🚶‍♀️{.smaller}
 
 [Suppose we are interested in determining if there is a significant difference in the average number of hours of sleep students get per night based on whether they bike, drive, or walk to campus. We'll consider a significant result using the $\alpha = 0.05$ significance level.]{.fragment style="color:blue;"}
 
+ 
+
 [**Question of interest:** Is there is a difference in the average number of hours students get per night based on whether they drive, bike, or walk to campus?]{.fragment style="color:blue;"}
+
+ 
 
 [**Parameters of interest:**]{.fragment style="color:blue;"}
 
@@ -224,7 +228,7 @@ plot2
 
  
 
-[$H_A:$At least one mean is different]{.fragment}
+[$H_A:$ At least one mean is different]{.fragment}
 
 ## Participation Question 📊
 
@@ -367,9 +371,10 @@ ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
 :::
 :::::
 
-## Participation Question 📊
+## Participation Question 📊 {.smaller}
 
-
+:::{.columns}
+:::{.column}
 
 Assess the sample size condition needed to perform an ANOVA F test for our [bike, drive, walk example]{style="color:blue;"}.
 
@@ -378,10 +383,18 @@ Assess the sample size condition needed to perform an ANOVA F test for our [bike
 **Answer the question at PollEv.com/erinhowardstats**
 
 ![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
+:::
 
-## Participation Question 📊
+:::{.column}
+![](transport_graphs.png){fig-alt="Three histograms showing the distributions of sleep per night for bike, drive, and walk samples. The bike and walk distributions are left skewed. The drive distribution is approximately symmetric." fig-align="center"}
+:::
 
+:::
 
+## Participation Question 📊 {.smaller}
+
+:::{.columns}
+:::{.column}
 
 Consider the constant variance assumption needed to perform an ANOVA F test. Do you think the condition is met for our [bike, drive, walk example]{style="color:blue;"}? Why or why not?
 
@@ -390,6 +403,26 @@ Consider the constant variance assumption needed to perform an ANOVA F test. Do 
 **Answer the question at PollEv.com/erinhowardstats**
 
 ![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
+:::
+
+:::{.column}
+
+ 
+
+ 
+
+ 
+
+|       | Sample Mean | Sample Standard Deviation | Sample Size |
+|-------|-------------|---------------------------|-------------|
+| Bike  | 6.93 hr     | 1.40 hr                   | 33          |
+| Drive | 6.77 hr     | 1.02 hr                   | 37          |
+| Walk  | 6.87 hr     | 1.12 hr                   | 180         |
+
+
+:::
+
+:::
 
 ## ANOVA Procedure Steps
 
@@ -402,7 +435,7 @@ Consider the constant variance assumption needed to perform an ANOVA F test. Do 
 [Any ratio of $MSG$ to $MSE$ greater than the calculated $F$ test statistic would be considered "as or more extreme" than our observed data.]{.fragment}
 
 ::: fragment
-![](f.png)
+![](f.png){fig-alt="A number line that begins at zero on the left. A mark for F is indicated. Every value to the right of F on the number line is highlighted."}
 :::
 
 ## ANOVA Procedure Steps {.smaller}
@@ -416,6 +449,7 @@ Consider the constant variance assumption needed to perform an ANOVA F test. Do 
 ::: fragment
 ```{r}
 #| fig-height: 3
+#| fig-alt: "An F distribution with the F statistic indicated. The area under the curve to the right of the F statistic is shaded."
 ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
   stat_function(fun = df, n = 101, args = list(df1 = 4, df2=98), color = "darkgreen", linewidth = 2) + 
   ylab("") +
@@ -450,6 +484,8 @@ In an ANVOA *F* test, the p-value is always the area under the null distribution
 
 
 [In practice, the ANOVA calculations (e.g., MSG, MSE, F statistic, p-value) won't be computed by hand. When we perform an ANOVA F test, we'll use R to complete the calculations.]{style="color:blue;"}
+
+ 
 
 Typically results are displayed in an **ANOVA table**.
 
