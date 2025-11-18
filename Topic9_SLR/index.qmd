@@ -96,13 +96,19 @@ state_30 |>
 
 ::::: columns
 ::: column
-[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the]{.fragment}[scatterplot]{style="color:red;"} above.
+[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the [scatterplot]{style="color:red;"} above.]{.fragment}
 :::
 
 ::: column
 [🗣 Describe the relationship between high school graduation rate and income using the scatterplot above.]{.fragment}
 :::
 :::::
+
+```{r}
+library(countdown)
+
+countdown(minutes = 0, seconds = 30)
+```
 
 ## Explanatory and Response Variables {.smaller}
 
@@ -128,13 +134,14 @@ state_30 |>
 :::
 ::::
 
-## Practice 🎩
+## Example 📖
 
-Answer Question 1 in the classroom tab on Top Hat using the scatterplot below.
+[If we are interested in trying to model (e.g., explain) life expectancy using illiteracy rate in 1970, which variable should we treat as the explanatory? Which variable should we treat as the response?]{style="color:blue;"}
 
 ```{r}
 #| fig-height: 4
 #| fig-width: 5
+#| fig-align: center
 state_30 |>
   ggplot(aes(x = Illiteracy, y = `Life Exp`)) +
   geom_point(color = viridis::viridis(6)[1], size = 3) + 
@@ -160,11 +167,11 @@ state_30 |>
 -   $R = \frac{1}{n-1}\sum \limits_{i=1}^n\bigg(\frac{x_i-\overline{x}}{s_x} \bigg)\bigg(\frac{y_i-\overline{y}}{s_y} \bigg)$
 ::::
 
-## Practice 🎩
+## Example Scatterplots & Correlation
 
-Answer Question 2 in the classroom tab on Top Hat using the scatterplots below.
+For each of the scatterplots below, estimate the correlation coefficient for the relationship between the explanatory and response variables. 
 
-![](plots.png)
+![](plots.png){fig-alt="Three plots. Plot A: as x increases, y decreases in a linear fashion. Plot B: The scatterplot follows a paraboic shape. Plot C: As x increases, y seems to neither increase nor decrease."}
 
 ## Simple Linear Regression {.smaller}
 
@@ -215,7 +222,7 @@ state_30 |>
 
 ::::: columns
 ::: {.column width="85%"}
-Open the link: https://beav.es/cTp (also found in the Week 9 module on Canvas called "SLR Demo")
+Open the link: https://beav.es/cTp (also found in the Quick Links module on Canvas called "SLR Demo")
 
 Try to find the line that best fits the data by adjusting the sliders below $b_0$ and $b_1$.
 
@@ -286,6 +293,8 @@ state_30 |>
 
     -   Independent observations
 
+-   The above conditions are generally checked using a residual plot (coming up...)
+
 -   If the above conditions are met, we can fit the LSRL using the following estimates $b_1 = \frac{s_y}{s_x}R$ and $b_0 = \overline{y} - b_1\overline{x}$
 
 [*In practice, we compute these estimates using R*. *Coming up...*]{.fragment}
@@ -338,39 +347,66 @@ lm(LifeExp ~ Illiteracy, data = state_30)
 ```
 :::
 
-[$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{.fragment}
+[$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{.fragment style="color:blue;"}
 ::::
 :::::::
 
-## Practice 🎩
+## Example 📖
 
-Answer Class 18 - Question 1 in the classroom tab on Top Hat using the fitted LSRL.
+[The LSRL that best fits the illiteracy rate vs. life expectancy data is]{style="color:blue;"}
 
-$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
+[$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{style="color:blue;"}
+
+:::{.fragment}
+[**Interpret the slope estimate from this LSRL:**]{ style="color:blue;"}
+
+
+:::
+
+[For every one percent increase in illiteracy rate, average life expectancy is expected to decrease by 1.146 years. ]{.fragment style="color:blue;"}
+
+```{r}
+countdown(minutes = 0, seconds = 45)
+```
+
+
 
 ## Basic Predictions from the LSRL {.smaller}
 
 -   The LSRL can be used to predict the outcome of the response variable for given values of the explanatory variable.
 
 ::: fragment
-### Practice 🎩
+### Example 📖
 
-Answer Class 18 - Question 2 in the classroom tab on Top Hat using the fitted LSRL.
-
-$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
+[$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{style="color:blue;"}
 :::
+
+ 
+
+[**Predict the average life expectancy in 1970 for a state with an illiteracy rate of 1.4%.**]{.fragment style="color:blue;"}
+
+ 
+
+[$$\hat{y} = 72.181 - 1.146(1.4) = 70.577$$]{.fragment style="color:blue;"}
 
 ## Residuals (again) {.smaller}
 
 Recall that the residual is difference in the observed response variable and the predicted response based on the model fit: $$e_i = y_i - \hat{y}_i$$
 
 ::: fragment
-### Practice 🎩
+### Example 📖
 
-Answer Class 18 - Question 3 in the classroom tab on Top Hat using the fitted LSRL.
 
-$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
+[$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{style="color:blue;"}
 :::
+
+ 
+
+[**Compute the residual for a state that had an illiteracy rate of 1.4% and an average life expectancy of 70.55.**]{.fragment style="color:blue;"}
+
+ 
+
+[$$e = 70.55 - 70.577 = -0.027$$]{.fragment style="color:blue;"}
 
 ## Residual Plot {.smaller}
 
@@ -436,12 +472,12 @@ ggplot(mod, aes(y = .resid)) +
 :::
 ::::::::
 
-## Practice 🎩 {.smaller}
+## Example 📖 {.smaller}
 
-Answer Class 18 - Question 4 in the classroom tab on Top Hat using the fitted LSRL and corresponding residual plot.
+[$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{style="color:blue;"}
 
-$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.
-
+:::{.columns}
+:::{.column}
 ```{r}
 #| fig-height: 3.5
 #| fig-width: 4.5
@@ -456,6 +492,19 @@ ggplot(mod, aes(y = .resid)) +
   theme(axis.title = element_text(size = 18)) + 
   theme_bw()
 ```
+
+:::
+
+:::{.column}
+
+ 
+
+ 
+
+[Are any of the LSRL conditions (linearity, normal residuals, constant variability, or independence) violated for the model that was fit for illiteracy vs. life expectancy?]{style="color:blue;"}
+:::
+
+:::
 
 ## R Code for This Week's Examples {.smaller}
 

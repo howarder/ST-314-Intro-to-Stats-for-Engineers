@@ -198,7 +198,7 @@ plot2
 [$\mu_1, \mu_2, ..., \mu_k$, the population means of the $k$ groups]{.fragment}
 :::
 
-## Example Problem 🚲 🚗 🚶‍♀️{.smaller}
+## Example Problem 🚲 🚗 🚶‍♀️ {.smaller}
 
 [Suppose we are interested in determining if there is a significant difference in the average number of hours of sleep students get per night based on whether they bike, drive, or walk to campus. We'll consider a significant result using the $\alpha = 0.05$ significance level.]{.fragment style="color:blue;"}
 
@@ -373,9 +373,8 @@ ggplot(data = data.frame(x = c(0, 6)), aes(x)) +
 
 ## Participation Question 📊 {.smaller}
 
-:::{.columns}
-:::{.column}
-
+::::: columns
+::: column
 Assess the sample size condition needed to perform an ANOVA F test for our [bike, drive, walk example]{style="color:blue;"}.
 
  
@@ -385,17 +384,15 @@ Assess the sample size condition needed to perform an ANOVA F test for our [bike
 ![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
 :::
 
-:::{.column}
+::: column
 ![](transport_graphs.png){fig-alt="Three histograms showing the distributions of sleep per night for bike, drive, and walk samples. The bike and walk distributions are left skewed. The drive distribution is approximately symmetric." fig-align="center"}
 :::
-
-:::
+:::::
 
 ## Participation Question 📊 {.smaller}
 
-:::{.columns}
-:::{.column}
-
+::::: columns
+::: column
 Consider the constant variance assumption needed to perform an ANOVA F test. Do you think the condition is met for our [bike, drive, walk example]{style="color:blue;"}? Why or why not?
 
  
@@ -405,8 +402,7 @@ Consider the constant variance assumption needed to perform an ANOVA F test. Do 
 ![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
 :::
 
-:::{.column}
-
+::: column
  
 
  
@@ -418,11 +414,8 @@ Consider the constant variance assumption needed to perform an ANOVA F test. Do 
 | Bike  | 6.93 hr     | 1.40 hr                   | 33          |
 | Drive | 6.77 hr     | 1.02 hr                   | 37          |
 | Walk  | 6.87 hr     | 1.12 hr                   | 180         |
-
-
 :::
-
-:::
+:::::
 
 ## ANOVA Procedure Steps
 
@@ -481,15 +474,11 @@ In an ANVOA *F* test, the p-value is always the area under the null distribution
 
 ## Example Problem 🚲 🚗 🚶‍♀️
 
-
-
 [In practice, the ANOVA calculations (e.g., MSG, MSE, F statistic, p-value) won't be computed by hand. When we perform an ANOVA F test, we'll use R to complete the calculations.]{style="color:blue;"}
 
  
 
 Typically results are displayed in an **ANOVA table**.
-
-
 
 |           | df  | Sum of Squares | Mean Squares | F     | p-value |
 |-----------|-----|----------------|--------------|-------|---------|
@@ -508,16 +497,14 @@ Typically results are displayed in an **ANOVA table**.
 2.  Whether to reject or fail to reject the null hypothesis.
 :::
 
-## Example Problem 🚲 🚗 🚶‍♀️{.smaller}
+## Example Problem 🚲 🚗 🚶‍♀️ {.smaller}
 
-Using the ANOVA output, write a conclusion for this test using a $\alpha=0.05$ significance level. 
-
+Using the ANOVA output, write a conclusion for this test using a $\alpha=0.05$ significance level.
 
 |           | df  | Sum of Squares | Mean Squares | F     | p-value |
 |-----------|-----|----------------|--------------|-------|---------|
 | Transport | 2   | 0.450          | 0.225        | 0.171 | 0.843   |
 | Residuals | 247 | 324.311        | 1.313        | --    | --      |
-
 
 [There is no evidence to suggest that the average amount of sleep students get per night differs based on how they travel to campus (biking, driving, or walking). At the 0.05 significance level, we fail to reject the null hypothesis that the average amount sleep students get per night is equal across all three transportation types.]{.fragment style="color:blue;"}
 
@@ -526,4 +513,3 @@ library(countdown)
 
 countdown(minutes = 1, seconds = 30)
 ```
-
