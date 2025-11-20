@@ -204,7 +204,7 @@ plot2
 
  
 
-[**Question of interest:** Is there is a difference in the average number of hours students get per night based on whether they drive, bike, or walk to campus?]{.fragment style="color:blue;"}
+[**Question of interest:** Is there is a difference in the average number of hours of sleep students get per night based on whether they drive, bike, or walk to campus?]{.fragment style="color:blue;"}
 
  
 
