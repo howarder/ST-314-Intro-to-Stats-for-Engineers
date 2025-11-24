@@ -96,7 +96,7 @@ state_30 |>
 
 ::::: columns
 ::: column
-[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the [scatterplot]{style="color:red;"} above.]{.fragment}
+[✍️ Describe the relationship between illiteracy rate and life expectancy shown in the]{.fragment}[scatterplot]{style="color:red;"} above.
 :::
 
 ::: column
@@ -138,6 +138,8 @@ countdown(minutes = 0, seconds = 30)
 
 [If we are interested in trying to model (e.g., explain) life expectancy using illiteracy rate in 1970, which variable should we treat as the explanatory? Which variable should we treat as the response?]{style="color:blue;"}
 
+::::: columns
+::: column
 ```{r}
 #| fig-height: 4
 #| fig-width: 5
@@ -152,6 +154,16 @@ state_30 |>
   theme(axis.title = element_text(size = 18)) + 
   theme_bw()
 ```
+:::
+
+::: column
+Answer in Poll Everywhere
+
+pollev.com/erinhowardstats
+
+![](pollev_qr.png){fig-align="center"}
+:::
+:::::
 
 ## Measuring *Linear* Strength {.smaller}
 
@@ -169,7 +181,7 @@ state_30 |>
 
 ## Example Scatterplots & Correlation
 
-For each of the scatterplots below, estimate the correlation coefficient for the relationship between the explanatory and response variables. 
+For each of the scatterplots below, estimate the correlation coefficient for the relationship between the explanatory and response variables.
 
 ![](plots.png){fig-alt="Three plots. Plot A: as x increases, y decreases in a linear fashion. Plot B: The scatterplot follows a paraboic shape. Plot C: As x increases, y seems to neither increase nor decrease."}
 
@@ -357,19 +369,19 @@ lm(LifeExp ~ Illiteracy, data = state_30)
 
 [$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{style="color:blue;"}
 
-:::{.fragment}
-[**Interpret the slope estimate from this LSRL:**]{ style="color:blue;"}
+:::{.fragment fragment-index=1}
+[**Interpret the slope estimate from this LSRL:**]{style="color:blue;"}
 
 
 :::
 
-[For every one percent increase in illiteracy rate, average life expectancy is expected to decrease by 1.146 years. ]{.fragment style="color:blue;"}
+[Answer in Poll Everywhere (pollev.com/erinhowardstats)]{.fragment .fade-in-then-out fragment-index=1}
+
+[]{.fragment fragment-index=2}
 
 ```{r}
 countdown(minutes = 0, seconds = 45)
 ```
-
-
 
 ## Basic Predictions from the LSRL {.smaller}
 
@@ -395,7 +407,6 @@ Recall that the residual is difference in the observed response variable and the
 
 ::: fragment
 ### Example 📖
-
 
 [$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{style="color:blue;"}
 :::
@@ -476,8 +487,8 @@ ggplot(mod, aes(y = .resid)) +
 
 [$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{style="color:blue;"}
 
-:::{.columns}
-:::{.column}
+::::: columns
+::: column
 ```{r}
 #| fig-height: 3.5
 #| fig-width: 4.5
@@ -492,19 +503,16 @@ ggplot(mod, aes(y = .resid)) +
   theme(axis.title = element_text(size = 18)) + 
   theme_bw()
 ```
-
 :::
 
-:::{.column}
-
+::: column
  
 
  
 
 [Are any of the LSRL conditions (linearity, normal residuals, constant variability, or independence) violated for the model that was fit for illiteracy vs. life expectancy?]{style="color:blue;"}
 :::
-
-:::
+:::::
 
 ## R Code for This Week's Examples {.smaller}
 
