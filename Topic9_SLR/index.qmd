@@ -405,7 +405,7 @@ countdown(minutes = 0, seconds = 45)
 
 Recall that the residual is difference in the observed response variable and the predicted response based on the model fit: $$e_i = y_i - \hat{y}_i$$
 
-::: fragment
+:::{.fragment fragment-index=1}
 ### Example 📖
 
 [$$\hat{y} = 72.181 - 1.146x$$ where $\hat{y}$ is the predicted average life expectancy and $x$ represents illiteracy rate.]{style="color:blue;"}
@@ -413,11 +413,15 @@ Recall that the residual is difference in the observed response variable and the
 
  
 
-[**Compute the residual for a state that had an illiteracy rate of 1.4% and an average life expectancy of 70.55.**]{.fragment style="color:blue;"}
+[**Compute the residual for a state that had an illiteracy rate of 1.4% and an average life expectancy of 70.55.**]{.fragment style="color:blue;" fragment-index=2}
 
- 
 
-[$$e = 70.55 - 70.577 = -0.027$$]{.fragment style="color:blue;"}
+
+[Answer in Poll Everywhere (pollev.com/erinhowardstats)]{.fragment .fade-in-then-out fragment-index=2}
+
+[$$e = 70.55 - 70.577 = -0.027$$]{.fragment style="color:blue;" fragment-index=3}
+
+
 
 ## Residual Plot {.smaller}
 
