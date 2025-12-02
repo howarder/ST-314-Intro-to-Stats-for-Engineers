@@ -225,9 +225,9 @@ state_30 |>
 
 [The p-value for the hypothesis test on the slope parameter is $0.000658$.]{.fragment}
 
-[Since $0.000658 < \alpha$, we will ]{.fragment}[reject]{style="color:red;"} the null hypothesis.
+[Since $0.000658 < \alpha$, we will [reject]{style="color:red;"} the null hypothesis.]{.fragment}
 
-[There is ]{.fragment}[convincing]{style="color:red;"} evidence that the percentage of high school graduates is a useful predictor of a state's per capita income in the 1970s.
+[There is [convincing]{style="color:red;"} evidence that the percentage of high school graduates is a useful predictor of a state's per capita income in the 1970s.]{.fragment}
 
 ## R Code for This Week's Examples {.smaller}
 
@@ -266,6 +266,6 @@ LSRL <- lm(Income ~ HSGrad, data = state_30)
 summary(LSRL)
 ```
 
-## Practice 🎩
+## Practice 
 
-Please complete the Class 19 Activity in Top Hat.
+Please complete the Class 19 Activity - SLR in Canvas.
