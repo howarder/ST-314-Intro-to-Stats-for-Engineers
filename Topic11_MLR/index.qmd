@@ -48,7 +48,7 @@ You decide you're going to sell the game on Ebay, but aren't quite sure how much
 
 ## Motivating Example {.smaller}
 
-[Luckily, we have a dataset that contains the sale prices, along with other information, for 143 Ebay sales of the Mario Kart Wii game.]{.fragment}
+[Luckily, we have a dataset that contains the sale prices, along with other information, for 141 Ebay sales of the Mario Kart Wii game. This data only includes games that sold for less than $100.]{.fragment}
 
 :::::: columns
 :::: column
@@ -56,6 +56,8 @@ You decide you're going to sell the game on Ebay, but aren't quite sure how much
 ```{r}
 library(openintro)
 library(gt)
+mariokart <- mariokart |>
+  filter(total_pr < 100)
 head(mariokart, 10) |>
   mutate(sale = total_pr - ship_pr) |>
   select(duration, n_bids, cond, start_pr,
@@ -84,7 +86,7 @@ head(mariokart, 10) |>
 
 ## Simple Linear Regression
 
-Using last week's tools, we could try to model the `sale` variable using one of the quantitative variables available in the dataset.
+Using the statistical tools presented in Topics 9 and 10, we could try to model the `sale` variable using one of the quantitative variables available in the dataset.
 
 ```{r}
 #| echo: false
@@ -96,7 +98,7 @@ slr <- lm(sale ~ start_pr, data = mk)
 summary(slr)
 ```
 
-[For example, $$\hat{\text{sale}} = 45.6945 + 0.1188\text{ start price}$$ is the fitted model when we use only the start price variable to model the final sale price.]{.fragment}
+[For example, $$\hat{\text{sale}} = 42.8167 + 0.1850\text{ start price}$$ is the fitted model when we use only the start price variable to model the final sale price.]{.fragment}
 
 [**Would it be better if we tried to incorporate multiple explanatory variables in the model?**]{.fragment}
 
@@ -113,11 +115,11 @@ summary(mlr)
 ```
 :::
 
-[$$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{bids} + 1.55 \text {used}\\ &+ 0.28 \text{start price} + 0.00003 \text{seller rate}+10.59 \text{wheels}\end{aligned}$$]{.fragment}
+[$$\begin{aligned}\hat{\text{sale}} &= 36.89 - 0.50 \text{duration } + 0.19 \text{bids} -4.31 \text {used}\\ &+ 0.16 \text{start price} + 0.00002 \text{seller rate}+6.80 \text{wheels}\end{aligned}$$]{.fragment}
 
 ## MLR - Determining the Coefficient Estimates {.smaller}
 
-$$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{bids} + 1.55 \text {used}\\ &+ 0.28 \text{start price} + 0.00003 \text{seller rate}+10.59 \text{wheels}\end{aligned}$$
+$$\begin{aligned}\hat{\text{sale}} &= 36.89 -0.50 \text{duration } + 0.19 \text{bids} -4.31 \text {used}\\ &+ 0.16 \text{start price} + 0.00002 \text{seller rate}+6.80 \text{wheels}\end{aligned}$$
 
 [The estimates in the above model are determined by finding the model that yields the smallest sum of squared residuals (just like in simple linear regression).]{.fragment}
 
@@ -125,7 +127,7 @@ $$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text
 
 ## MLR - Understanding the Coefficient Estimates {.smaller}
 
-$$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{bids} + 1.55 \text {used}\\ &+ 0.28 \text{start price} + 0.00003 \text{seller rate}+10.59 \text{wheels}\end{aligned}$$
+$$\begin{aligned}\hat{\text{sale}} &= 36.89 -0.50 \text{duration } + 0.19 \text{bids} -4.31 \text {used}\\ &+ 0.16 \text{start price} + 0.00002 \text{seller rate}+6.80 \text{wheels}\end{aligned}$$
 
 -   Which of the explanatory variables in the above model are quantitative?
 
@@ -137,23 +139,23 @@ $$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text
 
 ## MLR - Understanding the Coefficient Estimates {.smaller}
 
-$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{bids} + 1.55 \text {used}\\ &+ 0.28 \text{start price} + 0.00003 \text{seller rate}+10.59 \text{wheels}\end{aligned}$
+$$\begin{aligned}\hat{\text{sale}} &= 36.89 -0.50 \text{duration } + 0.19 \text{bids} -4.31 \text {used}\\ &+ 0.16 \text{start price} + 0.00002 \text{seller rate}+6.80 \text{wheels}\end{aligned}$$
 
 -   What does the model look like when considering a "used" game?
 
-[$\begin{aligned}\hat{\text{sale}} &= (13.64+1.55) + 0.35 \text{duration } + 1.17 \text{bids}\\ &+ 0.28 \text{start price} + 0.00003 \text{seller rate}+10.59 \text{wheels}\end{aligned}$]{.fragment}
+[$\begin{aligned}\hat{\text{sale}} &= (36.89-4.31) -0.50 \text{duration } + 0.19 \text{bids}\\ &+ 0.16 \text{start price} + 0.00002 \text{seller rate}+6.80 \text{wheels}\end{aligned}$]{.fragment}
 
 -   What does the model look like when considering a "new" game?
 
-[$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{bids} \\ &+ 0.28 \text{start price} + 0.00003 \text{seller rate}+10.59 \text{wheels}\end{aligned}$]{.fragment}
+[$\begin{aligned}\hat{\text{sale}} &= 36.89 -0.50 \text{duration } + 0.19 \text{bids}\\ &+ 0.16 \text{start price} + 0.00002 \text{seller rate}+6.80 \text{wheels}\end{aligned}$]{.fragment}
 
 ## MLR - Understanding the Coefficient Estimates {.smaller}
 
-$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{bids} + 1.55 \text {used}\\ &+ 0.28 \text{start price} + 0.00003 \text{seller rate}+10.59 \text{wheels}\end{aligned}$
+$\begin{aligned}\hat{\text{sale}} &= 36.89 -0.50 \text{duration } + 0.19 \text{bids} -4.31 \text {used}\\ &+ 0.16 \text{start price} + 0.00002 \text{seller rate}+6.80 \text{wheels}\end{aligned}$
 
 -   Interpret the coefficient estimate for duration
 
-[When all other explanatory variable values are held constant, we expect final sale price to increase by \$0.35 for each additional day the game is up for auction.]{.fragment}
+[When all other explanatory variable values are held constant, we expect final sale price to decrease by \$0.50 for each additional day the game is up for auction.]{.fragment}
 
 ## Coefficient of Determination, $R^2$ {.smaller}
 
@@ -209,23 +211,33 @@ $\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{
 
 Consider two models:
 
-::: fragment
-**Model 1:** Uses duration, bids, condition (used), start price, seller rate, and wheels as explanatory variables
 
-$\begin{aligned}\hat{\text{sale}} &= 13.64 + 0.35 \text{duration } + 1.17 \text{bids} + 1.55 \text {used}\\ &+ 0.28 \text{start price} + 0.00003 \text{seller rate}+10.59 \text{wheels}\end{aligned}$
+::: fragment
+**Model 1 (6 explanatory variables):** 
+
+Uses duration, bids, condition (used), start price, seller rate, and wheels as explanatory variables
+
+$\begin{aligned}\hat{\text{sale}} &= 36.89 -0.50 \text{duration } + 0.19 \text{bids} -4.31 \text {used}\\ &+ 0.16 \text{start price} + 0.00002 \text{seller rate}+6.80 \text{wheels}\end{aligned}$
 :::
 
-::: fragment
-**Model 2:** Uses bids, start price, seller rate, and wheels as explanatory variables
+ 
 
-$\hat{\text{sale}} = 17.05 + 1.15 \text{bids} + 0.30 \text{start price} + 0.00002 \text{seller rate}+9.76 \text{wheels}$
+::: fragment
+**Model 2 (5 explanatory variables):** 
+
+Uses duration, bids, condition (used), start price, and wheels as explanatory variables
+
+$\begin{aligned}\hat{\text{sale}} &= 37.54 -0.58 \text{duration} +0.20 \text{bids} -4.56\text {used}\\ &+ 0.18 \text{start price} +6.46 \text{wheels}\end{aligned}$
 :::
 
 ```{r}
 #| output: false
-mlr_small <- lm(sale ~ n_bids + start_pr + seller_rate + wheels, data = mk)
+mlr_small <- lm(sale ~ duration + n_bids + 
+                  cond + start_pr + wheels, data = mk)
 summary(mlr_small)
 ```
+ 
+
 
 [The model output for each of these models is on the following slide.]{.fragment}
 
@@ -239,9 +251,9 @@ summary(mlr_small)
 summary(mlr)
 ```
 
-$R^2 = 0.1723$
+$R^2 = 0.7401$
 
-Adjusted $R^2 = 0.1358$
+Adjusted $R^2 = 0.7284$
 :::
 
 ::: column
@@ -251,15 +263,15 @@ Adjusted $R^2 = 0.1358$
 summary(mlr_small)
 ```
 
-$R^2 = 0.1698$
+$R^2 = 0.7345$
 
-Adjusted $R^2 = 0.1457$
+Adjusted $R^2 = 0.7247$
 :::
 :::::
 
 ##  {.smaller}
 
-### Categorical Variables in Multiple Linear Regression
+### Categorical Variables in MLR 
 
 ```{r include=FALSE}
 library(tidyverse)
@@ -281,11 +293,21 @@ Let's use the `loans_full_schema` dataset to fit a model for interest rate using
 :::
 
 ::: fragment
-🎩 **Question 1:** How many levels are there in the categorical variable homeownership?
+:::{.columns}
+:::{.column width=80%}
+
+**Question 1:** How many levels are there in the categorical variable homeownership?
+
+**Question 2:** How many variables do you think we will we need to use in the multiple linear regression model to represent the homeownership variable? Explain.
+:::
 :::
 
-::: fragment
-🎩 **Question 2:** How many variables do you think we will we need to use in the multiple linear regression model to represent the homeownership variable? Explain.
+
+
+```{r}
+library(countdown)
+countdown(minutes = 1)
+```
 :::
 
 ##  {.smaller}
@@ -303,11 +325,11 @@ summary(mod)
 
 ::::: {.column width="40%"}
 ::: {.fragment fragment-index="2"}
-🎩 **Question 3:** Consider a borrower who **has a mortgage on their home**. What would the multiple linear regression look like for the borrower?
+ **Question 3:** Consider a borrower who **has a mortgage on their home**. What would the multiple linear regression look like for the borrower?
 :::
 
 ::: {.fragment fragment-index="3"}
-🎩 **Question 4:** Consider a borrower who is **renting their home**. What would the multiple linear regression look like for the borrower?
+ **Question 4:** Consider a borrower who is **renting their home**. What would the multiple linear regression look like for the borrower?
 :::
 :::::
 :::::::
@@ -315,6 +337,11 @@ summary(mod)
 ::: {.fragment fragment-index="1"}
 $$\text{interest\_rate} = 11.0465 + 0.0494 \text{debt\_to\_income} + 0.3207\text{own} + 0.9819\text{rent}$$
 :::
+
+```{r}
+countdown(minutes=1)
+```
+
 
 ##  {.smaller}
 
@@ -369,13 +396,13 @@ ggplot(mod, aes(x = .fitted, y = .resid)) +
 
 :::: {.column width="35%"}
 ::: fragment
-🎩 **Question 5:** Using the residual plot, does it appear that any of the least squares regression line conditions (linearity, normal residuals, constant variability, or independence) are violated for the model? Explain why and use the residual plot to justify your answer.
+**Question 5:** Using the residual plot, does it appear that any of the least squares regression line conditions (linearity, normal residuals, constant variability, or independence) are violated for the model? Explain why and use the residual plot to justify your answer.
 :::
 ::::
 ::::::
 
 ```{r}
-library(countdown)
+
 countdown(minutes = 3, seconds = 0)
 ```
 
@@ -411,7 +438,7 @@ ggplot(mod2, aes(x = .fitted, y = .resid)) +
 ::::
 
 ::: {.column width="35%"}
-[🎩 **Question 6:** The residual plot for this reduced model displays fitted values (based on the model) on the x-axis and residuals on the y-axis. Why do the residuals appear to follow three vertical lines?]{.fragment}
+[ **Question 6:** The residual plot for this reduced model displays fitted values (based on the model) on the x-axis and residuals on the y-axis. Why do the residuals appear to follow three vertical lines?]{.fragment}
 :::
 ::::::
 
@@ -431,7 +458,7 @@ mod_full <- lm(interest_rate ~ homeownership + annual_income + total_credit_limi
 summary(mod_full)
 ```
 
-[🎩 **Question 7:** Recall that while it may be helpful to have multiple explanatory variables in a model, we only want to include variables that are actually useful in explaining the variability in the response. Using the p-values in the model output's coefficient table, which explanatory variable would be the most reasonable to remove?]{.fragment}
+[ **Question 7:** Recall that while it may be helpful to have multiple explanatory variables in a model, we only want to include variables that are actually useful in explaining the variability in the response. Using the p-values in the model output's coefficient table, which explanatory variable would be the most reasonable to remove?]{.fragment}
 
 ##  {.smaller}
 
@@ -466,7 +493,7 @@ summary(mod_red)
 
 ### Model Selection: Using the Adjusted $R^2$
 
-🎩 **Question 8:** Another tool that can be used to compare models is the adjusted $R^2$. Consider three models with the corresponding adjusted $R^2$ values. Which model should be used based on these adjusted $R^2$ values?
+ **Question 8:** Another tool that can be used to compare models is the adjusted $R^2$. Consider three models with the corresponding adjusted $R^2$ values. Which model should be used based on these adjusted $R^2$ values?
 
  
 
@@ -477,3 +504,8 @@ Model 1 has 4 explanatory variable with an adjusted $R^2$ value of 0.765.
 Model 2 has 5 explanatory variable with an adjusted $R^2$ value of 0.778.
 
 Model 3 has 6 explanatory variable with an adjusted $R^2$ value of 0.768.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
