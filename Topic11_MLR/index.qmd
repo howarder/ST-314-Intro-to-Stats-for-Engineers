@@ -335,7 +335,7 @@ summary(mod)
 :::::::
 
 ::: {.fragment fragment-index="1"}
-$$\text{interest\_rate} = 11.0465 + 0.0494 \text{debt\_to\_income} + 0.3207\text{own} + 0.9819\text{rent}$$
+$$\hat{\text{interest rate}} = 11.0465 + 0.0494 \text{debt\_to\_income} + 0.3207\text{own} + 0.9819\text{rent}$$
 :::
 
 ```{r}
