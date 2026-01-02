@@ -177,7 +177,7 @@ Using one of the sampling schemes discussed in this week's assigned reading, in 
 countdown(minutes = 2.5)
 ```
 
-## Poll Everywhere Question - Earn Participation Points!
+## Poll Everywhere Question
 
 Please answer the question currently open at
 
@@ -255,7 +255,7 @@ $$ \text{Sample mean: } \overline{x} = \frac{\sum \limits_{i = 1}^n x_i}{n}$$
 -   If $n$ is even, $M$ is the midpoint (average) of the $\frac{n}{2}$th and $\frac{n}{2}+1$th observation.
 :::
 
-## Poll Everywhere Question - Earn Participation Points!
+## Poll Everywhere Question
 
 Please answer the question currently open at
 
@@ -376,7 +376,7 @@ ggplot(data = nycflights, aes(x = air_time)) +
 The table displays the number of Nobel laureates in physics, chemistry, medicine, and economy per country from 1969-2020.
 
 | Country | Count | Proportion | Percentage |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | France | 15 | [15/442 = 0.034]{.fragment fragment-index="3"} | [3.4%]{.fragment fragment-index="6"} |
 | Germany | 20 | [20/442 = 0.045]{.fragment fragment-index="4"} | [4.5%]{.fragment fragment-index="7"} |
 | Japan | 15 | [15/442 = 0.034]{.fragment fragment-index="4"} | [3.4%]{.fragment fragment-index="7"} |
@@ -407,5 +407,3 @@ library(viridis)
 #   theme_minimal() + 
 #   labs(x = "Homeownership")
 ```
-
-# R Programming Demo
