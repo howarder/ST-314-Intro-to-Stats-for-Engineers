@@ -3,7 +3,7 @@ title: "Topic 2 - Probability"
 format: 
   revealjs:
     theme: OSU.scss
-    chalkboard: true
+    chalkboard: false
     html-math-method: mathjax
     multiplex: true
 editor: visual
@@ -243,11 +243,7 @@ Consider rolling one fair six-sided die. Let A = rolling an odd number and B = r
 
 [Events are considered **independent** if]{.fragment} [the outcome of one event does not impact the outcome of the other.]{.fragment}
 
-
-
  
-
-
 
 ::: {.fragment style="border: 2px solid #2A788EFF; text-align: center"}
 **Formal definition of independent events:**

@@ -3,7 +3,7 @@ title: "Topic 1 - Collecting & Exploring Data"
 format: 
   revealjs:
     theme: OSU.scss
-    chalkboard: true
+    chalkboard: false
     html-math-method: mathjax
     multiplex: true
     jump-to-slide: true
