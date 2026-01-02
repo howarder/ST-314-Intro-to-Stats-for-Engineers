@@ -3,7 +3,7 @@ title: "ST 314 - Course Intro"
 format: 
   revealjs:
     theme: OSU.scss
-    chalkboard: true
+    chalkboard: false
     html-math-method: mathjax
     multiplex: true
 editor: visual
@@ -66,7 +66,7 @@ countdown(minutes = 2, seconds = 0)
 
  
 
-Syllabus quiz on Canvas due tomorrow at 11:59 pm.
+Intro Survey & Academic Integrity Agreement due in Canvas tomorrow at 11:59 pm.
 
 <!-- ## Class Meeting Info 👥 -->
 
@@ -122,7 +122,7 @@ Before attending our in-person meetings each week, you need to do the following:
 
 -   **Required:** Read the assigned sections from OpenIntro Statistics (or other free resources linked on Canvas).
 
--   **Required:** Complete the week's pre-lecture activity (due Mondays at 11:59 pm).
+-   **Required:** Complete the week's pre-lecture activity, due Wednesdays or Mondays at 11:59 pm (see the Schedule & Deadlines page in Canvas for specifics).
 
 -   **Recommended:** take notes as you read and work on the pre-lecture activity
 
@@ -142,15 +142,11 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   Each class, time will also be set aside to complete the in-class activity.
+-   Poll Everywhere questions will be used during class to gauge understanding and provide practice with the course concepts.
 
 . . .
 
--   Your 2 lowest in-class activity grades will be dropped.
-
-. . .
-
--   On Thursdays, at the end of class you will complete and submit a Concept Quiz (more on the next slide).
+-   On Tuesdays, at the end of class you will complete and submit a Concept Quiz (more on the next slide).
 
 . . .
 
@@ -162,7 +158,7 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 ## Concept Quizzes 📝 {.smaller}
 
-#### Thursdays, at the end of class...
+#### Tuesdays, at the end of class...
 
 ::: incremental
 -   A short quiz will be administered, on paper.
@@ -178,27 +174,27 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 -   If you miss a class period where a concept quiz was given, you must contact me by 5 pm that day so that we can schedule you to take the alternate version.
 :::
 
-## Weekly Problem Sets 💻 {.smaller}
+<!-- ## Weekly Problem Sets 💻 {.smaller} -->
 
-. . .
+<!-- . . . -->
 
--   For additional practice with the concepts covered each week, you'll have a problem set to complete by Wednesday at 11:59 pm.
+<!-- -   For additional practice with the concepts covered each week, you'll have a problem set to complete by Wednesday at 11:59 pm. -->
 
-. . .
+<!-- . . . -->
 
--   Problem sets are completed in Canvas.
+<!-- -   Problem sets are completed in Canvas. -->
 
-. . .
+<!-- . . . -->
 
--   Questions are graded for correctness.
+<!-- -   Questions are graded for correctness. -->
 
-. . .
+<!-- . . . -->
 
--   You will have three attempts on the problem sets.
+<!-- -   You will have three attempts on the problem sets. -->
 
-. . .
+<!-- . . . -->
 
--   Collaboration is allowed and encouraged on these assignments, but all work must be your own.
+<!-- -   Collaboration is allowed and encouraged on these assignments, but all work must be your own. -->
 
 ## Data Analyses 📈 {.smaller}
 
@@ -208,7 +204,7 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   Data Analyses are due every Thursday at 11:59 pm PT.
+-   Data Analyses are due every Friday at 11:59 pm PT.
 
 . . .
 
@@ -220,9 +216,7 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   Data Analyses must be submitted in Gradescope.
-
-    -   When submitting assignments, you must select the page numbers that correspond to each question. A detailed video on how to correctly submit assignments is available in the Start Here module on Canvas. Assignments that are not submitted correctly will be subject to a point deduction.
+-   Data Analyses are submitted in Gradescope.
 
 ## Late Policy ⏰
 
@@ -238,9 +232,15 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 -   **You must submit a late assignment request form for any extension.**
 
-. . .
+## Additional Practice & Study Materials 
 
--   In-class participation activities do not apply.
+-   Each module contains
+
+    -   a practice problem set (practice canvas quiz).
+
+    -   topic review questions.
+
+-   You are strongly encouraged to work through these practice activities before complete data analyses and taking concept quizzes.
 
 ## Generative AI Policy 🤖 {.smaller}
 
@@ -262,9 +262,9 @@ Violations of the above policy will be considered acts of academic misconduct an
 
 -   There will be two cumulative exams in this course:
 
-    -   Midterm Exam - November 4 during class (Tuesday of Week 6)
+    -   Midterm Exam - February 12 during class (Thursday of Week 6)
 
-    -   Final Exam - December 10 at 8 am (Wednesday of Finals Week)
+    -   Final Exam - March 19 at 8 am (Wednesday of Finals Week)
 
 . . .
 
@@ -274,15 +274,21 @@ Violations of the above policy will be considered acts of academic misconduct an
 
 -   More details will be discussed as we approach the exams.
 
-## Scheduling Notes 🗓️
+## Coming Up 🗓️{.smaller}
 
--   We will not meet during our usual class time on the following days:
+### Due this week
 
-    -   Thursday, November 6 - Erin out of town
+-   Intro Survey & Academic Integrity Agreement, tomorrow 11:59 pm
 
-    -   Tuesday, November 11 - Veterans' Day
+-   Data Analysis: Get Familiar with RStudio, Friday at 11:59 pm
 
-    -   Thursday, November 27 - Thanksgiving
+### Next week
+
+-   Concept quiz in class, Tuesday, January 13
+
+-   Pre-lecture Activity: Probability & Random Variables, Wednesday, Jan 14 at 11:59 pm
+
+-   Data Analysis: Exploring & Summarizing Data, Friday, Jan 16 at 11:59 pm
 
 ## Advice from Previous ST 314 Students {.smaller}
 
