@@ -407,3 +407,12 @@ library(viridis)
 #   theme_minimal() + 
 #   labs(x = "Homeownership")
 ```
+
+
+## Poll Everywhere Question
+
+Please answer the question currently open at
+
+### PollEv.com/erinhowardstats
+
+![](images/clipboard-3664498572.png){fig-align="center"}
