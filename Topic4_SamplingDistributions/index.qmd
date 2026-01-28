@@ -237,7 +237,7 @@ ggplot(data = data.frame(x = c(0,2.5)), aes(x)) +
   theme_bw() + 
     theme(axis.text.x = element_text(size = 18, color = viridis(6)[3], face = "bold")) + 
   scale_y_continuous(breaks = NULL) + 
-  scale_x_continuous(breaks = seq(0,2.5,0.25))
+  scale_x_continuous(breaks = c(0.33, 0.79, 1.25, 1.71, 2.17))
 ```
 :::
 ::::
@@ -678,16 +678,15 @@ As part of a quality control process for computer chips, an engineer at a factor
 
 The information above describes the outcome of a single sample. Suppose the true proportion of defective chips at this factory is $p=0.1$.
 
-:::::: fragment
-::::: columns
+::::::: fragment
+:::::: columns
 ::: {.column width="55%"}
 ### Participation Question 📊
 
 In the previous participation question, we stated that the distribution of $\hat{p}$ was Normal, but we didn't check the sample size conditions before doing so! Are the sample size conditions met in this scenario in order to apply the central limit theorem?
 :::
 
-:::{.column width="5%"}
-
+::: {.column width="5%"}
 :::
 
 ::: {.column width="40%"}
@@ -697,9 +696,8 @@ Answer the question at
 
 ![](pollev_qr.png){width="320"}
 :::
-:::::
 ::::::
-
+:::::::
 
 ## 
 
@@ -707,4 +705,4 @@ Answer the question at
 
  
 
-Want more practice with this material? An optional activity is available. Find **Practice with the Central Limit Theorem** in the Week 4 module. 
+Want more practice with this material? An optional activity is available. Find **Practice with the Central Limit Theorem** in the Week 4 module.
