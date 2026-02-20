@@ -13,18 +13,71 @@ editor: visual
 library(tidyverse)
 ```
 
+```{r}
+AB_test <- read_csv("AB_test.csv")
+A <- AB_test |>
+  filter(version == "A")
+B <- AB_test |>
+  filter(version == "B")
+```
+
 ## Difference of Two Means
 
 ::: fragment
-**Motivating Example:** A study is done by a community group to determine if the students at two different universities (A and B) graduate having taken a different number of math courses, on average.
+**Motivating Example:** A/B testing is a user experience research methodology where two variants of a page are shown to users at random. A company wants to evaluate whether users will spend more time, on average, on page that uses the company's standard design or on a page with an updated modern design using an A/B test.
 :::
 
+## Difference of Two Means
+
 ::: fragment
-**The data:** To answer this question, the group randomly samples students from each university.
+**The data:** To answer this question, the 65 study participants are randomly assigned to view a webpage either using the standard design or the updated design.
 
--   University A samples 46 graduates. Their average is four math classes with a standard deviation of 1.5 math classes.
+-   33 participants viewed the page with the standard design. These participants spent an average of 1.77 minutes on the page, with a standard deviation of 1.68 minutes.
 
--   University B samples 32 graduates. Their average is 3.5 math classes with a standard deviation of one math class.
+-   32 participants viewed the page with updated design. These participants spent an average of 2.22 minutes on the page, with a standard deviation of 2.09 minutes.
+:::
+
+## Difference of Two Means
+
+:::{.columns}
+:::{.column width=70%}
+```{r}
+#| fig-height: 4
+ggplot(A, aes(x = time)) + 
+  geom_histogram(binwidth = 1, 
+                 fill = "lightblue", 
+                 color = "black", 
+                 boundary = 0) + 
+  labs(x = "Time Spend on Standard Site (min)") + 
+  theme(axis.title = element_text(size = 18)) + 
+  xlim(0,8)
+```
+
+```{r}
+#| fig-height: 4
+ggplot(B, aes(x = time)) + 
+  geom_histogram(binwidth = 1, 
+                 fill = "red", 
+                 color = "black", 
+                 boundary = 0) + 
+  labs(x = "Time Spent on Updated Site (min)") +
+  theme(axis.title = element_text(size = 18)) + 
+  xlim(0,8)
+```
+
+:::
+
+:::{.column width=30%}
+$$\overline{x}_S = 1.77 \text{ min}$$
+$$ s_S = 1.68 \text{ min}$$
+$$n_S = 33$$
+ 
+
+$$\overline{x}_U = 2.22 \text{ min}$$
+$$s_U = 2.09 \text{ min}$$
+$$n_U = 32$$
+
+:::
 :::
 
 # Estimation
@@ -55,7 +108,7 @@ library(tidyverse)
 
 </iframe>
 
-*Link to this calculator and an R script alternative is available in the Week 7 Canvas module.*
+*Link to this calculator and an R script alternative is available in the Week 8 Canvas module.*
 
 ## 
 
@@ -68,11 +121,11 @@ library(tidyverse)
  
 
 ::: fragment
-**Example:** To find the critical value needed to construct a 99% confidence interval for the difference in means when $s_1 = 1.5$, $n_1 = 46$, $s_2 = 1$, $n_2 = 32$:
+**Example:** To find the critical value needed to construct a 99% confidence interval for the difference in means when $s_1 = 1.68$, $n_1 = 33$, $s_2 = 1.09$, $n_2 = 32$:
 
  
 
-[`qt(0.995, 75.897)` = 2.642]{.fragment}
+[`qt(0.995, 59.419)` = 2.661]{.fragment}
 :::
 
 ## 
@@ -89,12 +142,12 @@ library(tidyverse)
 
  
 
-[**Motivating Example:**]{.fragment style="color:blue;"}
+[**Motivating Example:** Construct the 99% confidence interval for the difference in the mean time spent on the Standard Site and the Updated Site.]{.fragment style="color:blue;"}
 
  
 
 ::: {style="text-align: center"}
-[($4-3.5)$]{.fragment style="color:blue;"} [$\pm$]{.fragment style="color:blue;"} [$2.645$]{.fragment style="color:blue;"} [$\sqrt{\frac{1.5^2}{46}+\frac{1^2}{32}}$$= (-0.248, 1.248)$]{.fragment style="color:blue;"}
+[($1.77-2.22)$]{.fragment style="color:blue;"} [$\pm$]{.fragment style="color:blue;"} [$2.661$]{.fragment style="color:blue;"} [$\sqrt{\frac{1.68^2}{33}+\frac{2.09^2}{32}}$$= (-1.70, 0.48)$]{.fragment style="color:blue;"}
 :::
 
  
@@ -130,27 +183,23 @@ countdown(minutes = 7)
 
 ## 
 
-### 1. State the question of interest
+### 1. Identify the question and parameter of interest.
 
  
 
 [Motivating Example:]{.fragment style="color:blue;"}
 
-[Is there a **difference** in the average number of math courses taken between graduates at University A and University B?]{.fragment style="color:blue;"}
-
-## 
-
-### 2. Identify the parameter of interest
+[Is there a **difference** in the average amount of time users spend on the Standard Site vs. the Updated Site?]{.fragment style="color:blue;"}
 
  
 
-[Motivating Example:]{.fragment style="color:blue;"}
+[The parameter of interest:]{.fragment style="color:blue;"}
 
-[The difference in the average number of math courses taken, $\mu_A - \mu_B$]{.fragment style="color:blue;"}
+[The difference in the average amount of time spent on the two sites, $\mu_S - \mu_U$]{.fragment style="color:blue;"}
 
 ##  {.smaller}
 
-### 3. State the null and alternative hypotheses
+### 2. Set up the null and alternative hypotheses
 
 **Null hypothesis**
 
@@ -190,7 +239,7 @@ countdown(minutes = 7)
 
 ## 
 
-### 3. State the null and alternative hypotheses
+### 2. Set up the null and alternative hypotheses
 
  
 
@@ -198,11 +247,11 @@ countdown(minutes = 7)
 
  
 
-[$H_0:$$\mu_A = \mu_B$]{.fragment style="color:blue;"}
+[$H_0:$$\mu_S = \mu_U$]{.fragment style="color:blue;"}
 
  
 
-[$H_A:\mu_A \neq \mu_B$]{.fragment style="color:blue;"}
+[$H_A:\mu_S \neq \mu_U$]{.fragment style="color:blue;"}
 
 ## Practice! 🐓
 
@@ -222,77 +271,60 @@ countdown(minutes = 2)
 
 ##  {.smaller}
 
-::: nonincremental
-**4. Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.**
+
+### 3. Collect and summarize the data.
+
+[**Motivating Example:**]{style="color:blue;"}
+
+:::{.columns}
+:::{.column width=70%}
+```{r}
+#| fig-height: 4
+ggplot(A, aes(x = time)) + 
+  geom_histogram(binwidth = 1, 
+                 fill = "lightblue", 
+                 color = "black", 
+                 boundary = 0) + 
+  labs(x = "Time Spend on Standard Site (min)") + 
+  theme(axis.title = element_text(size = 18)) + 
+  xlim(0,8)
+```
+
+```{r}
+#| fig-height: 4
+ggplot(B, aes(x = time)) + 
+  geom_histogram(binwidth = 1, 
+                 fill = "red", 
+                 color = "black", 
+                 boundary = 0) + 
+  labs(x = "Time Spent on Updated Site (min)") +
+  theme(axis.title = element_text(size = 18)) + 
+  xlim(0,8)
+```
+
 :::
 
-:::::::: columns
-::: {.column width="\"50%"}
- 
-
-[**Lower one-sided**: $H_A: \mu_1<\mu_2$]{.fragment fragment-index="2"}
-
- 
-
- 
-
- 
-
-[**Upper one-sided**: $H_A: \mu_1 >\mu _2$]{.fragment fragment-index="4"}
-
- 
-
- 
-
- 
-
- 
-
-[**Two-sided**: $H_A: \mu_1 \neq \mu_2$]{.fragment fragment-index="6"}
-:::
-
-:::::: {.column width="50%"}
-::: {.fragment fragment-index="3"}
-![](lower.png)
-:::
-
- 
-
- 
-
-::: {.fragment fragment-index="5"}
-![](upper.png)
-:::
-
- 
-
- 
-
-::: {.fragment fragment-index="7"}
-![](two.png)
-:::
-::::::
-::::::::
-
-##  {.smaller}
-
-::: nonincremental
-**4. Using the sampled data and the alternative hypothesis, determine what values would be considered "as or more extreme" than the observed sampled statistic.**
+:::{.column width=30%}
+:::{style="color:blue;"}
+$$\overline{x}_S = 1.77 \text{ min}$$
+$$ s_S = 1.68 \text{ min}$$
+$$n_S = 33$$
 :::
 
  
 
-[Motivating Example:]{.fragment style="color:blue;"}
-
  
 
-[$\overline{x}_A - \overline{x}_B = 4 - 3.5 = 0.5$]{.fragment style="color:blue;"}
+:::{style="color:blue;"}
+$$\overline{x}_U = 2.22 \text{ min}$$
+$$s_U = 2.09 \text{ min}$$
+$$n_U = 32$$
+:::
+:::
+:::
 
- 
 
-[Any difference in sample means greater than 0.5 in magnitude would be considered as or more extreme than the observed sampled statistic.]{.fragment style="color:blue;"}
-
-## 5. Determine the Null Distribution {.smaller}
+## 4. Determine the Null Distribution {.smaller}
 
  
 
@@ -312,7 +344,7 @@ countdown(minutes = 2)
 -   If either $n_1 < 30$ or $n_2 < 30$, we need to look at the **sampled distribution(s)** of the small sample(s). If there are no clear outliers or strong skewness in the sampled data, we can move forward. If either sampled distribution suggests skewness or outliers, we should not proceed.
 :::
 
-## 5. Determine the Null Distribution {.smaller}
+## 4. Determine the Null Distribution {.smaller}
 
 :::::: columns
 ::: {.column width="50%"}
@@ -324,7 +356,7 @@ countdown(minutes = 2)
 
  
 
-[So the null distribution is a**t distribution with 75.897 degrees of freedom**.]{.fragment style="color:blue;"}
+[So the null distribution is a**t distribution with 59.419 degrees of freedom**.]{.fragment style="color:blue;"}
 :::
 
 :::: {.column width="50%"}
@@ -336,7 +368,7 @@ countdown(minutes = 2)
 library(latex2exp)
 
 ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
-  stat_function(fun = dt, n = 101, args = list(df=75.897), color = "blue", linewidth = 2) + 
+  stat_function(fun = dt, n = 101, args = list(df=59.419), color = "blue", linewidth = 2) + 
   # geom_area(stat = "function", 
   #           fun = dt,
   #           args = list(df=50),
@@ -364,7 +396,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 ##  {.smaller}
 
-### 6. Calculate the test statistic
+### 5. Calculate the test statistic
 
 [When testing the difference in population means, $\mu_1$ vs. $\mu_2$, the test statistic is]{.fragment}
 
@@ -373,7 +405,6 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 [$$t = \frac{\overline{x}_1-\overline{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$]{.fragment}
 
  
-
 
 ## Participation Question 📊
 
@@ -395,7 +426,7 @@ countdown(minutes = 2)
 
 ##  {.smaller}
 
-### 6. Calculate the test statistic
+### 5. Calculate the test statistic
 
 When testing the difference in population means, $\mu_1$ vs. $\mu_2$, the test statistic is
 
@@ -407,11 +438,11 @@ $$t = \frac{\overline{x}_1-\overline{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2
 
 [Motivating Example:]{style="color:blue;"}
 
-[$$t = \frac{4-3.5}{\sqrt{\frac{1.5^2}{46} + \frac{1^2}{32}}} = 1.766$$]{.fragment style="color:blue;"}
+[$$t = \frac{1.77-2.22}{\sqrt{\frac{1.68^2}{33} + \frac{2.09^2}{32}}} = -0.955$$]{.fragment style="color:blue;"}
 
 ##  {.smaller}
 
-### 7. Calculate the p-value using the test statistic and null distribution.
+### 6. Calculate the p-value using the test statistic and null distribution.
 
 :::::::: columns
 ::: {.column width="30%"}
@@ -609,7 +640,7 @@ countdown(minutes = 1, seconds = 30)
 
 ##  {.smaller}
 
-### 7. Calculate the p-value using the test statistic and null distribution.
+### 6. Calculate the p-value using the test statistic and null distribution.
 
 [Motivating Example:]{.fragment style="color:blue;"}
 
@@ -623,19 +654,19 @@ countdown(minutes = 1, seconds = 30)
 library(latex2exp)
 
 ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
-  stat_function(fun = dt, n = 101, args = list(df=75.897), color = "blue", linewidth = 2) + 
+  stat_function(fun = dt, n = 101, args = list(df=59.419), color = "blue", linewidth = 2) + 
   geom_area(stat = "function",
             fun = dt,
-            args = list(df=75.897),
+            args = list(df=59.4197),
             fill = "blue",
             alpha = .5,
-            xlim = c(-3, -1.766)) +
+            xlim = c(-3, -0.955)) +
   geom_area(stat = "function",
             fun = dt,
-            args = list(df=75.897),
+            args = list(df=59.419),
             fill = "blue",
             alpha = .5,
-            xlim = c(1.766, 3)) +
+            xlim = c(0.955, 3)) +
   ylab("") +
   xlab("") + 
   theme_bw() +
@@ -647,19 +678,18 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
                                 0, 
                                 1, 
                                 2)) + 
-  geom_segment(aes(x = -1.766, y = 0, xend = -1.766, yend = 0.25), 
+  geom_segment(aes(x = -0.955, y = 0, xend = -0.955, yend = 0.25), 
                 size = 1.5) + 
-  geom_text(x=-2, y=0.27, label="-1.766", size = 5) + 
-  geom_segment(aes(x = 1.766, y = 0, xend = 1.766, yend = 0.25), 
+  geom_text(x=-1.25, y=0.27, label="-0.955", size = 5) + 
+  geom_segment(aes(x = 0.955, y = 0, xend = 0.955, yend = 0.25), 
                 size = 1.5) + 
-  geom_text(x=2, y=0.27, label="1.766", size = 5)
+  geom_text(x=1.25, y=0.27, label="0.955", size = 5)
 ```
 :::
 
-[`2*(1-pt(abs(1.766), 75.897))` = 0.0814]{.fragment}
+[`2*(1-pt(abs(-0.955), 59.419))` = 0.343]{.fragment}
 
-
-## 8. Make a conclusion
+## 7. Make a conclusion
 
 Write a 4-part conclusion. The conclusion should be written in the context of the problem and contain the following components:
 
@@ -673,7 +703,7 @@ Write a 4-part conclusion. The conclusion should be written in the context of th
 4.  A $(1-\alpha)100\%$ confidence interval estimate for the parameter of interest.
 :::
 
-## 8. Make a conclusion {.smaller}
+## 7. Make a conclusion {.smaller}
 
 ### A statement in terms of the alternative hypothesis
 
@@ -686,12 +716,12 @@ Write a 4-part conclusion. The conclusion should be written in the context of th
 ![](pval.png)
 :::
 
-## 8. Make a conclusion
+## 7. Make a conclusion
 
 [Motivating Example: Write a 4-part conclusion with a $\alpha=0.01$ significance level.]{.fragment style="color:blue;"}
 
-[1. There is *slightly suggestive* evidence that the graduates at University A and University B take a different number of math courses, on average.]{.fragment style="color:blue;"}
+[1. There is *no* evidence that the mean time spent on the Standard Site differs from the mean time spent on the Updated Site.]{.fragment style="color:blue;"}
 
 [2. At the $\alpha=0.01$ significance level, we fail to reject the null hypothesis.]{.fragment style="color:blue;"}
 
-[3. and 4. We are 99% confident that the students at University A take 0.248 fewer to 1.248 more math courses than students at University B on average, with an estimated difference in the average number of math courses of 0.5.]{.fragment style="color:blue;"}
+[3. and 4. We are 99% confident that the users spend 1.70 minutes **less** to 0.48 minutes **more** on the Standard Site than on the Updated Site, on average, with an estimated difference of 0.45 more minutes spent on the Updated Site on average.]{.fragment style="color:blue;"}
