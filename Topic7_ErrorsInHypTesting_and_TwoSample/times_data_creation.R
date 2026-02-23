@@ -34,4 +34,4 @@ ggplot(B, aes(x = time)) +
                  boundary = 0) + 
   labs(x = "Time Spent on Updated Site (min)")
 
-t.test(time ~ version, data = AB_test)
+t.test(time ~ version, data = AB_test, conf.level = .99)

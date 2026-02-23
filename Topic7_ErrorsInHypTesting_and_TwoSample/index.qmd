@@ -122,17 +122,18 @@ $$n_U = 32$$
 
 ::: fragment
 **Example:** To find the critical value needed to construct a 99% confidence interval for the difference in means when $s_1 = 1.68$, $n_1 = 33$, $s_2 = 1.09$, $n_2 = 32$:
+:::
 
- 
-
-[`qt(0.995, 59.419)` = 2.661]{.fragment}
+:::{.fragment}
+```{r echo=TRUE}
+qt(0.995, 59.419)
+```
 :::
 
 ## 
 
 ### Confidence Interval Construction for $\mu_1-\mu_2$
 
- 
 
  
 
@@ -144,10 +145,15 @@ $$n_U = 32$$
 
 [**Motivating Example:** Construct the 99% confidence interval for the difference in the mean time spent on the Standard Site and the Updated Site.]{.fragment style="color:blue;"}
 
- 
-
 ::: {style="text-align: center"}
-[($1.77-2.22)$]{.fragment style="color:blue;"} [$\pm$]{.fragment style="color:blue;"} [$2.661$]{.fragment style="color:blue;"} [$\sqrt{\frac{1.68^2}{33}+\frac{2.09^2}{32}}$$= (-1.70, 0.48)$]{.fragment style="color:blue;"}
+[($1.77-2.22)$]{.fragment style="color:blue;"} [$\pm$]{.fragment style="color:blue;"} [$2.661$]{.fragment style="color:blue;"} [$\sqrt{\frac{1.68^2}{33}+\frac{2.09^2}{32}}$]{.fragment style="color:blue;"}
+:::
+
+:::{.fragment}
+```{r echo=TRUE}
+(1.77 - 2.22) + c(-1,1)*qt(0.995, 59.419)*sqrt(((1.68^2)/33) + ((2.09^2)/32))
+```
+
 :::
 
  
@@ -724,4 +730,4 @@ Write a 4-part conclusion. The conclusion should be written in the context of th
 
 [2. At the $\alpha=0.01$ significance level, we fail to reject the null hypothesis.]{.fragment style="color:blue;"}
 
-[3. and 4. We are 99% confident that the users spend 1.70 minutes **less** to 0.48 minutes **more** on the Standard Site than on the Updated Site, on average, with an estimated difference of 0.45 more minutes spent on the Updated Site on average.]{.fragment style="color:blue;"}
+[3. and 4. We are 99% confident that the users spend 1.70 minutes **less** to 0.80 minutes **more** on the Standard Site than on the Updated Site, on average, with an estimated difference of 0.45 more minutes spent on the Updated Site on average.]{.fragment style="color:blue;"}
