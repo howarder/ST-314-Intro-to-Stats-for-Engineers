@@ -412,23 +412,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
  
 
-## Participation Question 📊
 
- 
-
-Compute the test statistic for our motivating example problem.
-
- 
-
-**Answer the question at PollEv.com/erinhowardstats**
-
-![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
-
- 
-
-```{r}
-countdown(minutes = 2)
-```
 
 ##  {.smaller}
 
@@ -628,21 +612,9 @@ R code:
 
 [where `df` is the Satterthwaite degrees of freedom, $\nu$]{.fragment}
 
-## Participation Question 📊
 
- 
 
- 
 
-**Answer the question at PollEv.com/erinhowardstats**
-
-![](pollev_qr.png){fig-alt="QR code to PollEv.com/erinhowardstats"}
-
- 
-
-```{r}
-countdown(minutes = 1, seconds = 30)
-```
 
 ##  {.smaller}
 
@@ -694,6 +666,19 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 :::
 
 [`2*(1-pt(abs(-0.955), 59.419))` = 0.343]{.fragment}
+
+## Practice! 🐓
+
+ 
+
+ 
+
+Answer questions 9-11 on the **Class 15 Activity - Difference in Means** activity on Canvas.
+
+
+```{r}
+countdown(minutes = 2)
+```
 
 ## 7. Make a conclusion
 
