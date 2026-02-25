@@ -154,21 +154,21 @@
 <p>In each of the side-by-side boxplots below, you’ll see data sampled from three different populations. The red dot in each plot corresponds to the sample mean.</p>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="fragment">
+<div class="fragment" data-fragment-index="1">
 <p><strong>Example 1</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<p><span class="fragment">📊 In Poll Everywhere, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.</span></p>
+<p><span class="fragment" data-fragment-index="2">📊 In Poll Everywhere, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.</span></p>
 </div><div class="column" style="width:40%;">
-<div class="fragment">
+<div class="fragment" data-fragment-index="2">
 <p><img data-src="pollev_qr.png" alt="QR code to PollEv.com/erinhowardstats"></p>
 <p><strong>Answer the question at PollEv.com/erinhowardstats</strong></p>
 </div>
@@ -180,21 +180,21 @@
 <p>In each of the side-by-side boxplots below, you’ll see data sampled from three different populations. The red dot in each plot corresponds to the sample mean.</p>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="fragment">
+<div class="fragment" data-fragment-index="1">
 <p><strong>Example 2</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<p><span class="fragment">📊 Again, in Poll Everywhere, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.</span></p>
+<p><span class="fragment" data-fragment-index="2">📊 Again, in Poll Everywhere, comment on whether you think the means of the populations from which the above three samples came are the same, similar, or significantly different from one another.</span></p>
 </div><div class="column" style="width:40%;">
-<div class="fragment">
+<div class="fragment" data-fragment-index="2">
 <p><img data-src="pollev_qr.png" alt="QR code to PollEv.com/erinhowardstats"></p>
 <p><strong>Answer the question at PollEv.com/erinhowardstats</strong></p>
 </div>
@@ -211,7 +211,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -221,7 +221,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -242,7 +242,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -265,30 +265,31 @@
 <h2>ANOVA Procedure Steps</h2>
 <p>&nbsp;</p>
 <div class="fragment">
-<h3 id="question-of-interest">1. Question of interest</h3>
+<h3 id="identify-the-question-and-parameters-of-interest">1. Identify the question and parameters of interest</h3>
 <p><span class="fragment">Are there differences in the means of the multiple populations?</span></p>
 </div>
 <p>&nbsp;</p>
 <div class="fragment">
-<h3 id="parameters-of-interest">2. Parameters of interest</h3>
+<p><strong>Parameters of interest:</strong></p>
 <p><span class="fragment"><span class="math inline">\(\mu_1, \mu_2, ..., \mu_k\)</span>, the population means of the <span class="math inline">\(k\)</span> groups</span></p>
 </div>
 </section>
 <section id="example-problem" class="slide level2 smaller">
-<h2>Example Problem 🚲 🚗 🚶‍♀️</h2>
-<p><span class="fragment" style="color:blue;">Suppose we are interested in determining if there is a significant difference in the average number of hours of sleep students get per night based on whether they bike, drive, or walk to campus. We’ll consider a significant result using the <span class="math inline">\(\alpha = 0.05\)</span> significance level.</span></p>
+<h2>Example Problem ️📦</h2>
+<p><span class="fragment" style="color:blue;">A packaging manufacturer is interested in determining if there is a significant difference in the mean compression strength of four different packaging materials used to construct a standard shipping container. We’ll consider a significant result using the <span class="math inline">\(\alpha = 0.05\)</span> significance level.</span></p>
 <p>&nbsp;</p>
-<p><span class="fragment" style="color:blue;"><strong>Question of interest:</strong> Is there is a difference in the average number of hours of sleep students get per night based on whether they drive, bike, or walk to campus?</span></p>
+<p><span class="fragment" style="color:blue;"><strong>Question of interest:</strong> Is there is a difference in the average (mean) compression strength between the four materials?</span></p>
 <p>&nbsp;</p>
 <p><span class="fragment" style="color:blue;"><strong>Parameters of interest:</strong></span></p>
-<p><span class="fragment" style="color:blue;"><span class="math inline">\(\mu_B\)</span>, average amount of sleep for <strong>all</strong> students who bike</span></p>
-<p><span class="fragment" style="color:blue;"><span class="math inline">\(\mu_D\)</span>, average amount of sleep for <strong>all</strong> students who drive</span></p>
-<p><span class="fragment" style="color:blue;"><span class="math inline">\(\mu_W\)</span>, average amount of sleep for <strong>all</strong> students who walk</span></p>
+<p><span class="fragment" style="color:blue;"><span class="math inline">\(\mu_1\)</span>, mean compression strength for <strong>all</strong> shipping containers constructed with Material <strong>1</strong></span></p>
+<p><span class="fragment" style="color:blue;"><span class="math inline">\(\mu_2\)</span>, mean compression strength for <strong>all</strong> shipping containers constructed with Material <strong>2</strong></span></p>
+<p><span class="fragment" style="color:blue;"><span class="math inline">\(\mu_3\)</span>, mean compression strength for <strong>all</strong> shipping containers constructed with Material <strong>3</strong></span></p>
+<p><span class="fragment" style="color:blue;"><span class="math inline">\(\mu_4\)</span>, mean compression strength for <strong>all</strong> shipping containers constructed with Material <strong>4</strong></span></p>
 </section>
 <section id="anova-procedure-steps-1" class="slide level2">
 <h2>ANOVA Procedure Steps</h2>
 <p>&nbsp;</p>
-<h3 id="null-and-alternative-hypotheses">3. Null and Alternative Hypotheses</h3>
+<h3 id="set-up-the-null-and-alternative-hypotheses">2. Set Up the Null and Alternative Hypotheses</h3>
 <p>&nbsp;</p>
 <p><span class="fragment"><span class="math inline">\(H_0: \mu_1 = \mu_2 = ... = \mu_k\)</span></span></p>
 <p>&nbsp;</p>
@@ -297,23 +298,541 @@
 <section id="participation-question" class="slide level2">
 <h2>Participation Question 📊</h2>
 <p>&nbsp;</p>
-<p>Write the null hypothesis for our <span style="color:blue;">bike, drive, walk example</span>.</p>
+<p>Write the null hypothesis for our <span style="color:blue;">packaging example</span>.</p>
 <p>&nbsp;</p>
 <p><strong>Answer the question at PollEv.com/erinhowardstats</strong></p>
 
 <img data-src="pollev_qr.png" alt="QR code to PollEv.com/erinhowardstats" class="r-stretch"></section>
-<section id="null-and-alternative-hypotheses-1" class="slide level2">
-<h2>3. Null and Alternative Hypotheses</h2>
+<section id="set-up-the-null-and-alternative-hypotheses-1" class="slide level2">
+<h2>2. Set Up the Null and Alternative Hypotheses</h2>
 <p>&nbsp;</p>
-<p><span style="color:blue;"><strong>Example 🚲 🚗 🚶‍♀</strong></span></p>
+<p><span style="color:blue;"><strong>Example ️📦</strong></span></p>
 <p>&nbsp;</p>
-<p><span class="fragment" style="color:blue;"><span class="math inline">\(H_0: \mu_B = \mu_D = \mu_W\)</span></span></p>
+<p><span class="fragment" style="color:blue;"><span class="math inline">\(H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4\)</span></span></p>
 <p>&nbsp;</p>
-<p><span class="fragment" style="color:blue;"><span class="math inline">\(H_A:\)</span> At least one transportation group gets a different number of hours of sleep per night, on average, than the others.</span></p>
+<p><span class="fragment" style="color:blue;"><span class="math inline">\(H_A:\)</span> At least one packaging material has a different compression strength, on average, than the others.</span></p>
 </section>
 <section id="section-3" class="slide level2 smaller">
 <h2></h2>
 <h3 id="anova-procedure-steps-2">ANOVA Procedure Steps</h3>
+<h4 id="collect-and-summarize-the-data">3. Collect and Summarize the Data</h4>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="fragment">
+<p><span style="color:blue;"><strong>Example ️📦</strong></span></p>
+<p>22 boxes are constructed for each packaging material type.</p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(k =\)</span> 4</p>
+<p><span class="math inline">\(n =\)</span> 88</p>
+<p><span class="math inline">\(\overline{x} =\)</span> 695.82 lb</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div id="srymiuxhky" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#srymiuxhky table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#srymiuxhky thead, #srymiuxhky tbody, #srymiuxhky tfoot, #srymiuxhky tr, #srymiuxhky td, #srymiuxhky th {
+  border-style: none;
+}
+
+#srymiuxhky p {
+  margin: 0;
+  padding: 0;
+}
+
+#srymiuxhky .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#srymiuxhky .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#srymiuxhky .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#srymiuxhky .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#srymiuxhky .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#srymiuxhky .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#srymiuxhky .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#srymiuxhky .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#srymiuxhky .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#srymiuxhky .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#srymiuxhky .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#srymiuxhky .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#srymiuxhky .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#srymiuxhky .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#srymiuxhky .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#srymiuxhky .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#srymiuxhky .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#srymiuxhky .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#srymiuxhky .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#srymiuxhky .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#srymiuxhky .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#srymiuxhky .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#srymiuxhky .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#srymiuxhky .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#srymiuxhky .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#srymiuxhky .gt_left {
+  text-align: left;
+}
+
+#srymiuxhky .gt_center {
+  text-align: center;
+}
+
+#srymiuxhky .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#srymiuxhky .gt_font_normal {
+  font-weight: normal;
+}
+
+#srymiuxhky .gt_font_bold {
+  font-weight: bold;
+}
+
+#srymiuxhky .gt_font_italic {
+  font-style: italic;
+}
+
+#srymiuxhky .gt_super {
+  font-size: 65%;
+}
+
+#srymiuxhky .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#srymiuxhky .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#srymiuxhky .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#srymiuxhky .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#srymiuxhky .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#srymiuxhky .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#srymiuxhky .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#srymiuxhky .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#srymiuxhky div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="as.factor(material)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Material</th>
+<th id="means" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sample Mean (lb)</th>
+<th id="sds" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sample Standard Deviation (lb)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="as.factor(material)">1</td>
+<td class="gt_row gt_right" headers="means">701.73</td>
+<td class="gt_row gt_right" headers="sds">11.14</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="as.factor(material)">2</td>
+<td class="gt_row gt_right" headers="means">701.38</td>
+<td class="gt_row gt_right" headers="sds">7.73</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="as.factor(material)">3</td>
+<td class="gt_row gt_right" headers="means">691.63</td>
+<td class="gt_row gt_right" headers="sds">8.61</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="as.factor(material)">4</td>
+<td class="gt_row gt_right" headers="means">688.55</td>
+<td class="gt_row gt_right" headers="sds">8.26</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-4" class="slide level2 smaller">
+<h2></h2>
+<h3 id="anova-procedure-steps-3">ANOVA Procedure Steps</h3>
 <h4 id="the-f-test-statistic">4. The <span class="math inline">\(F\)</span> test statistic</h4>
 <p><span class="fragment">In order to answer our question of interest, we must compare the variability between groups to the variability within groups.</span></p>
 <div class="fragment">
@@ -338,9 +857,20 @@
 <p>The test statistic is the ratio of the average between group variability to the average within group variability <span class="math display">\[F = \frac{MSG}{MSE}\]</span></p>
 </div>
 </section>
-<section id="section-4" class="slide level2 smaller">
+<section id="anova-procedure-steps-4" class="slide level2 smaller">
+<h2>ANOVA Procedure Steps</h2>
+<h3 id="the-f-test-statistic-1">4. The <span class="math inline">\(F\)</span> test statistic</h3>
+<p>&nbsp;</p>
+<p><span style="color:blue;"><strong>Example ️📦</strong></span></p>
+<p><span style="&quot;color:blue;">MSG = 998.57</span></p>
+<p><span style="&quot;color:blue;">MSE = 81.60</span></p>
+<p><span class="fragment" style="&quot;color:blue;"><span class="math inline">\(F=\frac{MSG}{MSE} = 12.24\)</span></span></p>
+<p>&nbsp;</p>
+<p><span class="fragment" style="&quot;color:blue;"><em>These values were determined in R. Code and R output coming up!</em></span></p>
+</section>
+<section id="section-5" class="slide level2 smaller">
 <h2></h2>
-<h3 id="anova-procedure-steps-3">ANOVA Procedure Steps</h3>
+<h3 id="anova-procedure-steps-5">ANOVA Procedure Steps</h3>
 <h4 id="determine-the-null-distribution">5. Determine the Null Distribution</h4>
 <p><span class="fragment">There are two conditions that need to be met in order to assume the upcoming null distribution:</span></p>
 <ol type="1">
@@ -358,9 +888,9 @@
 </ul>
 <p><span class="fragment">If the above conditions are met, under the null hypothesis, the test statistic, <span class="math inline">\(F = \frac{MSG}{MSE}\)</span>, follows an <em>F</em> distribution with <span class="math inline">\(k-1\)</span> and <span class="math inline">\(n-k\)</span> degrees of freedom.</span></p>
 </section>
-<section id="section-5" class="slide level2 smaller">
+<section id="section-6" class="slide level2 smaller">
 <h2></h2>
-<h3 id="anova-procedure-steps-4">ANOVA Procedure Steps</h3>
+<h3 id="anova-procedure-steps-6">ANOVA Procedure Steps</h3>
 <h4 id="determine-the-null-distribution-1">5. Determine the Null Distribution</h4>
 <p><span class="fragment">If the previously mentioned conditions are met, under the null hypothesis, the test statistic, <span class="math inline">\(F = \frac{MSG}{MSE}\)</span>, follows an <em>F</em> distribution with <span class="math inline">\(k-1\)</span> and <span class="math inline">\(n-k\)</span> degrees of freedom.</span></p>
 <div class="columns">
@@ -370,7 +900,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -387,125 +917,577 @@
 <li class="fragment"><p>Denoted: <span class="fragment"><span class="math inline">\(F_{k-1, n-k}\)</span></span></p></li>
 </ul>
 </div></div>
-</section>
-<section id="example-problem-1" class="slide level2 smaller">
-<h2>Example Problem 🚲 🚗 🚶‍♀️</h2>
-<p><span style="color:blue;">Data were collected on 250 randomly selected students. The summary statistics and sampled distributions for these data are shown below.</span></p>
-<div class="columns">
-<div class="column">
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>Sample Mean</th>
-<th>Sample Standard Deviation</th>
-<th>Sample Size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Bike</td>
-<td>6.93 hr</td>
-<td>1.40 hr</td>
-<td>33</td>
-</tr>
-<tr class="even">
-<td>Drive</td>
-<td>6.77 hr</td>
-<td>1.02 hr</td>
-<td>37</td>
-</tr>
-<tr class="odd">
-<td>Walk</td>
-<td>6.87 hr</td>
-<td>1.12 hr</td>
-<td>180</td>
-</tr>
-</tbody>
-</table>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="transport_graphs.png" class="quarto-figure quarto-figure-center" alt="Three histograms showing the distributions of sleep per night for bike, drive, and walk samples. The bike and walk distributions are left skewed. The drive distribution is approximately symmetric."></p>
-</figure>
-</div>
-</div></div>
+<!-- ## Example Problem ️📦️ {.smaller} -->
+<!-- ```{r} -->
+<!-- summary_table |> -->
+<!--   gt() |> -->
+<!--   cols_label( -->
+<!--     `as.factor(material)` = "Material",  -->
+<!--     means = "Sample Mean (lb)",  -->
+<!--     sds = "Sample Standard Deviation (lb)" -->
+<!--   ) -->
+<!-- ``` -->
+<!-- :::{.r-stack} -->
+<!-- ```{r} -->
+<!-- #| fig-width: 12 -->
+<!-- ggplot(boxes, aes(x = strength, y = as.factor(material))) +  -->
+<!--   geom_boxplot(aes(fill = as.factor(material))) +  -->
+<!--   labs(x = "Compression Strength (lb)",  -->
+<!--        y = "Material") +  -->
+<!--   scale_fill_viridis_d(guide = "none") +  -->
+<!--   theme_bw() +  -->
+<!--   theme(axis.title = element_text(size = 16),  -->
+<!--         axis.text = element_text(size = 16)) -->
+<!-- ``` -->
+<!-- ::: -->
 </section>
 <section id="participation-question-1" class="slide level2 smaller">
 <h2>Participation Question 📊</h2>
 <div class="columns">
-<div class="column">
-<p>Assess the sample size condition needed to perform an ANOVA F test for our <span style="color:blue;">bike, drive, walk example</span>.</p>
+<div class="column" style="width:35%;">
+<p>Assess the sample size condition needed to perform an ANOVA F test for our <span style="color:blue;">packaging materials example</span>.</p>
 <p>&nbsp;</p>
 <p><strong>Answer the question at PollEv.com/erinhowardstats</strong></p>
 <p><img data-src="pollev_qr.png" alt="QR code to PollEv.com/erinhowardstats"></p>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-center">
+</div><div class="column" style="width:65%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
 <figure>
-<p><img data-src="transport_graphs.png" class="quarto-figure quarto-figure-center" alt="Three histograms showing the distributions of sleep per night for bike, drive, and walk samples. The bike and walk distributions are left skewed. The drive distribution is approximately symmetric."></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
+</div>
+</div>
 </div>
 </div></div>
 </section>
 <section id="participation-question-2" class="slide level2 smaller">
 <h2>Participation Question 📊</h2>
 <div class="columns">
-<div class="column">
-<p>Consider the constant variance assumption needed to perform an ANOVA F test. Do you think the condition is met for our <span style="color:blue;">bike, drive, walk example</span>? Why or why not?</p>
-<p>&nbsp;</p>
+<div class="column" style="width:40%;">
+<p>Consider the constant variance assumption needed to perform an ANOVA F test. Do you think the condition is met for our <span style="color:blue;">packaging materials example</span>? Why or why not?</p>
 <p><strong>Answer the question at PollEv.com/erinhowardstats</strong></p>
 <p><img data-src="pollev_qr.png" alt="QR code to PollEv.com/erinhowardstats"></p>
-</div><div class="column">
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table class="caption-top">
+<div class="cell">
+<div class="cell-output-display">
+<div id="qknnraenuj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qknnraenuj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#qknnraenuj thead, #qknnraenuj tbody, #qknnraenuj tfoot, #qknnraenuj tr, #qknnraenuj td, #qknnraenuj th {
+  border-style: none;
+}
+
+#qknnraenuj p {
+  margin: 0;
+  padding: 0;
+}
+
+#qknnraenuj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#qknnraenuj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qknnraenuj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qknnraenuj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qknnraenuj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qknnraenuj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qknnraenuj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qknnraenuj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qknnraenuj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#qknnraenuj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#qknnraenuj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qknnraenuj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qknnraenuj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qknnraenuj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qknnraenuj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qknnraenuj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qknnraenuj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qknnraenuj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#qknnraenuj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qknnraenuj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qknnraenuj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qknnraenuj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qknnraenuj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qknnraenuj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qknnraenuj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qknnraenuj .gt_left {
+  text-align: left;
+}
+
+#qknnraenuj .gt_center {
+  text-align: center;
+}
+
+#qknnraenuj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qknnraenuj .gt_font_normal {
+  font-weight: normal;
+}
+
+#qknnraenuj .gt_font_bold {
+  font-weight: bold;
+}
+
+#qknnraenuj .gt_font_italic {
+  font-style: italic;
+}
+
+#qknnraenuj .gt_super {
+  font-size: 65%;
+}
+
+#qknnraenuj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#qknnraenuj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qknnraenuj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qknnraenuj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qknnraenuj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qknnraenuj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qknnraenuj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#qknnraenuj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#qknnraenuj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th></th>
-<th>Sample Mean</th>
-<th>Sample Standard Deviation</th>
-<th>Sample Size</th>
+<tr class="gt_col_headings header">
+<th id="as.factor(material)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Material</th>
+<th id="means" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sample Mean (lb)</th>
+<th id="sds" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sample Standard Deviation (lb)</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="gt_table_body">
 <tr class="odd">
-<td>Bike</td>
-<td>6.93 hr</td>
-<td>1.40 hr</td>
-<td>33</td>
+<td class="gt_row gt_center" headers="as.factor(material)">1</td>
+<td class="gt_row gt_right" headers="means">701.73</td>
+<td class="gt_row gt_right" headers="sds">11.14</td>
 </tr>
 <tr class="even">
-<td>Drive</td>
-<td>6.77 hr</td>
-<td>1.02 hr</td>
-<td>37</td>
+<td class="gt_row gt_center" headers="as.factor(material)">2</td>
+<td class="gt_row gt_right" headers="means">701.38</td>
+<td class="gt_row gt_right" headers="sds">7.73</td>
 </tr>
 <tr class="odd">
-<td>Walk</td>
-<td>6.87 hr</td>
-<td>1.12 hr</td>
-<td>180</td>
+<td class="gt_row gt_center" headers="as.factor(material)">3</td>
+<td class="gt_row gt_right" headers="means">691.63</td>
+<td class="gt_row gt_right" headers="sds">8.61</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="as.factor(material)">4</td>
+<td class="gt_row gt_right" headers="means">688.55</td>
+<td class="gt_row gt_right" headers="sds">8.26</td>
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+</div>
 </div></div>
 </section>
-<section id="anova-procedure-steps-5" class="slide level2">
+<section id="anova-procedure-steps-7" class="slide level2 smaller">
 <h2>ANOVA Procedure Steps</h2>
-<p>&nbsp;</p>
-<h4 id="using-the-sampled-data-and-the-alternative-hypothesis-determine-what-values-would-be-considered-as-or-more-extreme-than-the-observed-sampled-statistic.">6. Using the sampled data and the alternative hypothesis, determine what values would be considered “as or more extreme” than the observed sampled statistic.</h4>
-<p>&nbsp;</p>
-<p><span class="fragment">Any ratio of <span class="math inline">\(MSG\)</span> to <span class="math inline">\(MSE\)</span> greater than the calculated <span class="math inline">\(F\)</span> test statistic would be considered “as or more extreme” than our observed data.</span></p>
+<h3 id="determine-the-null-distribution-2">5. Determine the Null Distribution</h3>
+<p><span style="color:blue;"><strong>Example ️📦</strong></span></p>
 <div class="fragment">
-<p><img data-src="f.png" alt="A number line that begins at zero on the left. A mark for F is indicated. Every value to the right of F on the number line is highlighted."></p>
+<p><span style="color:blue;">The null distribution for this hypothesis test is an <em>F</em> distribution with <span class="math inline">\(n-1=4-1=3\)</span> and <span class="math inline">\(n-k=88-4=84\)</span> degrees of freedom.</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="anova-procedure-steps-6" class="slide level2 smaller">
+<section id="anova-procedure-steps-8" class="slide level2 smaller">
 <h2>ANOVA Procedure Steps</h2>
-<h3 id="calculate-the-p-value">7. Calculate the p-value</h3>
+<h3 id="calculate-the-p-value">6. Calculate the p-value</h3>
 <p><span class="fragment">Recall that the p-value represents the probability of observing data as or more extreme than our current dataset according to the alternative hypothesis, if the null hypothesis were true.</span></p>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -514,7 +1496,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" alt="An F distribution with the F statistic indicated. The area under the curve to the right of the F statistic is shaded." width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" alt="An F distribution with the F statistic indicated. The area under the curve to the right of the F statistic is shaded." width="960"></p>
 </figure>
 </div>
 </div>
@@ -529,43 +1511,29 @@
 <p><strong>R code:</strong> <span class="fragment"><code>1-pf(F, k-1, n-k)</code></span></p>
 </div>
 </section>
-<section id="example-problem-2" class="slide level2">
-<h2>Example Problem 🚲 🚗 🚶‍♀️</h2>
+<section id="example-problem-1" class="slide level2">
+<h2>Example Problem ️📦</h2>
 <p><span style="color:blue;">In practice, the ANOVA calculations (e.g., MSG, MSE, F statistic, p-value) won’t be computed by hand. When we perform an ANOVA F test, we’ll use R to complete the calculations.</span></p>
 <p>&nbsp;</p>
-<p>Typically results are displayed in an <strong>ANOVA table</strong>.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>df</th>
-<th>Sum of Squares</th>
-<th>Mean Squares</th>
-<th>F</th>
-<th>p-value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Transport</td>
-<td>2</td>
-<td>0.450</td>
-<td>0.225</td>
-<td>0.171</td>
-<td>0.843</td>
-</tr>
-<tr class="even">
-<td>Residuals</td>
-<td>247</td>
-<td>324.311</td>
-<td>1.313</td>
-<td>–</td>
-<td>–</td>
-</tr>
-</tbody>
-</table>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: strength
+                    Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+as.factor(material)  3 2995.7  998.57  12.238 1.015e-06 ***
+Residuals           84 6854.1   81.60                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<!-- Typically results are displayed in an **ANOVA table**. -->
+<!-- |           | df  | Sum of Squares | Mean Squares | F     | p-value | -->
+<!-- |-----------|-----|----------------|--------------|-------|---------| -->
+<!-- | Transport | 2   | 0.450          | 0.225        | 0.171 | 0.843   | -->
+<!-- | Residuals | 247 | 324.311        | 1.313        | --    | --      | -->
 </section>
-<section id="anova-procedure-steps-7" class="slide level2">
+<section id="anova-procedure-steps-9" class="slide level2">
 <h2>ANOVA Procedure Steps</h2>
 <h3 id="make-a-conclusion">8. Make a conclusion</h3>
 <p><span class="fragment">Write a 2-part conclusion (we’ll exclude a single point estimate and confidence interval). The conclusion should be written in the context of the problem and contain the following components:</span></p>
@@ -574,48 +1542,75 @@
 <li class="fragment"><p>Whether to reject or fail to reject the null hypothesis.</p></li>
 </ol>
 </section>
-<section id="example-problem-3" class="slide level2 smaller">
-<h2>Example Problem 🚲 🚗 🚶‍♀️</h2>
+<section id="example-problem-2" class="slide level2 smaller">
+<h2>Example Problem ️📦</h2>
 <p>Using the ANOVA output, write a conclusion for this test using a <span class="math inline">\(\alpha=0.05\)</span> significance level.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>df</th>
-<th>Sum of Squares</th>
-<th>Mean Squares</th>
-<th>F</th>
-<th>p-value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Transport</td>
-<td>2</td>
-<td>0.450</td>
-<td>0.225</td>
-<td>0.171</td>
-<td>0.843</td>
-</tr>
-<tr class="even">
-<td>Residuals</td>
-<td>247</td>
-<td>324.311</td>
-<td>1.313</td>
-<td>–</td>
-<td>–</td>
-</tr>
-</tbody>
-</table>
-<p><span class="fragment" style="color:blue;">There is no evidence to suggest that the average amount of sleep students get per night differs based on how they travel to campus (biking, driving, or walking). At the 0.05 significance level, we fail to reject the null hypothesis that the average amount sleep students get per night is equal across all three transportation types.</span></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: strength
+                    Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+as.factor(material)  3 2995.7  998.57  12.238 1.015e-06 ***
+Residuals           84 6854.1   81.60                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><span class="fragment" style="color:blue;">There is <strong>convincing evidence</strong> to suggest that the average compression strength differs across the four packing materials. At the 0.05 significance level, we <strong>reject the null hypothesis</strong> that the average compression strength is equal across materials.</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_dfdd1011" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_67893fbc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 </div>
 </div>
+</section>
+<section id="multiple-comparisons" class="slide level2 smaller">
+<h2>Multiple Comparisons</h2>
+<ul>
+<li class="fragment"><p>When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means?</p></li>
+<li class="fragment"><p>We can perform pairwise comparisons (two-sample t tests) across all possible pairs of groups, <strong>but</strong> <span class="fragment"><strong>we must adjust (<em>correct</em>) the p-values to account for the fact that we are performing multiple hypothesis tests.</strong></span></p></li>
+<li class="fragment"><p>When we run multiple hypothesis tests simultaneously, the probability of Type 1 error is inflated.</p></li>
+<li class="fragment"><p>We can correct for this error inflation by using a p-value correction procedure.</p>
+<ul>
+<li class="fragment"><p>For example, the Bonferroni correction multiplies each p-value by the number of possible pairwise comparisons.</p></li>
+<li class="fragment"><p>There are many other multiple comparisons p-value correction methods that we won’t cover.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="multiple-comparisons-1" class="slide level2">
+<h2>Multiple Comparisons</h2>
+<h3 id="example-problem-3">Example Problem ️📦</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pairwise comparisons using t tests with pooled SD 
+
+data:  boxes$strength and as.factor(boxes$material) 
+
+  1       2       3     
+2 1.0000  -       -     
+3 0.0023  0.0034  -     
+4 3.6e-05 5.8e-05 1.0000
+
+P value adjustment method: bonferroni </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 
 </section>
     </div>
