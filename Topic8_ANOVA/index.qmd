@@ -631,7 +631,7 @@ anova(mod)
 
 ## ANOVA Procedure Steps
 
-### 8. Make a conclusion
+### 7. Make a conclusion
 
 [Write a 2-part conclusion (we'll exclude a single point estimate and confidence interval). The conclusion should be written in the context of the problem and contain the following components:]{.fragment}
 
