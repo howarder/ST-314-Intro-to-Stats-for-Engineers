@@ -1,6 +1,6 @@
 ---
 title: "Topic 9 - Additional Slides"
-subtitle: "These slides have also been included at teh end of the original topic 9 slides."
+subtitle: "These slides have also been included at the end of the original topic 9 slides."
 format: 
   revealjs:
     theme: OSU.scss
