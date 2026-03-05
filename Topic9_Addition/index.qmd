@@ -1,0 +1,171 @@
+---
+title: "Topic 9 - Additional Slides"
+subtitle: "These slides have also been included at teh end of the original topic 9 slides."
+format: 
+  revealjs:
+    theme: OSU.scss
+    chalkboard: false
+    html-math-method: mathjax
+    multiplex: true
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+## Download or print notes to PDF {.smaller}
+
+If you'd like to export this presentation to a PDF, do the following
+
+::: nonincremental
+1.  Toggle into Print View using the E key.
+2.  Open the in-browser print dialog (CTRL/CMD+P)
+3.  Change the **Destination** to **Save as PDF**.
+4.  Change the **Layout** to **Landscape**.
+5.  Change the **Margins** to **None**.
+6.  Enable the **Background graphics** option.
+7.  Click **Save**.
+:::
+
+This feature has been confirmed to work in Google Chrome and Firefox.
+
+
+
+```{r}
+library(datasets)
+ 
+state <- state.x77 |>
+    as_tibble(rownames = "States")
+
+set.seed(7493410)
+
+keep <- sample(1:50, 30, replace = FALSE)
+
+state_30 <- state[keep,]
+
+```
+
+```{r}
+state_30 <- state_30 |>
+  rename("LifeExp"=`Life Exp`)
+```
+
+
+```{r}
+
+mod <- lm(LifeExp ~ Illiteracy, data = state_30)
+```
+
+## Prediction & Confidence Intervals {.smaller}
+
+[The model predicted that for a state with an illiteracy rate $1.4\%$, the life expectancy was 70.577 years in 1970.]{style="color:blue;"}
+
+[$$\hat{y} = 72.181 - 1.146(1.4) = 70.577$$]{style="color:blue;"}
+
+::: fragment
+#### Prediction Intervals for a Single Response Value
+
+We know that this prediction in based on a sample and that a different sample of observations would have likely yielded a slightly different prediction.
+
+[We can address the uncertainty in the prediction for this single response value using a **prediction interval**.]{.fragment}
+:::
+
+::: fragment
+```{r}
+#| echo: true
+predict(mod, newdata = data.frame(Illiteracy = 1.4), interval = "prediction", level = 0.95)
+```
+:::
+
+ 
+
+[For a single state with an illiteracy rate of 1.4% in 1970, we are 95% confident that the life expectancy was between 68.064 and 73.090 years, with a point estimate of 70.577 years.]{.fragment}
+
+## Prediction & Confidence Intervals {.smaller}
+
+The Central Limit Theorem tells us that mean values are more predictable than individual measurements.
+
+::: fragment
+Consider predicted the mean life expectancy for **all** states with an illiteracy rate of 1.4%.
+:::
+
+::: fragment
+The estimate is the same as what we saw previously: [$\bar{y} = 72.181 - 1.146(1.4) = 70.577$]{style="color:blue;"}.
+:::
+
+:::: fragment
+#### Confidence Intervals for a Mean Response Value
+
+In addition to the point estimate for the mean life expectancy for **all** states with an illiteracy rate of 1.4%, we can provide a **confidence interval for the mean response value**.
+
+::: fragment
+```{r}
+#| echo: true
+predict(mod, newdata = data.frame(Illiteracy = 1.4), interval = "confidence", level = 0.95)
+```
+
+[We are 95% confident that mean life expectancy in 1970 for all states with an illiteracy rate of 1.4% was between 70.103 and 71.051 years, with a point estimate for the mean response of 70.577 years.]{.fragment}
+:::
+::::
+
+## Prediction & Confidence Intervals {.smaller}
+
+#### Prediction Interval for a Single Response Value
+
+```{r}
+#| echo: true
+predict(mod, newdata = data.frame(Illiteracy = 1.4), interval = "prediction", level = 0.95)
+```
+
+#### Confidence Interval for a Mean Response Value
+
+```{r}
+#| echo: true
+predict(mod, newdata = data.frame(Illiteracy = 1.4), interval = "confidence", level = 0.95)
+```
+
+[Compare the two intervals. Which one is wider and why do you think this?]{.fragment}
+
+ 
+
+[*We won't cover anymore of the details of these intervals, but if you want to read more or explore the formulas used to calculate the interval bounds, check out [the textbook's supplemental material](https://www.openintro.org/go/?id=stat_extra_linear_regression_supp&referrer=os4_pdf).*]{.fragment}
+
+```{r}
+library(countdown)
+countdown(minutes = 0, seconds = 45)
+```
+
+## R Code for This Week's Examples {.smaller}
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Open the tidyverse library
+library(tidyverse)
+
+# Import the dataset, first need to download the data from Canvas
+state_30 <- read_csv(file.choose())
+
+# Create a scatterplot of the Illiteracy and LifeExp variables
+ggplot(data = state_30, aes(x = Illiteracy, y = LifeExp)) + 
+  geom_point(color = "purple", size = 3) + 
+  labs(y = "Life Expectancy (years)", 
+       x = "Illiteracy Rate (% of population)", 
+       title = "Illiteracy Rate vs. Life Expectancy",
+       subtitle = "for 30 US States in 1970") + 
+  theme(axis.title = element_text(size = 18)) + 
+  theme_bw() + 
+  stat_smooth(method = "lm",
+              formula = y ~ x, 
+              geom = "smooth", 
+              se = FALSE, 
+              color = "darkgreen")
+
+## Calculate the correlation between illiteracy rate and life exp
+state_30 %>% summarise(cor = cor(Illiteracy, LifeExp))
+
+# Estimate intercept and slope for LSRL
+lm(LifeExp ~ Illiteracy, data = state_30)
+```
