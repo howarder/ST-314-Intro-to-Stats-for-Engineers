@@ -225,9 +225,56 @@ state_30 |>
 
 [The p-value for the hypothesis test on the slope parameter is $0.000658$.]{.fragment}
 
-[Since $0.000658 < \alpha$, we will [reject]{style="color:red;"} the null hypothesis.]{.fragment}
+[Since $0.000658 < \alpha$, we will reject the null hypothesis.]{.fragment}
 
-[There is [convincing]{style="color:red;"} evidence that the percentage of high school graduates is a useful predictor of a state's per capita income in the 1970s.]{.fragment}
+[There is convincing evidence that the percentage of high school graduates is a useful predictor of a state's per capita income in the 1970s.]{.fragment}
+
+## Confidence Interval Estimates for $\beta_1$ {.smaller}
+
+In addition to performing a hypothesis test about the slope parameter, we can provide a measure of uncertainty about the estimate for $\beta_1$ by constructing a confidence interval for the parameter. 
+
+[$$b_1 \pm t^* \times SE_{b_1}$$]{.fragment}
+
+[The standardized estimate for $\beta_1$, $\frac{b_1}{SE_{b_1}}$, follows a _t_-distribution with $n-2$ degrees of freedom. We will use this distribution to determine $t^*$.]{.fragment}
+
+:::{.fragment}
+`qt(p, df)`
+
+where `p` corresponds to the area under the _t_-distribution curve to the left of the critical value and `df` $n-2$.
+:::
+
+## Confidence Interval Estimate for $\beta_1$ {.smaller}
+
+Construct the 95% confidence interval for the slope parameter of high school graduation rate on life expectancy.
+
+:::{.fragment}
+For $b_1$ and $SE_{b_1}$, use the model output in R:
+```{r}
+summary(LSRL)[[4]]
+```
+:::
+
+:::{.fragment}
+Calculate the critical value, $t^*$:
+```{r}
+#| echo: true
+qt(0.975, 28)
+```
+:::
+
+:::{.fragment}
+Compute the lower and upper bounds of the interval:
+
+```{r}
+#| echo: true
+46.68049 + c(-1,1)*qt(0.975, 28)*12.18172
+```
+:::
+
+
+:::{.fragment}
+We are 95% confident that for each additional percentage of the population with a high school diploma, per capita income is expected to increase by \$21.72 to \$71.63, with a point estimate for the increase of \$46.68.
+:::
 
 ## R Code for This Week's Examples {.smaller}
 
@@ -266,6 +313,6 @@ LSRL <- lm(Income ~ HSGrad, data = state_30)
 summary(LSRL)
 ```
 
-## Practice 
+## Practice
 
 Please complete the Class 19 Activity - SLR in Canvas.

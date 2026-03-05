@@ -330,41 +330,86 @@ F-statistic: 14.68 on 1 and 28 DF,  p-value: 0.0006581</code></pre>
 <h2>Interpreting the p-value and drawing a conclusion</h2>
 <p><span class="fragment">Perform a hypothesis test on the slope parameter, <span class="math inline">\(\beta_1\)</span>, using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>.</span></p>
 <p><span class="fragment">The p-value for the hypothesis test on the slope parameter is <span class="math inline">\(0.000658\)</span>.</span></p>
-<p><span class="fragment">Since <span class="math inline">\(0.000658 &lt; \alpha\)</span>, we will <span style="color:red;">reject</span> the null hypothesis.</span></p>
-<p><span class="fragment">There is <span style="color:red;">convincing</span> evidence that the percentage of high school graduates is a useful predictor of a state’s per capita income in the 1970s.</span></p>
+<p><span class="fragment">Since <span class="math inline">\(0.000658 &lt; \alpha\)</span>, we will reject the null hypothesis.</span></p>
+<p><span class="fragment">There is convincing evidence that the percentage of high school graduates is a useful predictor of a state’s per capita income in the 1970s.</span></p>
+</section>
+<section id="confidence-interval-estimates-for-beta_1" class="slide level2 smaller">
+<h2>Confidence Interval Estimates for <span class="math inline">\(\beta_1\)</span></h2>
+<p>In addition to performing a hypothesis test about the slope parameter, we can provide a measure of uncertainty about the estimate for <span class="math inline">\(\beta_1\)</span> by constructing a confidence interval for the parameter.</p>
+<p><span class="fragment"><span class="math display">\[b_1 \pm t^* \times SE_{b_1}\]</span></span></p>
+<p><span class="fragment">The standardized estimate for <span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\frac{b_1}{SE_{b_1}}\)</span>, follows a <em>t</em>-distribution with <span class="math inline">\(n-2\)</span> degrees of freedom. We will use this distribution to determine <span class="math inline">\(t^*\)</span>.</span></p>
+<div class="fragment">
+<p><code>qt(p, df)</code></p>
+<p>where <code>p</code> corresponds to the area under the <em>t</em>-distribution curve to the left of the critical value and <code>df</code> <span class="math inline">\(n-2\)</span>.</p>
+</div>
+</section>
+<section id="confidence-interval-estimate-for-beta_1" class="slide level2 smaller">
+<h2>Confidence Interval Estimate for <span class="math inline">\(\beta_1\)</span></h2>
+<p>Construct the 95% confidence interval for the slope parameter of high school graduation rate on life expectancy.</p>
+<div class="fragment">
+<p>For <span class="math inline">\(b_1\)</span> and <span class="math inline">\(SE_{b_1}\)</span>, use the model output in R:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>              Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 1994.38858  634.62049 3.142648 0.0039352579
+HSGrad        46.68049   12.18172 3.832013 0.0006580844</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Calculate the critical value, <span class="math inline">\(t^*\)</span>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">28</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.048407</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Compute the lower and upper bounds of the interval:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fl">46.68049</span> <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">28</span>)<span class="sc">*</span><span class="fl">12.18172</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21.72737 71.63361</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>We are 95% confident that for each additional percentage of the population with a high school diploma, per capita income is expected to increase by $21.72 to $71.63, with a point estimate for the increase of $46.68.</p>
+</div>
 </section>
 <section id="r-code-for-this-weeks-examples" class="slide level2 smaller">
 <h2>R Code for This Week’s Examples</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Open the tidyverse library</span></span>
-<span id="cb3-2"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a><span class="co"># Import the dataset, first need to download the data from Canvas</span></span>
-<span id="cb3-5"><a href=""></a>state_30 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.choose</span>())</span>
-<span id="cb3-6"><a href=""></a></span>
-<span id="cb3-7"><a href=""></a><span class="co"># Create a scatterplot of the Illiteracy and LifeExp variables</span></span>
-<span id="cb3-8"><a href=""></a>state_30 <span class="sc">|&gt;</span></span>
-<span id="cb3-9"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">HS Grad</span><span class="st">`</span>, <span class="at">y =</span> Income)) <span class="sc">+</span></span>
-<span id="cb3-10"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="dv">6</span>)[<span class="dv">5</span>], <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb3-11"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Per Capita Income"</span>, </span>
-<span id="cb3-12"><a href=""></a>       <span class="at">x =</span> <span class="st">"Percentage of Population with High School Diploma"</span>, </span>
-<span id="cb3-13"><a href=""></a>       <span class="at">title =</span> <span class="st">"High School Graduation Rates vs. Income "</span>,</span>
-<span id="cb3-14"><a href=""></a>       <span class="at">subtitle =</span> <span class="st">"for 30 US States in 1970"</span>) <span class="sc">+</span> </span>
-<span id="cb3-15"><a href=""></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)) <span class="sc">+</span> </span>
-<span id="cb3-16"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb3-17"><a href=""></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb3-18"><a href=""></a>              <span class="at">formula =</span> y <span class="sc">~</span> x, </span>
-<span id="cb3-19"><a href=""></a>              <span class="at">geom =</span> <span class="st">"smooth"</span>, </span>
-<span id="cb3-20"><a href=""></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb3-21"><a href=""></a>              <span class="at">color =</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="dv">6</span>)[<span class="dv">5</span>])</span>
-<span id="cb3-22"><a href=""></a></span>
-<span id="cb3-23"><a href=""></a><span class="co"># Rename HS Grad variable</span></span>
-<span id="cb3-24"><a href=""></a>state_30 <span class="ot">&lt;-</span> state_30 <span class="sc">|&gt;</span></span>
-<span id="cb3-25"><a href=""></a>  <span class="fu">rename</span>(<span class="st">"HSGrad"</span><span class="ot">=</span><span class="st">`</span><span class="at">HS Grad</span><span class="st">`</span>)</span>
-<span id="cb3-26"><a href=""></a></span>
-<span id="cb3-27"><a href=""></a><span class="co"># Estimate intercept and slope for LSRL</span></span>
-<span id="cb3-28"><a href=""></a>LSRL <span class="ot">&lt;-</span> <span class="fu">lm</span>(Income <span class="sc">~</span> HSGrad, <span class="at">data =</span> state_30)</span>
-<span id="cb3-29"><a href=""></a><span class="fu">summary</span>(LSRL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Open the tidyverse library</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a><span class="co"># Import the dataset, first need to download the data from Canvas</span></span>
+<span id="cb8-5"><a href=""></a>state_30 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb8-6"><a href=""></a></span>
+<span id="cb8-7"><a href=""></a><span class="co"># Create a scatterplot of the Illiteracy and LifeExp variables</span></span>
+<span id="cb8-8"><a href=""></a>state_30 <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">HS Grad</span><span class="st">`</span>, <span class="at">y =</span> Income)) <span class="sc">+</span></span>
+<span id="cb8-10"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="dv">6</span>)[<span class="dv">5</span>], <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb8-11"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Per Capita Income"</span>, </span>
+<span id="cb8-12"><a href=""></a>       <span class="at">x =</span> <span class="st">"Percentage of Population with High School Diploma"</span>, </span>
+<span id="cb8-13"><a href=""></a>       <span class="at">title =</span> <span class="st">"High School Graduation Rates vs. Income "</span>,</span>
+<span id="cb8-14"><a href=""></a>       <span class="at">subtitle =</span> <span class="st">"for 30 US States in 1970"</span>) <span class="sc">+</span> </span>
+<span id="cb8-15"><a href=""></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)) <span class="sc">+</span> </span>
+<span id="cb8-16"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb8-17"><a href=""></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb8-18"><a href=""></a>              <span class="at">formula =</span> y <span class="sc">~</span> x, </span>
+<span id="cb8-19"><a href=""></a>              <span class="at">geom =</span> <span class="st">"smooth"</span>, </span>
+<span id="cb8-20"><a href=""></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb8-21"><a href=""></a>              <span class="at">color =</span> viridis<span class="sc">::</span><span class="fu">viridis</span>(<span class="dv">6</span>)[<span class="dv">5</span>])</span>
+<span id="cb8-22"><a href=""></a></span>
+<span id="cb8-23"><a href=""></a><span class="co"># Rename HS Grad variable</span></span>
+<span id="cb8-24"><a href=""></a>state_30 <span class="ot">&lt;-</span> state_30 <span class="sc">|&gt;</span></span>
+<span id="cb8-25"><a href=""></a>  <span class="fu">rename</span>(<span class="st">"HSGrad"</span><span class="ot">=</span><span class="st">`</span><span class="at">HS Grad</span><span class="st">`</span>)</span>
+<span id="cb8-26"><a href=""></a></span>
+<span id="cb8-27"><a href=""></a><span class="co"># Estimate intercept and slope for LSRL</span></span>
+<span id="cb8-28"><a href=""></a>LSRL <span class="ot">&lt;-</span> <span class="fu">lm</span>(Income <span class="sc">~</span> HSGrad, <span class="at">data =</span> state_30)</span>
+<span id="cb8-29"><a href=""></a><span class="fu">summary</span>(LSRL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="practice" class="slide level2">
