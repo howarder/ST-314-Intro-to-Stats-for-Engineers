@@ -1,6 +1,8 @@
 ---
 title: "Topic 9 - Simple Linear Regression"
 format: 
+  typst: 
+    fig-format: png
   revealjs:
     theme: OSU.scss
     chalkboard: false

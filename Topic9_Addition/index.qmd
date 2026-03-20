@@ -1,7 +1,7 @@
 ---
 title: "Topic 9 - Additional Slides"
 subtitle: "These slides have also been included at the end of the original topic 9 slides."
-format: 
+format:
   revealjs:
     theme: OSU.scss
     chalkboard: false
@@ -130,6 +130,7 @@ predict(mod, newdata = data.frame(Illiteracy = 1.4), interval = "confidence", le
  
 
 [*We won't cover anymore of the details of these intervals, but if you want to read more or explore the formulas used to calculate the interval bounds, check out [the textbook's supplemental material](https://www.openintro.org/go/?id=stat_extra_linear_regression_supp&referrer=os4_pdf).*]{.fragment}
+
 
 ```{r}
 library(countdown)

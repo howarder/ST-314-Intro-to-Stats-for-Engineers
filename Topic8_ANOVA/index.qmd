@@ -677,10 +677,8 @@ countdown(minutes = 1, seconds = 30)
 
 ### Example Problem ️📦
 
-:::{.columns}
-
-:::{.column width=40%}
-
+::::: columns
+::: {.column width="40%"}
 ```{r}
 pairwise.t.test(boxes$strength, as.factor(boxes$material), 
                 pool.sd = TRUE,
@@ -688,7 +686,7 @@ pairwise.t.test(boxes$strength, as.factor(boxes$material),
 ```
 :::
 
-:::{.column width=60%}
+::: {.column width="60%"}
 ```{r}
 ggplot(boxes, aes(x = strength, y = as.factor(material))) + 
   geom_boxplot(aes(fill = as.factor(material))) + 
@@ -699,6 +697,5 @@ ggplot(boxes, aes(x = strength, y = as.factor(material))) +
   theme(axis.title = element_text(size = 16), 
         axis.text = element_text(size = 16))
 ```
-
 :::
-:::
+:::::
