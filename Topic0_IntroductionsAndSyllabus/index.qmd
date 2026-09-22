@@ -47,11 +47,11 @@ erin.howard\@oregonstate.edu
 
 ## Introduce Yourself to Your Classmates 👋
 
--   Name
--   Major
--   Year in school
--   Something you did over the summer
--   Your experience with learning or using statistics
+- Name
+- Major
+- Year in school
+- Something you did over the summer
+- Your experience with learning or using statistics
 
 ```{r}
 library(countdown)
@@ -82,37 +82,37 @@ Intro Survey & Academic Integrity Agreement due in Canvas tomorrow at 11:59 pm.
 
 ## Communication 🗣️
 
--   Canvas Discussion Boards - please use the discussion boards for material and assignment related questions.
+- Canvas Discussion Boards - please use the discussion boards for material and assignment related questions.
 
 . . .
 
--   Announcements - check Canvas regularly for announcements about assignments, course updates, etc. (I post announcements regularly!)
+- Announcements - check Canvas regularly for announcements about assignments, course updates, etc. (I post announcements regularly!)
 
 . . .
 
--   Office hours - attend office hours to get help with class materials, assignments, exam studying, etc.
+- Office hours - attend office hours to get help with class materials, assignments, exam studying, etc.
 
 . . .
 
--   Email - please only use email for personal matters (e.g. grades)
+- Email - please only use email for personal matters (e.g. grades)
 
 ## Required Course Materials 📚 {.smaller}
 
--   R **AND** RStudio Statistical Software
+- R **AND** RStudio Statistical Software
 
-    -   R is a free open-source programming language.
+  - R is a free open-source programming language.
 
-    -   RStudio is the integrated development environment (IDE) we'll work in when using R.
+  - RStudio is the integrated development environment (IDE) we'll work in when using R.
 
-    -   Instructions for downloading both are posted in the Start Here module on Canvas.
-
-. . .
-
--   A smart phone, tablet, or laptop with you in class so that you can participate in class. Talk to me if you need assistance getting one of these things!
+  - Instructions for downloading both are posted in the Start Here module on Canvas.
 
 . . .
 
--   FREE textbook: OpenIntro Statistics by David Diez, Mine Cetinkaya-Rundel, and Christopher Barr
+- A smart phone, tablet, or laptop with you in class so that you can participate in class. Talk to me if you need assistance getting one of these things!
+
+. . .
+
+- FREE textbook: OpenIntro Statistics by David Diez, Mine Cetinkaya-Rundel, and Christopher Barr
 
 ## Preparing for Class ✏️ {.smaller}
 
@@ -120,11 +120,11 @@ Intro Survey & Academic Integrity Agreement due in Canvas tomorrow at 11:59 pm.
 
 Before attending our in-person meetings each week, you need to do the following:
 
--   **Required:** Read the assigned sections from OpenIntro Statistics (or other free resources linked on Canvas).
+- **Required:** Read the assigned sections from OpenIntro Statistics (or other free resources linked on Canvas).
 
--   **Required:** Complete the week's pre-lecture activity, due Wednesdays or Mondays at 11:59 pm (see the Schedule & Deadlines page in Canvas for specifics).
+- **Required:** Complete the week's pre-lecture activity, due Wednesdays or Mondays at 11:59 pm (see the Schedule & Deadlines page in Canvas for specifics).
 
--   **Recommended:** take notes as you read and work on the pre-lecture activity
+- **Recommended:** take notes as you read and work on the pre-lecture activity
 
 . . .
 
@@ -138,40 +138,40 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   A portion of each class will be spent reviewing concepts from the readings and pre-lecture materials, as well as going over examples when applicable.
+- A portion of each class will be spent reviewing concepts from the readings and pre-lecture materials, as well as going over examples when applicable.
 
 . . .
 
--   Poll Everywhere questions will be used during class to gauge understanding and provide practice with the course concepts.
+- Poll Everywhere questions will be used during class to gauge understanding and provide practice with the course concepts.
 
 . . .
 
--   On Tuesdays, at the end of class you will complete and submit a Concept Quiz (more on the next slide).
+- On Thursdays, at the end of class you will complete and submit a Concept Quiz (more on the next slide).
 
 . . .
 
--   All lectures will be recorded and posted to Canvas. There is no option for remote attendance in this class.
+- All lectures will be recorded and posted to Canvas. There is no option for remote attendance in this class.
 
 . . .
 
--   You are strongly encouraged to ask questions throughout class. No need to wait for a good stopping point or the end of class - the sooner you get your questions answered the better.
+- You are strongly encouraged to ask questions throughout class. No need to wait for a good stopping point or the end of class - the sooner you get your questions answered the better.
 
 ## Concept Quizzes 📝 {.smaller}
 
-#### Tuesdays, at the end of class...
+#### Thursdays, at the end of class...
 
 ::: incremental
--   A short quiz will be administered, on paper.
+- A short quiz will be administered, on paper.
 
--   These quizzes are intended to encourage a deeper understanding of the conceptual aspects of the course material.
+- These quizzes are intended to encourage a deeper understanding of the conceptual aspects of the course material.
 
--   You will not be permitted to use any technology during these quizzes (i.e., no phones, tablets, laptops).
+- You will not be permitted to use any technology during these quizzes (i.e., no phones, tablets, laptops).
 
--   Concept quizzes will cover material from the previous two class periods (not the class period in which the quiz is given).
+- Concept quizzes will cover material from the previous two class periods (not the class period in which the quiz is given).
 
--   You should prepare for the concept quizzes by completing the required readings, answering and taking notes on pre-lecture activities, completing weekly problem sets, and asking questions.
+- You should prepare for the concept quizzes by completing the required readings, answering and taking notes on pre-lecture activities, completing weekly problem sets, and asking questions.
 
--   If you miss a class period where a concept quiz was given, you must contact me by 5 pm that day so that we can schedule you to take the alternate version.
+- If you miss a class period where a concept quiz was given, you must contact me by 5 pm that day so that we can schedule you to take the alternate version.
 :::
 
 <!-- ## Weekly Problem Sets 💻 {.smaller} -->
@@ -200,49 +200,49 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 . . .
 
--   Weekly written assignments will be used to apply the material covered in class to real-world problems.
+- Weekly written assignments will be used to apply the material covered in class to real-world problems.
 
 . . .
 
--   Data Analyses are due every Friday at 11:59 pm PT.
+- Data Analyses are due every Friday at 11:59 pm PT.
 
 . . .
 
--   Data Analyses will require the use of RStudio.
+- Data Analyses will require the use of RStudio.
 
 . . .
 
--   Collaboration is allowed and encouraged on these assignments, but all work must be your own.
+- Collaboration is allowed and encouraged on these assignments, but all work must be your own.
 
 . . .
 
--   Data Analyses are submitted in Gradescope.
+- Data Analyses are submitted in Gradescope.
 
 ## Late Policy ⏰
 
 . . .
 
--   Each student is granted two "no questions asked" 24-hour late submissions on outside of class assignments.
+- Each student is granted two "no questions asked" 24-hour late submissions on outside of class assignments.
 
 . . .
 
--   Longer extensions may be granted for extenuating circumstances. Longer extensions are not guaranteed.
+- Longer extensions may be granted for extenuating circumstances. Longer extensions are not guaranteed.
 
 . . .
 
--   **You must submit a late assignment request form for any extension.**
+- **You must submit a late assignment request form for any extension.**
 
-##  
+## 
 
 ### Additional Practice & Study Materials 🧠
 
--   Each module contains
+- Each module contains
 
-    -   a practice problem set (practice canvas quiz).
+  - a practice problem set (practice canvas quiz).
 
-    -   topic review questions.
+  - topic review questions.
 
--   You are strongly encouraged to work through these practice activities before complete data analyses and taking concept quizzes.
+- You are strongly encouraged to work through these practice activities before complete data analyses and taking concept quizzes.
 
 ## Generative AI Policy 🤖 {.smaller}
 
@@ -250,11 +250,11 @@ If you prefer a pre-formatted version of the material we'll cover in class (e.g.
 
 The use of generative AI is strongly discouraged across all aspects of this course. Below is a list of instances where generative AI use is **prohibited:**
 
--   Use of generative AI is **prohibited on exams** and **concept quizzes**. 
+- Use of generative AI is **prohibited on exams** and **concept quizzes**. 
 
--   Use of generative AI is **prohibited for writing**. All written responses to questions on any assignment in this course must be your own writing. 
+- Use of generative AI is **prohibited for writing**. All written responses to questions on any assignment in this course must be your own writing. 
 
--   Use of generative AI is **prohibited** **in writing code**. It's common for people to use gen AI to help debug code, which I am not prohibiting in this course, but you cannot rely on large language models to write code from scratch for you. 
+- Use of generative AI is **prohibited** **in writing code**. It's common for people to use gen AI to help debug code, which I am not prohibiting in this course, but you cannot rely on large language models to write code from scratch for you. 
 
 Violations of the above policy will be considered acts of academic misconduct and handled as such. 
 
@@ -262,61 +262,61 @@ Violations of the above policy will be considered acts of academic misconduct an
 
 . . .
 
--   There will be two cumulative exams in this course:
+- There will be two cumulative exams in this course:
 
-    -   Midterm Exam - February 12 during class (Thursday of Week 6)
+  - Midterm Exam - February 12 during class (Thursday of Week 6)
 
-    -   Final Exam - March 19 at 8 am (Thursday of Finals Week)
-
-. . .
-
--   Exams will be open note; however, no devices are allowed. Any notes you wish to use during the exam must be on paper.
+  - Final Exam - March 19 at 8 am (Thursday of Finals Week)
 
 . . .
 
--   More details will be discussed as we approach the exams.
+- Exams will be open note; however, no devices are allowed. Any notes you wish to use during the exam must be on paper.
+
+. . .
+
+- More details will be discussed as we approach the exams.
 
 ## Coming Up 🗓️ {.smaller}
 
 ### Due this week
 
--   Intro Survey & Academic Integrity Agreement, tomorrow 11:59 pm
+- Intro Survey & Academic Integrity Agreement, tomorrow 11:59 pm
 
--   Data Analysis: Get Familiar with RStudio, Friday at 11:59 pm
+- Data Analysis: Get Familiar with RStudio, Friday at 11:59 pm
 
 ### Next week
 
--   Concept quiz in class, Tuesday, January 13
+- Concept quiz in class, Tuesday, January 13
 
--   Pre-lecture Activity: Probability & Random Variables, Wednesday, Jan 14 at 11:59 pm
+- Pre-lecture Activity: Probability & Random Variables, Wednesday, Jan 14 at 11:59 pm
 
--   Data Analysis: Exploring & Summarizing Data, Friday, Jan 16 at 11:59 pm
+- Data Analysis: Exploring & Summarizing Data, Friday, Jan 16 at 11:59 pm
 
 ## Advice from Previous ST 314 Students {.smaller}
 
 . . .
 
--   "Show up and be **active** in every lecture"
+- "Show up and be **active** in every lecture"
 
 . . .
 
--   "Finding others to review with can be very useful in understanding the material and catching mistakes, making it much easier to succeed in the class."
+- "Finding others to review with can be very useful in understanding the material and catching mistakes, making it much easier to succeed in the class."
 
 . . .
 
--   "Work on the problems sets and data analyses sooner rather than later. This will reduce stress as you go on with the course."
+- "Work on the problems sets and data analyses sooner rather than later. This will reduce stress as you go on with the course."
 
 . . .
 
--   "I would say to go to class everyday, as this class isn't that hard if you do. Also go to office hours as soon as questions arise."
+- "I would say to go to class everyday, as this class isn't that hard if you do. Also go to office hours as soon as questions arise."
 
 . . .
 
--   "Make sure you take good notes and attend as many office hours as you can."
+- "Make sure you take good notes and attend as many office hours as you can."
 
 . . .
 
--   "Every week I would do a quick overview to make sure I understand everything."
+- "Every week I would do a quick overview to make sure I understand everything."
 
 ## Why Statistics? 📊
 
