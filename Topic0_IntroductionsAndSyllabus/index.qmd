@@ -31,6 +31,10 @@ Erin Howard
 
 erin.howard\@oregonstate.edu
 
+![](images/qr.png){.absolute right="5%" bottom="20%" width="30%"}
+
+**Please answer today's poll everywhere question (PollEv.com/ErinHowardStats)**
+
 ## Erin Howard (she/her) 👩‍🏫
 
 ::: {layout="[[1,1], [1,1,1]]"}
