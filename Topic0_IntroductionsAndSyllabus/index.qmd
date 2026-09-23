@@ -264,9 +264,9 @@ Violations of the above policy will be considered acts of academic misconduct an
 
 - There will be two cumulative exams in this course:
 
-  - Midterm Exam - February 12 during class (Thursday of Week 6)
+  - Midterm Exam - November 3 during class (Tuesday of Week 6)
 
-  - Final Exam - March 19 at 8 am (Thursday of Finals Week)
+  - Final Exam - December 8 at 7:30 am (Thursday of Finals Week)
 
 . . .
 
@@ -282,15 +282,11 @@ Violations of the above policy will be considered acts of academic misconduct an
 
 - Intro Survey & Academic Integrity Agreement, tomorrow 11:59 pm
 
-- Data Analysis: Get Familiar with RStudio, Friday at 11:59 pm
-
 ### Next week
 
-- Concept quiz in class, Tuesday, January 13
+- Concept quiz in class, next Thursday
 
-- Pre-lecture Activity: Probability & Random Variables, Wednesday, Jan 14 at 11:59 pm
-
-- Data Analysis: Exploring & Summarizing Data, Friday, Jan 16 at 11:59 pm
+- Data Analysis: Get Familiar with RStudio, next Friday at 11:59 pm
 
 ## Advice from Previous ST 314 Students {.smaller}
 
