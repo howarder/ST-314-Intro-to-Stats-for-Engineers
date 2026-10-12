@@ -407,7 +407,6 @@ Continuous RVs
 ::::
 :::::::
 
- 
 
 ::: {style="text-align:center"}
 [$SD(X) = \sqrt{Var(X)}$]{.fragment}
