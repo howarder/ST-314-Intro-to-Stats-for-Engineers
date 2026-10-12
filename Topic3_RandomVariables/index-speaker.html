@@ -6,8 +6,8 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.24">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dfa48a90d809c806c7ea2d5aecd9fc66.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.29">
 
   <title>Topic 3 - Random Variables</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -28,7 +31,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-c52c2244ac0c8170f5d423a3768e5dfc.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-db768e3b4df8de2eadc3d6b7ccd8eb8c.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -402,9 +405,18 @@
 <iframe src="https://www.desmos.com/calculator/driz8xpoed" width="90%" height="60%" style="border: 1px solid #ccc" frameborder="1">
 </iframe>
 </section>
+<section id="brief-topic-1-review" class="slide level2">
+<h2>Brief Topic 1 Review</h2>
+<p>For data that have been <strong>collected</strong>,</p>
+<p>mean: <span class="fragment"><span class="math inline">\(\overline{x} = \sum \limits_{i=1}^n \frac{x_i}{n}\)</span></span></p>
+<p>standard deviation: <span class="fragment"><span class="math inline">\(s = \sum \limits _{i=1}^n \frac{(x_i-\overline{x})^2}{n-1}\)</span></span></p>
+<p><span class="fragment">When the data are observed and collected, we weight each observation equally (by <span class="math inline">\(\frac{1}{n}\)</span> in the mean and <span class="math inline">\(\frac{1}{n-1}\)</span> in the standard deviation).</span></p>
+<p><span class="fragment">When dealing with random variables, we compute the <strong>anticipated</strong> center and spread weighting the oucomes by their probability distribution…</span></p>
+</section>
 <section id="section-8" class="slide level2">
 <h2></h2>
 <h3 id="expectation-ex">Expectation <span class="math inline">\(E(X)\)</span></h3>
+<p>The average outcome of <span class="math inline">\(X\)</span> according to its probability distribution.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div style="color:green;">
@@ -471,7 +483,8 @@
 </section>
 <section id="section-11" class="slide level2 smaller">
 <h2></h2>
-<h3 id="variance-and-standard-deviation">Variance and Standard Deviation</h3>
+<h3 id="variance-and-standard-deviation-of-random-variable-x">Variance and Standard Deviation of Random Variable <span class="math inline">\(X\)</span></h3>
+<p>The anticipated variability of <span class="math inline">\(X\)</span> according to its probability distribution.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div style="color:green;">

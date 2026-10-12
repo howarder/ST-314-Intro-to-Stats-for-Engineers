@@ -42,11 +42,11 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 [**Examples:**]{.fragment}
 
 ::: incremental
--   The sum of the dots that appear when two fair dice are rolled.
+- The sum of the dots that appear when two fair dice are rolled.
 
--   The number of patients that enter a hospital waiting room in any given hour interval.
+- The number of patients that enter a hospital waiting room in any given hour interval.
 
--   The daily recorded high temperature in Corvallis.
+- The daily recorded high temperature in Corvallis.
 :::
 
  
@@ -65,9 +65,9 @@ This feature has been confirmed to work in Google Chrome and Firefox.
 
 :::: {style="color:green;"}
 ::: incremental
--   finite OR
+- finite OR
 
--   infinite with as many elements are there are whole numbers
+- infinite with as many elements are there are whole numbers
 :::
 ::::
 :::::
@@ -122,9 +122,9 @@ Probability Mass Function (PMF), $p(x)$
 [The PMF may be represented as a]{.fragment}
 
 ::: incremental
--   table
+- table
 
--   mathematical function
+- mathematical function
 :::
 
  
@@ -133,9 +133,9 @@ Probability Mass Function (PMF), $p(x)$
 Properties:
 
 ::: incremental
--   $0 \leq p(x) \leq 1$
+- $0 \leq p(x) \leq 1$
 
--   $\sum \limits_{i=1}^n p(x_i) =1$
+- $\sum \limits_{i=1}^n p(x_i) =1$
 :::
 ::::
 ::::::
@@ -163,9 +163,9 @@ Probability Density Function (PDF), $f(x)$
 Properties:
 
 ::: incremental
--   $f(x) \geq 0$ for all values of $x$ in the support
+- $f(x) \geq 0$ for all values of $x$ in the support
 
--   $\int \limits_{-\infty}^{\infty} f(x) dx = 1$
+- $\int \limits_{-\infty}^{\infty} f(x) dx = 1$
 :::
 ::::
 :::::
@@ -244,11 +244,11 @@ Continuous RVs
 Continuous CDF Properties:
 
 ::: incremental
--   $P(a \leq X \leq b) = F(b) - F(a)$
+- $P(a \leq X \leq b) = F(b) - F(a)$
 
--   $\frac{d}{dx}F(x) = f(x)$
+- $\frac{d}{dx}F(x) = f(x)$
 
--   $P(X \leq a) = P(X < a) = F(a)$
+- $P(X \leq a) = P(X < a) = F(a)$
 :::
 ::::
 :::::
@@ -292,9 +292,23 @@ Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
 
 </iframe>
 
+## Brief Topic 1 Review
+
+For data that have been **collected**, 
+
+mean: [$\overline{x} = \sum \limits_{i=1}^n \frac{x_i}{n}$]{.fragment}
+
+standard deviation: [$s = \sum \limits _{i=1}^n \frac{(x_i-\overline{x})^2}{n-1}$]{.fragment}
+
+[When the data are observed and collected, we weight each observation equally (by $\frac{1}{n}$ in the mean and $\frac{1}{n-1}$ in the standard deviation).]{.fragment}
+
+[When dealing with random variables, we compute the **anticipated** center and spread weighting the oucomes by their probability distribution...]{.fragment}
+
 ## 
 
 ### Expectation $E(X)$
+
+The average outcome of $X$ according to its probability distribution.
 
 ::::::::: columns
 ::::: {.column width="50%"}
@@ -357,7 +371,9 @@ $E(X) = 1(0.16) + 2(0.32) + 3(0.36) + 4(0.12) + 5(0.04) = 2.56$
 
 ##  {.smaller}
 
-### Variance and Standard Deviation
+### Variance and Standard Deviation of Random Variable $X$
+
+The anticipated variability of $X$ according to its probability distribution.
 
 ::::::: columns
 :::: {.column width="50%"}
@@ -458,11 +474,11 @@ $$SD(X) = \sqrt{0.0375} = 0.1936$$
 
 :::::::: columns
 :::: column
--   **When to use:**
+- **When to use:**
 
 [Want to model the number of successful outcomes from $n$ independent Bernoulli trials.]{.fragment}
 
--   **Parameters of the distribution:**
+- **Parameters of the distribution:**
 
 ::: fragment
 $n=$ the number of independent Bernoulli trials
@@ -472,7 +488,7 @@ $p=$ the probability of success on each independent trial
 ::::
 
 ::::: column
--   **Probability Mass Function:**
+- **Probability Mass Function:**
 
 ::: fragment
 $$ p(x) = {{n}\choose{x}}p^x(1-p)^{n-x}$$ for $x$ in $\{0, 1, 2, ..., n \}$
@@ -482,11 +498,11 @@ $$ p(x) = {{n}\choose{x}}p^x(1-p)^{n-x}$$ for $x$ in $\{0, 1, 2, ..., n \}$
 where ${{n}\choose{x}} = \frac{n!}{x!(n-x)!}$
 :::
 
--   **Expectation:**
+- **Expectation:**
 
 [$E(X) = np$]{.fragment}
 
--   **Variance:**
+- **Variance:**
 
 [$Var(X) = np(1-p)$]{.fragment}
 :::::
