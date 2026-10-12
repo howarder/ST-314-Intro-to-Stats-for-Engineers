@@ -298,7 +298,7 @@ For data that have been **collected**,
 
 mean: [$\overline{x} = \sum \limits_{i=1}^n \frac{x_i}{n}$]{.fragment}
 
-standard deviation: [$s = \sum \limits _{i=1}^n \frac{(x_i-\overline{x})^2}{n-1}$]{.fragment}
+standard deviation: [$s = \sqrt{\sum \limits _{i=1}^n \frac{(x_i-\overline{x})^2}{n-1}}$]{.fragment}
 
 [When the data are observed and collected, we weight each observation equally (by $\frac{1}{n}$ in the mean and $\frac{1}{n-1}$ in the standard deviation).]{.fragment}
 
