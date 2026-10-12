@@ -292,7 +292,7 @@ Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
 
 </iframe>
 
-## Brief Topic 1 Review
+## Brief Topic 1 Review {.smaller}
 
 For data that have been **collected**, 
 
