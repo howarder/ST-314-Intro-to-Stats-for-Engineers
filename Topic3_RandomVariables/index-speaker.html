@@ -123,6 +123,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="index_files/libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="index_files/libs/countdown-0.6.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -469,6 +471,11 @@
 <p>&nbsp;</p>
 <p><span class="fragment">We <strong>expect</strong> a randomly selected student at the community college to be enrolled in 2.56 courses.</span></p>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_848c9bfd" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 </section>
 <section id="section-10" class="slide level2">
 <h2></h2>
@@ -479,6 +486,11 @@
 </ol>
 <p><span class="fragment"><span class="math inline">\(E(X) =\)</span><span class="math inline">\(\int \limits _0^1 x (3x^2) dx\)</span><span class="math inline">\(= \frac{3}{4}x^4 \bigg \vert_0^1\)</span><span class="math inline">\(= \frac{3}{4}\)</span></span></p>
 <p><span class="fragment">We <strong>expect</strong> a randomly selected user of the reservation system occupies the meeting room for 3/4 of an hour (or 45 minutes).</span></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_91cbe026" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
 </div>
 </section>
 <section id="section-11" class="slide level2 smaller">
@@ -549,6 +561,11 @@
 </div>
 <p><span class="fragment">A <strong>typical deviation</strong> from the expected number of enrolled courses is approximately 1.02 courses.</span></p>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_72c21a0c" minutes="2" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 </section>
 <section id="section-13" class="slide level2 smaller">
 <h2></h2>
@@ -570,6 +587,11 @@
 <p><span class="math display">\[SD(X) = \sqrt{0.0375} = 0.1936\]</span></p>
 </div>
 <p><span class="fragment">A <strong>typical deviation</strong> from the expected time spent in the reserved meeting room is approximately 0.19 hours (or a little more than 11 minutes).</span></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_b9b13df8" minutes="2" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
 </div>
 </section>
 <section id="binomial-distribution" class="slide level2 smaller">
@@ -607,13 +629,22 @@
 <p><span class="fragment"><span class="math inline">\(Var(X) = np(1-p)\)</span></span></p>
 </div></div>
 </section>
-<section id="r-demonstration" class="slide level2">
-<h2>R Demonstration</h2>
+<section id="using-r-for-the-binomial-distribution" class="slide level2">
+<h2>Using R for the Binomial Distribution</h2>
 <p>&nbsp;</p>
 <p><strong>Binomial Distribution</strong></p>
 <p><span class="math inline">\(p(x) = P(X = x)\)</span>: <code>dbinom(x, n, p)</code></p>
 <p><span class="math inline">\(F(x) = P(X \leq x)\)</span>: <code>pbinom(q, n, p)</code></p>
 <p>&nbsp;</p>
+</section>
+<section id="example---binomial-random-variable" class="slide level2">
+<h2>Example - Binomial Random Variable</h2>
+<p>On a twenty-question quiz, <span class="math inline">\(X\)</span> is the number of questions answered correctly. Each question on the quiz is a multiple-choice question with four possible answers. The chance a student <em>guesses</em> the correct answer is 1/4. Each question is a Bernoulli trial.</p>
+<p><span class="fragment"><span class="math inline">\(n =\)</span></span></p>
+<p><span class="fragment"><span class="math inline">\(p =\)</span></span></p>
+<p><span class="fragment"><span class="math inline">\(E(X) =\)</span></span></p>
+<p><span class="fragment"><span class="math inline">\(SD(X) =\)</span></span></p>
+<p><span class="fragment"><span class="math inline">\(P(X = 10) =\)</span></span></p>
 
 </section></section>
     </div>

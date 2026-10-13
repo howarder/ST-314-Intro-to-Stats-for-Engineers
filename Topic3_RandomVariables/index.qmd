@@ -294,7 +294,7 @@ Discrete: sum of the PMF evaluated at all values of t less than or equal to x.
 
 ## Brief Topic 1 Review {.smaller}
 
-For data that have been **collected**, 
+For data that have been **collected**,
 
 mean: [$\overline{x} = \sum \limits_{i=1}^n \frac{x_i}{n}$]{.fragment}
 
@@ -357,6 +357,10 @@ $E(X) = 1(0.16) + 2(0.32) + 3(0.36) + 4(0.12) + 5(0.04) = 2.56$
 [We **expect** a randomly selected student at the community college to be enrolled in 2.56 courses.]{.fragment}
 ::::
 
+```{r}
+countdown(minutes = 1, seconds = 30)
+```
+
 ## 
 
 ### Example - Continuous Expectation
@@ -368,6 +372,10 @@ $E(X) = 1(0.16) + 2(0.32) + 3(0.36) + 4(0.12) + 5(0.04) = 2.56$
 
 [We **expect** a randomly selected user of the reservation system occupies the meeting room for 3/4 of an hour (or 45 minutes).]{.fragment}
 :::
+
+```{r}
+countdown(minutes = 2)
+```
 
 ##  {.smaller}
 
@@ -407,7 +415,6 @@ Continuous RVs
 ::::
 :::::::
 
-
 ::: {style="text-align:center"}
 [$SD(X) = \sqrt{Var(X)}$]{.fragment}
 :::
@@ -443,6 +450,10 @@ $$SD(X) = \sqrt{1.0464} = 1.022937$$
 [A **typical deviation** from the expected number of enrolled courses is approximately 1.02 courses.]{.fragment}
 :::::::
 
+```{r}
+countdown(minutes = 2, seconds = 30)
+```
+
 ##  {.smaller}
 
 ### Example - Continuous Var and SD
@@ -468,6 +479,10 @@ $$SD(X) = \sqrt{0.0375} = 0.1936$$
 
 [A **typical deviation** from the expected time spent in the reserved meeting room is approximately 0.19 hours (or a little more than 11 minutes).]{.fragment}
 :::::::
+
+```{r}
+countdown(minutes = 2, seconds = 30)
+```
 
 ## Binomial Distribution {.smaller}
 
@@ -507,7 +522,7 @@ where ${{n}\choose{x}} = \frac{n!}{x!(n-x)!}$
 :::::
 ::::::::
 
-## R Demonstration
+## Using R for the Binomial Distribution
 
  
 
@@ -518,3 +533,17 @@ $p(x) = P(X = x)$: `dbinom(x, n, p)`
 $F(x) = P(X \leq x)$: `pbinom(q, n, p)`
 
  
+
+## Example - Binomial Random Variable 
+
+On a twenty-question quiz, $X$ is the number of questions answered correctly. Each question on the quiz is a multiple-choice question with four possible answers. The chance a student *guesses* the correct answer is 1/4. Each question is a Bernoulli trial.
+
+[$n =$]{.fragment}
+
+[$p =$]{.fragment}
+
+[$E(X) =$]{.fragment}
+
+[$SD(X) =$]{.fragment} 
+
+[$P(X = 10) =$]{.fragment}
