@@ -66,7 +66,7 @@ countdown(minutes = 1)
 
 :::::::: columns
 :::: column
--   When to use:
+- When to use:
 
 [Useful when modeling a continuous random variable that has a bell-shaped distribution.]{.fragment style="color:blue;"}
 
@@ -83,7 +83,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 ::::
 
 ::::: column
--   Parameters of the distribution:
+- Parameters of the distribution:
 
 ::: {.fragment style="color:blue;"}
 $\mu$: mean - determines the center of the distribution
@@ -91,7 +91,7 @@ $\mu$: mean - determines the center of the distribution
 $\sigma$: standard deviation - determines the spread of the distribution
 :::
 
--   Probability Density Function:
+- Probability Density Function:
 
 ::: {.fragment style="color:blue;"}
 $$f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$ for $x$ in $(-\infty, \infty)$
@@ -99,9 +99,9 @@ $$f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$ for $x
 
  
 
--   Expectation: [$E(X) = \mu$]{.fragment style="color:blue;"}
+- Expectation: [$E(X) = \mu$]{.fragment style="color:blue;"}
 
--   Variance:[$Var(X) = \sigma^2$]{.fragment style="color:blue;"}
+- Variance:[$Var(X) = \sigma^2$]{.fragment style="color:blue;"}
 :::::
 ::::::::
 
@@ -282,16 +282,16 @@ Answer the one question in the google form that can be accessed in any of the fo
 :::::: columns
 :::: {.column width="50%"}
 ::: nonincremental
--   Typing the following URL into your browser. The URL is case sensitive. <https://beav.es/W4_survey>
+- Typing the following URL into your browser. <https://beav.es/314>
 
--   Find the Week 4 Survey link on Canvas in the Quick Links module
+- Find the Topic 4 Survey link on Canvas in the Quick Links module
 
--   Scan the QR code
+- Scan the QR code
 :::
 ::::
 
 ::: {.column width="50%"}
-![](QR.png){height="500"}
+![](survey_qr.png){height="500"}
 :::
 ::::::
 
@@ -300,13 +300,13 @@ Answer the one question in the google form that can be accessed in any of the fo
 ## Inferential Statistics
 
 ::: incremental
--   Recall that inferential statistics use information from a sample to estimate or test characteristics from a population of interest.
+- Recall that inferential statistics use information from a sample to estimate or test characteristics from a population of interest.
 
--   Typically, we calculate a **point estimate** from the sample as our best guess of the **parameter** of interest.
+- Typically, we calculate a **point estimate** from the sample as our best guess of the **parameter** of interest.
 
-    -   Naturally, our best guess for the population mean, $\mu$, from a sample is the [sample mean, $\overline{x}$.]{.fragment .fade-in}
+  - Naturally, our best guess for the population mean, $\mu$, from a sample is the [sample mean, $\overline{x}$.]{.fragment .fade-in}
 
-    -   Our best guess for the population proportion, $p$, is the [sample proportion, $\hat{p}$.]{.fragment .fade-in}
+  - Our best guess for the population proportion, $p$, is the [sample proportion, $\hat{p}$.]{.fragment .fade-in}
 :::
 
 ## Example {.smaller}
@@ -525,11 +525,11 @@ Understanding the sampling distribution of commonly used statistics, such as $\o
 ![](samp_size.png)
 
 ::: {incremental}
--   The variability of the point estimate is called the [standard error]{.fragment .highlight-red}.
+- The variability of the point estimate is called the [standard error]{.fragment .highlight-red}.
 
--   The standard error is the [standard deviation]{.fragment .highlight-red} of the sampling distribution.
+- The standard error is the [standard deviation]{.fragment .highlight-red} of the sampling distribution.
 
--   As $n$ increases, the standard error of the point estimate decreases.
+- As $n$ increases, the standard error of the point estimate decreases.
 :::
 
 ##  {.smaller}
@@ -645,9 +645,9 @@ The sample size conditions needed to apply the Central Limit Theorem differ depe
 ::: fragment
 [For the CLT to apply to the distribution of the sample proportion, we need the following sample size conditions to be met:]{style="color:#440154FF"}
 
--   [$np \geq 10$]{style="color:#440154FF"}
+- [$np \geq 10$]{style="color:#440154FF"}
 
--   [$n(1-p) \geq 10$]{style="color:#440154FF"}
+- [$n(1-p) \geq 10$]{style="color:#440154FF"}
 :::
 ::::
 
@@ -660,9 +660,9 @@ The sample size conditions needed to apply the Central Limit Theorem differ depe
 ::: fragment
 [Use the sample size and observe the shape of the sampled distribution to determine if the sample size is sufficiently large:]{style="color:#2A788EFF"}
 
--   [If $n\geq 30$, we can typically assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"}
+- [If $n\geq 30$, we can typically assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"}
 
--   [If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"}
+- [If $n < 30$, we need to look at the **sampled distribution**. If there are no clear outliers or strong skewness in the sampled data, we can assume the sampling distribution of $\overline{x}$ is approximately Normal and the CLT applies.]{style="color:#2A788EFF"}
 :::
 ::::
 ::::::::
